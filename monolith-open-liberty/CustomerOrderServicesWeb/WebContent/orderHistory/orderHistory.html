@@ -1,0 +1,20 @@
+<div class="orderHistoryRoot">
+	<!-- Build -->
+<!--  <script type="text/javascript" src="dojo_built/dojo/dojo/depot_orderHistory.js"></script>-->
+	<script>
+	dojo.require("depot.OrderHistoryController");
+	var orderHistoryController = new depot.OrderHistoryController();
+	</script>
+	<table dojoType="dojox.grid.DataGrid" store="orderHistoryController.orderStore" id="orderHistoryGrid" 
+	autoHeight="true" selectionmode="none" escapeHTMLInData="false"
+	clientSort="false">
+			<thead>
+				<tr>
+					<th field="orderId" width="10%">Order Id</th>
+					<th field="status"width="15%" formatter="orderHistoryController.formatStatus">Status</th>
+					<th field="total" width="10%">Total</th>
+					<th get="orderHistoryController.getLineItems" width="65%" formatter="orderHistoryController.formatLineItems">Details</th>
+				</tr>
+			</thead>
+		</table>
+</div>

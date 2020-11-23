@@ -1,0 +1,79 @@
+<div>
+<!-- Build -->
+<!--    <script type="text/javascript" src="dojo_built/dojo/dojo/depot_product.js"></script> -->
+	<script>
+	dojo.require("depot.ProductController");
+	var productController = new depot.ProductController();
+	dojo.connect(dijit.byId("shop"),"onDownloadEnd",productController,productController.loadCatalog);
+	dojo.subscribe(accountController.ACCOUNT_LOAD,productController,productController.cartPreview);
+	</script>
+	<div class="categoryMenuPane">
+		<div id="categoryMenu" dojoType="dijit.Menu" class="categoryMenu">
+		</div>
+	</div>
+	<div class="productMain">
+			<div dojoType="dojox.data.JsonRestStore" target="jaxrs/Product" idAttribute="id" jsId="productStore" >
+		</div>
+		<div id="catHeader" class="catHeader">Movies</div>
+		<table dojoType="dojox.grid.DataGrid" store="productStore" 
+		query="{categoryId:'2'}" id="productGrid" class="productGrid"
+		autoHeight="true" selectable="true" selectionMode="single">
+			<thead>
+				<tr>
+					<th field="image" width="30%" formatter="productController.formatImage">-</th>
+					<th width="70%" get="productController.combineData" formatter="productController.formatData"  >-</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="cartPreview">
+		<div dojoType="dojo.data.ItemFileWriteStore" jsId="previewStore" data="productController.defaultOrder" ></div>
+		<div dojoType="dijit.tree.ForestStoreModel" jsId="previewModel" store="previewStore"></div>
+		<ul dojoType="dijit.Menu" id="removeMenu" style="display: none;">
+				<li dojoType="dijit.MenuItem" id="removeLineItem">Remove From Cart</li>
+				<li dojoType="dijit.MenuItem" id="updateQuantity"">Update Quantity</li>
+			</ul>
+		<div dojoType="dijit.Tree" id="previewtree" model="previewModel" openOnClick="true">
+		<script type="dojo/connect">
+					var menu = dijit.byId("removeMenu");
+					menu.bindDomNode(this.domNode);
+					dojo.connect(menu, "_openMyself", this, function(e){
+						var tn = dijit.getEnclosingWidget(e.target);
+						console.debug("MENU",tn);
+						dojo.forEach(menu.getChildren(), function(i){ 
+							i.setAttribute('disabled', tn.item.children);
+						});
+					});
+
+					dojo.connect(dijit.byId("removeLineItem"),"onClick",productController,productController.removeItem);
+					dojo.connect(dijit.byId("updateQuantity"),"onClick",productController,productController.updateItem);
+				</script>
+				<script type="dojo/method" event="getIconStyle" args="item,opened">
+				if(item.root)
+				{
+					return {
+						backgroundImage: "url('images/cart.png')",
+						height: "35px",
+						width: "35px"
+					};
+				}
+				else
+				{
+					return null;
+				}
+			</script>
+			<script type="dojo/method" event="getLabel" args="item,opened">
+				if(!item.root)
+				{
+						return item.product[0].name + " (" + item.quantity +")";
+				}
+				return "Current Shopping Cart";
+			</script>
+		</div>
+		<div id="orderTotal"></div> 
+		<div dojoType="dijit.Dialog" id="detailDialog">
+			<div dojoType="dojox.layout.ContentPane" id="detailDialogPane"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

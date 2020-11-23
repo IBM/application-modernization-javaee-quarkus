@@ -1,0 +1,8 @@
+
+{% for li in lis %}
+	<div> 
+	<span class="detail"> Item:</span>{% for p in li.product %}{{p.name}}{% endfor %}
+	<span class="detail"> Quantity:</span>{{li.quantity}}
+	<span class="detail"> Amount:</span>{{li.amount}}
+	</div>
+{% endfor %}

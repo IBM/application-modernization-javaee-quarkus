@@ -1,0 +1,52 @@
+<div dojoType="dijit.form.Form" id="typeForm">
+{% for groupForm in group.formData %}
+            <div class="formField">
+                <div class="formHeader"><label>{{groupForm.label}}</label></div>
+                <div class="formValue">
+					{% ifequal groupForm.type "string" %}
+       <div dojoType="dijit.form.ValidationTextBox" trim=true name="{{groupForm.name}}" 
+       {% if groupForm.required %} required="{{groupForm.required}}" {% endif %}
+       {% if groupForm.promptMessage %} promptMessage="{{groupForm.promptMessage}}" {% endif %}
+       {% if groupForm.regExp %} regExp="{{groupForm.regExp}}" {% endif %}
+       {% if groupForm.invalidMessage %}invalidMessage="{{groupForm.invalidMessage}}"{% endif %}
+       {% if groupForm.readonly %}readonly="{{groupForm.readonly}}"{% endif %}
+	>
+	</div>
+					{% endifequal %}
+					{% ifequal groupForm.type "number" %}
+       <div dojoType="dijit.form.NumberSpinner" name="{{groupForm.name}}" 
+                {% if groupForm.required %} required="{{groupForm.required}}" {% endif %}
+                {% if groupForm.promptMessage %} promptMessage="{{groupForm.promptMessage}}" {% endif %}
+                {% if groupForm.regExp %} regExp="{{groupForm.regExp}}" {% endif %}
+		{% if groupForm.invalidMessage %}invalidMessage="{{groupForm.invalidMessage}}"{% endif %}
+		{% if groupForm.readonly %}readonly="{{groupForm.readonly}}"{% endif %}
+		{% if groupForm.constraints %}constraints="{{groupForm.constraints}}"{% endif %}
+		smallDelta="1" intermediateChanges="true"
+	>
+		<script type="dojo/connect" event="onChange">
+			accountTypeController.isValid();
+		</script>
+	</div>
+                
+{% endifequal %}
+				
+{% ifequal groupForm.type "text" %}
+          <div dojoType="dijit.form.Textarea" name="{{groupForm.name}}" 
+                {% if groupForm.required %} required="{{groupForm.required}}" {% endif %}
+                {% if groupForm.promptMessage %} promptMessage="{{groupForm.promptMessage}}" {% endif %}
+		{% if groupForm.invalidMessage %}invalidMessage="{{groupForm.invalidMessage}}"{% endif %}
+		{% if groupForm.readonly %}readonly="{{groupForm.readonly}}"{% endif %}
+	   >
+				
+	  </div>
+                
+{% endifequal %}
+				</div>
+		 <div class="clear"></div>
+	    </div>
+{% endfor %}
+<div class="formField">
+ 	<button dojoType="dojox.form.BusyButton" busyLabel="Updating {{group.label}}..." id="updateTypeButton" disabled>Update {{group.label}}</button>
+	<div id="resultType"></div>
+ </div>
+</div>

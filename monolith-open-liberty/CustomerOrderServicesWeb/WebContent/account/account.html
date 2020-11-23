@@ -1,0 +1,125 @@
+
+<div id="accountRoot">
+<!-- Build -->
+<!--    <script type="text/javascript" src="dojo_built/dojo/dojo/depot_account.js"></script>-->
+	<script>
+		dojo.require("depot.AddressController");
+		var addressController = new depot.AddressController();
+		
+		dojo.require("depot.AccountTypeFormController");
+		var accountTypeController = new depot.AccountTypeFormController();
+		
+		/*
+		dojo.require("depot.widget.DynamicForm");
+		var extraData = {"type":accountController.account.type};
+	
+		dojo.subscribe("AccountLoaded",function(item)
+		{
+			extraData = {"type":accountController.account.type};
+		});
+		*/
+	</script>
+	<div dojoType="dijit.TitlePane" title="Address">
+		<div dojoType="dijit.form.Form" id="addressForm">
+		<div class="formField">
+			<div class="formHeader">Address Line 1</div>
+			<div class="formValue">
+			<div name="addressLine1" dojoType="dijit.form.ValidationTextBox"
+            invalidMessage="Address Line 1 is required."
+            promptMessage="Address Line 1 is required."
+            required="true">
+       	 	</div>
+		</div>
+	<div class="clear"></div>
+	</div>
+	<div class="formField">
+		<div class="formHeader">Address Line 2</div>
+		<div class="formValue">
+			<div name="addressLine2" 
+			dojoType="dijit.form.TextBox">
+            </div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="formField">
+		<div class="formHeader">City</div>
+		<div class="formValue">
+			<div name="city" 
+			dojoType="dijit.form.ValidationTextBox"
+            invalidMessage="City is required."
+            promptMessage="City is required."
+            required="true">
+            </div>
+		</div>
+		<div class="clear"></div>
+	</div>
+		<div class="formField">
+		<div class="formHeader" id="stateLabel">State</div>
+		<div class="formValue">
+			<div dojoType="dojo.data.ItemFileReadStore" url="account/states.json" jsId="stateStore" clearOnClose="true"></div>
+			<div name="state" dojoType="dijit.form.FilteringSelect" id="statesSelect" class="selectBox"
+			autocomplete="true" store="stateStore" invalidMessage="Not Valid State or Providence" required="true">
+			<script type="dojo/connect" event="onChange">
+				addressController.isValid();
+			</script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="formField">
+		<div class="formHeader">Country</div>
+		<div class="formValue">
+			<div dojoType="dojo.data.ItemFileReadStore" url="account/countries.json" jsId="countryStore" required="true"></div>
+			<div name="country" dojoType="dijit.form.FilteringSelect" autocomplete="true" store="countryStore" required="true" class="selectBox">
+			<script type="dojo/connect" event="onChange">
+				if(arguments[0] === "USA")
+				{
+					stateStore.url="account/states.json";
+					dojo.place("<label>State</label>","stateLabel","only");
+				}
+				else if (arguments[0] === "CA")
+				{
+					stateStore.url="account/canada.json";
+					dojo.place("<label>Providence/Territory</label>","stateLabel","only");
+				}
+				stateStore.close();
+				dijit.byId("statesSelect").set("displayedValue",dijit.byId("statesSelect").set("displayedValue"));
+				
+			</script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="formField">
+		<div class="formHeader">Postal Code</div>
+		<div class="formValue">
+			<div type="text" name="zip" 
+			dojoType="dijit.form.ValidationTextBox" required="true"
+			regExp="^\d{5}$|^\d{5}-\d{4}$"
+			invalidMessage="Not a Valid Zip Code - "
+			promptMessage="Zip Code - 00000 or 00000-0000"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+		<div class="formField">
+		<button dojoType="dojox.form.BusyButton" 
+		busyLabel="Updating Address..." id="updateAddressButton" 
+		disabled>Update Address</button>
+		<div id="result"></div>
+		</div>
+		</div>
+	</div>
+	 
+	<div dojoType="dijit.TitlePane" id="typeFormTile">
+	</div> 
+	
+	<!--  
+	<div dojoType="depot.widget.DynamicForm" 
+		formData="accountController.account",
+		metaUrl="jaxrs/Customer/TypeForm" 
+		updateUrl="jaxrs/Customer/Info"
+		extraData="extraData"
+		refreshTopic="AccountLoaded">
+	</div>
+	-->
+</div>
