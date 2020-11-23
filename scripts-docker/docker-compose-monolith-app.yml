@@ -1,0 +1,14 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+    storefront-monolith:
+        image: storefront-monolith
+        ports:
+            - 9080:9080
+        container_name: storefront-monolith
+        restart: always

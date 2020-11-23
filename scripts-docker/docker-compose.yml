@@ -1,0 +1,34 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+    reverseproxy:
+        image: proxy-nginx
+        ports:
+            - 8080:8080
+        restart: always
+
+    articles:
+        depends_on:
+            - reverseproxy
+        image: articles
+        container_name: articles
+        restart: always
+
+    backend:
+        depends_on:
+            - reverseproxy
+        image: customerorderservices-local-backend:1.0
+        container_name: backend
+        restart: always
+
+    frontend:
+        depends_on:
+            - reverseproxy
+        image: customerorderservices-local:1.0
+        container_name: frontend
+        restart: always

@@ -1,0 +1,20 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+    database-postgres:        
+        image: postgres
+        container_name: postgres
+        privileged: true
+        ports:
+          - "5432:5432"
+        environment:
+          - POSTGRES_DB=postgres
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - PGDATA=/temp/data
+        restart: always

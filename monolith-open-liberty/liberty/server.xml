@@ -1,0 +1,45 @@
+<server>
+  <featureManager>
+      <feature>appSecurity-2.0</feature>
+      <feature>ldapRegistry-3.0</feature>
+      <feature>localConnector-1.0</feature>
+      <feature>ejbLite-3.1</feature>
+      <feature>jaxrs-1.1</feature>
+      <feature>jdbc-4.1</feature>
+      <feature>jpa-2.0</feature>
+      <feature>jsp-2.3</feature>
+      <feature>servlet-3.1</feature>
+      <feature>monitor-1.0</feature>
+  </featureManager>
+
+  <library id="DB2Lib">
+    <fileset dir="/opt/ibm/wlp/usr/shared/resources/db2" includes="db2jcc4.jar db2jcc_license_cu.jar"/>
+  </library>
+
+  <dataSource id="OrderDS" jndiName="jdbc/orderds" type="javax.sql.XADataSource">
+    <jdbcDriver libraryRef="DB2Lib"/>
+    <properties.db2.jcc databaseName="${env.DB2_DBNAME}" password="${env.DB2_PASSWORD}" portNumber="${env.DB2_PORT}" serverName="${env.DB2_HOST}" user="${env.DB2_USER}"/>
+    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="1" reapTime="180"/>
+  </dataSource>
+
+  <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint">
+    <tcpOptions soReuseAddr="true"/>
+  </httpEndpoint>
+
+  <keyStore id="defaultKeyStore" password="whodunit"/>
+  <!-- User and group security definitions -->
+
+  <basicRegistry id="basic" realm="customRealm">
+   	<user name="rbarcia" password="bl0wfish"/>
+   	<group name="SecureShopper">
+      <member name="rbarcia"/>
+     </group>
+  </basicRegistry>
+
+  <applicationMonitor updateTrigger="mbean"/>
+
+  <application id="customerOrderServicesApp" name="CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear" type="ear" location="CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear">
+    <classloader apiTypeVisibility="spec, ibm-api, third-party" />
+  </application>
+
+</server>

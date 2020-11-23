@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	
+	<CUSTOMER
+		CUSTOMER_ID='3' 
+		NAME='Kyle Brown' 
+		USERNAME='kbrown'
+		TYPE='BUSINESS' 
+		BUSINESS_VOLUME_DISCOUNT='Y'
+		BUSINESS_PARTNER='Y'
+		BUSINESS_DESCRIPTION='Bulk buyer' 
+		addressLine1="500 Miami Bld"
+		addressLine2="[null]"
+		city="Raleigh"
+		country="USA"
+		state="NC"
+		zip="21233"
+		/>
+</dataset>
