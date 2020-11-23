@@ -29,12 +29,14 @@
   <keyStore id="defaultKeyStore" password="whodunit"/>
   <!-- User and group security definitions -->
 
+
   <basicRegistry id="basic" realm="customRealm">
    	<user name="rbarcia" password="bl0wfish"/>
    	<group name="SecureShopper">
       <member name="rbarcia"/>
      </group>
   </basicRegistry>
+
 
   <applicationMonitor updateTrigger="mbean"/>
 

@@ -9,6 +9,7 @@ services:
     storefront-monolith:
         image: storefront-monolith
         ports:
-            - 9080:9080
+            - 9081:9081
+            - 9443:9443
         container_name: storefront-monolith
         restart: always

@@ -10,7 +10,7 @@ function _out() {
 
 function setup() {
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
-  echo "Open http://localhost:9080/CustomerOrderServicesWeb"
+  echo "Open https://localhost:9443/CustomerOrderServicesWeb/#shopPage"
   
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-monolith-app.yml up
