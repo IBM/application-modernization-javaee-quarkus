@@ -4,29 +4,33 @@ to be done
 
 **Monolith**
 
-sh scripts/install-dojo.sh
+```
+$ sh scripts/install-dojo.sh
+$ sh scripts-docker/run-monolith-db2.sh
+$ sh scripts-docker/build-and-run-monolith-app.sh
+```
 
-sh scripts-docker/run-monolith-db2.sh
-
-sh scripts-docker/build-and-run-monolith-app.sh
-
-Alternatively if the Java code and image have already been built:
-
-sh scripts-docker/run-monolith-app.sh
-
-http://localhost/CustomerOrderServicesWeb
+Open http://localhost/CustomerOrderServicesWeb
 
 
 **Separate Frontend**
 
-sh scripts/install-dojo.sh
+```
+$ sh scripts/install-dojo.sh
+$ sh scripts-docker/run-monolith-db2.sh
+$ sh scripts-docker/build-and-run-splitted-frontend.sh
+```
 
-sh scripts-docker/run-monolith-db2.sh
+Open http://localhost/CustomerOrderServicesWeb
 
-sh scripts-docker/build-and-run-splitted-frontend.sh
 
-Alternatively if the Java code and image have already been built:
+**Strangled Catalog Service**
 
-sh scripts-docker/run-splitted-frontend.sh
+```
+$ sh scripts/install-dojo.sh
+$ sh scripts-docker/run-monolith-db2.sh
+$ sh scripts-docker/run-database-postgres-catalog.sh
+$ sh scripts-docker/build-and-run-catalog.sh
+```
 
-http://localhost/CustomerOrderServicesWeb
+Open http://localhost/CustomerOrderServicesWeb

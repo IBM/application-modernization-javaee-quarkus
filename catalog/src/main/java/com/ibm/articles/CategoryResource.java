@@ -23,9 +23,7 @@ public class CategoryResource {
         System.out.println("/CustomerOrderServicesWeb/jaxrs/Category invoked in Quarkus catalog service");
 
         List<Category> categories = Category.listAll();
-        System.out.print(categories);
         List<SubCategory> subCategories = SubCategory.listAll();
-        System.out.print(subCategories);
 
         List<CategoryOutput> output = new ArrayList<CategoryOutput>();
         categories.forEach(category -> {
