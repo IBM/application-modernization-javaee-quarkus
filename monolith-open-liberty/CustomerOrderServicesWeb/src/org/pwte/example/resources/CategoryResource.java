@@ -24,7 +24,6 @@ public class CategoryResource
 	
 	public CategoryResource() throws NamingException
 	{
-		//productSearch = (ProductSearchService) new InitialContext().lookup("ejblocal:org.pwte.example.service.ProductSearchService");
 		productSearch = (ProductSearchService) 
 		new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
 	}
@@ -34,6 +33,7 @@ public class CategoryResource
 	@Produces(MediaType.APPLICATION_JSON)
 	public Category loadCategory(@PathParam(value="id") int categoryId)
 	{
+		System.out.println("/Category/id - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CategoryResource");
 		try {
 			return productSearch.loadCategory(categoryId);
 		} catch (CategoryDoesNotExist e) {
@@ -45,6 +45,7 @@ public class CategoryResource
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Category> loadTopLevelCategories()
 	{
+		System.out.println("/Category - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CategoryResource");
 		return productSearch.getTopLevelCategories();
 	}
 	

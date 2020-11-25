@@ -10,19 +10,21 @@ function _out() {
 
 function setup() {
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
-  echo "Open http://localhost/CustomerOrderServicesWeb"
+  echo "Open https://localhost/CustomerOrderServicesWeb/#shopPage"
   
   cd ${root_folder}/proxy
-  docker build -f Dockerfile-monolith -t proxy-nginx .
+  docker build -f Dockerfile-splitted-frontend -t proxy-nginx .
 
   cd ${root_folder}/monolith-open-liberty/CustomerOrderServicesProject
   mvn clean package
 
   cd ${root_folder}/monolith-open-liberty/
-  docker build -t storefront-monolith --no-cache .
+  docker build -t store-front-frontend .
+
+  docker build -t store-front-backend .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-monolith-app.yml up
+  docker-compose -f docker-compose-splitted-frontend.yml up
 }
 
 setup

@@ -31,7 +31,8 @@ import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 
 @Stateless
-@RolesAllowed(value="SecureShopper")
+//nik
+//@RolesAllowed(value="SecureShopper")
 public class CustomerOrderServicesImpl implements CustomerOrderServices {
 
 	@PersistenceContext
@@ -194,7 +195,9 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	*/
 	
 	public AbstractCustomer loadCustomer() throws CustomerDoesNotExistException,GeneralPersistenceException {
-		String user = ctx.getCallerPrincipal().getName();
+		//nik
+		//String user = ctx.getCallerPrincipal().getName();
+		String user = "rbarcia";
 		Query query = em.createQuery("select c from AbstractCustomer c where c.user = :user");
 		query.setParameter("user", user);
 		return (AbstractCustomer)query.getSingleResult();

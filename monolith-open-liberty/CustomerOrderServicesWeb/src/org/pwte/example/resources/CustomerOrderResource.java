@@ -40,6 +40,7 @@ import org.pwte.example.service.CustomerOrderServices;
 
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
+import java.util.Properties;
 
 @Path("/Customer")
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
@@ -49,7 +50,12 @@ public class CustomerOrderResource {
 	public CustomerOrderResource() 
 	{
 		try {
-			InitialContext ctx = new InitialContext();
+			//nik
+			Properties props = new Properties();
+			props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
+			props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
+			InitialContext ctx = new InitialContext(props);
+			//InitialContext ctx = new InitialContext();
 			customerOrderServices = (CustomerOrderServices) ctx.lookup("java:app/CustomerOrderServices/CustomerOrderServicesImpl!org.pwte.example.service.CustomerOrderServices");
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -60,6 +66,7 @@ public class CustomerOrderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCustomer()
 	{
+		System.out.println("/Customer - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
 		try {
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
 			Order order = customer.getOpenOrder();

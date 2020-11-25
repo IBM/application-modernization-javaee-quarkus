@@ -6,10 +6,20 @@ networks:
       name: store-front-network
 
 services:
+    proxy-nginx:
+        image: proxy-nginx
+        container_name: proxy-nginx
+        ports:
+            - 80:80
+            - 443:443
+        restart: always
+
     storefront-monolith:
         image: storefront-monolith
-        ports:
-            - 9081:9081
-            - 9443:9443
         container_name: storefront-monolith
         restart: always
+        environment:
+          - CONTAINER=storefront-monolith
+        ports:
+            - 9080:9080
+            - 9443:9443

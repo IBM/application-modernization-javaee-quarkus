@@ -1,0 +1,33 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+    reverseproxy:
+        image: proxy-nginx
+        container_name: proxy-nginx
+        ports:
+            - 80:80
+            - 443:443
+        restart: always
+
+    backend:
+        depends_on:
+            - reverseproxy
+        image: store-front-backend
+        container_name: store-front-backend
+        restart: always
+        environment:
+          - CONTAINER=store-front-backend
+
+    frontend:
+        depends_on:
+            - reverseproxy
+        image: store-front-frontend
+        container_name: store-front-frontend
+        restart: always
+        environment:
+          - CONTAINER=store-front-frontend

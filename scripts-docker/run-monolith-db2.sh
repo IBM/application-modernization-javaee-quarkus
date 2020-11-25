@@ -10,6 +10,8 @@ function _out() {
 
 function setup() {
 
+  docker network create store-front-network
+  
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-monolith-db2.yml up
 }

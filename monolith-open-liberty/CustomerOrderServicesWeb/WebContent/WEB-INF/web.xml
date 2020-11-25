@@ -5,9 +5,12 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+	
 	<security-role>
 		<role-name>SecureShopper</role-name>
 	</security-role>
+	<!--
+		nik
 	<security-constraint>
 		<display-name>CustomerServices</display-name>
 		<web-resource-collection>
@@ -21,6 +24,7 @@
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
 	</security-constraint>
+	-->
 	<login-config>
 		<auth-method>BASIC</auth-method>
 	</login-config>
