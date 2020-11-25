@@ -15,9 +15,9 @@ function setup() {
   cd ${root_folder}/proxy
   docker build -f Dockerfile-catalog -t proxy-nginx .
 
-  cd ${root_folder}/monolith-open-liberty/CustomerOrderServicesProject
+  cd ${root_folder}/monolith-liberty/CustomerOrderServicesProject
   mvn clean package
-  cd ${root_folder}/monolith-open-liberty/
+  cd ${root_folder}/monolith-liberty/
   docker build -t storefront-backend .
 
   cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject

@@ -8,12 +8,12 @@ READNIK.md
 .tern-project
 
 
-monolith-open-liberty/CustomerOrderServices/target
-monolith-open-liberty/CustomerOrderServicesApp/target
-monolith-open-liberty/CustomerOrderServicesTest/target
-monolith-open-liberty/CustomerOrderServicesWeb/target
-monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo
-monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
+monolith-liberty/CustomerOrderServices/target
+monolith-liberty/CustomerOrderServicesApp/target
+monolith-liberty/CustomerOrderServicesTest/target
+monolith-liberty/CustomerOrderServicesWeb/target
+monolith-liberty/CustomerOrderServicesWeb/WebContent/dojo
+monolith-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
 
 frontend-dojo/CustomerOrderServices/target
 frontend-dojo/CustomerOrderServicesApp/target

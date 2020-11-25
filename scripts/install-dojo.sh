@@ -9,7 +9,7 @@ function _out() {
 }
 
 function setup() {
-  cd ${root_folder}/monolith-open-liberty/CustomerOrderServicesWeb/WebContent
+  cd ${root_folder}/monolith-liberty/CustomerOrderServicesWeb/WebContent
   rm -R ./dojo
   rm -R ./dojo_built
   cd ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent
@@ -23,8 +23,8 @@ function setup() {
   cd cloudpak-for-applications
   git checkout -q liberty 
   
-  cp -r CustomerOrderServicesWeb/WebContent/dojo ${root_folder}/monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo
-  cp -r CustomerOrderServicesWeb/WebContent/dojo_built ${root_folder}/monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
+  cp -r CustomerOrderServicesWeb/WebContent/dojo ${root_folder}/monolith-liberty/CustomerOrderServicesWeb/WebContent/dojo
+  cp -r CustomerOrderServicesWeb/WebContent/dojo_built ${root_folder}/monolith-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
 
   cp -r CustomerOrderServicesWeb/WebContent/dojo ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo
   cp -r CustomerOrderServicesWeb/WebContent/dojo_built ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_built
