@@ -1,0 +1,68 @@
+@import url("dev_imports.css");
+@import url("../account/account.css");
+@import url("../product/product.css"); 
+@import url("../orderHistory/orderHistory.css"); 
+
+
+.outer
+{
+	background-color: #F5F5F5 ;
+	font-family: Verdana ;
+}
+
+.layout
+{
+	height:100%;
+	width:80%;
+	border: thin;
+	border: solid;
+	border-width: .5px;
+	border-color: url("../images/tabHover.png"); 
+	
+}
+
+.banner
+{
+    border:none;
+    padding: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    background-image: url("../images/header2.png");
+}
+
+.mainArea
+{
+	padding: 20px;
+	background-color:white;
+}
+
+.displayArea
+{
+	display:none;
+}
+
+.error
+{
+	color: red;
+}
+
+.claro .dijitTabActive .dijitTabInnerDiv {
+	background-color:#9F97AD;
+	color:#000;
+	-webkit-transition-duration:.1s;
+}
+
+.claro .dijitTabHover .dijitTabInnerDiv {
+	background-color:#9F97AD;
+ 	-webkit-transition-duration:.25s;
+	color:#000;
+}
+
+.claro .dijitTabChecked .dijitTabInnerDiv {
+	background-color:#9F97AD;
+	color:#000;
+}
+
+.claro .dijitTabContent {
+	border: 1px solid #9F97AD;
+}

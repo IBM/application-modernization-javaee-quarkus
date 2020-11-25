@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="CustomerOrderServices">
+	
+		   <jta-data-source>jdbc/orderds</jta-data-source>
+		   <class>org.pwte.example.domain.Product</class>
+		   <class>org.pwte.example.domain.AbstractCustomer</class>
+		   <class>org.pwte.example.domain.BusinessCustomer</class>
+		   <class>org.pwte.example.domain.ResidentialCustomer</class>
+		   <class>org.pwte.example.domain.Order</class>
+		   <class>org.pwte.example.domain.LineItem</class>
+		   <class>org.pwte.example.domain.LineItemId</class>
+		   <class>org.pwte.example.domain.Category</class>
+		    <class>org.pwte.example.domain.Address</class>
+		   <properties>
+			<property name="openjpa.MaxFetchDepth" value="5" />
+			<property name="openjpa.jdbc.MappingDefaults"
+				    value="StoreEnumOrdinal=false" />
+			<property name="openjpa.jdbc.DBDictionary" value="db2" />
+		   </properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+	<display-name>
+	CustomerOrderServicesApp</display-name>
+	<module id="Module_1493296624076">
+		<ejb>CustomerOrderServices.jar</ejb>
+	</module>
+	<module id="Module_1493296623622">
+		<web>
+			<web-uri>CustomerOrderServicesTest.war</web-uri>
+			<context-root>CustomerOrderServicesTest</context-root>
+		</web>
+	</module>
+	<module id="Module_1493296624098">
+		<web>
+			<web-uri>CustomerOrderServicesWeb.war</web-uri>
+			<context-root>CustomerOrderServicesWeb</context-root>
+		</web>
+	</module>
+	<security-role>
+		<role-name>SecureShopper</role-name>
+	</security-role></application>

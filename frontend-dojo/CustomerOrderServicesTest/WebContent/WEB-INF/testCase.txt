@@ -1,0 +1,7 @@
+# TEST CASES
+
+org.pwte.example.jpa.test.CustomerOrderServicesTest
+org.pwte.example.jpa.test.ProductSearchServiceTest
+org.pwte.example.jaxrs.test.ProductRESTSearchTest
+org.pwte.example.jaxrs.test.CustomerOrderRESTTest
+

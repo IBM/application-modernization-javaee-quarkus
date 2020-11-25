@@ -1,0 +1,22 @@
+#treeGrid
+{
+	border: none;
+	width: 45em;
+}
+
+.orderHistoryRoot .dojoxGridHeader { display:block; }
+
+
+.detail
+{
+	font-weight: bold;
+}
+
+.claro .dojoxGridCellOver .dojoxGridSortNode {
+	background-color:#9F97AD;
+}
+
+.claro .dojoxGridSortNode 
+{
+	background-color: #b5bcc7;
+}

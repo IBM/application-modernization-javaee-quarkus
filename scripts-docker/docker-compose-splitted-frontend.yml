@@ -14,20 +14,22 @@ services:
             - 443:443
         restart: always
 
-    backend:
-        depends_on:
-            - reverseproxy
-        image: store-front-backend
-        container_name: store-front-backend
+    storefront-backend:
+        image: storefront-backend
+        container_name: storefront-backend
         restart: always
         environment:
-          - CONTAINER=store-front-backend
+          - CONTAINER=storefront-backend
+        ports:
+            - 9082:9080
+            - 9445:9443
 
-    frontend:
-        depends_on:
-            - reverseproxy
-        image: store-front-frontend
-        container_name: store-front-frontend
+    storefront-frontend:
+        image: storefront-frontend
+        container_name: storefront-frontend
         restart: always
         environment:
-          - CONTAINER=store-front-frontend
+          - CONTAINER=storefront-frontend
+        ports:
+            - 9081:9080
+            - 9444:9443

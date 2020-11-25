@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	
+	<CUSTOMER
+		CUSTOMER_ID='2' 
+		NAME='Roland Barcia'
+		USERNAME='rbarcia' 
+		TYPE='RESIDENTIAL' 
+		RESIDENTIAL_HOUSEHOLD_SIZE='6' 
+		RESIDENTIAL_FREQUENT_CUSTOMER='Y'
+		addressLine1="222 2nd street"
+		addressLine2="Apt 2"
+		city="Leonia"
+		country="USA"
+		state="NJ"
+		zip="07605"
+		/>
+		
+	<CUSTOMER
+		CUSTOMER_ID='3' 
+		NAME='Kyle Brown' 
+		USERNAME='kbrown'
+		TYPE='BUSINESS' 
+		BUSINESS_VOLUME_DISCOUNT='Y'
+		BUSINESS_PARTNER='Y'
+		BUSINESS_DESCRIPTION='Bulk buyer' 
+		addressLine1="500 Miami Bld"
+		addressLine2="[null]"
+		city="Raleigh"
+		country="USA"
+		state="NC"
+		zip="21233"
+		/>
+	
+	<CATEGORY CAT_NAME="Entertainment" CAT_ID="1" PARENT_CAT="[null]"/>
+	<CATEGORY PARENT_CAT="1" CAT_NAME="Movies" CAT_ID="2"  />
+	<CATEGORY PARENT_CAT="1" CAT_NAME="Music" CAT_ID="3" />
+	<CATEGORY PARENT_CAT="1" CAT_NAME="Games" CAT_ID="4" />
+	
+	<CATEGORY CAT_NAME="Electronics" CAT_ID="10" PARENT_CAT="[null]"/>
+	<CATEGORY CAT_NAME="TV" CAT_ID="12" PARENT_CAT="10" />
+	<CATEGORY CAT_NAME="Cellphones" CAT_ID="13" PARENT_CAT="10" />
+	<CATEGORY CAT_NAME="DVD Players" CAT_ID="14" PARENT_CAT="10" />
+	
+	<PRODUCT PRODUCT_ID= '1' PRICE='29.99' NAME="Return of the Jedi" DESCRIPTION = 'Episode 6, Luke has the final confrontation with his father!' IMAGE="images/Return.jpg" />
+	<PRODUCT PRODUCT_ID= '2' PRICE='29.99' NAME = 'Empire Strikes Back' DESCRIPTION = 'Episode 5, Luke finds out a secret that will change his destiny' IMAGE="images/Empire.jpg"/>
+	<PRODUCT PRODUCT_ID= '3' PRICE='29.99' NAME = 'New Hope' DESCRIPTION = 'Episode 4, after years of oppression, a band of rebels fight for freedom' IMAGE="images/NewHope.jpg"/>
+	<PRODUCT PRODUCT_ID="10" PRICE="100.00" NAME = "DVD Player" DESCRIPTION = "This Sony Player has crystal clear picture" IMAGE="images/Player.jpg"/>
+	
+	<PRODUCT PRODUCT_ID="20" PRICE="200.00" NAME = "BlackBerry Curve" DESCRIPTION = "This BlackBerry offers rich PDA functions and works with Notes." IMAGE="images/BlackBerry.jpg"/>
+	<PRODUCT PRODUCT_ID="21" PRICE="150.00" NAME = "Sony Ericsson" DESCRIPTION = "This Sony phone takes pictures and plays Music." IMAGE="images/SonyPhone.jpg"/>
+	
+	<PRODUCT PRODUCT_ID="30" PRICE="1800.00" NAME = "Sony Bravia" DESCRIPTION = "This is a 40 inch 1080p LCD HDTV" IMAGE="images/SonyTV.jpg"/>
+	<PRODUCT PRODUCT_ID="31" PRICE="1150.00" NAME = "Sharp Aquos" DESCRIPTION = "This is 32 inch 1080p LCD HDTV" IMAGE="images/SamTV.jpg"/>
+	
+	<PRODUCT PRODUCT_ID="40" PRICE="20.00" NAME = "Go Fish: Superstar" DESCRIPTION = "Go Fish release their great new hit, Superstar" IMAGE="images/Superstar.jpg"/>
+	<PRODUCT PRODUCT_ID="41" PRICE="20.00" NAME = "Ludwig van Beethoven" DESCRIPTION = "This is a classic, the 9 Symphonies Box Set" IMAGE="images/Bet.jpg"/>
+	
+	<PRODUCT PRODUCT_ID= '51' PRICE='399.99' NAME="PlayStation 3" DESCRIPTION = 'Brace yourself for the marvels of the PlayStation 3 complete with 80GB hard disk storage' IMAGE="images/PS3.jpg" />
+	<PRODUCT PRODUCT_ID= '52' PRICE='169.99' NAME = 'Nintendo Wii' DESCRIPTION = 'Next-generation gaming with a motion-sensitive controller' IMAGE="images/wii.jpg"/>
+	<PRODUCT PRODUCT_ID= '53' PRICE='299.99' NAME = 'XBOX 360' DESCRIPTION = 'Expand your horizons with the gaming and multimedia capabilities of this incredible system' IMAGE="images/xbox360.jpg"/>
+	
+	<PROD_CAT PRODUCT_ID= '1' CAT_ID="2" PC_ID="1" />
+	<PROD_CAT PRODUCT_ID= '2' CAT_ID="2" PC_ID="2" />
+	<PROD_CAT PRODUCT_ID= '3' CAT_ID="2" PC_ID="3" />
+	<PROD_CAT PRODUCT_ID= '10' CAT_ID="14" PC_ID="4" />
+	<PROD_CAT PRODUCT_ID= '10' CAT_ID="2" PC_ID="5" />
+	<PROD_CAT PRODUCT_ID= '20' CAT_ID="13" PC_ID="6" />
+	<PROD_CAT PRODUCT_ID= '21' CAT_ID="13" PC_ID="7" />
+	<PROD_CAT PRODUCT_ID= '30' CAT_ID="12" PC_ID="8" />
+	<PROD_CAT PRODUCT_ID= '31' CAT_ID="12" PC_ID="9" />
+	<PROD_CAT PRODUCT_ID= '40' CAT_ID="3" PC_ID="10" />
+	<PROD_CAT PRODUCT_ID= '41' CAT_ID="3" PC_ID="11" />
+	<PROD_CAT PRODUCT_ID= '51' CAT_ID="4" PC_ID="21" />
+	<PROD_CAT PRODUCT_ID= '52' CAT_ID="4" PC_ID="22" />
+	<PROD_CAT PRODUCT_ID= '53' CAT_ID="4" PC_ID="23" />
+	
+	<ORDERS />
+	<LINE_ITEM />
+</dataset>

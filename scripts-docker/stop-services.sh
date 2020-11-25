@@ -12,8 +12,8 @@ function setup() {
 
   cd ${root_folder}/scripts-docker
 
-  docker rm -f store-front-frontend
-  docker rm -f store-front-backend
+  docker rm -f storefront-frontend
+  docker rm -f storefront-backend
   docker rm -f proxy-nginx 
   docker rm -f storefront-monolith
 }

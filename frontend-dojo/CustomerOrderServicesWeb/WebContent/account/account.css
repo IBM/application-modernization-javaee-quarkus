@@ -1,0 +1,96 @@
+.claro .dijitTitlePaneTitleHover {
+	background-color: #9F97AD;
+	border-color: #b5bcc7;
+}
+.claro .dijitTitlePaneTitleActive {
+	background-color: #9F97AD;
+	border-color: #b5bcc7;
+	background-position:0px -136px;
+}
+
+.formField
+{
+	margin:2px;
+}
+
+
+.formHeader
+{
+	float:left;
+	width:150px;
+}
+
+
+.formValue
+{
+	float:left;
+	width:300px;
+}
+
+.clear
+{
+	clear: both;
+}
+
+.claro .dijitTextBox,
+.claro .dijitTextBox .dijitButtonNode {
+	/* color for (outer) border on *TextBox widgets, and border between input and buttons on ComboBox and Spinner */
+	border-color: #b5bcc7;
+	-webkit-transition-property:background-color, border;
+ 	-webkit-transition-duration:.35s;
+}
+.claro .dijitTextBox {
+	background-color: #FFF5FF;
+}
+
+
+.claro .dijitTextBoxHover,
+.claro .dijitTextBoxHover .dijitButtonNode {
+	border-color: #9F97AD;
+ 	-webkit-transition-duration:.25s;
+}
+.claro .dijitTextBoxHover {
+	background-color: #9F97AD;
+}
+
+
+.claro .dijitComboBoxHover .dijitButtonNode {
+	background-color:#9F97AD;
+}
+
+.claro .dijitComboBoxFocused .dijitButtonNode {
+	background-color:#9F97AD;
+}
+
+.claro .dijitComboBoxMenu .dijitMenuItemSelected {
+	color:#000;
+	border-color:#b5bcc7;
+	background-color:#9F97AD;
+}
+
+.claro .dijitMenu {
+    border: 1px solid #b5bcc7;
+}
+
+/* enabled */
+.claro .dijitButton .dijitButtonNode
+{
+	background-color: #b5bcc7;
+	border: 1px solid #9F97AD;
+}
+
+/* selected */
+.claro .dijitButtonActive .dijitButtonNode {
+	background-color: #9F97AD;
+	border: 1px solid #b5bcc7;
+}
+
+/* hover status */
+.claro .dijitButtonHover .dijitButtonNode
+{
+	background-color: #FFF5FF;
+}
+
+
+
+
