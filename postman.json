@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "a46c89b7-a1e6-4be5-bf8b-f50122f7d4cc",
+		"name": "COS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "catalog",
+			"item": [
+				{
+					"name": "Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product?categoryId=2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product?categoryId=3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product?categoryId=4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product?categoryId=12",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product?categoryId=13",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product?categoryId=INVALID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=333",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "333"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product/10",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product/51",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/51",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								"51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product - INVALID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/333",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Product",
+								"333"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lower Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Category/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "shopping-cart",
+			"item": [
+				{
+					"name": "add-item 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"quantity\":1,\"productId\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/OpenOrder/LineItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"OpenOrder",
+								"LineItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-item 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"quantity\":1,\"productId\":2}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/OpenOrder/LineItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"OpenOrder",
+								"LineItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/OpenOrder/LineItem/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"OpenOrder",
+								"LineItem",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "submit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/OpenOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"OpenOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "order-history",
+			"item": [
+				{
+					"name": "Order history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "TypeForm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"TypeForm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"addressLine1\":\"222 2rd Street\",\"addressLine2\":\"Apt 33\",\"city\":\"Leonia\",\"state\":\"NJ\",\"country\":\"USA\",\"zip\":\"07605\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Address",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"Address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Residential Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"type\":\"RESIDENTIAL\",\"name\":\"Roland Barcia\",\"frequentCustomer\":\"true\",\"householdSize\":5}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CustomerOrderServicesWeb",
+								"jaxrs",
+								"Customer",
+								"Info"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
