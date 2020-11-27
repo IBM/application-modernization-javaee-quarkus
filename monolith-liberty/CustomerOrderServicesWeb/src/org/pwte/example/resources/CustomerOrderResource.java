@@ -195,9 +195,10 @@ public class CustomerOrderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getOrderHistory(@Context HttpHeaders headers)
 	{
-		try {
+		try {			
 			Date lastModified = customerOrderServices.getOrderHistoryLastUpdatedTime();
-			List<String> matchHeaders = headers.getRequestHeader("If-Modified-Since");
+			/*
+			List<String> matchHeaders = headers.getRequestHeader("If-Modified-Since");		
 			
 			if((matchHeaders != null) && (matchHeaders.size()>0))
 			{
@@ -215,9 +216,10 @@ public class CustomerOrderResource {
 			}
 			else
 			{
+				*/
 				Set<Order> orders = customerOrderServices.loadCustomerHistory();
 				return Response.ok(orders).lastModified(lastModified).build();
-			}
+			//}
 			
 		} catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Status.NOT_FOUND);

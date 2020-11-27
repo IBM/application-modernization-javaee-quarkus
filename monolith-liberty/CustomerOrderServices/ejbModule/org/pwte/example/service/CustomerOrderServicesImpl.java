@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
@@ -13,6 +14,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.pwte.example.service.ProductSearchService;
+import org.pwte.example.service.ProductSearchServiceImpl;
 
 import org.pwte.example.domain.AbstractCustomer;
 import org.pwte.example.domain.Address;
@@ -29,6 +33,7 @@ import org.pwte.example.exception.OrderAlreadyOpenException;
 import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
+import javax.naming.InitialContext;
 
 @Stateless
 //nik
@@ -75,9 +80,9 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			if(lineItem.getProductId() == productId)
 			{
 				lineItem.setQuantity(lineItem.getQuantity() + quantity);
-				lineItem.setAmount(lineItem.getAmount().add(amount));
-				// nik
-				lineItem.setAmountCurrent(lineItem.getAmountCurrent().add(amount));
+				lineItem.setAmount(product.getPrice());
+				// nik - to be done
+				lineItem.setPriceCurrent(lineItem.getAmount());
 				return existingOpenOrder;
 			}
 		}
@@ -87,8 +92,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		lineItem.setOrder(existingOpenOrder);
 		lineItem.setProductId(product.getProductId());
 		lineItem.setAmount(amount);
-		// nik 
-		lineItem.setAmountCurrent(amount);
+		// nik - to be done
+		lineItem.setPriceCurrent(product.getPrice());
 		lineItem.setProduct(product);
 		lineItem.setQuantity(quantity);
 		lineItems.add(lineItem);
@@ -218,7 +223,44 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	public Set<Order> loadCustomerHistory()
 			throws CustomerDoesNotExistException,GeneralPersistenceException {
 		AbstractCustomer customer = loadCustomer();
-		return customer.getOrders();
+		
+		Set<Order> orders = customer.getOrders();
+		if (orders != null) {
+			for (Order order : orders) {
+				Set<LineItem> lineItems = order.getLineitems();
+				Set<LineItem> updatedLineItems = new HashSet<LineItem>();
+				if (lineItems != null ) {
+					for(LineItem lineItem:lineItems)
+					{					
+						int productId = lineItem.getProductId();
+						BigDecimal currentPrice;
+
+						// to be done: add POST endpoint to change product prices
+						// as workaround for now 50% of the prices are set to 1000
+
+						try {
+							// to be done: why does the lookup not work here?
+							//InitialContext ctx = new InitialContext();
+							//ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:comp/env/ejb/ProductSearchService");
+							//Product product = productSearchService.loadProduct(productId);
+							//currentPrice = product.getPrice();						
+							Random rand = new Random();
+							int n = rand.nextInt(100);
+							if (n > 50) {								
+								BigDecimal increasedPrice = new BigDecimal("1000.00");
+								lineItem.setPriceCurrent(increasedPrice);
+							}
+						}
+						catch (Exception exception) {
+						}												
+						
+						updatedLineItems.add(lineItem);
+					}
+					order.setLineitems(updatedLineItems);
+				}
+			}
+		}
+		return orders;
 	}
 	
 	public Date getOrderHistoryLastUpdatedTime()
