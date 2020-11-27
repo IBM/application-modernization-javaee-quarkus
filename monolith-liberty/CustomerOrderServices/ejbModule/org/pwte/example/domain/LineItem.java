@@ -34,6 +34,8 @@ public class LineItem implements Serializable {
 	private int productId;
 	protected long quantity;
 	protected BigDecimal amount;
+	@Column(name = "AMOUNT_CURRENT")
+	protected BigDecimal amountCurrent;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
@@ -76,6 +78,14 @@ public class LineItem implements Serializable {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+
+	public BigDecimal getAmountCurrent() {
+		return amountCurrent;
+	}
+
+	public void setAmountCurrent(BigDecimal amountCurrent) {
+		this.amountCurrent = amountCurrent;
 	}
 
 	public Product getProduct() {
