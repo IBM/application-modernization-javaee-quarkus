@@ -6,7 +6,7 @@ to be done
 
 ```
 $ sh scripts/install-dojo.sh
-$ sh scripts-docker/run-monolith-db2.sh
+$ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-monolith-app.sh
 ```
 
@@ -17,7 +17,7 @@ Open http://localhost/CustomerOrderServicesWeb
 
 ```
 $ sh scripts/install-dojo.sh
-$ sh scripts-docker/run-monolith-db2.sh
+$ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-splitted-frontend.sh
 ```
 
@@ -28,7 +28,7 @@ Open http://localhost/CustomerOrderServicesWeb
 
 ```
 $ sh scripts/install-dojo.sh
-$ sh scripts-docker/run-monolith-db2.sh
+$ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/run-database-postgres-catalog.sh
 $ sh scripts-docker/build-and-run-catalog.sh
 ```

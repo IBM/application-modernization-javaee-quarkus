@@ -1,0 +1,60 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: db2
+  namespace: db2
+  labels:
+    app: db2
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+  replicas: 1
+  test: false
+  selector:
+    app: db2
+    deploymentconfig: db2
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: db2
+        deploymentconfig: db2
+    spec:
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: db2
+          env:
+            - name: DB2INST1_PASSWORD
+              value: db2inst1
+            - name: LICENSE
+              value: accept
+            - name: DBNAME
+              value: orderdb
+          securityContext:
+            capabilities:
+            privileged: true
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: true
+          ports:
+            - containerPort: 50000
+              protocol: TCP
+          imagePullPolicy: Always
+          terminationMessagePolicy: File
+          image: vandepol/db2-cos
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: mysvcacct
+      serviceAccount: mysvcacct
+      schedulerName: default-scheduler

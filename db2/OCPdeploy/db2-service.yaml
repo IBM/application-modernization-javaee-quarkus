@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: db2
+  namespace: db2
+  labels:
+    app: db2
+spec:
+  ports:
+    - name: 50000-tcp
+      protocol: TCP
+      port: 50000
+      targetPort: 50000
+  selector:
+    app: db2
+    deploymentconfig: db2
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+

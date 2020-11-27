@@ -6,9 +6,9 @@ networks:
       name: store-front-network
 
 services:
-    db2-monolith:        
-        image: vandepol/db2-cos
-        container_name: db2-monolith
+    storefront-db2:        
+        image: storefront-db2
+        container_name: storefront-db2
         privileged: true
         ports:
           - "5000:5000"
