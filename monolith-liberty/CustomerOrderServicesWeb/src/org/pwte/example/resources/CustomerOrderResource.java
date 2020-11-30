@@ -42,10 +42,29 @@ import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
 import java.util.Properties;
 
+
+import org.pwte.example.service.ProductSearchService;
+import org.pwte.example.service.ProductSearchServiceImpl;
+
+import javax.ejb.EJB;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 @Path("/Customer")
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class CustomerOrderResource {
 	CustomerOrderServices customerOrderServices = null;
+	
+	
+	//@EJB ProductSearchService productSearch;
 	
 	public CustomerOrderResource() 
 	{
@@ -55,9 +74,10 @@ public class CustomerOrderResource {
 			props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
 			props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
 			InitialContext ctx = new InitialContext(props);
-			//InitialContext ctx = new InitialContext();
 			customerOrderServices = (CustomerOrderServices) ctx.lookup("java:app/CustomerOrderServices/CustomerOrderServicesImpl!org.pwte.example.service.CustomerOrderServices");
+			//productSearch = (ProductSearchService) new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
 		} catch (NamingException e) {
+			System.out.println("CustomerOrderResource nik5");
 			e.printStackTrace();
 		} 
 	}
@@ -218,6 +238,56 @@ public class CustomerOrderResource {
 			{
 				*/
 				Set<Order> orders = customerOrderServices.loadCustomerHistory();
+
+				/*
+Set<Order> orders = customer.getOrders();
+		if (orders != null) {
+			for (Order order : orders) {
+				Set<LineItem> lineItems = order.getLineitems();
+				Set<LineItem> updatedLineItems = new HashSet<LineItem>();
+				if (lineItems != null ) {
+					for(LineItem lineItem:lineItems)
+					{					
+						int productId = lineItem.getProductId();
+						BigDecimal currentPrice;
+
+						// to be done: add POST endpoint to change product prices
+						// as workaround for now 50% of the prices are set to 1000
+
+						try {
+							// to be done: why does the lookup not work here?
+							//InitialContext ctx = new InitialContext();
+							Properties props = new Properties();
+							props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
+							props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
+							System.out.println("nik1");
+							InitialContext ctx = new InitialContext(props);
+							System.out.println("nik2");
+							//ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:app/ProductSearchService/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
+							ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:comp/env/ejb/ProductSearchService");
+							System.out.println("nik3");
+							Product product = productSearchService.loadProduct(productId);
+							System.out.println("nik4");
+							currentPrice = product.getPrice();					
+							System.out.println("nik5");
+							Random rand = new Random();
+							int n = rand.nextInt(100);
+							if (n > 50) {								
+								BigDecimal increasedPrice = new BigDecimal("1000.00");
+								lineItem.setPriceCurrent(increasedPrice);
+							}
+						}
+						catch (Exception exception) {
+						}												
+						
+						updatedLineItems.add(lineItem);
+					}
+					order.setLineitems(updatedLineItems);
+				}
+			}
+		
+				*/
+
 				return Response.ok(orders).lastModified(lastModified).build();
 			//}
 			

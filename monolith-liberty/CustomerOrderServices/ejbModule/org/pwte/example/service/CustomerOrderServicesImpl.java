@@ -34,6 +34,20 @@ import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import javax.naming.InitialContext;
+import java.util.Properties;
+
+
+import javax.ejb.EJB;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Stateless
 //nik
@@ -220,6 +234,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		else throw new CustomerDoesNotExistException();
 	}*/
 
+	@EJB ProductSearchService productSearchService;
+
 	public Set<Order> loadCustomerHistory()
 			throws CustomerDoesNotExistException,GeneralPersistenceException {
 		AbstractCustomer customer = loadCustomer();
@@ -236,19 +252,17 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 						BigDecimal currentPrice;
 
 						// to be done: add POST endpoint to change product prices
-						// as workaround for now 50% of the prices are set to 1000
+						// as workaround for now 50% of the prices are increased by 10
 
 						try {
-							// to be done: why does the lookup not work here?
-							//InitialContext ctx = new InitialContext();
-							//ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:comp/env/ejb/ProductSearchService");
-							//Product product = productSearchService.loadProduct(productId);
-							//currentPrice = product.getPrice();						
+							productSearchService = (ProductSearchService) new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
+							Product product = productSearchService.loadProduct(productId);							
+							currentPrice = product.getPrice();					
 							Random rand = new Random();
 							int n = rand.nextInt(100);
 							if (n > 50) {								
-								BigDecimal increasedPrice = new BigDecimal("1000.00");
-								lineItem.setPriceCurrent(increasedPrice);
+								BigDecimal increasedPrice = new BigDecimal("10.00");
+								lineItem.setPriceCurrent(currentPrice.add(increasedPrice));
 							}
 						}
 						catch (Exception exception) {
