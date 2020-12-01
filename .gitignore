@@ -6,7 +6,7 @@ READNIK.md
 .DS_Store
 .factorypath
 .tern-project
-
+.vscode
 
 monolith-liberty/CustomerOrderServices/target
 monolith-liberty/CustomerOrderServicesApp/target

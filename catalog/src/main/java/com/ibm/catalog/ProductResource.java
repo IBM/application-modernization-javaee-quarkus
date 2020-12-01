@@ -21,13 +21,9 @@ import io.vertx.kafka.client.producer.KafkaProducer;
 import io.vertx.kafka.client.producer.KafkaProducerRecord;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-import com.ibm.catalog.Product;
 
 @Path("/CustomerOrderServicesWeb/jaxrs/Product")
 @ApplicationScoped

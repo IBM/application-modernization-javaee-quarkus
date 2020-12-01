@@ -48,7 +48,7 @@ $ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "ac
 
 *Local Development*
 
-Change the Postgres and Kafka URLs in application.properties.
+Change the Postgres and Kafka URLs in application.properties. Plus change KAFKA_ADVERTISED_LISTENERS in docker-compose-kafka.yml.
 
 ```
 $ mvn quarkus:dev
