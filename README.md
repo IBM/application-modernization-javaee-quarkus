@@ -34,3 +34,12 @@ $ sh scripts-docker/build-and-run-catalog.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
+
+Invoke these endpoints and check the logs:
+
+```
+$ curl curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
+$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2
+```
+
+
