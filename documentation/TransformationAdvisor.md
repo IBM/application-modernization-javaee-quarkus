@@ -14,6 +14,8 @@ Create workspace 'workspace' and connection 'collection'.
 Download transformationadvisor-Linux_workspace_collection.tgz
 
 ```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git
+$ cd application-modernization-javaee-quarkus
 $ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-monolith-app.sh
@@ -30,9 +32,13 @@ tar xvfz transformationadvisor-Linux_workspace_collection.tgz
 cd /tmp/transformationadvisor-2.3.0/
 
 
+**Question**
+How can you run TA?
+
+./bin/transformationadvisor -w /opt/ibm/wlp/usr/servers/defaultServer -p AppSrv01 wsadmin passw0rd
 
 
-./bin/transformationadvisor -w /opt/ibm/wlp/usr/servers/ -p defaultServer wsadmin passw0rd
+
 
 vi conf/customCmd.properties 
 
