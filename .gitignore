@@ -8,6 +8,10 @@ READNIK.md
 .tern-project
 .vscode
 
+transformationadvisor-Linux_workspace_collection.tgz
+uploadEndpoint.json
+transformationadvisor-2.3.0
+
 monolith-liberty/CustomerOrderServices/target
 monolith-liberty/CustomerOrderServicesApp/target
 monolith-liberty/CustomerOrderServicesTest/target
