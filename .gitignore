@@ -8,6 +8,8 @@ READNIK.md
 .tern-project
 .vscode
 
+output-binary
+
 transformationadvisor-Linux_workspace_collection.tgz
 uploadEndpoint.json
 transformationadvisor-2.3.0

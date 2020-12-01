@@ -306,7 +306,7 @@ Set<Order> orders = customer.getOrders();
 		try
 		{
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
-			JSONObject data = new JSONObject();
+			JSONObject data = new JSONObject(); 
 			JSONArray groups = new JSONArray();
 			
 			JSONObject name = new JSONObject();
