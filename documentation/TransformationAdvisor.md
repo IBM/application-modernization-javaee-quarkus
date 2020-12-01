@@ -33,11 +33,13 @@ cd /tmp/transformationadvisor-2.3.0/
 
 
 **Question**
-How can you run TA?
+How can you run TA? I want to use it to convert fom WebSphere Liberty to Open Liberty.
 
-./bin/transformationadvisor -w /opt/ibm/wlp/usr/servers/defaultServer -p AppSrv01 wsadmin passw0rd
+cat /config/configDropins/defaults/keystore.xml
 
+./bin/transformationadvisor -w /opt/ibm/wlp/usr/servers/defaultServer -p AppSrv01 wsadmin EA5EsludBELW9EoUkZ3zD3FWf09ob1c89dUjaPqnJqg=
 
+Documentation: https://www.ibm.com/support/knowledgecenter/en/SS5Q6W/gettingStarted/usingDataCollector.html
 
 
 vi conf/customCmd.properties 
