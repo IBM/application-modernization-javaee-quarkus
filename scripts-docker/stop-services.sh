@@ -17,6 +17,7 @@ function setup() {
   docker rm -f proxy-nginx 
   docker rm -f storefront-monolith
   docker rm -f storefront-catalog
+  docker rm -f storefront-backend-open
 }
 
 setup

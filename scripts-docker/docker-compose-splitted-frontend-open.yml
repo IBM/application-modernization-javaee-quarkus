@@ -1,0 +1,35 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+    reverseproxy:
+        image: proxy-nginx
+        container_name: proxy-nginx
+        ports:
+            - 80:80
+            - 443:443
+        restart: always
+
+    storefront-backend-open:
+        image: storefront-backend-open
+        container_name: storefront-backend-open
+        restart: always
+        environment:
+          - CONTAINER=storefront-backend-open
+        ports:
+            - 9082:9080
+            - 9445:9443
+
+    storefront-frontend:
+        image: storefront-frontend
+        container_name: storefront-frontend
+        restart: always
+        environment:
+          - CONTAINER=storefront-frontend
+        ports:
+            - 9081:9080
+            - 9444:9443

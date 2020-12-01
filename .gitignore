@@ -26,6 +26,13 @@ frontend-dojo/CustomerOrderServicesWeb/target
 frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo
 frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_built
 
+monolith-open-liberty/CustomerOrderServices/target
+monolith-open-liberty/CustomerOrderServicesApp/target
+monolith-open-liberty/CustomerOrderServicesTest/target
+monolith-open-liberty/CustomerOrderServicesWeb/target
+monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo
+monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
+
 catalog/target
 
 *.class

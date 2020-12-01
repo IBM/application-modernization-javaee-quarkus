@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css"
+	href="theme/layout.css">
+	
+<title>Electronics and Movie Depot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="GENERATOR"
+	content="Rational® Application Developer for WebSphere® Software">
+<script type="text/javascript"
+	djconfig="isDebug: false, parseOnLoad: true" src="dojo/dojo/dojo.js"></script>
+<script type="text/javascript">
+dojo.require("dijit.layout.BorderContainer");
+dojo.require("dijit.layout.ContentPane");
+dojo.require("dijit.layout.TabContainer");
+dojo.require("dojox.layout.ContentPane");
+dojo.require("dojo.parser");
+
+
+dojo.registerModulePath("depot","../../dojo_depot/depot");
+dojo.registerModulePath("product","../../product");
+dojo.registerModulePath("orderHistory","../../orderHistory");
+dojo.registerModulePath("account","../../account");
+
+dojo.require("depot.NavigationController");
+var nav = new depot.NavigationController();
+dojo.ready(dojo.hitch(nav,nav.loadedPage));
+
+dojo.require("depot.AccountController");
+var accountController = new depot.AccountController();
+dojo.ready(dojo.hitch(accountController,accountController.loadAccount));
+
+</script>
+</head>
+<body class="claro">
+<div align="center" class="outer">
+	<div dojoType="dijit.layout.BorderContainer" id="main" 
+	     design="headline" class="layout" align="left">
+		<div dojoType="dijit.layout.ContentPane" region="top" baseClass="topArea">
+			<div class="banner">Electronic and Movie Depot</div>
+		</div>
+		<div dojoType="dijit.layout.TabContainer"
+		tabposition="top" class="mainArea" id="center" region="center">
+			<div dojoType="dojox.layout.ContentPane" 
+			title = "Shop" renderStyles="true" id="shop" class="displayArea"  href="product/product.html"></div>
+			<div dojoType="dojox.layout.ContentPane" 
+			title = "Cart" renderStyles="true" id="cart"  class="displayArea" href="cart/cart.html"></div>
+			<div dojoType="dojox.layout.ContentPane" 
+			title = "Order History" renderStyles="true" id="orderHistory" class="displayArea" href="orderHistory/orderHistory.html"></div>
+			<div dojoType="dojox.layout.ContentPane" 
+			title = "Account" renderStyles="true" id="account" class="displayArea" href="account/account.html"></div>
+		</div>
+</div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+# Liberty Server
+# This file contains options that are passed directly to the JVM on startup
+# See the InfoCenter for full documentation
+
+# Uncomment the following line to set the maximum heap size to 1024m
+#-Xmx1024m
+
+# Uncomment the following line to set a system property
+#-Dcom.ibm.example.system.property=ExampleValue
+
+# Uncomment the following line to enable verbose output for class loading
+#-verbose:class
+-javaagent:/opt/ol/wlp/usr/shared/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar=9081:/opt/ol/wlp/usr/shared/resources/jmx_exporter/jmx-config.yml
