@@ -30,6 +30,7 @@ Open http://localhost/CustomerOrderServicesWeb
 $ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/run-database-postgres-catalog.sh
+$ sh scripts-docker/run-kafka.sh
 $ sh scripts-docker/build-and-run-catalog.sh
 ```
 
@@ -45,4 +46,10 @@ $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2
 $ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1,\"categories\":[{\"id\":0,\"name\":\"string\",\"subCategories\":[null]}],\"description\":\"string\",\"image\":\"string\",\"name\":\"string\",\"price\":30}"
 ```
 
+*Local Development*
 
+Change the Postgres and Kafka URLs in application.properties.
+
+```
+$ mvn quarkus:dev
+```

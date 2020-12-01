@@ -1,3 +1,5 @@
+quarkus.http.port=8082
+
 quarkus.swagger-ui.always-include=true
 quarkus.swagger-ui.path=/explorer
 
@@ -11,3 +13,8 @@ quarkus.datasource.password=postgres
 quarkus.datasource.max-size=8
 quarkus.datasource.min-size=2
 quarkus.hibernate-orm.sql-load-script=import.sql
+
+mp.messaging.incoming.product-price-updated.connector=smallrye-kafka
+mp.messaging.incoming.product-price-updated.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+
+kafka.bootstrap.servers=KAFKA_BOOTSTRAP_SERVERS

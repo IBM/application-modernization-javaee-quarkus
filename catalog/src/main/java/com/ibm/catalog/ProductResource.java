@@ -16,7 +16,17 @@ import javax.ws.rs.core.Response;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import io.vertx.core.Vertx;
+import io.vertx.kafka.client.producer.KafkaProducer;
+import io.vertx.kafka.client.producer.KafkaProducerRecord;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import com.ibm.catalog.Product;
 
 @Path("/CustomerOrderServicesWeb/jaxrs/Product")
@@ -49,8 +59,6 @@ public class ProductResource {
     @Transactional
     public Product update(@PathParam("id") Long id, Product updatedProduct) {        
         System.out.println("/CustomerOrderServicesWeb/jaxrs/Product @PUT updateProduct invoked in Quarkus catalog service");
-        System.out.println(id);
-        System.out.println(updatedProduct.price);
 
         Product existingProduct = entityManager.find(Product.class, id);
         if (existingProduct == null) {
@@ -60,6 +68,37 @@ public class ProductResource {
         
         entityManager.persist(existingProduct);
 
+        sendMessageToKafka(existingProduct.id, existingProduct.price);
+
 		return existingProduct;	    
+    }
+
+    @ConfigProperty(name = "kafka.bootstrap.servers")
+    String kafkaBootstrapServer;
+
+    @Inject
+    Vertx vertx;
+
+    private KafkaProducer<String, String> producer;
+
+    @PostConstruct
+    void initKafkaClient() {
+        Map<String, String> config = new HashMap<>();
+        config.put("bootstrap.servers", kafkaBootstrapServer);
+        config.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        config.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        System.out.println("bootstrapping Kafka with config: " + config);
+
+        producer = KafkaProducer.create(vertx, config);
+    }
+
+    public void sendMessageToKafka(Long productId, BigDecimal price) {
+        String productIdString = productId.toString();
+        String priceString = price.toString();
+        try {
+            KafkaProducerRecord<String, String> record = KafkaProducerRecord.create("product-price-updated", productIdString + "#" + priceString);
+            producer.write(record, done -> System.out.println("Kafka message sent: product-price-updated - " + productIdString + "#" + priceString));
+        } catch (Exception e) {
+        }
     }
 }
