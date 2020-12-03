@@ -1,4 +1,4 @@
-FROM openliberty/open-liberty:kernel-slim-java11-openj9-ubi
+FROM openliberty/open-liberty:full-java8-ibmjava-ubi
 USER root
 COPY ./liberty/server.xml /config
 COPY ./liberty/server.env /config
