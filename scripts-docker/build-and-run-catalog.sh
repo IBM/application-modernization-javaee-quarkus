@@ -13,12 +13,12 @@ function setup() {
   echo "Open http://localhost/CustomerOrderServicesWeb"
   
   cd ${root_folder}/proxy
-  docker build -f Dockerfile-catalog -t proxy-nginx .
+  docker build -f Dockerfile-splitted-frontend-open -t proxy-nginx .
 
-  cd ${root_folder}/monolith-liberty/CustomerOrderServicesProject
+  cd ${root_folder}/monolith-open-liberty/CustomerOrderServicesProject
   mvn clean package
-  cd ${root_folder}/monolith-liberty/
-  docker build -t storefront-backend .
+  cd ${root_folder}/monolith-open-liberty/
+  docker build -t storefront-backend-open .
 
   cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject
   mvn clean package
