@@ -32,23 +32,25 @@ public class Product implements Serializable {
 	@Id
 	@Column(name="PRODUCT_ID")
 	
-	protected int productId;
+	protected int id;
 	protected String name;
 	protected BigDecimal price;
 	protected String description;
+	
+	//@JsonProperty(value="id")
+
 	@Column(name="IMAGE")
+	protected String image;
 	
-	protected String imagePath;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="PROD_CAT",joinColumns={@JoinColumn(name="PRODUCT_ID")},inverseJoinColumns={@JoinColumn(name="CAT_ID")})
-	
-	protected Collection<Category> categories;
+	//@ManyToMany(fetch=FetchType.EAGER)
+	//@JoinTable(name="PROD_CAT",joinColumns={@JoinColumn(name="PRODUCT_ID")},inverseJoinColumns={@JoinColumn(name="CAT_ID")})
+	//protected Collection<Category> categories;
 	
 	public Product() {
 
 	}
 	
+	/*
 	@JsonIgnore
 	public Collection<Category> getCategories() {
 		return categories;
@@ -58,15 +60,26 @@ public class Product implements Serializable {
 	public void setCategories(Collection<Category> categories) {
 		this.categories = categories;
 	}
+	*/
 	
 	@JsonProperty(value="id")
-	public int getProductId() {
-		return productId;
+	public int getId() {
+		return id;
 	}
 	
 	@JsonProperty(value="id")
+	public void setId(int productId) {
+		this.id = productId;
+	}
+
+	@JsonIgnore
 	public void setProductId(int productId) {
-		this.productId = productId;
+		this.id = productId;
+	}
+
+	@JsonIgnore
+	public int getProductId() {
+		return id;
 	}
 	
 	
@@ -90,13 +103,13 @@ public class Product implements Serializable {
 	}
 	
 	@JsonProperty(value="image")
-	public String getImagePath() {
-		return imagePath;
+	public String getImage() {
+		return image;
 	}
 	
 	@JsonProperty(value="image")
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setImage(String imagePath) {
+		this.image = imagePath;
 	}
 	
 	
