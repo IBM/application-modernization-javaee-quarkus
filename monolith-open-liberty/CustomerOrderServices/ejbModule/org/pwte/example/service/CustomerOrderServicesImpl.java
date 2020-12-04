@@ -128,7 +128,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		
 		Order newOrder = new Order();
 		newOrder.setCustomer(customer);
-		newOrder.setStatus(Order.Status.OPEN);
+		newOrder.setStatus(Order.STATUS_OPEN);
 		System.out.println(newOrder.getStatus());
 		newOrder.setTotal(new BigDecimal(0));
 		
@@ -142,7 +142,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			OrderNotOpenException, NoLineItemsException,GeneralPersistenceException, OrderModifiedException {
 		AbstractCustomer customer = loadCustomer();
 		Order existingOpenOrder = customer.getOpenOrder();
-		if(existingOpenOrder == null || existingOpenOrder.getStatus() != Order.Status.OPEN)
+		if(existingOpenOrder == null || !existingOpenOrder.getStatus().equalsIgnoreCase(Order.STATUS_OPEN))
+		//if(existingOpenOrder == null || existingOpenOrder.getStatus() != Order.Status.OPEN)
 		{
 			throw new OrderNotOpenException();
 		}
@@ -160,7 +161,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		if(existingOpenOrder.getLineitems() == null || existingOpenOrder.getLineitems().size() <= 0 )
 			throw new NoLineItemsException();
 		
-		existingOpenOrder.setStatus(Order.Status.SUBMITTED);
+		existingOpenOrder.setStatus(Order.STATUS_SUBMITTED);
 		existingOpenOrder.setSubmittedTime(new Date());
 		customer.setOpenOrder(null);
 	}
@@ -173,7 +174,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		
 		AbstractCustomer customer = loadCustomer();
 		Order existingOpenOrder = customer.getOpenOrder();
-		if(existingOpenOrder == null || existingOpenOrder.getStatus() != Order.Status.OPEN)
+		//if(existingOpenOrder == null || existingOpenOrder.getStatus() != Order.Status.OPEN)
+		if(existingOpenOrder == null || !existingOpenOrder.getStatus().equalsIgnoreCase(Order.STATUS_OPEN))
 		{
 			throw new OrderNotOpenException();
 		}

@@ -33,7 +33,9 @@ public class Order implements Serializable {
 	protected int orderId;
 	protected BigDecimal total;
 	public static enum Status { OPEN, SUBMITTED, SHIPPED, CLOSED }
-	protected Status status;
+	public static String STATUS_OPEN = "OPEN";
+	public static String STATUS_SUBMITTED = "SUBMITTED";
+	protected String status;
 	
 	@Column(name="SUBMIT_TIME")
 	protected Date submittedTime;
@@ -85,10 +87,10 @@ public class Order implements Serializable {
 	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
