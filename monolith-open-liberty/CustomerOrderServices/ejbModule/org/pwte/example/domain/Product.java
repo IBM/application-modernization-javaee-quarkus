@@ -13,8 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedNativeQuery;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
+//import org.codehaus.jackson.annotate.JsonIgnore;
+//import org.codehaus.jackson.annotate.JsonProperty;
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 
 @Entity
 @NamedNativeQuery(name="product.by.cat.or.sub",
@@ -62,22 +64,22 @@ public class Product implements Serializable {
 	}
 	*/
 	
-	@JsonProperty(value="id")
+	@JsonbProperty(value="id")
 	public int getId() {
 		return id;
 	}
 	
-	@JsonProperty(value="id")
+	@JsonbProperty(value="id")
 	public void setId(int productId) {
 		this.id = productId;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public void setProductId(int productId) {
 		this.id = productId;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public int getProductId() {
 		return id;
 	}
@@ -102,12 +104,12 @@ public class Product implements Serializable {
 		this.description = description;
 	}
 	
-	@JsonProperty(value="image")
+	@JsonbProperty(value="image")
 	public String getImage() {
 		return image;
 	}
 	
-	@JsonProperty(value="image")
+	@JsonbProperty(value="image")
 	public void setImage(String imagePath) {
 		this.image = imagePath;
 	}

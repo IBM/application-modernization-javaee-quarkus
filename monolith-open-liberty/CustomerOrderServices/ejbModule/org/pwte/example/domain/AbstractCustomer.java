@@ -18,7 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -75,12 +76,12 @@ public abstract class AbstractCustomer implements Serializable {
 		this.address = address;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public int getCustomerId() {
 		return customerId;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
@@ -101,12 +102,12 @@ public abstract class AbstractCustomer implements Serializable {
 		this.type = type;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public String getUser() {
 		return user;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public void setUser(String user) {
 		this.user = user;
 	}

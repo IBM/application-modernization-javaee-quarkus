@@ -13,9 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
-//import javax.json.bind.annotation.JsonbTransient;
+//import org.codehaus.jackson.annotate.JsonIgnore;
+//import org.codehaus.jackson.annotate.JsonProperty;
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 
 
 @Entity
@@ -44,7 +45,7 @@ public class Category implements Serializable {
 	private Collection<Product> products;
 	*/
 
-	@JsonProperty(value="id")
+	@JsonbProperty(value="id")
 	public int getId() {
 		return id;
 	}

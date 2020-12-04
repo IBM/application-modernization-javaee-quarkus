@@ -33,11 +33,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-//import javax.json.bind.annotation.JsonbTransient;
-  
-
-import org.codehaus.jackson.annotate.JsonIgnore;
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 
 @Entity
 @Table(name = "LINE_ITEM")
@@ -122,12 +119,12 @@ public class LineItem implements Serializable {
 		this.product = product;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public Order getOrder() {
 		return order;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public void setOrder(Order order) {
 		this.order = order;
 	}
@@ -171,12 +168,12 @@ public class LineItem implements Serializable {
 		order.setTotal(total);
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public void setVersion(long version) {
 		this.version = version;
 	}
 
-	@JsonIgnore
+	@JsonbTransient
 	public long getVersion() {
 		return version;
 	}

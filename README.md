@@ -13,12 +13,22 @@ $ sh scripts-docker/build-and-run-monolith-app.sh
 Open http://localhost/CustomerOrderServicesWeb
 
 
-**Separate Frontend**
+**Separate Frontend - WebSphere Liberty**
 
 ```
 $ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-splitted-frontend.sh
+```
+
+Open http://localhost/CustomerOrderServicesWeb
+
+**Separate Frontend - Open Liberty**
+
+```
+$ sh scripts/install-dojo.sh
+$ sh scripts-docker/build-and-run-monolith-db2.sh
+$ sh scripts-docker/build-and-run-splitted-frontend-open.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
