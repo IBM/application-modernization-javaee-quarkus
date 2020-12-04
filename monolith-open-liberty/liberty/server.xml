@@ -2,7 +2,7 @@
   <featureManager>
   
   <feature>microProfile-3.3</feature>
-      <feature>jakartaee-9.0</feature>
+      <feature>jakartaee-8.0</feature>
       <feature>mpReactiveStreams-1.0</feature>
       <feature>mpReactiveMessaging-1.0</feature>
 
