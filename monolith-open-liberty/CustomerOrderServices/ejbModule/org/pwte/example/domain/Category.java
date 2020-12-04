@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
+//import javax.json.bind.annotation.JsonbTransient;
+
 
 @Entity
 @NamedQuery(name="top.level.category",query="select c from Category c where c.parent IS NULL")
@@ -24,7 +26,7 @@ public class Category implements Serializable {
 
 	@Id
 	@Column(name="CAT_ID")
-	private int categoryID;
+	private int id;
 	
 	@Column(name="CAT_NAME")
 	private String name;
@@ -37,15 +39,18 @@ public class Category implements Serializable {
 	@OneToMany(mappedBy="parent",fetch=FetchType.EAGER)
 	private Collection<Category> subCategories;
 	
+	/*
 	@ManyToMany(mappedBy="categories",fetch=FetchType.LAZY)
 	private Collection<Product> products;
-	
+	*/
+
 	@JsonProperty(value="id")
-	public int getCategoryID() {
-		return categoryID;
+	public int getId() {
+		return id;
 	}
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
+	
+	public void setId(int categoryID) {
+		this.id = categoryID;
 	}
 	public String getName() {
 		return name;
@@ -54,28 +59,37 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 	
+	
+	/*
 	@JsonIgnore
 	public Category getParent() {
 		return parent;
 	}
+	
+	@JsonIgnore
 	public void setParent(Category parent) {
 		this.parent = parent;
 	}
+	*/
+	
+	
 	public Collection<Category> getSubCategories() {
 		return subCategories;
 	}
+	
 	public void setSubCategories(Collection<Category> subCategories) {
 		this.subCategories = subCategories;
 	}
 	
+	
+	/*
 	@JsonIgnore
 	public Collection<Product> getProducts() {
 		return products;
 	}
+
 	public void setProducts(Collection<Product> products) {
 		this.products = products;
 	}
-	
-	
-
+	*/
 }

@@ -16,6 +16,27 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+//import javax.json.bind.annotation.JsonbTransient;
+  
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
@@ -32,22 +53,33 @@ public class LineItem implements Serializable {
 	@Id
 	@Column(name = "PRODUCT_ID")
 	private int productId;
+	
 	protected long quantity;
 	protected BigDecimal amount;
 	@Column(name = "PRICE_CURRENT")
 	protected BigDecimal priceCurrent;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
+	public BigDecimal getPriceCurrent() {
+		return priceCurrent;
+	}
+
+	public void setPriceCurrent(BigDecimal priceCurrent) {
+		this.priceCurrent = priceCurrent;
+	}
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional=false)
+	@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID", insertable=false, updatable=false)
 	protected Product product;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ORDER_ID", referencedColumnName = "ORDER_ID")
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional=false)
+	@JoinColumn(name = "ORDER_ID", referencedColumnName = "ORDER_ID", insertable=false, updatable=false)
 	protected Order order;
 
 	@Transient
 	private long version;
 
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -64,6 +96,8 @@ public class LineItem implements Serializable {
 		this.productId = productId;
 	}
 
+
+
 	public long getQuantity() {
 		return quantity;
 	}
@@ -78,14 +112,6 @@ public class LineItem implements Serializable {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
-	}
-
-	public BigDecimal getPriceCurrent() {
-		return priceCurrent;
-	}
-
-	public void setPriceCurrent(BigDecimal priceCurrent) {
-		this.priceCurrent = priceCurrent;
 	}
 
 	public Product getProduct() {
