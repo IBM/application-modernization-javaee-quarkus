@@ -38,8 +38,8 @@ import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import org.pwte.example.service.CustomerOrderServices;
 
-import com.ibm.json.java.JSONArray;
-import com.ibm.json.java.JSONObject;
+//import com.ibm.json.java.JSONArray;
+//import com.ibm.json.java.JSONObject;
 import java.util.Properties;
 
 
@@ -307,7 +307,7 @@ Set<Order> orders = customer.getOrders();
 		{
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
 			
-			
+			/*
 			JSONObject data = new JSONObject(); 
 			JSONArray groups = new JSONArray();
 			
@@ -366,6 +366,7 @@ Set<Order> orders = customer.getOrders();
 				
 			}			
 			data.put("formData",groups);
+			*/
 			
 			return Response.ok().build();
 		}
