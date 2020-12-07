@@ -129,7 +129,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		Order newOrder = new Order();
 		newOrder.setCustomer(customer);
 		newOrder.setStatus(Order.Status.OPEN);
-		System.out.println(newOrder.getStatus());
 		newOrder.setTotal(new BigDecimal(0));
 		
 		em.persist(newOrder);

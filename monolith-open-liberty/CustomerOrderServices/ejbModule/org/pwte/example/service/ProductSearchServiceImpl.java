@@ -46,8 +46,10 @@ public class ProductSearchServiceImpl implements ProductSearchService {
 
 	@SuppressWarnings("unchecked")
 	public List<Category> getTopLevelCategories() {
+		List<Category> output = null;
 		Query query = em.createNamedQuery("top.level.category");
-		return query.getResultList();
+		output = query.getResultList();
+		return output;
 	}
 
 	

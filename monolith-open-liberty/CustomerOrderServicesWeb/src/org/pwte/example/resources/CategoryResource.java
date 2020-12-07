@@ -46,7 +46,14 @@ public class CategoryResource
 	public List<Category> loadTopLevelCategories()
 	{
 		System.out.println("/Category - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CategoryResource");
-		return productSearch.getTopLevelCategories();
+		List<Category> output = null;
+		try {
+			output = productSearch.getTopLevelCategories();
+		}
+		catch (Exception exception) {
+			System.out.println("/Category - Exception " + exception + "Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CategoryResource");
+		}
+		return output;
 	}
 	
 }

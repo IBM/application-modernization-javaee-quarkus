@@ -26,62 +26,46 @@ import javax.json.bind.annotation.JsonbTransient;
 
 public class Product implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="PRODUCT_ID")
 	
-	protected int id;
+	protected int productId;
 	protected String name;
 	protected BigDecimal price;
 	protected String description;
-	
-	//@JsonProperty(value="id")
-
 	@Column(name="IMAGE")
-	protected String image;
 	
-	//@ManyToMany(fetch=FetchType.EAGER)
-	//@JoinTable(name="PROD_CAT",joinColumns={@JoinColumn(name="PRODUCT_ID")},inverseJoinColumns={@JoinColumn(name="CAT_ID")})
-	//protected Collection<Category> categories;
+	protected String imagePath;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="PROD_CAT",joinColumns={@JoinColumn(name="PRODUCT_ID")},inverseJoinColumns={@JoinColumn(name="CAT_ID")})
+	
+	protected Collection<Category> categories;
 	
 	public Product() {
 
 	}
 	
-	/*
-	@JsonIgnore
+	@JsonbTransient
 	public Collection<Category> getCategories() {
 		return categories;
 	}
 	
-	@JsonIgnore
+	@JsonbTransient
 	public void setCategories(Collection<Category> categories) {
 		this.categories = categories;
 	}
-	*/
 	
 	@JsonbProperty(value="id")
-	public int getId() {
-		return id;
-	}
-	
-	@JsonbProperty(value="id")
-	public void setId(int productId) {
-		this.id = productId;
-	}
-
-	@JsonbTransient
-	public void setProductId(int productId) {
-		this.id = productId;
-	}
-
-	@JsonbTransient
 	public int getProductId() {
-		return id;
+		return productId;
+	}
+	
+	@JsonbProperty(value="id")
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	
 	
@@ -105,15 +89,14 @@ public class Product implements Serializable {
 	}
 	
 	@JsonbProperty(value="image")
-	public String getImage() {
-		return image;
+	public String getImagePath() {
+		return imagePath;
 	}
 	
 	@JsonbProperty(value="image")
-	public void setImage(String imagePath) {
-		this.image = imagePath;
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
-	
 	
 
 }

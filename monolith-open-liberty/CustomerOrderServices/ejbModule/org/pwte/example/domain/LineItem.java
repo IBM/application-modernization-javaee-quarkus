@@ -131,20 +131,20 @@ public class LineItem implements Serializable {
 
 	@PrePersist
 	void calculateTotalAdd() {
-		System.out.println("Adding new LI -> " + product.getName());
+		//System.out.println("Adding new LI -> " + product.getName());
 		BigDecimal total = new BigDecimal(0);
 		if (getOrder() != null)
 			total = getOrder().getTotal();
-		System.out.println("Old total " + total);
-		System.out.println("Adding new -> " + amount);
+		//System.out.println("Old total " + total);
+		//System.out.println("Adding new -> " + amount);
 		total = total.add(amount).setScale(2, BigDecimal.ROUND_HALF_UP);
-		System.out.println("Total in CallBack -> " + total);
+		//System.out.println("Total in CallBack -> " + total);
 		order.setTotal(total);
 	}
 
 	@PreUpdate
 	void recalculateTotal() {
-		System.out.println("PreUpdate -> " + product.getName());
+		//System.out.println("PreUpdate -> " + product.getName());
 		BigDecimal total = new BigDecimal(0);
 		if (getOrder().getLineitems().size() <= 0)
 			return;
@@ -152,17 +152,17 @@ public class LineItem implements Serializable {
 		for (LineItem item : getOrder().getLineitems()) {
 			if (item.equals(this))
 				inOrders = true;
-			System.out.println("recalc -> " + item.getAmount());
+			//System.out.println("recalc -> " + item.getAmount());
 			total = total.add(item.getAmount()).setScale(2, BigDecimal.ROUND_HALF_UP);
 		}
-		System.out.println("New Total recalc -> " + total);
+		//System.out.println("New Total recalc -> " + total);
 		if (inOrders)
 			order.setTotal(total);
 	}
 
 	@PreRemove
 	void calculateTotalRemove() {
-		System.out.println("Removing LI -> " + product.getName());
+		//System.out.println("Removing LI -> " + product.getName());
 		BigDecimal total = getOrder().getTotal();
 		total = total.subtract(amount).setScale(2, BigDecimal.ROUND_HALF_UP);
 		order.setTotal(total);
