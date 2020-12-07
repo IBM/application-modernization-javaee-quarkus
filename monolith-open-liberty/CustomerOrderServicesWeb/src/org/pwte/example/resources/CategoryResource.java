@@ -49,7 +49,6 @@ public class CategoryResource
 		List<Category> output = null;
 		try {
 			output = productSearch.getTopLevelCategories();
-			System.out.println(output);
 		}
 		catch (Exception exception) {
 			System.out.println("/Category - Exception " + exception + "Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CategoryResource");

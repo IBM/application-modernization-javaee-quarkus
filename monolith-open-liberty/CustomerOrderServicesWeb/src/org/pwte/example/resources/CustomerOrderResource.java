@@ -53,7 +53,6 @@ public class CustomerOrderResource {
 			InitialContext ctx = new InitialContext(props);
 			customerOrderServices = (CustomerOrderServices) ctx.lookup("java:app/CustomerOrderServices/CustomerOrderServicesImpl!org.pwte.example.service.CustomerOrderServices");			
 		} catch (NamingException e) {
-			System.out.println("CustomerOrderResource nik5");
 			e.printStackTrace();
 		} 
 	}
@@ -103,12 +102,6 @@ public class CustomerOrderResource {
 	public Response addLineItem(LineItem lineItem,@Context HttpHeaders headers)
 	{
 		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
-		System.out.println(lineItem);
-		System.out.println(lineItem.getOrderId());
-		System.out.println(lineItem.getProductId());
-		System.out.println(lineItem.getQuantity());
-		System.out.println(lineItem.getPriceCurrent());
-		//System.out.println(lineItem.getProduct().toString());
 				
 		try {
 			List<String> matchHeaders = headers.getRequestHeader("If-Match");
@@ -117,8 +110,7 @@ public class CustomerOrderResource {
 				
 				lineItem.setVersion(new Long(matchHeaders.get(0)));
 			}
-			Order openOrder = customerOrderServices.addLineItem(lineItem);
-			System.out.println("Open Order -> " + openOrder.getVersion());
+			Order openOrder = customerOrderServices.addLineItem(lineItem);			
 			return Response.ok(openOrder).header("ETag", openOrder.getVersion()).location(new URI("Customer")).build();
 		} catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Status.NOT_FOUND);
@@ -130,7 +122,6 @@ public class CustomerOrderResource {
 			throw new WebApplicationException(Status.PRECONDITION_FAILED);
 		} 
 		catch (Exception e) {
-			System.out.println("/LineItem Exception " + e);
 			throw new WebApplicationException(e);
 		}
 		
@@ -220,7 +211,6 @@ public class CustomerOrderResource {
 		try
 		{
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
-			System.out.println(customer);
 			
 			JSONObject data = new JSONObject(); 
 			JSONArray groups = new JSONArray();

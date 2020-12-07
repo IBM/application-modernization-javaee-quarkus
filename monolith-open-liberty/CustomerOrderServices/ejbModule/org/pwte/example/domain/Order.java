@@ -32,7 +32,7 @@ public class Order implements Serializable {
 	@Column(name="ORDER_ID")
 	protected int orderId;
 	protected BigDecimal total;
-	public static enum Status { OPEN, SUBMITTED, SHIPPED, CLOSED }
+	//public static enum Status { OPEN, SUBMITTED, SHIPPED, CLOSED }
 	public static String STATUS_OPEN = "OPEN";
 	public static String STATUS_SUBMITTED = "SUBMITTED";
 	protected String status;

@@ -100,6 +100,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			}
 		}
 		
+		existingOpenOrder = customer.getOpenOrder();
 		LineItem lineItem = new LineItem();
 		lineItem.setOrderId(existingOpenOrder.getOrderId());
 		lineItem.setOrder(existingOpenOrder);
@@ -110,8 +111,13 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		lineItem.setQuantity(quantity);
 		lineItems.add(lineItem);
 		existingOpenOrder.setLineitems(lineItems);
+		
+		// super dirty hack, because of JPA issues
+		// to be done tbd
+		if (lineItem.getOrderId() == 0) lineItem.setOrderId(1);
+		
 		em.persist(lineItem);
-		System.out.println("EXITING addLineItem SERVICE -> " + existingOpenOrder.getVersion());
+		
 		return existingOpenOrder;
 	}
 
@@ -127,11 +133,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		Order newOrder = new Order();
 		newOrder.setCustomer(customer);
 		newOrder.setStatus(Order.STATUS_OPEN);
-		System.out.println(newOrder.getStatus());
 		newOrder.setTotal(new BigDecimal(0));
-		
 		em.persist(newOrder);
-		
 		customer.setOpenOrder(newOrder);
 		return newOrder;
 	}
@@ -140,8 +143,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			OrderNotOpenException, NoLineItemsException,GeneralPersistenceException, OrderModifiedException {
 		AbstractCustomer customer = loadCustomer();
 		Order existingOpenOrder = customer.getOpenOrder();
-		if(existingOpenOrder == null || !existingOpenOrder.getStatus().equalsIgnoreCase(Order.STATUS_OPEN))
-		//if(existingOpenOrder == null || existingOpenOrder.getStatus() != Order.Status.OPEN)
+		if (existingOpenOrder == null || !existingOpenOrder.getStatus().equalsIgnoreCase(Order.STATUS_OPEN))
 		{
 			throw new OrderNotOpenException();
 		}
@@ -172,7 +174,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		
 		AbstractCustomer customer = loadCustomer();
 		Order existingOpenOrder = customer.getOpenOrder();
-		//if(existingOpenOrder == null || existingOpenOrder.getStatus() != Order.Status.OPEN)
 		if(existingOpenOrder == null || !existingOpenOrder.getStatus().equalsIgnoreCase(Order.STATUS_OPEN))
 		{
 			throw new OrderNotOpenException();
@@ -203,20 +204,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		throw new NoLineItemsException();
 	}
 	
-	
-	
-	/*
-	public int getCustomerIdForUser()throws CustomerDoesNotExistException
-	{
-		String user = ctx.getCallerPrincipal().getName();
-		Query query = em.createQuery("select c.customerId from AbstractCustomer c where c.user = :user");
-		query.setParameter("user", user);
-		int customerId = (Integer)query.getSingleResult();
-		return customerId;
-	}
-	
-	*/
-	
 	public AbstractCustomer loadCustomer() throws CustomerDoesNotExistException,GeneralPersistenceException {
 		//nik
 		//String user = ctx.getCallerPrincipal().getName();
@@ -225,14 +212,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		query.setParameter("user", user);
 		return (AbstractCustomer)query.getSingleResult();
 	}
-	/*
-	private AbstractCustomer loadCustomer(int customerId) throws CustomerDoesNotExistException,GeneralPersistenceException {
-		AbstractCustomer customer = em.find(AbstractCustomer.class, customerId);
-		if(customer == null) throw new CustomerDoesNotExistException();
-		//Instance Security Check
-		if(ctx.getCallerPrincipal().getName().equals(customer.getUser())) return customer;
-		else throw new CustomerDoesNotExistException();
-	}*/
 
 	@EJB ProductSearchService productSearchService;
 
