@@ -95,7 +95,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			{
 				lineItem.setQuantity(lineItem.getQuantity() + quantity);
 				lineItem.setAmount(product.getPrice());
-				// nik - to be done
 				lineItem.setPriceCurrent(lineItem.getAmount());
 				return existingOpenOrder;
 			}
@@ -106,7 +105,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		lineItem.setOrder(existingOpenOrder);
 		lineItem.setProductId(product.getProductId());
 		lineItem.setAmount(amount);
-		// nik - to be done
 		lineItem.setPriceCurrent(product.getPrice());
 		lineItem.setProduct(product);
 		lineItem.setQuantity(quantity);

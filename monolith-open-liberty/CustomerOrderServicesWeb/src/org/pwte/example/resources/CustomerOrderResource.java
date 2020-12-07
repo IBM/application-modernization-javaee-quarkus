@@ -103,7 +103,13 @@ public class CustomerOrderResource {
 	public Response addLineItem(LineItem lineItem,@Context HttpHeaders headers)
 	{
 		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
-		
+		System.out.println(lineItem);
+		System.out.println(lineItem.getOrderId());
+		System.out.println(lineItem.getProductId());
+		System.out.println(lineItem.getQuantity());
+		System.out.println(lineItem.getPriceCurrent());
+		//System.out.println(lineItem.getProduct().toString());
+				
 		try {
 			List<String> matchHeaders = headers.getRequestHeader("If-Match");
 			if((matchHeaders != null) && (matchHeaders.size()>0))
@@ -124,6 +130,7 @@ public class CustomerOrderResource {
 			throw new WebApplicationException(Status.PRECONDITION_FAILED);
 		} 
 		catch (Exception e) {
+			System.out.println("/LineItem Exception " + e);
 			throw new WebApplicationException(e);
 		}
 		
@@ -275,7 +282,6 @@ public class CustomerOrderResource {
 			data.put("formData",groups);
 			
 			return Response.ok(data).build();
-			//return Response.ok().build();
 		}
 		catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);

@@ -217,80 +217,9 @@ public class CustomerOrderResource {
 	{
 		try {			
 			Date lastModified = customerOrderServices.getOrderHistoryLastUpdatedTime();
-			/*
-			List<String> matchHeaders = headers.getRequestHeader("If-Modified-Since");		
-			
-			if((matchHeaders != null) && (matchHeaders.size()>0))
-			{
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-				Date headerDate = dateFormat.parse(matchHeaders.get(0));
-				if(headerDate.getTime() < lastModified.getTime())
-				{
-					Set<Order> orders = customerOrderServices.loadCustomerHistory();
-					return Response.ok(orders).lastModified(lastModified).build();
-				}
-				else
-				{
-					return Response.notModified().build();
-				}
-			}
-			else
-			{
-				*/
-				Set<Order> orders = customerOrderServices.loadCustomerHistory();
+			Set<Order> orders = customerOrderServices.loadCustomerHistory();
 
-				/*
-Set<Order> orders = customer.getOrders();
-		if (orders != null) {
-			for (Order order : orders) {
-				Set<LineItem> lineItems = order.getLineitems();
-				Set<LineItem> updatedLineItems = new HashSet<LineItem>();
-				if (lineItems != null ) {
-					for(LineItem lineItem:lineItems)
-					{					
-						int productId = lineItem.getProductId();
-						BigDecimal currentPrice;
-
-						// to be done: add POST endpoint to change product prices
-						// as workaround for now 50% of the prices are set to 1000
-
-						try {
-							// to be done: why does the lookup not work here?
-							//InitialContext ctx = new InitialContext();
-							Properties props = new Properties();
-							props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
-							props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
-							System.out.println("nik1");
-							InitialContext ctx = new InitialContext(props);
-							System.out.println("nik2");
-							//ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:app/ProductSearchService/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
-							ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:comp/env/ejb/ProductSearchService");
-							System.out.println("nik3");
-							Product product = productSearchService.loadProduct(productId);
-							System.out.println("nik4");
-							currentPrice = product.getPrice();					
-							System.out.println("nik5");
-							Random rand = new Random();
-							int n = rand.nextInt(100);
-							if (n > 50) {								
-								BigDecimal increasedPrice = new BigDecimal("1000.00");
-								lineItem.setPriceCurrent(increasedPrice);
-							}
-						}
-						catch (Exception exception) {
-						}												
-						
-						updatedLineItems.add(lineItem);
-					}
-					order.setLineitems(updatedLineItems);
-				}
-			}
-		
-				*/
-
-				return Response.ok(orders).lastModified(lastModified).build();
-			//}
-			
+			return Response.ok(orders).lastModified(lastModified).build();			
 		} catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Status.NOT_FOUND);
 		} catch (Exception e) {
