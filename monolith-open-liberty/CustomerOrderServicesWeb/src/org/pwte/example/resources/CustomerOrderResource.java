@@ -1,12 +1,10 @@
 package org.pwte.example.resources;
 
 import java.net.URI;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.naming.InitialContext;
@@ -25,7 +23,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
 import org.pwte.example.domain.AbstractCustomer;
 import org.pwte.example.domain.Address;
 import org.pwte.example.domain.BusinessCustomer;
@@ -37,35 +34,15 @@ import org.pwte.example.exception.InvalidQuantityException;
 import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import org.pwte.example.service.CustomerOrderServices;
-
-//import com.ibm.json.java.JSONArray;
-//import com.ibm.json.java.JSONObject;
 import java.util.Properties;
-
-
-import org.pwte.example.service.ProductSearchService;
-import org.pwte.example.service.ProductSearchServiceImpl;
-
-import javax.ejb.EJB;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import com.ibm.json.java.JSONArray;
+import com.ibm.json.java.JSONObject;
 
 @Path("/Customer")
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class CustomerOrderResource {
 	CustomerOrderServices customerOrderServices = null;
-	
-	
-	//@EJB ProductSearchService productSearch;
-	
+		
 	public CustomerOrderResource() 
 	{
 		try {
@@ -74,8 +51,7 @@ public class CustomerOrderResource {
 			props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
 			props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
 			InitialContext ctx = new InitialContext(props);
-			customerOrderServices = (CustomerOrderServices) ctx.lookup("java:app/CustomerOrderServices/CustomerOrderServicesImpl!org.pwte.example.service.CustomerOrderServices");
-			//productSearch = (ProductSearchService) new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
+			customerOrderServices = (CustomerOrderServices) ctx.lookup("java:app/CustomerOrderServices/CustomerOrderServicesImpl!org.pwte.example.service.CustomerOrderServices");			
 		} catch (NamingException e) {
 			System.out.println("CustomerOrderResource nik5");
 			e.printStackTrace();
@@ -126,6 +102,7 @@ public class CustomerOrderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addLineItem(LineItem lineItem,@Context HttpHeaders headers)
 	{
+		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
 		
 		try {
 			List<String> matchHeaders = headers.getRequestHeader("If-Match");
@@ -156,7 +133,7 @@ public class CustomerOrderResource {
 	@Path("/OpenOrder/LineItem/{productId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response removeLineItem(@PathParam(value="productId") int productId,@Context HttpHeaders headers)
-	{
+	{		
 		try {
 			List<String> matchHeaders = headers.getRequestHeader("If-Match");
 			if((matchHeaders != null) && (matchHeaders.size()>0))
@@ -215,82 +192,11 @@ public class CustomerOrderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getOrderHistory(@Context HttpHeaders headers)
 	{
+		System.out.println("/Orders - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
 		try {			
 			Date lastModified = customerOrderServices.getOrderHistoryLastUpdatedTime();
-			/*
-			List<String> matchHeaders = headers.getRequestHeader("If-Modified-Since");		
-			
-			if((matchHeaders != null) && (matchHeaders.size()>0))
-			{
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-				Date headerDate = dateFormat.parse(matchHeaders.get(0));
-				if(headerDate.getTime() < lastModified.getTime())
-				{
-					Set<Order> orders = customerOrderServices.loadCustomerHistory();
-					return Response.ok(orders).lastModified(lastModified).build();
-				}
-				else
-				{
-					return Response.notModified().build();
-				}
-			}
-			else
-			{
-				*/
-				Set<Order> orders = customerOrderServices.loadCustomerHistory();
-
-				/*
-Set<Order> orders = customer.getOrders();
-		if (orders != null) {
-			for (Order order : orders) {
-				Set<LineItem> lineItems = order.getLineitems();
-				Set<LineItem> updatedLineItems = new HashSet<LineItem>();
-				if (lineItems != null ) {
-					for(LineItem lineItem:lineItems)
-					{					
-						int productId = lineItem.getProductId();
-						BigDecimal currentPrice;
-
-						// to be done: add POST endpoint to change product prices
-						// as workaround for now 50% of the prices are set to 1000
-
-						try {
-							// to be done: why does the lookup not work here?
-							//InitialContext ctx = new InitialContext();
-							Properties props = new Properties();
-							props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
-							props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
-							System.out.println("nik1");
-							InitialContext ctx = new InitialContext(props);
-							System.out.println("nik2");
-							//ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:app/ProductSearchService/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
-							ProductSearchService productSearchService = (ProductSearchService)ctx.lookup("java:comp/env/ejb/ProductSearchService");
-							System.out.println("nik3");
-							Product product = productSearchService.loadProduct(productId);
-							System.out.println("nik4");
-							currentPrice = product.getPrice();					
-							System.out.println("nik5");
-							Random rand = new Random();
-							int n = rand.nextInt(100);
-							if (n > 50) {								
-								BigDecimal increasedPrice = new BigDecimal("1000.00");
-								lineItem.setPriceCurrent(increasedPrice);
-							}
-						}
-						catch (Exception exception) {
-						}												
-						
-						updatedLineItems.add(lineItem);
-					}
-					order.setLineitems(updatedLineItems);
-				}
-			}
-		
-				*/
-
-				return Response.ok(orders).lastModified(lastModified).build();
-			//}
-			
+			Set<Order> orders = customerOrderServices.loadCustomerHistory();
+			return Response.ok(orders).lastModified(lastModified).build();			
 		} catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Status.NOT_FOUND);
 		} catch (Exception e) {
@@ -303,11 +209,12 @@ Set<Order> orders = customer.getOrders();
 	@Path("/TypeForm")
 	public Response getCustomerFormMeta()
 	{
+		System.out.println("/TypeFrom - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
 		try
 		{
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
+			System.out.println(customer);
 			
-			/*
 			JSONObject data = new JSONObject(); 
 			JSONArray groups = new JSONArray();
 			
@@ -366,9 +273,9 @@ Set<Order> orders = customer.getOrders();
 				
 			}			
 			data.put("formData",groups);
-			*/
 			
-			return Response.ok().build();
+			return Response.ok(data).build();
+			//return Response.ok().build();
 		}
 		catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
