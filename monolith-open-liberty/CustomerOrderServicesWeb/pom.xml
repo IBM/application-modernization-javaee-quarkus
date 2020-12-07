@@ -32,6 +32,12 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
+        
+<dependency>
+    <groupId>org.eclipse.microprofile.reactive.messaging</groupId>
+    <artifactId>microprofile-reactive-messaging-api</artifactId>
+    <version>1.0</version>
+</dependency>
         <!--
  <dependency>
       <groupId>javax.ws.rs</groupId>
