@@ -25,6 +25,7 @@ function setup() {
   docker rm -f scripts_server_1
   docker rm -f ibm-transformationAdvisor-couchDB
   docker rm -f storefront-backend-open
+  docker rm -f kafka-tool
 }
 
 setup
