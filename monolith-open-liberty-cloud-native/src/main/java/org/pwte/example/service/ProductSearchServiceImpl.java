@@ -7,14 +7,21 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import org.pwte.example.domain.Category;
 import org.pwte.example.domain.Product;
 import org.pwte.example.exception.CategoryDoesNotExist;
 import org.pwte.example.exception.ProductDoesNotExistException;
 
-@Stateless
+//@Stateless
+@ApplicationScoped
 public class ProductSearchServiceImpl implements ProductSearchService {
+
+	@Produces
+    public ProductSearchService produceProductSearchService() {
+        return this;
+    }
 
 	@PersistenceContext
 	protected EntityManager em;

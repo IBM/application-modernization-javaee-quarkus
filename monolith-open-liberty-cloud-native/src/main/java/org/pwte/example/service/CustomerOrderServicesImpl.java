@@ -35,7 +35,7 @@ import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import javax.naming.InitialContext;
 import java.util.Properties;
-
+import javax.enterprise.context.ApplicationScoped;
 
 import javax.ejb.EJB;
 import javax.naming.InitialContext;
@@ -49,7 +49,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Stateless
+//@Stateless
+@ApplicationScoped
 //nik
 //@RolesAllowed(value="SecureShopper")
 public class CustomerOrderServicesImpl implements CustomerOrderServices {

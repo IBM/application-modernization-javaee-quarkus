@@ -16,13 +16,18 @@ import javax.ws.rs.core.Response;
 import org.pwte.example.domain.Category;
 import org.pwte.example.exception.CategoryDoesNotExist;
 import org.pwte.example.service.ProductSearchService;
+import org.pwte.example.service.ProductSearchServiceImpl;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 @ApplicationScoped
 @Path("/jaxrs/Category")
 public class CategoryResource 
 {
 	//@EJB ProductSearchService productSearch;
+
+	@Inject
+    ProductSearchService productSearch;
 	
 	public CategoryResource() throws NamingException {
 		//productSearch = (ProductSearchService) new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
