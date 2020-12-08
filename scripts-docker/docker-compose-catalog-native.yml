@@ -21,7 +21,7 @@ services:
         environment:
           - CONTAINER=storefront-backend-open-native
         ports:
-            - 9082:9080
+            - 9084:9080
             - 9445:9443
 
     storefront-frontend:

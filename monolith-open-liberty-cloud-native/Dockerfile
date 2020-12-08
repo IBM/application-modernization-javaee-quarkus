@@ -10,12 +10,13 @@ LABEL \
   org.opencontainers.image.version="$VERSION" \
   org.opencontainers.image.revision="$REVISION" \
   vendor="Open Liberty" \
-  name="system" \
-  version="$VERSION-$REVISION"
+  name="inventory" \
+  version="$VERSION-$REVISION" 
 
 COPY --chown=1001:0 src/main/liberty/config /config/
-COPY --chown=1001:0 target/system.war /config/apps
+COPY --chown=1001:0 target/service.war /config/apps
 
-EXPOSE 9084 9446
+EXPOSE 9088 9448
 
-RUN configure.sh
+# It is recommended to run the configure.sh when build image for production.
+# RUN configure.sh

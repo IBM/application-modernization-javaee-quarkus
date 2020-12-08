@@ -1,4 +1,4 @@
-package io.openliberty.guides.system.health;
+package org.pwte.example.app.health;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -8,7 +8,7 @@ import org.eclipse.microprofile.health.Liveness;
 
 @Liveness
 @ApplicationScoped
-public class SystemLivenessCheck implements HealthCheck {
+public class InventoryLivenessCheck implements HealthCheck {
 
     private boolean isAlive() {
         return true;

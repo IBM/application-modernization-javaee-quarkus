@@ -1,11 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>sample</groupId>
-    <artifactId>system</artifactId>
+    <artifactId>service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -14,10 +12,11 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <liberty.var.default.http.port>9084</liberty.var.default.http.port>
-        <liberty.var.default.https.port>9446</liberty.var.default.https.port>
+        <!-- Liberty configuration -->
+        <liberty.var.default.http.port>9088</liberty.var.default.http.port>
+        <liberty.var.default.https.port>9448</liberty.var.default.https.port>
     </properties>
-
+    
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -53,6 +52,13 @@
             <artifactId>rxjava</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm.websphere.appserver.api/com.ibm.websphere.appserver.api.json -->
+<dependency>
+    <groupId>com.ibm.websphere.appserver.api</groupId>
+    <artifactId>com.ibm.websphere.appserver.api.json</artifactId>
+    <version>1.0</version>
+</dependency>
+
         <dependency>
             <groupId>org.microshed</groupId>
             <artifactId>microshed-testing-liberty</artifactId>

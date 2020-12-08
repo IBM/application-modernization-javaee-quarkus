@@ -1,4 +1,4 @@
-package io.openliberty.guides.system.health;
+package org.pwte.example.app.health;
 
 import java.util.Collection;
 import java.util.Properties;
@@ -8,8 +8,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.ListTopicsResult;
-import org.apache.kafka.clients.admin.TopicListing;
+import org.apache.kafka.clients.admin.ConsumerGroupListing;
+import org.apache.kafka.clients.admin.ListConsumerGroupsResult;
 import org.apache.kafka.common.KafkaFuture;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.health.HealthCheck;
@@ -18,13 +18,17 @@ import org.eclipse.microprofile.health.Readiness;
 
 @Readiness
 @ApplicationScoped
-public class SystemReadinessCheck implements HealthCheck {
+public class InventoryReadinessCheck implements HealthCheck {
 
-    private static Logger logger = Logger.getLogger(SystemReadinessCheck.class.getName());
+    private static Logger logger = Logger.getLogger(InventoryReadinessCheck.class.getName());
     
     @Inject
     @ConfigProperty(name = "mp.messaging.connector.liberty-kafka.bootstrap.servers")
     String kafkaServer;
+    
+    @Inject
+    @ConfigProperty(name = "mp.messaging.incoming.product-price-updated.group.id")
+    String groupId;
     
     @Override
     public HealthCheckResponse call() {
@@ -45,13 +49,13 @@ public class SystemReadinessCheck implements HealthCheck {
     }
     
     private boolean checkIfBarConsumerGroupRegistered(AdminClient adminClient) {
-        ListTopicsResult topics = adminClient.listTopics();
-        KafkaFuture<Collection<TopicListing>> topicsFuture = topics.listings();
+        ListConsumerGroupsResult groupsResult = adminClient.listConsumerGroups();
+        KafkaFuture<Collection<ConsumerGroupListing>> consumerGroupsFuture = groupsResult.valid();
         try {
-            Collection<TopicListing> topicList = topicsFuture.get();
-            for (TopicListing t : topicList)
-                logger.info("topic: " + t.name());
-            return true;
+            Collection<ConsumerGroupListing> consumerGroups = consumerGroupsFuture.get();
+            for (ConsumerGroupListing g : consumerGroups)
+                logger.info("groupId: " + g.groupId());
+            return consumerGroups.stream().anyMatch(group -> group.groupId().equals(groupId));
         } catch (Exception e) {
             return false;
         }

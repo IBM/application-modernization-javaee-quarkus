@@ -1,6 +1,7 @@
-<server description="System Service">
+<server description="Inventory Service">
 
   <featureManager>
+    <feature>jaxrs-2.1</feature>
     <feature>cdi-2.0</feature>
     <feature>concurrent-1.0</feature>
     <feature>jsonb-1.0</feature>
@@ -9,11 +10,10 @@
     <feature>mpReactiveMessaging-1.0</feature>
   </featureManager>
 
-  <variable name="default.http.port" defaultValue="9084"/>
-  <variable name="default.https.port" defaultValue="9446"/>
+  <variable name="default.http.port" defaultValue="9088"/>
+  <variable name="default.https.port" defaultValue="9448"/>
 
-  <httpEndpoint host="*" httpPort="${default.http.port}"
-      httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
+  <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
 
-  <webApplication location="system.war" contextRoot="/"/>
+  <webApplication location="service.war" contextRoot="/CustomerOrderServicesWeb"/>
 </server>
