@@ -18,17 +18,17 @@ function setup() {
   docker rm -f storefront-monolith
   docker rm -f storefront-catalog
   docker rm -f storefront-backend-open
+  docker rm -f storefront-backend-open-native
 
   cd ${root_folder}/proxy
-  docker build -f Dockerfile-catalog -t proxy-nginx .
+  docker build -f Dockerfile-catalog-native -t proxy-nginx .
 
-  cd ${root_folder}/monolith-open-liberty/CustomerOrderServicesProject
+  cd ${root_folder}/monolith-open-liberty-cloud-native
   mvn clean package
-  cd ${root_folder}/monolith-open-liberty/
-  docker build -t storefront-backend-open .
+  docker build -t storefront-backend-open-native .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-catalog.yml up
+  docker-compose -f docker-compose-catalog-native.yml up
 }
 
 setup

@@ -26,6 +26,7 @@ function setup() {
   docker rm -f ibm-transformationAdvisor-couchDB
   docker rm -f storefront-backend-open
   docker rm -f kafka-tool
+  docker rm -f storefront-backend-open-native
 }
 
 setup

@@ -36,6 +36,8 @@ monolith-open-liberty/CustomerOrderServicesWeb/target
 monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo
 monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
 
+monolith-open-liberty-cloud-native/target
+
 catalog/target
 
 *.class
