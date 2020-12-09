@@ -18,10 +18,10 @@ import org.pwte.example.exception.ProductDoesNotExistException;
 @ApplicationScoped
 public class ProductSearchServiceImpl implements ProductSearchService {
 
-	@Produces
-    public ProductSearchService produceProductSearchService() {
-        return this;
-    }
+//	@Produces
+  //  public ProductSearchService produceProductSearchService() {
+  //      return this;
+    //}
 
 	@PersistenceContext
 	protected EntityManager em;

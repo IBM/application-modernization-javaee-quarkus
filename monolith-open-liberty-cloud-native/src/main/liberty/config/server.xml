@@ -8,6 +8,7 @@
     <feature>mpHealth-2.2</feature>
     <feature>mpConfig-1.4</feature>
     <feature>mpReactiveMessaging-1.0</feature>
+    <feature>jpa-2.2</feature>
   </featureManager>
 
   <variable name="default.http.port" defaultValue="9088"/>
@@ -16,4 +17,18 @@
   <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
 
   <webApplication location="service.war" contextRoot="/CustomerOrderServicesWeb"/>
+
+  <library id="DB2JCCLib">
+    <fileset dir="${shared.resource.dir}" includes="jcc*.jar"/>
+  </library>
+ 
+  <dataSource id="orderds"
+    jndiName="jdbc/orderds">
+    <jdbcDriver libraryRef="DB2JCCLib" />
+    <properties.db2.jcc databaseName="ORDERDB"
+        portNumber="50000"
+        serverName="localhost"        
+        user="db2inst1"
+        password="db2inst1" />
+  </dataSource>
 </server>
