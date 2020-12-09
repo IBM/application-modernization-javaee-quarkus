@@ -40,7 +40,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	@Resource
     UserTransaction utx;
 	
-	//@Transactional
+	@Transactional
 	public void updateLineItem(String productId, String newPrice) {
 		try {
 			AbstractCustomer customer = loadCustomer();
@@ -58,10 +58,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 							updatedLineItems.add(lineItem);		
 						}						
 					}
-					utx.begin();		
 					order.setLineitems(updatedLineItems);
-					//em.persist(order);					
-					utx.commit();
 				}				
 			}		
 		}
