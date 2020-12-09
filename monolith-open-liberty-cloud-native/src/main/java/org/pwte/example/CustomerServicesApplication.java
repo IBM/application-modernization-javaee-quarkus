@@ -1,4 +1,4 @@
-package org.pwte.example.app;
+package org.pwte.example;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;

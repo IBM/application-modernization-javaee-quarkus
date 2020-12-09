@@ -9,7 +9,10 @@ function _out() {
 }
 
 function setup() {
+  echo "Run sh scripts/install-dojo.sh first"
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
+  echo "Run sh scripts-docker/run-database-postgres-catalog.shh first"
+  echo "Run sh scripts-docker/run-kafka.sh first"
   echo "Open http://localhost/CustomerOrderServicesWeb"
   
   cd ${root_folder}/proxy

@@ -48,6 +48,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.annotation.Resource;
+import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.UserTransaction;
 
 //@Stateless
 @ApplicationScoped
@@ -59,6 +62,9 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	protected EntityManager em;
 	
 	//@Resource SessionContext ctx;
+
+	@Resource
+    UserTransaction utx;
 	
 	public Order addLineItem(LineItem newLineItem)
 			throws CustomerDoesNotExistException, OrderNotOpenException,
@@ -117,8 +123,14 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		// to be done tbd
 		if (lineItem.getOrderId() == 0) lineItem.setOrderId(1);
 		
-		em.persist(lineItem);
-		
+		try {
+			utx.begin();
+			em.persist(lineItem);
+			utx.commit();		
+		} catch (Exception e) {
+            System.out.println(e);
+		}
+			
 		return existingOpenOrder;
 	}
 
