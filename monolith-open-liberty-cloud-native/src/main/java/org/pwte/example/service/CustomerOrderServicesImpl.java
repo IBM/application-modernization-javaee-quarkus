@@ -4,20 +4,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Random;
-
+import java.util.Set;
 import javax.annotation.Resource;
-import javax.annotation.security.RolesAllowed;
-import javax.ejb.SessionContext;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.pwte.example.service.ProductSearchService;
-import org.pwte.example.service.ProductSearchServiceImpl;
-
 import org.pwte.example.domain.AbstractCustomer;
 import org.pwte.example.domain.Address;
 import org.pwte.example.domain.BusinessCustomer;
@@ -33,39 +25,58 @@ import org.pwte.example.exception.OrderAlreadyOpenException;
 import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
-import javax.naming.InitialContext;
-import java.util.Properties;
 import javax.enterprise.context.ApplicationScoped;
-
-import javax.ejb.EJB;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.annotation.Resource;
-import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.UserTransaction;
+import javax.ejb.EJB;
 
-//@Stateless
 @ApplicationScoped
-//nik
-//@RolesAllowed(value="SecureShopper")
 public class CustomerOrderServicesImpl implements CustomerOrderServices {
 
 	@PersistenceContext
 	protected EntityManager em;
 	
-	//@Resource SessionContext ctx;
-
 	@Resource
     UserTransaction utx;
 	
+	public void updateLineItem(String productId, String newPrice) {
+		try {
+			AbstractCustomer customer = loadCustomer();
+			Set<Order> orders = customer.getOrders();
+			if (orders != null) {
+				for (Order order : orders) {
+					Set<LineItem> lineItems = order.getLineitems();
+					Set<LineItem> updatedLineItems = new HashSet<LineItem>();
+					if (lineItems != null ) {
+						for (LineItem lineItem:lineItems) {
+							int lineItemProductId = lineItem.getProductId();
+							if (lineItemProductId == Integer.parseInt(productId)) {
+								lineItem.setPriceCurrent(new BigDecimal(newPrice));
+							}	
+							updatedLineItems.add(lineItem);		
+						}						
+					}
+					utx.begin();		
+					order.setLineitems(updatedLineItems);
+					System.out.println("Niklas 4");
+					//em.persist(order);
+					Set<LineItem> lineItems2 = order.getLineitems();
+					if (lineItems2 != null ) {
+						for (LineItem lineItem2:lineItems2) {
+							System.out.println(lineItem2.getProductId() + " " + lineItem2.getPriceCurrent());
+						}
+					}
+					System.out.println("Niklas 5");
+					utx.commit();
+					System.out.println("Niklas 6");
+				}				
+			}		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public Order addLineItem(LineItem newLineItem)
 			throws CustomerDoesNotExistException, OrderNotOpenException,
 			ProductDoesNotExistException,GeneralPersistenceException, InvalidQuantityException, OrderModifiedException {
@@ -179,8 +190,6 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		customer.setOpenOrder(null);
 	}
 
-	
-
 	public Order removeLineItem(int productId,long version) throws CustomerDoesNotExistException, OrderNotOpenException, ProductDoesNotExistException, NoLineItemsException, GeneralPersistenceException, OrderModifiedException {
 		Product product = em.find(Product.class,productId);
 		if(product == null) throw new ProductDoesNotExistException();
@@ -233,6 +242,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		AbstractCustomer customer = loadCustomer();
 		
 		Set<Order> orders = customer.getOrders();
+		/*
 		if (orders != null) {
 			for (Order order : orders) {
 				Set<LineItem> lineItems = order.getLineitems();
@@ -266,6 +276,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 				}
 			}
 		}
+		*/
 		return orders;
 	}
 	
