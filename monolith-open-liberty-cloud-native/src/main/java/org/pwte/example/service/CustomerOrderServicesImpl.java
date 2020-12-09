@@ -27,6 +27,7 @@ import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import javax.enterprise.context.ApplicationScoped;
 import javax.naming.InitialContext;
+import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 import javax.ejb.EJB;
 
@@ -39,6 +40,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	@Resource
     UserTransaction utx;
 	
+	//@Transactional
 	public void updateLineItem(String productId, String newPrice) {
 		try {
 			AbstractCustomer customer = loadCustomer();
@@ -58,17 +60,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 					}
 					utx.begin();		
 					order.setLineitems(updatedLineItems);
-					System.out.println("Niklas 4");
-					//em.persist(order);
-					Set<LineItem> lineItems2 = order.getLineitems();
-					if (lineItems2 != null ) {
-						for (LineItem lineItem2:lineItems2) {
-							System.out.println(lineItem2.getProductId() + " " + lineItem2.getPriceCurrent());
-						}
-					}
-					System.out.println("Niklas 5");
+					//em.persist(order);					
 					utx.commit();
-					System.out.println("Niklas 6");
 				}				
 			}		
 		}
@@ -76,7 +69,8 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			e.printStackTrace();
 		}
 	}
-
+	
+	@Transactional
 	public Order addLineItem(LineItem newLineItem)
 			throws CustomerDoesNotExistException, OrderNotOpenException,
 			ProductDoesNotExistException,GeneralPersistenceException, InvalidQuantityException, OrderModifiedException {
