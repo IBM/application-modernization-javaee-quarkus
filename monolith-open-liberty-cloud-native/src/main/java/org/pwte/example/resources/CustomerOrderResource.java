@@ -33,18 +33,25 @@ import org.pwte.example.exception.GeneralPersistenceException;
 import org.pwte.example.exception.InvalidQuantityException;
 import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.ProductDoesNotExistException;
+import org.pwte.example.service.CustomerOrderServicesImpl;
 import org.pwte.example.service.CustomerOrderServices;
 import java.util.Properties;
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
+@ApplicationScoped
 @Path("/jaxrs/Customer")
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class CustomerOrderResource {
-	CustomerOrderServices customerOrderServices = null;
+
+	@Inject
+	CustomerOrderServicesImpl customerOrderServices;
 		
 	public CustomerOrderResource() 
 	{
+		/*
 		try {
 			//nik
 			Properties props = new Properties();
@@ -55,6 +62,7 @@ public class CustomerOrderResource {
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} 
+		*/
 	}
 
 	@GET

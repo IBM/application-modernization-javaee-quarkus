@@ -15,8 +15,7 @@ LABEL \
 
 COPY --chown=1001:0 src/main/liberty/config /config/
 COPY --chown=1001:0 target/service.war /config/apps
-
-EXPOSE 9088 9448
+COPY --chown=1001:0 target/jcc-11.1.4.4.jar /opt/ol/wlp/usr/shared/resources/jcc-11.1.4.4.jar
 
 # It is recommended to run the configure.sh when build image for production.
 # RUN configure.sh

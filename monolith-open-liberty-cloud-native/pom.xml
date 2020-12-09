@@ -15,6 +15,7 @@
         <!-- Liberty configuration -->
         <liberty.var.default.http.port>9088</liberty.var.default.http.port>
         <liberty.var.default.https.port>9448</liberty.var.default.https.port>
+        <liberty.var.project.build.directory>${project.build.directory}/</liberty.var.project.build.directory>
     </properties>
     
     <dependencies>

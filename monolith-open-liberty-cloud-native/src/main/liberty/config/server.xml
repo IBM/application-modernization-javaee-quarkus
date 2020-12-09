@@ -18,16 +18,59 @@
 
   <webApplication location="service.war" contextRoot="/CustomerOrderServicesWeb"/>
 
+  <!-- works locally
+  <library id="DB2JCCLib">
+    <fileset dir="/Users/nheidloff/git/application-modernization-javaee-quarkus/monolith-open-liberty-cloud-native/target/service/WEB-INF/lib" includes="jcc*.jar"/>
+  </library>
+  -->
+  <!-- works locally 
+  <library id="DB2JCCLib">
+    <fileset dir="/Users/nheidloff/git/application-modernization-javaee-quarkus/monolith-open-liberty-cloud-native/target" includes="jcc*.jar"/>
+  </library>
+  --> 
+  <!-- does NOT work locally 
+  <library id="DB2JCCLib">
+    <fileset dir="target" includes="jcc*.jar"/>
+  </library>
+  -->
+  <!-- does NOT work locally
+  <library id="DB2JCCLib">
+    <fileset dir="target/" includes="jcc*.jar"/>
+  </library>
+  -->
+  
+  <!-- works locally  
+  <library id="DB2JCCLib">
+    <fileset dir="${project.build.directory}" includes="jcc*.jar"/>
+  </library>
+  -->
+  
+  <!-- works in Docker
+  -->
   <library id="DB2JCCLib">
     <fileset dir="${shared.resource.dir}" includes="jcc*.jar"/>
-  </library>
- 
+  </library> 
+  
+  <!-- works locally
   <dataSource id="orderds"
     jndiName="jdbc/orderds">
     <jdbcDriver libraryRef="DB2JCCLib" />
     <properties.db2.jcc databaseName="ORDERDB"
         portNumber="50000"
         serverName="localhost"        
+        user="db2inst1"
+        password="db2inst1" />
+  </dataSource>
+  -->
+
+  <!-- works in Docker
+  -->
+  <dataSource id="orderds"
+    jndiName="jdbc/orderds">
+    <jdbcDriver libraryRef="DB2JCCLib" />
+    <properties.db2.jcc databaseName="ORDERDB"
+        portNumber="50000"
+        serverName="storefront-db2"        
         user="db2inst1"
         password="db2inst1" />
   </dataSource>

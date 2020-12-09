@@ -16,18 +16,19 @@ import javax.ws.rs.core.Response;
 import org.pwte.example.domain.Product;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import org.pwte.example.service.ProductSearchService;
+import org.pwte.example.service.ProductSearchServiceImpl;
+import javax.inject.Inject;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
-
+@ApplicationScoped
 @Path("/jaxrs/Product")
 public class ProductResource {
 
-	@EJB ProductSearchService productSearch;
+	@Inject
+	ProductSearchServiceImpl productSearch;
 		
-		public ProductResource() throws NamingException
-		{
-			//Work around until Java EE 6
-	productSearch = (ProductSearchService) new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
-
+		public ProductResource() throws NamingException {
 		}
 		
 		@GET

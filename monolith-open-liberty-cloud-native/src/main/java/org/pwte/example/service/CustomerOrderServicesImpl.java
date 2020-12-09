@@ -58,7 +58,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	@PersistenceContext
 	protected EntityManager em;
 	
-	@Resource SessionContext ctx;
+	//@Resource SessionContext ctx;
 	
 	public Order addLineItem(LineItem newLineItem)
 			throws CustomerDoesNotExistException, OrderNotOpenException,
@@ -259,12 +259,13 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	
 	public Date getOrderHistoryLastUpdatedTime()
 	{
-		String user = ctx.getCallerPrincipal().getName();
+		//String user = ctx.getCallerPrincipal().getName();
+		String user = "rbarcia";
 		Query query = em.createQuery("select MAX(o.submittedTime) from Order o join  o.customer c where c.user = :user");
 		query.setParameter("user", user);
 		return (Date)query.getSingleResult();
 	}
-
+	
 	public void updateAddress(Address address)
 			throws CustomerDoesNotExistException, GeneralPersistenceException {
 		AbstractCustomer customer = loadCustomer();
