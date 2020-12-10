@@ -1,0 +1,41 @@
+
+[
+	{
+		"name":"Entertainment",
+		"id":1,
+		"subCategories" : [
+		{
+			"name":"Movies",
+			"id":2
+		},
+		{
+			"name":"Music",
+			"id":3
+		},
+		{
+			"name":"Games",
+			"id":4
+		}	
+		]
+
+	},
+	{
+		"name":"Electronics",
+		"id":10,
+		"subCategories" : [
+		{
+			"name":"TV",
+			"id":12
+		},
+		{
+			"name":"Cellphones",
+			"id":13
+		},
+		{
+			"name":"DVD Players",
+			"id":14
+		}	
+		]
+
+	},
+]

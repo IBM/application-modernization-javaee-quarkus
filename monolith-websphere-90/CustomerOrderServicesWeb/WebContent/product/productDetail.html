@@ -1,0 +1,22 @@
+<div>
+	<div class="productSection">
+		<div class='productTitle'>{{name}}</div>
+		<div>{{description}}</div>
+		<div>{{price}}</div>
+		<div dojoType="dojo.dnd.Source" jsId="c2" class="container" copyOnly="true">
+		<img src="{{image}}" class="dojoDndItem" height='100px' width='100px'></img>
+		</div>
+	</div>
+	<div class="cartSection">
+		<div class='productTitle'>Drag Image To Cart</div>
+		<div dojoType="dojo.dnd.Target" jsId="c5" class="container">
+		<img src="images/cartLarge.png"></img>
+		</div>
+	</div>
+	<div class="progressSection">
+			Adding <span class="productTitle">{{name}} </span>to your Shopping Cart...<img src="images/progress.gif"></img>
+	</div>
+	<div class="clear">
+	</div>
+	
+</div>

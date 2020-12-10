@@ -1,0 +1,24 @@
+#
+# Header
+#
+ResourceType=Application
+ImplementingResourceType=Application
+CreateDeleteCommandProperties=true
+ResourceId=Deployment=
+#
+
+#
+# Properties
+#
+Name=SessionSample
+TargetServer=!{serverName}
+TargetNode=!{nodeName}
+EarFileLocation=/work/config/SessionSample-1.0.war
+
+
+
+
+#Environment Variables
+cellName=DefaultCell01
+nodeName=DefaultNode01
+serverName=server1

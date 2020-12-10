@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Class-Path: CustomerOrderServices.jar 
+ commons-codec.jar 
+ commons-lang.jar 
+ httpclient.jar 
+ httpcore.jar 
+ slf4j-api.jar 
+ jackson-core-asl.jar 
+ jackson-jaxrs.jar 
+ jackson-mapper-asl.jar 
+ jcl-over-slf4j.jar 
+ slf4j-jdk14.jar 
+ ibm-wink-jaxrs.jar 
+ jsr311-api.jar 
+ JSON4J.jar
+

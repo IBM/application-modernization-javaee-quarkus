@@ -1,0 +1,105 @@
+.categoryMenuPane
+{
+	margin-right:50px;
+	margin-left:5px;
+	margin-top:20px;
+	margin-bottom:0px;
+	float:left;
+	border: 1px solid #9F97AE;
+	background: url("../images/header2.png") repeat-x;
+	
+}
+
+.productMain
+{
+	float:left;
+	margin:10px;
+	margin-top:20px;
+	margin-left:30px;
+}
+
+.cartPreview
+{
+	float:left;
+}
+
+clear
+{
+	clear: both;
+}
+
+.claro .dijitMenuActive .dijitMenuItemHover,
+.claro .dijitMenuActive .dijitMenuItemSelected {
+	background-color: #9F97AD;
+}
+
+.claro .dijitMenuPassive .dijitMenuItemHover,
+.claro .dijitMenuPassive .dijitMenuItemSelected {
+	background-color: #9F97AD;
+}
+
+#productGrid 
+{
+	border: none;
+	width: 40em;
+}
+
+.catHeader
+{
+	font-size:18px;
+	font-weight: bold;
+}
+
+.dojoxGridHeader { display:none; }
+
+.productSection
+{
+	float:left;
+	margin:5px;
+}
+
+.cartSection
+{
+	float:left;
+	margin:5px;
+}
+
+.progressSection
+{
+	display:none;
+	float:left;
+}
+
+.productTitle
+{
+	font-weight: bold;
+}
+
+.claro .dijitDialogTitleBar {
+	background-color: #9F97AD;
+}
+
+.claro .dijitDialog {
+	border: 1px solid #b5bcc7;
+}
+.claro .dijitTreeRowSelected {
+	background-color:#b5bcc7;
+	border: 1px solid #9F97AD;
+}
+.claro .dijitTreeRowHover {
+	background-color:#9F97AD;
+	border: 1px solid #b5bcc7;
+}
+
+.claro .dojoxGridRowOdd .dojoxGridRowTable tr {
+	background-color: #FFF5FF;
+}
+
+.claro .dojoxGridRowSelected .dojoxGridRowTable tr {
+	background-color:#b5bcc7;
+}
+
+.claro .dojoxGridRowOver .dojoxGridCell {
+	border:solid 1px #b5bcc7;
+	background-color: #9F97AD;
+}

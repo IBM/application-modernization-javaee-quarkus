@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<CATEGORY PARENT_CAT="1" CAT_NAME="Movies" CAT_ID="2"  />
+	<CATEGORY PARENT_CAT="1" CAT_NAME="Music" CAT_ID="3" />
+	<CATEGORY PARENT_CAT="1" CAT_NAME="Games" CAT_ID="4" />
+</dataset>

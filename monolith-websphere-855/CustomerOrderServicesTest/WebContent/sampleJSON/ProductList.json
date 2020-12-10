@@ -1,0 +1,24 @@
+[
+	{
+		"name":"A New Hope", 
+		"price":29.99,
+		"description" : "Episode 4, after years of oppression, a band of rebels fight for freedom",
+		"id":3,
+		"image":"images/NewHope.jpg"
+	},
+	{
+		"name":"Empire Strikes Back", 
+		"price":29.99,
+		"description" : "Episode 5, Luke finds out a secret that will change his destiny",
+		"id":2,
+		"image":"images/Empire.jpg"
+	},
+	{
+		"name":"Return of the Jedi", 
+		"price":29.99,
+		"description":"Episode 6, Luke has the final confrontation with his father!",
+		"id":1,
+		"image":"images/Return.jpg"
+	}
+]
+

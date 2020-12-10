@@ -1,0 +1,44 @@
+import sys, os
+cellName = AdminControl.getCell()
+nodeName = AdminControl.getNode()
+
+application=os.environ.get('APPLICATION')
+deployerMail=os.environ.get('DEPLOYER_EMAIL')
+dbUnitConnectionUrl=os.environ.get('DBUNIT_CONNECTION_URL')
+dbUnitSchema=os.environ.get('DBUNIT_SCHEMA')
+dbUnitUserName=os.environ.get('DBUNIT_USERNAME')
+dbUnitPassword=os.environ.get('DBUNIT_PASSWORD')
+customerOrderEndpoint=os.environ.get('CUSTOMER_ORDER_SERVICES_WEB_ENDPOINT')
+testEndpoint=os.environ.get('CUSTOMER_ORDER_SERVICES_TEST_ENDPOINT')
+web_endpoint=os.environ.get('WEB_ENDPOINT_NAME')
+test_endpoint=os.environ.get('TEST_ENDPOINT_NAME')
+appName=os.environ.get('APPNAME')
+group=os.environ.get('GROUP_NAME')
+
+applications = AdminApp.list().split(lineSeparator)
+
+if appName in applications:
+ appExists="True"
+else:
+ appExists="False"
+
+if(appExists=="True"):
+ AdminApp.uninstall(appName)
+ print "uninstalled"
+ AdminConfig.save()
+
+AdminApp.install(application,'[-node '+nodeName+' -cell '+cellName+' -server server1]')
+
+AdminApp.edit(appName, '[ -MapRolesToUsers [[ '+group+' AppDeploymentOption.No AppDeploymentOption.Yes "" '+group+' AppDeploymentOption.No "" " " ]]]' )
+
+web=AdminApp.listModules(appName).split('#')[2].split('-')[0]
+webwar=AdminApp.listModules(appName).split('#')[2].split('\n')[0].split('+')[0]
+test=AdminApp.listModules(appName).split('#')[3].split('-')[0]
+testwar=AdminApp.listModules(appName).split('#')[3].split('\n')[0].split('+')[0]
+
+AdminApp.edit(appName, '[ -MapEnvEntryForWebMod [[ '+web+' '+webwar+',WEB-INF/web.xml DEPLOYER_EMAIL String "" '+deployerMail+' ][ '+test+' '+testwar+',WEB-INF/web.xml DBUNIT_CONNECTION_URL String "" '+dbUnitConnectionUrl+'][ '+test+' '+testwar+',WEB-INF/web.xml DBUNIT_SCHEMA String "" '+dbUnitSchema+' ][ '+test+' '+testwar+',WEB-INF/web.xml DBUNIT_USERNAME String "" '+dbUnitUserName+' ][ '+test+' '+testwar+',WEB-INF/web.xml DBUNIT_PASSWORD String "" '+dbUnitPassword+' ]]]' )
+
+AdminApp.edit(appName, '[ -MapEnvEntryForWebMod [[ '+test+' '+testwar+',WEB-INF/web.xml '+web_endpoint+' String "" '+customerOrderEndpoint+' ]]]' )
+AdminApp.edit(appName, '[ -MapEnvEntryForWebMod [[ '+test+' '+testwar+',WEB-INF/web.xml '+test_endpoint+' String "" '+testEndpoint+' ]]]' )
+
+AdminConfig.save()

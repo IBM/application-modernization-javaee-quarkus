@@ -1,0 +1,24 @@
+#
+# Header
+#
+ResourceType=Application
+ImplementingResourceType=Application
+CreateDeleteCommandProperties=true
+ResourceId=Deployment=CustomerOrderServicesApp
+#
+
+#
+# Properties
+#
+Name=CustomerOrderServicesApp
+TargetServer=!{serverName}
+TargetNode=!{nodeName}
+EarFileLocation=/work/config/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear
+
+
+
+
+#Environment Variables
+cellName=DefaultCell01
+nodeName=DefaultNode01
+serverName=server1

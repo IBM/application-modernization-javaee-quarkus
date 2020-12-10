@@ -1,0 +1,74 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: session-app-twas
+  namespace: dev
+  labels:
+    app: session-app-twas
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+  replicas: 1
+  test: false
+  selector:
+    app: session-app-twas
+    deploymentconfig: session-app-twas
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: session-app-twas
+        deploymentconfig: session-app-twas
+    spec:
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: session-app-twas
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 9080
+              protocol: TCP
+          imagePullPolicy: Always
+          terminationMessagePolicy: File
+          livenessProbe:
+            tcpSocket:
+              port: 9443
+            initialDelaySeconds: 180
+            timeoutSeconds: 1
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 9443
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          image: docker-registry.default.svc:5000/dev/sessions-twas:1.0
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: websphere
+      serviceAccount: websphere
+      securityContext:
+        runAsUser: 1001
+        runAsNonRoot: true
+      schedulerName: default-scheduler

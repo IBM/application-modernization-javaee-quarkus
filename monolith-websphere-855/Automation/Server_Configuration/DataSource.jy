@@ -1,0 +1,33 @@
+import sys, os
+cellName = AdminControl.getCell()
+nodeName = AdminControl.getNode()
+Cell     = AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/')
+Server   = AdminConfig.getid('/Cell:' + cellName + '/Node:' + nodeName + '/Server:server1')
+Node     = AdminConfig.getid('/Cell:' + cellName + '/Node:' + nodeName + '/')
+
+driverPath=os.environ.get('DRIVER_PATH')
+db2host=os.environ.get('DB2HOST')
+db2DBName=os.environ.get('DB2DBNAME')
+db2port=os.environ.get('DB2PORT')
+dsName=os.environ.get('DSNAME')
+dsJndi=os.environ.get('DSJNDI')
+authAlias=os.environ.get('AUTHALIAS')
+
+provider=AdminConfig.getid( '/JDBCProvider:DB2 Using IBM JCC Driver (XA)/')
+
+if ( len(provider) == 0 ):
+ provider = AdminTask.createJDBCProvider('[-scope Cell='+cellName+' -databaseType DB2 -providerType "DB2 Using IBM JCC Driver" -implementationType "XA data source" -name "DB2 Using IBM JCC Driver (XA)" -description " " -classpath ['+driverPath+'/db2jcc4.jar '+driverPath+'/db2jcc_license_cu.jar '+driverPath+'/db2jcc_license_cisuz.jar ${PUREQUERY_PATH}/pdq.jar ${PUREQUERY_PATH}/pdqmgmt.jar ] -nativePath [${DB2_JCC_DRIVER_NATIVEPATH} ] ]')
+AdminConfig.save()
+
+datasource=AdminTask.createDatasource(provider, '[-name '+dsName+' -jndiName '+dsJndi+' -dataStoreHelperClassName com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias '+nodeName+'/'+authAlias+' -xaRecoveryAuthAlias '+nodeName+'/'+authAlias+' -configureResourceProperties [[databaseName java.lang.String '+db2DBName+'] [driverType java.lang.Integer 4] [serverName java.lang.String '+db2host+'] [portNumber java.lang.Integer '+db2port+']]]')
+
+dataID=datasource.split('(')[1].split(')')[0]
+mappingmodule=AdminConfig.create('MappingModule', '('+dataID+')', '[[authDataAlias '+nodeName+'/'+authAlias+'] [mappingConfigAlias DefaultPrincipalMapping]]')
+
+cmpConnectorFactory=AdminConfig.list('CMPConnectorFactory').split(dsName.replace(' ','')+'_CF')[1].split(')')[0].split('(')[1].split('#')[1]
+
+AdminConfig.modify('(cells/'+cellName+'|resources.xml#'+cmpConnectorFactory+')', '[[name "'+authAlias+'_CF"] [authDataAlias "'+nodeName+'/'+authAlias+'"] [xaRecoveryAuthAlias "'+nodeName+'/'+authAlias+'"]]')
+
+AdminConfig.create('MappingModule', '(cells/'+cellName+'|resources.xml#'+cmpConnectorFactory+')', '[[authDataAlias '+nodeName+'/'+authAlias+'] [mappingConfigAlias DefaultPrincipalMapping]]')
+
+AdminConfig.save()

@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: session-app-twas
+  namespace: dev
+  labels:
+    app: session-app-twas
+spec:
+  ports:
+    - name: 9080-tcp
+      protocol: TCP
+      port: 9080
+      targetPort: 9080
+    - name: 9443-tcp
+      protocol: TCP
+      port: 9443
+      targetPort: 9443
+  selector:
+    app: session-app-twas
+    deploymentconfig: session-app-twas
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+

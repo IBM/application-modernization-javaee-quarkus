@@ -1,0 +1,8 @@
+import sys, os
+
+db2user=os.environ.get('DB2USER')
+db2password=os.environ.get('DB2PASSWORD')
+authAlias=os.environ.get('AUTHALIAS')
+
+AdminTask.createAuthDataEntry('[-alias '+authAlias+' -user '+db2user+' -password '+db2password+' -description ]')
+AdminConfig.save()

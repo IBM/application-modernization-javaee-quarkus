@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<PRODUCT PRODUCT_ID="10" PRICE="100.00" NAME = "DVD Player" DESCRIPTION = "This Sony Player has crystal clear picture" IMAGE="images/Player.jpg"/>
+</dataset>

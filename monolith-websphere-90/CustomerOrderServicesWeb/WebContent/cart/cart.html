@@ -1,0 +1,13 @@
+<div>
+	<script>
+	function setData()
+	{
+		dojo.create("div",{innerHTML:"Item Selected -> " + 
+		new Date()},dojo.byId("cartMessage"));
+	}
+	dojo.subscribe("cart-select",null,setData);
+	dojo.ready(setData);
+	</script>
+	<H1>CART PAGE</H1>
+	<div id="cartMessage"></div>
+</div>

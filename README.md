@@ -23,12 +23,16 @@ Application modernization is done in multiple steps. This sample demonstrates ho
         - Postgres is used as data store
         - Kafka events are sent when prices change
     - Remaining Open Liberty monolith
+        - Modern project structure and CDI
         - Receives Kafka events when prices change
 7. To be done: Conversion of remaining monolith to Quarkus
+8. To be done: Micro Frontends
+9. To be done: Much more - API management, reactive, security, ...
 
 Screenshot of storefront application:
 
 <kbd><img src="documentation/storefront-shop.png" /></kbd>
+
 
 ### Monolith - WebSphere Liberty
 
@@ -98,3 +102,23 @@ Change the Kafka URL in microprofile-config.properties. Change database host and
 $ cd monolith-open-liberty-cloud-native
 $ mvn liberty:dev
 ```
+
+
+### Monolith - WebSphere Traditional 9.0
+
+The following scripts launch the application in a container. However the Java code is not built yet and the application doesn't connect to the database yet.
+
+```
+$ sh scripts/install-dojo.sh
+$ sh scripts/install-was90-dependencies.sh
+$ sh scripts-docker/build-and-run-monolith-app-was90.sh
+```
+
+Open https://localhost:9443/CustomerOrderServicesWeb/ (user: skywalker, password: force)
+
+Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, password: passw0rd)
+
+
+### Monolith - WebSphere Traditional 8.5.5
+
+The original version runs on bare metal (or in a virtual machine). Check the [documentation](monolith-websphere-855/README.md) for setup instructions.

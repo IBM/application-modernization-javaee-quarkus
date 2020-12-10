@@ -1,0 +1,28 @@
+import sys, os
+
+ldaphost=os.environ.get('LDAP_HOST')
+ldapport=os.environ.get('LDAP_PORT')
+servertype=os.environ.get('LDAP_SERVER_TYPE')
+primaryadminid=os.environ.get('PRIMARY_ADMIN_ID')
+
+dn=os.environ.get('DN')
+bindDN=os.environ.get('BIND_DN')
+bindPassword=os.environ.get('BIND_PASSWORD')
+#print "args : "+ldaphost+","+dn+","+bindDN+","+bindPassword
+
+# Advanced Lightweight Directory Access Protocol (LDAP) user registry settings
+AdminTask.configureAdminLDAPUserRegistry('[-userFilter (&(uid=%v)(objectclass=inetorgperson)) -groupFilter (&(cn=%v)(objectclass=groupOfUniqueNames)) -userIdMap *:uid -groupIdMap *:cn -groupMemberIdMap ibm-allGroups:member;ibm-allGroups:uniqueMember;groupOfNames:member;groupOfUniqueNames:uniqueMember -certificateFilter -certificateMapMode EXACT_DN -krbUserFilter -customProperties ["com.ibm.websphere.security.ldap.recursiveSearch="] -verifyRegistry false ]')
+
+# Standalone LDAP registry setup
+AdminTask.configureAdminLDAPUserRegistry('[-ldapHost '+ldaphost+' -ldapPort '+ldapport+' -ldapServerType '+servertype+' -baseDN -bindDN '+bindDN+' -bindPassword '+bindPassword+' -searchTimeout 120 -reuseConnection true -sslEnabled false -sslConfig -autoGenerateServerId true -primaryAdminId '+primaryadminid+' -ignoreCase true -customProperties -verifyRegistry false ]')
+
+# Verify Registry
+AdminTask.configureAdminLDAPUserRegistry('[-verifyRegistry true]')
+
+# Set LDAP registry active
+AdminTask.setAdminActiveSecuritySettings ('[-activeUserRegistry LDAPUserRegistry]')
+
+# Save config
+
+
+AdminConfig.save()

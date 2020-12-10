@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	
+	<CUSTOMER
+		CUSTOMER_ID='2' 
+		NAME='Roland Barcia'
+		USERNAME='rbarcia' 
+		TYPE='RESIDENTIAL' 
+		RESIDENTIAL_HOUSEHOLD_SIZE='6' 
+		RESIDENTIAL_FREQUENT_CUSTOMER='Y'
+		addressLine1="222 2nd street"
+		addressLine2="Apt 2"
+		city="Leonia"
+		country="USA"
+		state="NJ"
+		zip="07605"
+		/>
+</dataset>

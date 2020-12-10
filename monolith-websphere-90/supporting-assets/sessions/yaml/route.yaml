@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: session-app-twas
+  namespace: dev
+  labels:
+    app: session-app-twas
+spec:
+  host: dev-session-app-twas.app-ocp-prod.ibm-gse.jkwong.xyz
+  to:
+    kind: Service
+    name: session-app-twas
+    weight: 100
+  port:
+    targetPort: 9443-tcp
+  tls:
+    termination: passthrough
+  wildcardPolicy: None

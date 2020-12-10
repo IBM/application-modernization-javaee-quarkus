@@ -14,8 +14,12 @@ transformationadvisor-Linux_workspace_collection.tgz
 uploadEndpoint.json
 transformationadvisor-2.3.0
 
-monolith-was855
-monolith-was90
+
+monolith-websphere-855/CustomerOrderServicesWeb/WebContent/dojo
+monolith-websphere-855/CustomerOrderServicesWeb/WebContent/dojo_built
+
+monolith-websphere-90/CustomerOrderServicesWeb/WebContent/dojo
+monolith-websphere-90/CustomerOrderServicesWeb/WebContent/dojo_built
 
 monolith-websphere-liberty/CustomerOrderServices/target
 monolith-websphere-liberty/CustomerOrderServicesApp/target
@@ -42,16 +46,29 @@ monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
 monolith-open-liberty-cloud-native/target
 monolith-open-liberty-cloud-native-del
 
+frontend-dojo/CustomerOrderServicesApp/lib
+frontend-dojo/CustomerOrderServicesTest/WebContent/WEB-INF/lib
+frontend-dojo/resources
+
+monolith-open-liberty/CustomerOrderServicesApp/lib
+monolith-open-liberty/resources
+
+monolith-websphere-liberty/CustomerOrderServicesApp/lib
+monolith-websphere-liberty/CustomerOrderServicesTest/WebContent/WEB-INF/lib
+monolith-websphere-liberty/resources
+
 service-catalog-quarkus/target
+
+transformation-advisor
 
 *.class
 *.log
 *.ctxt
 .mtj.tmp/
-*.jar
+.jar
 *.war
 *.nar
-*.ear
+
 *.zip
 *.tar.gz
 *.rar
@@ -61,3 +78,13 @@ images/.DS_Store
 
 
 ui
+monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
+monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
+monolith-websphere-90/lib/db2jcc_license_cu.jar
+monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar
+monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar
+monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar
+monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+monolith-websphere-90/resources/db2/db2jcc4.jar
+monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
+monolith-websphere-90/lib/db2jcc4.jar

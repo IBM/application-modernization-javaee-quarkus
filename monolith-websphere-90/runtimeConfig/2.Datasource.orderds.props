@@ -1,0 +1,228 @@
+
+#
+# Configuration properties file for cells/DefaultCell01|resources.xml#DataSource_1561559605781#
+# Extracted on Wed Jun 26 15:12:48 UTC 2019
+#
+
+#
+# Section 1.0 ## Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds
+#
+
+#
+# SubSection 1.0.0 # DataSource attributes
+#
+ResourceType=DataSource
+ImplementingResourceType=GenericType
+ResourceId=Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds
+#
+
+#
+#Properties
+#
+name=OrderDS #required
+category=null
+datasourceHelperClassname=com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper
+authMechanismPreference=BASIC_PASSWORD #ENUM(BASIC_PASSWORD|KERBEROS),default(BASIC_PASSWORD)
+statementCacheSize=10 #integer,default(10)
+providerType=DB2 Using IBM JCC Driver (XA) #readonly
+jndiName="jdbc/orderds"
+relationalResourceAdapter=WebSphere Relational Resource Adapter #ObjectName(J2CResourceAdapter)
+diagnoseConnectionUsage=false #boolean,default(false)
+xaRecoveryAuthAlias="gas-twas90Node04/DBUser"
+authDataAlias="gas-twas90Node04/DBUser"
+manageCachedHandles=false #boolean,default(false)
+provider=DB2_Using_IBM_JCC_Driver_(XA) #ObjectName(JDBCProvider),readonly
+description=my description
+logMissingTransactionContext=true #boolean,default(true)
+
+
+#
+# SubSection 1.0.0.0 # MappingModule attributes
+#
+ResourceType=MappingModule
+ImplementingResourceType=GenericType
+ResourceId=Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds:MappingModule=
+AttributeInfo=mapping
+#
+
+#
+#Properties
+#
+authDataAlias=
+mappingConfigAlias=
+
+
+#
+# SubSection 1.0.0.1 # ConnectionPool attributes
+#
+ResourceType=ConnectionPool
+ImplementingResourceType=GenericType
+ResourceId=Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds:ConnectionPool=
+AttributeInfo=connectionPool
+#
+
+#
+#Properties
+#
+stuckThreshold=0 #integer,default(0)
+unusedTimeout=1800 #long,default(1800)
+maxConnections=15 #integer,default(10)
+stuckTimerTime=0 #integer,default(0)
+testConnectionInterval=0 #integer,default(0)
+minConnections=2 #integer,default(1)
+surgeThreshold=-1 #integer,default(-1)
+connectionTimeout=180 #long,default(180)
+purgePolicy=EntirePool #ENUM(EntirePool|FailingConnectionOnly),default(FailingConnectionOnly)
+surgeCreationInterval=0 #integer,default(0)
+numberOfUnsharedPoolPartitions=0 #integer,default(0)
+stuckTime=0 #integer,default(0)
+agedTimeout=0 #long,default(0)
+reapTime=180 #long,default(180)
+testConnection=false #boolean,default(false)
+numberOfSharedPoolPartitions=0 #integer,default(0)
+freePoolDistributionTableSize=0 #integer,default(0)
+numberOfFreePoolPartitions=0 #integer,default(0)
+
+
+#
+# SubSection 1.0.0.3 # DataSource J2EE Properties
+#
+ResourceType=J2EEResourcePropertySet
+ImplementingResourceType=GenericType
+ResourceId=Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds:J2EEResourcePropertySet=
+AttributeInfo=resourceProperties(name,value)
+#
+
+#
+#Properties
+#
+updateCountForBatch=null
+kerberosServerPrincipal= #String
+description= #String
+maxRetriesForClientReroute= #integer
+currentPackagePath= #String
+alternateGroupServerName=null
+retrieveMessagesFromServerOnGetMessage=true #String
+traceOption=null
+loginTimeout=0 #integer
+beginTranForVendorAPIs=false #String
+currentSQLID= #String
+useCachedCursor= #boolean
+validateNewConnectionRetryCount=100 #String
+useTransactionRedirect=false #String
+sslConnection= #boolean
+fullyMaterializeInputStreamsOnBatchExecution=null
+jmsOnePhaseOptimization=false #String
+traceFile= #String
+activateDatabase=null
+databaseName=ORDERDB #String,required
+enableSeamlessFailover= #integer
+driverType=4 #integer,required
+deferPrepares=true #boolean
+retryIntervalForClientReroute= #integer
+queryTimeoutInterruptProcessingMode=null
+sendDataAsIs= #boolean
+queryCloseImplicit= #integer
+enableMultithreadedAccessDetection=false #String
+useJDBC4ColumnNameAndLabelSemantics= #integer
+sqljCloseStmtsWithOpenResultSet=null
+reauthentication=false #String
+fullyMaterializeInputStreams= #boolean
+useJDBC41DefinitionForGetColumns=null
+enableSysplexWLB= #boolean
+serverName=db2-customer-order #String
+connectionSharing=1 #String
+traceDirectory=null
+currentAlternateGroupEntry=null
+alternateGroupPortNumber=null
+cursorSensitivity= #integer
+enableAlternateGroupSeamlessACR=null
+queryDataSize= #integer
+resultSetHoldabilityForCatalogQueries= #integer
+blockingReadConnectionTimeout= #integer
+clientWorkstation= #String
+enableClientInformation=false #boolean
+userDefinedErrorMap= #String
+sysSchema= #String
+clientRerouteAlternateServerName= #String
+nonTransactionalDataSource=false #String
+traceFileSize=null
+validateNewConnectionRetryInterval=3 #String
+webSphereDefaultIsolationLevel= #integer
+validateNewConnectionTimeout= #integer
+sessionTimeZone=null
+clientAccountingInformation= #String
+defaultIsolationLevel= #integer
+recordTemporalHistory=null
+name=OrderDS #String
+progressiveStreaming= #integer
+currentPackageSet= #String
+fetchSize= #integer
+xaNetworkOptimization= #boolean
+fullyMaterializeLobData=true #boolean
+syncQueryTimeoutWithTransactionTimeout= #boolean
+freeResourcesOnClose=false #String
+traceFileCount=null
+portNumber=50000 #integer
+stripTrailingZerosForDecimalNumbers=null
+translateForBitData=null
+webSphereDefaultQueryTimeout= #integer
+clientApplicationInformation= #String
+keepAliveTimeOut=null
+traceFileAppend=false #boolean
+implicitRollbackOption=null
+enableExtendedDescribe=null
+clientRerouteServerListJNDIName= #String
+traceLevel=-1 #integer
+beginTranForResultSetScrollingAPIs=false #String
+currentFunctionPath= #String
+currentSchema= #String
+sqljEnableClassLoaderSpecificProfiles=null
+useIdentityValLocalForAutoGeneratedKeys=null
+enableNamedParameterMarkers= #integer
+interruptProcessingMode=null
+clientRerouteAlternatePortNumber= #String
+keepDynamic= #integer
+maxConnCachedParamBufferSize=null
+enableExtendedIndicators=null
+clientUser= #String
+alternateGroupDatabaseName=null
+timerLevelForQueryTimeOut=null
+resultSetHoldability= #integer
+unbindClientRerouteListFromJndi=false #String
+readOnly=false #boolean
+preTestSQLString=SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1 #String
+connectionCloseWithInFlightTransaction=null
+profileName=null
+enableClientAffinitiesList= #integer
+streamBufferSize= #integer
+currentLockTimeout= #integer
+securityMechanism= #integer
+errorDetectionModel=ExceptionMapping #String
+validateNewConnection=false #String
+
+
+#
+# SubSection 1.0.0.4 # DataSource Custom Properties
+#
+ResourceType=DataSource
+ImplementingResourceType=GenericType
+ResourceId=Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds
+AttributeInfo=properties(name,value)
+#
+
+#
+#Properties
+#
+
+
+#
+# End of Section 1.0# Cell=!{cellName}:JDBCProvider=DB2_Using_IBM_JCC_Driver_(XA):DataSource=jndiName#jdbc/orderds
+#
+#
+#
+EnvironmentVariablesSection
+#
+#
+#Environment Variables
+cellName=DefaultCell01

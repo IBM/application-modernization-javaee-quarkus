@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<PRODUCT PRODUCT_ID= '1' PRICE='29.99' NAME="Return of the Jedi" DESCRIPTION = 'Episode 6, Luke has the final confrontation with his father!' IMAGE="images/Return.jpg" />
+	<PRODUCT PRODUCT_ID= '2' PRICE='29.99' NAME = 'Empire Strikes Back' DESCRIPTION = 'Episode 5, Luke finds out a secret that will change his destiny' IMAGE="images/Empire.jpg"/>
+	<PRODUCT PRODUCT_ID= '3' PRICE='29.99' NAME = 'New Hope' DESCRIPTION = 'Episode 4, after years of oppression, a band of rebels fight for freedom' IMAGE="images/NewHope.jpg"/>
+	<PRODUCT PRODUCT_ID="10" PRICE="100.00" NAME = "DVD Player" DESCRIPTION = "This Sony Player has crystal clear picture" IMAGE="images/Player.jpg"/>
+	<PRODUCT PRODUCT_ID="40" PRICE="20.00" NAME = "Go Fish: Superstar" DESCRIPTION = "Go Fish release their great new hit, Superstar" IMAGE="images/Superstar.jpg"/>
+	<PRODUCT PRODUCT_ID="41" PRICE="20.00" NAME = "Ludwig van Beethoven" DESCRIPTION = "This is a classic, the 9 Symphonies Box Set" IMAGE="images/Bet.jpg"/>
+	<PRODUCT PRODUCT_ID= '51' PRICE='399.99' NAME="PlayStation 3" DESCRIPTION = 'Brace yourself for the marvels of the PlayStation 3 complete with 80GB hard disk storage' IMAGE="images/PS3.jpg" />
+	<PRODUCT PRODUCT_ID= '52' PRICE='169.99' NAME = 'Nintendo Wii' DESCRIPTION = 'Next-generation gaming with a motion-sensitive controller' IMAGE="images/wii.jpg"/>
+	<PRODUCT PRODUCT_ID= '53' PRICE='299.99' NAME = 'XBOX 360' DESCRIPTION = 'Expand your horizons with the gaming and multimedia capabilities of this incredible system' IMAGE="images/xbox360.jpg"/>
+	
+</dataset>

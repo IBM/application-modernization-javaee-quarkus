@@ -1,0 +1,7 @@
+{
+	"identifier":"abbreviation",
+  	"label": "name",
+	"items": [
+	        {"name":"United States of America","abbreviation":"USA" },
+	        { "name":"Canada", "abbreviation":"CA"}
+]}
