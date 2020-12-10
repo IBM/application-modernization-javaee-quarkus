@@ -31,7 +31,7 @@ function setup() {
   cd ${root_folder}/frontend-dojo/
   docker build -t storefront-frontend .
 
-  cd ${root_folder}/catalog
+  cd ${root_folder}/service-catalog-quarkus
   docker build -f Dockerfile -t storefront-catalog .
 
   cd ${root_folder}/scripts-docker

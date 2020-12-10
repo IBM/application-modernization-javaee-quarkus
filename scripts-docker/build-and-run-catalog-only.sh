@@ -18,7 +18,7 @@ function setup() {
   cd ${root_folder}/proxy
   docker build -f Dockerfile-catalog -t proxy-nginx .
 
-  cd ${root_folder}/catalog
+  cd ${root_folder}/service-catalog-quarkus
   docker build -f Dockerfile -t storefront-catalog .
 
   cd ${root_folder}/scripts-docker

@@ -15,6 +15,7 @@ uploadEndpoint.json
 transformationadvisor-2.3.0
 
 monolith-was855
+monolith-was90
 
 monolith-websphere-liberty/CustomerOrderServices/target
 monolith-websphere-liberty/CustomerOrderServicesApp/target
@@ -41,7 +42,7 @@ monolith-open-liberty/CustomerOrderServicesWeb/WebContent/dojo_built
 monolith-open-liberty-cloud-native/target
 monolith-open-liberty-cloud-native-del
 
-catalog/target
+service-catalog-quarkus/target
 
 *.class
 *.log

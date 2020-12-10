@@ -2,6 +2,33 @@
 
 This is work in progress ...
 
+Application modernization is done in multiple steps. This sample demonstrates how to modernize 12+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
+
+1. Monolith - WebSphere Traditional 8.5.5
+    - Starting point: Java EE app from 2008 running in VM or bare metal
+    - Db2 is used as data store
+2. Monolith - WebSphere Traditional 9 in container
+    - Application converted with Transformation Advisor
+3. Monolith - WebSphere Liberty (latest)
+    - Application converted with Transformation Advisor
+    - Same project structure and EJBs
+4. Separated Frontend - WebSphere Liberty (latest)
+    - Dojo frontend in separate container
+    - Backend and frontend connected via proxy
+5. Separated Frontend - Open Liberty (latest)
+    - Still same project structure and EJBs
+6. Strangled Catalog Service with Open Liberty
+    - Strangled catalog service
+        - Developed with Quarkus
+        - Postgres is used as data store
+        - Kafka events are sent when prices change
+    - Remaining Open Liberty monolith
+        - Receives Kafka events when prices change
+7. To be done: Conversion of remaining monolith to Quarkus
+
+Screenshot of storefront application:
+
+<kbd><img src="documentation/storefront-shop.png" /></kbd>
 
 ### Monolith - WebSphere Liberty
 
