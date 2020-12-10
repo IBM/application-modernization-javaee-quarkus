@@ -19,6 +19,8 @@ function setup() {
   docker rm -f storefront-catalog
   docker rm -f storefront-backend-open
   docker rm -f storefront-backend-open-native
+
+  docker network create store-front-network
 }
 
 setup

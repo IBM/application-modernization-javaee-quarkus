@@ -12,7 +12,6 @@ function setup() {
   cd ${root_folder}/monolith-liberty/Common
   cp createschema.sh createschema.sh
   docker build -f ${root_folder}/db2/Dockerfile -t db2-niklas .
-
 }
 
 setup

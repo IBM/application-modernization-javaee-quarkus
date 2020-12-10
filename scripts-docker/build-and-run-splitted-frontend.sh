@@ -12,6 +12,9 @@ function setup() {
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
   echo "Open http://localhost/CustomerOrderServicesWeb"
   
+  cd ${root_folder}
+  sh scripts-docker/stop-services.sh
+
   cd ${root_folder}/proxy
   docker build -f Dockerfile-splitted-frontend -t proxy-nginx .
 
@@ -26,10 +29,6 @@ function setup() {
 
   cd ${root_folder}/frontend-dojo/
   docker build -t storefront-frontend .
-
-  docker network connect store-front-network proxy-nginx
-  docker network connect store-front-network storefront-backend
-  docker network connect store-front-network storefront-frontend
 
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-splitted-frontend.yml up

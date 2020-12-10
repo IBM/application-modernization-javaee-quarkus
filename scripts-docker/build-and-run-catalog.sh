@@ -15,6 +15,9 @@ function setup() {
   echo "Run sh scripts-docker/run-kafka.sh first"
   echo "Open http://localhost/CustomerOrderServicesWeb"
   
+  cd ${root_folder}
+  sh scripts-docker/stop-services.sh
+  
   cd ${root_folder}/proxy
   docker build -f Dockerfile-catalog -t proxy-nginx .
 

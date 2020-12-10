@@ -10,8 +10,9 @@ function _out() {
 
 function setup() {
 
-  docker network create store-front-network
-
+  cd ${root_folder}
+  sh scripts-docker/stop-services.sh
+  
   cd ${root_folder}/db2
   docker build . -t storefront-db2
   

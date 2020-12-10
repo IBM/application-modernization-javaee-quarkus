@@ -12,13 +12,9 @@ function setup() {
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
   echo "Open http://localhost/CustomerOrderServicesWeb"
   
-  docker rm -f storefront-frontend
-  docker rm -f storefront-backend
-  docker rm -f proxy-nginx 
-  docker rm -f storefront-monolith
-  docker rm -f storefront-catalog
-  docker rm -f storefront-backend-open
-
+  cd ${root_folder}
+  sh scripts-docker/stop-services.sh
+  
   cd ${root_folder}/proxy
   docker build -f Dockerfile-catalog -t proxy-nginx .
 

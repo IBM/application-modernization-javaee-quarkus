@@ -12,6 +12,9 @@ function setup() {
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
   echo "curl http://localhost:9086/CustomerOrderServicesWeb/jaxrs/Category"
   
+  cd ${root_folder}
+  sh scripts-docker/stop-services.sh
+  
   rm -r ${root_folder}/monolith-open-liberty/CustomerOrderServices/target
   rm -r ${root_folder}/monolith-open-liberty/CustomerOrderServicesApp/target
   rm -r ${root_folder}/monolith-open-liberty/CustomerOrderServicesWeb/target
