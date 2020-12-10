@@ -9,8 +9,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="GENERATOR"
 	content="Rational® Application Developer for WebSphere® Software">
-<script type="text/javascript"
+<!--
+	<script type="text/javascript"
 	djconfig="isDebug: false, parseOnLoad: true" src="dojo/dojo/dojo.js"></script>
+-->
+
+<script type="text/javascript" 
+	djconfig="isDebug: false, parseOnLoad: true" src="http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dojo/dojo.js"></script>
+
+	<script type="text/javascript" src="/CustomerOrderServicesWeb/product/productDetail.html"></script>
+	
 <script type="text/javascript">
 dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.ContentPane");
@@ -18,11 +26,11 @@ dojo.require("dijit.layout.TabContainer");
 dojo.require("dojox.layout.ContentPane");
 dojo.require("dojo.parser");
 
-
-dojo.registerModulePath("depot","../../dojo_depot/depot");
-dojo.registerModulePath("product","../../product");
-dojo.registerModulePath("orderHistory","../../orderHistory");
-dojo.registerModulePath("account","../../account");
+dojo.registerModulePath("depot","/CustomerOrderServicesWeb/dojo_depot/depot");
+dojo.registerModulePath("product","/CustomerOrderServicesWeb/product");
+dojo.registerModulePath("orderHistory","/CustomerOrderServicesWeb/orderHistory");
+dojo.registerModulePath("account","/CustomerOrderServicesWeb/account");
+dojo.registerModulePath("product","/CustomerOrderServicesWeb/product");
 
 dojo.require("depot.NavigationController");
 var nav = new depot.NavigationController();

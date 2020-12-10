@@ -1,12 +1,11 @@
-### Work in Progress
+## Application Modernization Sample - From Java EE (2008) to Quarkus (2021)
 
-to be done
+This is work in progress ...
 
 
 **Monolith - WebSphere Liberty**
 
 ```
-$ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-monolith-app.sh
 ```
@@ -17,7 +16,6 @@ Open http://localhost/CustomerOrderServicesWeb
 **Separated Frontend - WebSphere Liberty**
 
 ```
-$ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-splitted-frontend.sh
 ```
@@ -28,7 +26,6 @@ Open http://localhost/CustomerOrderServicesWeb
 **Separated Frontend - Open Liberty (EJB)**
 
 ```
-$ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-splitted-frontend-open.sh
 ```
@@ -39,7 +36,6 @@ Open http://localhost/CustomerOrderServicesWeb
 **Strangled Catalog Service with Open Liberty (CDI)**
 
 ```
-$ sh scripts/install-dojo.sh
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/run-database-postgres-catalog.sh
 $ sh scripts-docker/run-kafka.sh

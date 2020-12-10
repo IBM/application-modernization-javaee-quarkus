@@ -1,6 +1,6 @@
-@import url("../dojo/dijit/themes/dijit.css");
-@import url("../dojo/dijit/themes/claro/claro.css"); 
-@import url("../dojo/dojox/form/resources/BusyButton.css"); 
-@import url("../dojo/dojox/grid/resources/claroGrid.css");
-@import url("../dojo/dojo/resources/dojo.css");
-@import url("../dojo/dojo/resources/dnd.css");
+@import url("http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dijit/themes/dijit.css");
+@import url("http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dijit/themes/claro/claro.css"); 
+@import url("http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dojox/form/resources/BusyButton.css"); 
+@import url("http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dojox/grid/resources/claroGrid.css");
+@import url("http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dojo/resources/dojo.css");
+@import url("http://ajax.googleapis.com/ajax/libs/dojo/1.5.0/dojo/resources/dnd.css");

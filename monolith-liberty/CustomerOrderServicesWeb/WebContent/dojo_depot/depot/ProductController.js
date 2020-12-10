@@ -12,7 +12,7 @@ dojo.require("dojo.dnd.Source");
 dojo.require("dijit.Dialog");
 dojo.require("dojox.dtl");
 dojo.require("dojox.dtl.Context");
-dojo.registerModulePath("product","../../product");
+dojo.registerModulePath("product","/CustomerOrderServicesWeb/product");
 
 
 dojo.declare("depot.ProductController",null,
