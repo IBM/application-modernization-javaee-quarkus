@@ -3,7 +3,7 @@
 This is work in progress ...
 
 
-**Monolith - WebSphere Liberty**
+### Monolith - WebSphere Liberty
 
 ```
 $ sh scripts-docker/build-and-run-monolith-db2.sh
@@ -13,7 +13,7 @@ $ sh scripts-docker/build-and-run-monolith-app.sh
 Open http://localhost/CustomerOrderServicesWeb
 
 
-**Separated Frontend - WebSphere Liberty**
+### Separated Frontend - WebSphere Liberty
 
 ```
 $ sh scripts-docker/build-and-run-monolith-db2.sh
@@ -23,7 +23,7 @@ $ sh scripts-docker/build-and-run-splitted-frontend.sh
 Open http://localhost/CustomerOrderServicesWeb
 
 
-**Separated Frontend - Open Liberty (EJB)**
+### Separated Frontend - Open Liberty (EJB)
 
 ```
 $ sh scripts-docker/build-and-run-monolith-db2.sh
@@ -33,7 +33,7 @@ $ sh scripts-docker/build-and-run-splitted-frontend-open.sh
 Open http://localhost/CustomerOrderServicesWeb
 
 
-**Strangled Catalog Service with Open Liberty (CDI)**
+### Strangled Catalog Service with Open Liberty (CDI)
 
 ```
 $ sh scripts-docker/build-and-run-monolith-db2.sh
@@ -50,7 +50,6 @@ Invoke these endpoints and check the logs:
 
 ```
 $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2
 $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
 $ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1,\"categories\":[{\"id\":0,\"name\":\"string\",\"subCategories\":[null]}],\"description\":\"string\",\"image\":\"string\",\"name\":\"string\",\"price\":30}"
 ```

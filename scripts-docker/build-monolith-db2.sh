@@ -9,7 +9,7 @@ function _out() {
 }
 
 function setup() {
-  cd ${root_folder}/monolith-liberty/Common
+  cd ${root_folder}/monolith-websphere-liberty/Common
   cp createschema.sh createschema.sh
   docker build -f ${root_folder}/db2/Dockerfile -t db2-niklas .
 }
