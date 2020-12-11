@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -26,10 +25,8 @@ import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.OrderNotOpenException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import javax.enterprise.context.ApplicationScoped;
-import javax.naming.InitialContext;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
-//import javax.ejb.EJB;
 
 @ApplicationScoped
 public class CustomerOrderServicesImpl implements CustomerOrderServices {
@@ -41,8 +38,10 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
     UserTransaction utx;
 	
 	@Transactional
-	public void updateLineItem(String productId, String newPrice) {
-		try {
+	public void updateLineItem(String message) {
+        try {
+            String productId = message.substring(0, message.indexOf("#"));
+            String newPrice = message.substring(message.indexOf("#") + 1, message.length());
 			AbstractCustomer customer = loadCustomer();
 			Set<Order> orders = customer.getOrders();
 			if (orders != null) {
@@ -218,7 +217,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 	}
 	
 	public AbstractCustomer loadCustomer() throws CustomerDoesNotExistException,GeneralPersistenceException {
-		//nik
+		// tbd
 		//String user = ctx.getCallerPrincipal().getName();
 		String user = "rbarcia";
 		Query query = em.createQuery("select c from AbstractCustomer c where c.user = :user");
@@ -226,53 +225,17 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		return (AbstractCustomer)query.getSingleResult();
 	}
 
-	//@EJB ProductSearchService productSearchService;
-
 	public Set<Order> loadCustomerHistory()
 			throws CustomerDoesNotExistException,GeneralPersistenceException {
 		AbstractCustomer customer = loadCustomer();
 		
 		Set<Order> orders = customer.getOrders();
-		/*
-		if (orders != null) {
-			for (Order order : orders) {
-				Set<LineItem> lineItems = order.getLineitems();
-				Set<LineItem> updatedLineItems = new HashSet<LineItem>();
-				if (lineItems != null ) {
-					for(LineItem lineItem:lineItems)
-					{					
-						int productId = lineItem.getProductId();
-						BigDecimal currentPrice;
-
-						// to be done: add POST endpoint to change product prices
-						// as workaround for now 50% of the prices are increased by 10
-
-						try {
-							productSearchService = (ProductSearchService) new InitialContext().lookup("java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService");
-							Product product = productSearchService.loadProduct(productId);							
-							currentPrice = product.getPrice();					
-							Random rand = new Random();
-							int n = rand.nextInt(100);
-							if (n > 50) {								
-								BigDecimal increasedPrice = new BigDecimal("10.00");
-								lineItem.setPriceCurrent(currentPrice.add(increasedPrice));
-							}
-						}
-						catch (Exception exception) {
-						}												
-						
-						updatedLineItems.add(lineItem);
-					}
-					order.setLineitems(updatedLineItems);
-				}
-			}
-		}
-		*/
 		return orders;
 	}
 	
 	public Date getOrderHistoryLastUpdatedTime()
 	{
+		// tbd
 		//String user = ctx.getCallerPrincipal().getName();
 		String user = "rbarcia";
 		Query query = em.createQuery("select MAX(o.submittedTime) from Order o join  o.customer c where c.user = :user");
@@ -299,5 +262,4 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 			((ResidentialCustomer)customer).setHouseholdSize(((Integer)info.get("householdSize")).shortValue());
 		}
 	}
-
 }
