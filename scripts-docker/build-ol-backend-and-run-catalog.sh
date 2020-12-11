@@ -10,6 +10,7 @@ function _out() {
 
 function setup() {
   echo "Run sh scripts-docker/run-monolith-db2.sh first"
+  echo "Run sh scripts-docker/run-database-postgres-catalog.shh first"
   echo "Open http://localhost/CustomerOrderServicesWeb"
   
   cd ${root_folder}

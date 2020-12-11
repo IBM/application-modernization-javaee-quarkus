@@ -25,7 +25,9 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Remaining Open Liberty monolith
         - Modern project structure and CDI
         - Receives Kafka events when prices change
-7. To be done: Conversion of remaining monolith to Quarkus
+7. Strangled Catalog Service with Quarkus (synch)
+    - Strangled catalog service       
+    - Remaining Quarkus monolith (synch)
 8. To be done: Micro Frontends
 9. To be done: Much more - API management, reactive, security, ...
 
@@ -73,6 +75,12 @@ $ sh scripts-docker/run-kafka.sh
 $ sh scripts-docker/build-and-run-catalog.sh
 ```
 
+Note: For some reason sometimes the messages don't arrive. In that case run this command:
+
+```
+$ sh scripts-docker/build-ol-native-backend-and-run-catalog.sh
+```
+
 Open http://localhost/CustomerOrderServicesWeb
 
 Open http://localhost/explorer
@@ -101,6 +109,26 @@ Change the Kafka URL in microprofile-config.properties. Change database host and
 ```
 $ cd monolith-open-liberty-cloud-native
 $ mvn liberty:dev
+```
+
+
+### Strangled Catalog Service with Quarkus
+
+```
+$ sh scripts-docker/build-and-run-monolith-db2.sh
+$ sh scripts-docker/run-database-postgres-catalog.sh
+$ sh scripts-docker/run-kafka.sh
+$ sh scripts-docker/build-and-run-all-quarkus.sh
+```
+
+Open http://localhost/CustomerOrderServicesWeb
+
+Invoke these endpoints and check the logs:
+
+```
+$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
+$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
+$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1,\"categories\":[{\"id\":0,\"name\":\"string\",\"subCategories\":[null]}],\"description\":\"string\",\"image\":\"string\",\"name\":\"string\",\"price\":30}"
 ```
 
 

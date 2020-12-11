@@ -27,6 +27,7 @@ function setup() {
   docker rm -f storefront-backend-open
   docker rm -f kafka-tool
   docker rm -f storefront-backend-open-native
+  docker rm -f storefront-backend-quarkus
 }
 
 setup

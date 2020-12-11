@@ -18,11 +18,11 @@ function setup() {
   sh scripts-docker/stop-services.sh
   
   cd ${root_folder}/proxy
-  docker build -f Dockerfile-catalog -t proxy-nginx .
+  docker build -f Dockerfile-all-quarkus -t proxy-nginx .
 
-  cd ${root_folder}/monolith-open-liberty-cloud-native
-  mvn clean package
-  docker build -t storefront-backend-open-native .
+  cd ${root_folder}/monolith-quarkus-synch
+  ./mvnw package
+  docker build -f src/main/docker/Dockerfile.jvm -t storefront-backend-quarkus .
 
   cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject
   mvn clean package
@@ -33,7 +33,7 @@ function setup() {
   docker build -f Dockerfile -t storefront-catalog .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-catalog.yml up
+  docker-compose -f docker-compose-all-quarkus.yml up
 }
 
 setup

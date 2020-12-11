@@ -19,6 +19,7 @@ function setup() {
   docker rm -f storefront-catalog
   docker rm -f storefront-backend-open
   docker rm -f storefront-backend-open-native
+  docker rm -f storefront-backend-quarkus
 
   docker network create store-front-network
 }

@@ -10,6 +10,8 @@ function _out() {
 
 function setup() {
 
+  docker rm -f kafka zookeeper
+  
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-kafka.yml up
 }
