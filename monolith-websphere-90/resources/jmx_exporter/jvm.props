@@ -2,4 +2,4 @@ ResourceType=JavaVirtualMachine
 ImplementingResourceType=Server
 ResourceId=Cell=!{cellName}:Node=!{nodeName}:Server=!{serverName}:JavaProcessDef=:JavaVirtualMachine=
 AttributeInfo=jvmEntries
-genericJvmArguments=-javaagent:/opt/IBM/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar=9082:/opt/IBM/jmx_exporter/jmx-config.yaml
+

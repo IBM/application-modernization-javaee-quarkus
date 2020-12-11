@@ -138,7 +138,7 @@ The following scripts launch the application in a container. However the Java co
 
 ```
 $ sh scripts/install-dojo.sh
-$ sh scripts/install-was90-dependencies.sh
+$ sh scripts/install-dependencies.sh
 $ sh scripts-docker/build-and-run-monolith-app-was90.sh
 ```
 

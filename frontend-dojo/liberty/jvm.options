@@ -10,4 +10,4 @@
 
 # Uncomment the following line to enable verbose output for class loading
 #-verbose:class
--javaagent:/opt/ibm/wlp/usr/shared/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar=9081:/opt/ibm/wlp/usr/shared/resources/jmx_exporter/jmx-config.yml
+

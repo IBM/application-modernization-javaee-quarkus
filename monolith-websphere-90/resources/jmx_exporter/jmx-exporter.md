@@ -25,8 +25,6 @@ ResourceType=JavaVirtualMachine
 ImplementingResourceType=Server
 ResourceId=Cell=!{cellName}:Node=!{nodeName}:Server=!{serverName}:JavaProcessDef=:JavaVirtualMachine=
 AttributeInfo=jvmEntries
-genericJvmArguments=-javaagent:/opt/IBM/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar=9082:/opt/IBM/jmx_exporter/jmx-config.yaml
-
 ```
 
 where, again, `/opt/IBM/jmx_exporter/` is the place we chose to place the Prometheus JMX exporter library and config files at and **9082** is just a random port we have chosen to get the metrics exported to for Prometheus to scrape them.
