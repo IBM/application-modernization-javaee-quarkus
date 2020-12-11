@@ -1,12 +1,12 @@
 package org.pwte.example.resources;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -21,6 +21,9 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.pwte.example.domain.AbstractCustomer;
 import org.pwte.example.domain.Address;
 import org.pwte.example.domain.BusinessCustomer;
@@ -32,42 +35,24 @@ import org.pwte.example.exception.InvalidQuantityException;
 import org.pwte.example.exception.OrderModifiedException;
 import org.pwte.example.exception.ProductDoesNotExistException;
 import org.pwte.example.service.CustomerOrderServicesImpl;
-import org.pwte.example.service.CustomerOrderServices;
-import java.util.Properties;
-import com.ibm.json.java.JSONArray;
-import com.ibm.json.java.JSONObject;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
 @Path("/jaxrs/Customer")
-//@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class CustomerOrderResource {
 
 	@Inject
 	CustomerOrderServicesImpl customerOrderServices;
 		
-	public CustomerOrderResource() 
-	{
-		/*
-		try {
-			//nik
-			Properties props = new Properties();
-			props.setProperty(javax.naming.Context.SECURITY_PRINCIPAL, "rbarcia");
-			props.setProperty(javax.naming.Context.SECURITY_CREDENTIALS, "bl0wfish");
-			InitialContext ctx = new InitialContext(props);
-			customerOrderServices = (CustomerOrderServices) ctx.lookup("java:app/CustomerOrderServices/CustomerOrderServicesImpl!org.pwte.example.service.CustomerOrderServices");			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} 
-		*/
+	public CustomerOrderResource() {
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCustomer()
 	{
-		System.out.println("/Customer - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
+		System.out.println("/Customer - Container: " + System.getenv("CONTAINER") + " - Quarkus - org.pwte.example.resources.CustomerOrderResource");
 		try {
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
 			Order order = customer.getOpenOrder();
@@ -107,7 +92,7 @@ public class CustomerOrderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addLineItem(LineItem lineItem,@Context HttpHeaders headers)
 	{
-		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
+		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Quarkus - org.pwte.example.resources.CustomerOrderResource");
 				
 		try {
 			List<String> matchHeaders = headers.getRequestHeader("If-Match");
@@ -196,7 +181,7 @@ public class CustomerOrderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getOrderHistory(@Context HttpHeaders headers)
 	{
-		System.out.println("/Orders - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
+		System.out.println("/Orders - Container: " + System.getenv("CONTAINER") + " - Quarkus - org.pwte.example.resources.CustomerOrderResource");
 		try {			
 			Date lastModified = customerOrderServices.getOrderHistoryLastUpdatedTime();
 			Set<Order> orders = customerOrderServices.loadCustomerHistory();
@@ -211,73 +196,70 @@ public class CustomerOrderResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/TypeForm")
-	public Response getCustomerFormMeta()
-	{
-		System.out.println("/TypeFrom - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
-		try
-		{
+	//public Set<CustomerFormMeta> getCustomerFormMeta() {
+	public String getCustomerFormMeta() {
+		System.out.println("/TypeFrom - Container: " + System.getenv("CONTAINER") + " - Quarkus - org.pwte.example.resources.CustomerOrderResource");
+		try {
 			AbstractCustomer customer = customerOrderServices.loadCustomer();
 			
-			JSONObject data = new JSONObject(); 
-			JSONArray groups = new JSONArray();
-			
-			JSONObject name = new JSONObject();
+			ObjectMapper mapper = new ObjectMapper();
+
+			ObjectNode data = mapper.createObjectNode();
+			ArrayNode groups = mapper.createArrayNode();
+
+			ObjectNode name = mapper.createObjectNode();
 			name.put("name", "name");
 			name.put("label", "Name");
 			name.put("type", "string");
 			name.put("readonly", "true");
 			groups.add(name);
-			
-			if(customer instanceof BusinessCustomer)
-			{
+
+			if(customer instanceof BusinessCustomer) {
 				data.put("type","business");
 				data.put("label","Business Customer");
-				
-				JSONObject desc = new JSONObject();
+
+				ObjectNode desc = mapper.createObjectNode();
 				desc.put("name", "description");
 				desc.put("label", "Description");
 				desc.put("type", "text");
 				groups.add(desc);
-				
-				JSONObject bp = new JSONObject();
+
+				ObjectNode bp = mapper.createObjectNode();
 				bp.put("name", "businessPartner");
 				bp.put("label", "Business Partner");
 				bp.put("type", "string");
 				bp.put("readonly", "true");
 				groups.add(bp);
-				
-				JSONObject vd = new JSONObject();
+
+				ObjectNode vd = mapper.createObjectNode();
 				vd.put("name", "volumeDiscount");
 				vd.put("label", "Volume Discount");
 				vd.put("type", "string");
 				vd.put("readonly", "true");
 				groups.add(vd);
-				
 			}
-			else
-			{
+			else {
 				data.put("type","residential");
 				data.put("label","Residential Customer");
 				
-				JSONObject freq = new JSONObject();
+				ObjectNode freq = mapper.createObjectNode();
 				freq.put("name", "frequentCustomer");
 				freq.put("label", "Frequent Customer");
 				freq.put("type", "string");
 				freq.put("readonly", "true");
 				groups.add(freq);
 				
-				JSONObject hs = new JSONObject();
+				ObjectNode hs = mapper.createObjectNode();
 				hs.put("name", "householdSize");
 				hs.put("label", "Household Size");
 				hs.put("type", "number");
 				hs.put("constraints", "{min:1,max:10,places:0}");
 				hs.put("required", "true");
-				groups.add(hs);
-				
-			}			
-			data.put("formData",groups);
-			
-			return Response.ok(data).build();
+				groups.add(hs);				
+			}	
+			data.put("formData", groups);		
+						
+			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(data);
 		}
 		catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -285,7 +267,23 @@ public class CustomerOrderResource {
 		catch (GeneralPersistenceException e) {
 			throw new WebApplicationException(e);
 		}
+		catch (Exception e) {
+			throw new WebApplicationException(e);
+		}
 	}
+
+	public static class CustomerFormMeta {
+        public String name;
+        public String description;
+
+        public CustomerFormMeta() {
+        }
+
+        public CustomerFormMeta(String name, String description) {
+            this.name = name;
+            this.description = description;
+        }
+    }
 	
 	@POST
 	@Path("/Info")

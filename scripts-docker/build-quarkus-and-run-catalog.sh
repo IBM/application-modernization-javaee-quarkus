@@ -21,7 +21,7 @@ function setup() {
   docker build -f Dockerfile-all-quarkus -t proxy-nginx .
 
   cd ${root_folder}/monolith-quarkus-synch
-  ./mvnw package
+  mvn clean package
   docker build -f src/main/docker/Dockerfile.jvm -t storefront-backend-quarkus .
 
   cd ${root_folder}/service-catalog-quarkus
