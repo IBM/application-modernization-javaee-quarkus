@@ -21,13 +21,10 @@ function setup() {
   docker build -f Dockerfile-catalog-native -t proxy-nginx .
 
   cd ${root_folder}/monolith-open-liberty-cloud-native
-  mvn clean package
-  docker build -t storefront-backend-open-native .
+  docker build -f Dockerfile.multistage -t storefront-backend-open-native .
 
-  cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject
-  mvn clean package
   cd ${root_folder}/frontend-dojo/
-  docker build -t storefront-frontend .
+  docker build -f Dockerfile.multistage -t storefront-frontend .
 
   cd ${root_folder}/service-catalog-quarkus
   docker build -f Dockerfile -t storefront-catalog .

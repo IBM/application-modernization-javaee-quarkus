@@ -23,10 +23,8 @@ function setup() {
   cd ${root_folder}/monolith-quarkus-synch  
   docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-backend-quarkus .
 
-  cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject
-  mvn clean package
   cd ${root_folder}/frontend-dojo/
-  docker build -t storefront-frontend .
+  docker build -f Dockerfile.multistage -t storefront-frontend .
 
   cd ${root_folder}/service-catalog-quarkus
   docker build -f Dockerfile -t storefront-catalog .

@@ -18,11 +18,8 @@ function setup() {
   cd ${root_folder}/proxy
   docker build -f Dockerfile-monolith -t proxy-nginx .
 
-  cd ${root_folder}/monolith-websphere-liberty/CustomerOrderServicesProject
-  mvn clean package
-
   cd ${root_folder}/monolith-websphere-liberty/
-  docker build -t storefront-monolith --no-cache .
+  docker build -f Dockerfile.multistage -t storefront-monolith --no-cache .
 
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-monolith-app.yml up

@@ -21,8 +21,7 @@ function setup() {
   docker build -f Dockerfile-catalog-native -t proxy-nginx .
 
   cd ${root_folder}/monolith-open-liberty-cloud-native
-  mvn clean package
-  docker build -t storefront-backend-open-native .
+  docker build -f Dockerfile.multistage -t storefront-backend-open-native .
 
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-catalog-native.yml up

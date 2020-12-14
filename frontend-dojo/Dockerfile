@@ -1,4 +1,4 @@
-FROM ibmcom/websphere-liberty:kernel-ubi-min
+FROM ibmcom/websphere-liberty:20.0.0.12-kernel-java8-openj9-ubi
 USER root
 COPY ./liberty/server.xml /config
 COPY ./liberty/server.env /config

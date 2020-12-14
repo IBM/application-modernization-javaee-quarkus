@@ -18,17 +18,11 @@ function setup() {
   cd ${root_folder}/proxy
   docker build -f Dockerfile-splitted-frontend -t proxy-nginx .
 
-  cd ${root_folder}/monolith-websphere-liberty/CustomerOrderServicesProject
-  mvn clean package
-
   cd ${root_folder}/monolith-websphere-liberty/
-  docker build -t storefront-backend .
-
-  cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject
-  mvn clean package
-
+  docker build -f Dockerfile.multistage -t storefront-backend .
+  
   cd ${root_folder}/frontend-dojo/
-  docker build -t storefront-frontend .
+  docker build -f Dockerfile.multistage -t storefront-frontend .
 
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-splitted-frontend.yml up
