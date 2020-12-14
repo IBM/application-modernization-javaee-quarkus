@@ -9,9 +9,9 @@ function _out() {
 }
 
 function setup() {
-  cd ${root_folder}/monolith-websphere-liberty/Common
-  cp createschema.sh createschema.sh
-  docker build -f ${root_folder}/db2/Dockerfile -t db2-niklas .
+
+  cd ${root_folder}/db2
+  docker build . -t storefront-db2
 }
 
 setup

@@ -1,7 +1,5 @@
 ## Application Modernization Sample - From Java EE (2008) to Quarkus (2021)
 
-This is work in progress ...
-
 Application modernization is done in multiple steps. This sample demonstrates how to modernize 12+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
 
 1. Monolith - WebSphere Traditional 8.5.5
@@ -17,26 +15,50 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Backend and frontend connected via proxy
 5. Separated Frontend - Open Liberty (latest)
     - Still same project structure and EJBs
-6. Strangled Catalog Service with Open Liberty
+6. Strangled Catalog Service and remaining Open Liberty Monolith
     - Strangled catalog service
         - Developed with Quarkus
-        - Run in JVM
+        - Runs in JVM
         - Postgres is used as data store
         - Kafka events are sent when prices change
     - Remaining Open Liberty monolith
         - Modern project structure and CDI
         - Receives Kafka events when prices change
-7. Strangled Catalog Service with Quarkus (synch)
+7. Strangled Catalog Service and remaining Quarkus Monolith
     - Strangled Quarkus catalog service 
     - Remaining Quarkus monolith
         - Synchronous
         - Native
-8. To be done: Micro Frontends
-9. To be done: Much more - API management, reactive, security, ...
 
 Screenshot of storefront application:
 
 <kbd><img src="documentation/storefront-shop.png" /></kbd>
+
+
+### TL;DR
+
+If you want to run the application locally, you can invoke the following commands. All you need is a local Docker installation and the git CLI.
+
+```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ sh scripts-docker/build-and-run.sh
+```
+
+Once everything has been started, you can open http://localhost/CustomerOrderServicesWeb.
+
+Add the item "Return of the Jedi" to the shopping cart via drag and drop.
+
+<kbd><img src="documentation/storefront-add-item.png" /></kbd>
+
+Update the price of this item:
+
+```
+$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
+```
+
+Open the "Order History" tab to see the updated price. The new price has been updated in the catalog service and the remaining monolith.
+
+<kbd><img src="documentation/storefront-new-price.png" /></kbd>
 
 
 ### Monolith - WebSphere Liberty
@@ -93,7 +115,7 @@ Invoke these endpoints and check the logs:
 ```
 $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
 $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
-$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1,\"categories\":[{\"id\":0,\"name\":\"string\",\"subCategories\":[null]}],\"description\":\"string\",\"image\":\"string\",\"name\":\"string\",\"price\":30}"
+$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
 ```
 
 *Local Development - Catalog*
@@ -131,7 +153,7 @@ Invoke these endpoints and check the logs:
 ```
 $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
 $ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
-$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1,\"categories\":[{\"id\":0,\"name\":\"string\",\"subCategories\":[null]}],\"description\":\"string\",\"image\":\"string\",\"name\":\"string\",\"price\":30}"
+$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
 ```
 
 
