@@ -20,9 +20,8 @@ function setup() {
   cd ${root_folder}/proxy
   docker build -f Dockerfile-all-quarkus -t proxy-nginx .
 
-  cd ${root_folder}/monolith-quarkus-synch
-  ./mvnw package
-  docker build -f src/main/docker/Dockerfile.jvm -t storefront-backend-quarkus .
+  cd ${root_folder}/monolith-quarkus-synch  
+  docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-backend-quarkus .
 
   cd ${root_folder}/frontend-dojo/CustomerOrderServicesProject
   mvn clean package

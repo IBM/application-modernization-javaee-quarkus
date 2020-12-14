@@ -20,14 +20,17 @@ Application modernization is done in multiple steps. This sample demonstrates ho
 6. Strangled Catalog Service with Open Liberty
     - Strangled catalog service
         - Developed with Quarkus
+        - Run in JVM
         - Postgres is used as data store
         - Kafka events are sent when prices change
     - Remaining Open Liberty monolith
         - Modern project structure and CDI
         - Receives Kafka events when prices change
 7. Strangled Catalog Service with Quarkus (synch)
-    - Strangled catalog service       
-    - Remaining Quarkus monolith (synch)
+    - Strangled Quarkus catalog service 
+    - Remaining Quarkus monolith
+        - Synchronous
+        - Native
 8. To be done: Micro Frontends
 9. To be done: Much more - API management, reactive, security, ...
 

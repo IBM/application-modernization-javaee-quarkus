@@ -20,7 +20,6 @@ function setup() {
 
   cd ${root_folder}/monolith-open-liberty/CustomerOrderServicesProject
   mvn clean package
-
   cd ${root_folder}/monolith-open-liberty/
   docker build -t storefront-backend-open .
 
