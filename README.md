@@ -44,6 +44,10 @@ $ git clone https://github.com/nheidloff/application-modernization-javaee-quarku
 $ sh scripts-docker/build-and-run.sh
 ```
 
+The 'build-and-run-sh' script will launch the following containers.
+
+<kbd><img src="documentation/Containers.png" /></kbd>
+
 Once everything has been started, you can open http://localhost/CustomerOrderServicesWeb.
 
 Add the item "Return of the Jedi" to the shopping cart via drag and drop.
