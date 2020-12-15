@@ -1,16 +1,12 @@
 package com.ibm.catalog;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+public class ProductCategory { 
 
-@Entity
-@Cacheable
-public class ProductCategory extends PanacheEntity {
-
-    public ProductCategory() {}
-   
-	public int productid;
+	public ProductCategory() {}
 	
-	public int categoryid;	
+	public Long id;
+   
+	public Long productid;
+	
+	public Long categoryid;	
 }
