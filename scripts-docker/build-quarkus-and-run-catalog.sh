@@ -24,7 +24,7 @@ function setup() {
   mvn clean package
   docker build -f src/main/docker/Dockerfile.jvm -t storefront-backend-quarkus .
 
-  cd ${root_folder}/service-catalog-quarkus
+  cd ${root_folder}/service-catalog-quarkus-synch
   docker build -f Dockerfile -t storefront-catalog .
 
   cd ${root_folder}/scripts-docker

@@ -57,7 +57,9 @@ monolith-websphere-liberty/CustomerOrderServicesApp/lib
 monolith-websphere-liberty/CustomerOrderServicesTest/WebContent/WEB-INF/lib
 monolith-websphere-liberty/resources
 
-service-catalog-quarkus/target
+service-catalog-quarkus-synch/target
+
+service-catalog-quarkus-reactive/target
 
 transformation-advisor
 

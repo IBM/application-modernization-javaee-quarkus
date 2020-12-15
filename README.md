@@ -37,7 +37,7 @@ Screenshot of storefront application:
 
 ### TL;DR
 
-If you want to run the application locally, you can invoke the following commands. All you need is a local Docker installation and the git CLI.
+If you want to run the modernized application locally, you can invoke the following commands. All you need is a local Docker installation and the git CLI.
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus

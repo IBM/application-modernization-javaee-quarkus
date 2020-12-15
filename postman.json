@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "service-catalog-quarkus",
+			"name": "service-catalog-quarkus-synch",
 			"item": [
 				{
 					"name": "Customer",

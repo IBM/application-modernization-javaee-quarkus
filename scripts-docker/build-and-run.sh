@@ -27,7 +27,7 @@ function setup() {
   cd ${root_folder}/frontend-dojo/
   docker build -f Dockerfile.multistage -t storefront-frontend .
 
-  cd ${root_folder}/service-catalog-quarkus
+  cd ${root_folder}/service-catalog-quarkus-synch
   docker build -f Dockerfile -t storefront-catalog .
 
   cd ${root_folder}/scripts-docker
