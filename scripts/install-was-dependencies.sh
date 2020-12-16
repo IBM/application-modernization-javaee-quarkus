@@ -10,19 +10,19 @@ function _out() {
 
 function setup() {
   cd ${root_folder}
-  rm ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
-  rm ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
-  rm ${root_folder}/monolith-websphere-90/lib/db2jcc_license_cu.jar
-  rm ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar
-  rm ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar
-  rm ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar
-  rm ${root_folder}/monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
-  rm ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
-  rm ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
-  rm ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
-  rm ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
-  rm ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
-  rm ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
+  rm -f ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
+  rm -f ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
+  rm -f ${root_folder}/monolith-websphere-90/lib/db2jcc_license_cu.jar
+  rm -f ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar
+  rm -f ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar
+  rm -f ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar
+  rm -f ${root_folder}/monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+  rm -f ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
+  rm -f ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
+  rm -f ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+  rm -f ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
+  rm -f ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
+  rm -f ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
    
   cd ${root_folder}
   rm -rf temp
@@ -32,28 +32,28 @@ function setup() {
   cd cloudpak-for-applications
   git checkout -q was90 
   
-  mkdir ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2
-  cp supporting-assets/sessions/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
-  cp supporting-assets/sessions/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
+  mkdir -p ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2
+  \cp -rf supporting-assets/sessions/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
+  \cp -rf supporting-assets/sessions/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
   
-  mkdir ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/
-  cp lib/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/lib/db2jcc_license_cu.jar
-  cp CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar
-  cp CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar
-  cp CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar
-  cp resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+  mkdir -p ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/
+  \cp -rf lib/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/lib/db2jcc_license_cu.jar
+  \cp -rf CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar
+  \cp -rf CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar
+  \cp -rf CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar
+  \cp -rf resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
   
-  mkdir ${root_folder}/monolith-websphere-90/resources/db2
-  cp resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
-  cp resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
+  mkdir -p ${root_folder}/monolith-websphere-90/resources/db2
+  \cp -rf resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
+  \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
   
-  cp resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+  \cp -rf resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
   
-  mkdir ${root_folder}/monolith-websphere-liberty/resources/db2
-  cp resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
-  cp resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
+  mkdir -p ${root_folder}/monolith-websphere-liberty/resources/db2
+  \cp -rf resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
+  \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
   
-  cp lib/db2jcc4.jar ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
+  \cp -rf lib/db2jcc4.jar ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
 
   cd ${root_folder}
   rm -r temp
