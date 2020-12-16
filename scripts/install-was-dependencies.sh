@@ -31,6 +31,7 @@ function setup() {
   git clone https://github.com/ibm-cloud-architecture/cloudpak-for-applications.git
   cd cloudpak-for-applications
   git checkout -q was90 
+  rm -rf .git
   
   mkdir -p ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2
   \cp -rf supporting-assets/sessions/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
