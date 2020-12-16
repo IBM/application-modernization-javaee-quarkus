@@ -61,6 +61,9 @@ service-catalog-quarkus-synch/target
 
 service-catalog-quarkus-reactive/target
 
+frontend-single-spa
+yarn.lock
+
 core.*
 heapdump*
 javacore*
