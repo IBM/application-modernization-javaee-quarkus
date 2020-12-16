@@ -32,22 +32,31 @@ function setup() {
   cd cloudpak-for-applications
   git checkout -q was90 
   
+  mkdir ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2
   cp supporting-assets/sessions/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
   cp supporting-assets/sessions/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
+  
+  mkdir ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/
   cp lib/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/lib/db2jcc_license_cu.jar
   cp CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/dbunit-2.2.jar
   cp CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junit.jar
   cp CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar ${root_folder}/monolith-websphere-90/CustomerOrderServicesTest/WebContent/WEB-INF/lib/junitee.jar
   cp resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+  
+  mkdir ${root_folder}/monolith-websphere-90/resources/db2
   cp resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
   cp resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
+  
   cp resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+  
+  mkdir ${root_folder}/monolith-websphere-liberty/resources/db2
   cp resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
   cp resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
+  
   cp lib/db2jcc4.jar ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
 
   cd ${root_folder}
-  #rm -r temp
+  rm -r temp
 }
 
 setup
