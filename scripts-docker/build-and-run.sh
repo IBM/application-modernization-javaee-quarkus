@@ -14,6 +14,8 @@ function setup() {
   cd ${root_folder}
   sh scripts-docker/stop-everything.sh
 
+  sh scripts/install-was-dependencies.sh
+
   docker network create store-front-network
 
   sh scripts-docker/build-monolith-db2.sh
