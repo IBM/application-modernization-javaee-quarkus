@@ -17,10 +17,6 @@ function setup() {
   docker network create store-front-network
 
   sh scripts-docker/build-monolith-db2.sh
-
-  sh scripts-docker/run-kafka.sh
-
-  sh scripts-docker/run-database-postgres-catalog.sh
   
   cd ${root_folder}/proxy
   docker build -f Dockerfile-all-quarkus -t proxy-nginx .
