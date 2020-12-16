@@ -26,12 +26,12 @@ function setup() {
 
   cd ${root_folder}/frontend-dojo/
   docker build -f Dockerfile.multistage -t storefront-frontend .
-
-  cd ${root_folder}/service-catalog-quarkus-synch
-  docker build -f Dockerfile -t storefront-catalog .
+  
+  cd ${root_folder}/service-catalog-quarkus-reactive
+  docker build -f Dockerfile -t storefront-catalog-reactive .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all.yml up
+  docker-compose -f docker-compose-all-quarkus-reactive.yml up
 }
 
 setup
