@@ -1,0 +1,44 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+    reverseproxy:
+        image: proxy-nginx
+        container_name: proxy-nginx
+        ports:
+            - 80:80
+            - 443:443
+        restart: always
+
+    storefront-backend-quarkus:
+        image: storefront-backend-quarkus
+        container_name: storefront-backend-quarkus
+        restart: always
+        environment:
+          - CONTAINER=storefront-backend-quarkus
+        ports:
+            - 9082:8080
+            - 9445:9443
+
+    storefront-frontend:
+        image: storefront-frontend
+        container_name: storefront-frontend
+        restart: always
+        environment:
+          - CONTAINER=storefront-frontend
+        ports:
+            - 9081:9080
+            - 9444:9443
+
+    storefront-catalog-reactive:
+        image: storefront-catalog-reactive
+        container_name: storefront-catalog-reactive
+        restart: always
+        environment:
+          - CONTAINER=storefront-catalog-reactive
+        ports:
+            - 9083:8082            

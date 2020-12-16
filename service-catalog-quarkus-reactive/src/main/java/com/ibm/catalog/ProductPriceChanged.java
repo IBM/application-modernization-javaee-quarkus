@@ -6,9 +6,9 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class ProductPriceChanged {
 
-    //@Incoming("product-price-updated")
+    @Incoming("product-price-updated")
     public String process(String message) {
-        System.out.println("Kafka message received: product-price-updated - " + message);
+        System.out.println("Kafka message received in Quarkus reactive: product-price-updated - " + message);
         return message;
     }   
 }

@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Path("/CustomerOrderServicesWeb/jaxrs/Category")
 @ApplicationScoped
@@ -42,28 +43,23 @@ public class CategoryResource {
                     return null;
                 }).thenApply(rows -> {
                     List<Category> categories = new ArrayList<>(rows.size());
-                    for (Row row : rows) {
-                        categories.add(fromRow(row));
-                    }
-                    return resolveSubCategories(categories);
+                    rows.forEach(row -> categories.add(fromRow(row)));
+                    return addSubCategories(categories);
                 });
     }
 
-    private List<Category> resolveSubCategories(List<Category> categories) {
-        List<Category> output = new ArrayList<>();
-        for (Category category: categories) {
-            if (category.parent == Long.valueOf(0)) {
-                List<Category> subCategories = new ArrayList<>();
-                for (Category cat: categories) {
-                    if (cat.parent == category.id) {
-                        subCategories.add(cat);
-                    }
-                }
+    private List<Category> addSubCategories(List<Category> categories) { 
+        List<Category> potentialSubCategories = categories;
+        return categories.stream()
+            .filter(category -> category.parent == Long.valueOf(0))
+            .map(category -> {
+                List<Category> subCategories = potentialSubCategories.stream()
+                    .filter(subCategory -> subCategory.parent == category.id)
+                    .collect(Collectors.toList());
                 category.setSubCategories(subCategories);
-                output.add(category);
-            }
-        }
-        return output;
+                return category;
+            })
+            .collect(Collectors.toList());
     }
 
     private static Category fromRow(Row row) {

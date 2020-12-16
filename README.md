@@ -19,16 +19,17 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Strangled catalog service
         - Developed with Quarkus
         - Runs in JVM
-        - Postgres is used as data store
-        - Kafka events are sent when prices change
+        - Data is accessed in Postgres via Panache
+        - Kafka events are sent when prices change (CQRS)
     - Remaining Open Liberty monolith
         - Modern project structure and CDI
-        - Receives Kafka events when prices change
+        - Receives Kafka events when prices change (CQRS)
 7. Strangled Catalog Service and remaining Quarkus Monolith
     - Strangled Quarkus catalog service 
+        - Reactive endpoints and Postgres access
     - Remaining Quarkus monolith
-        - Synchronous
-        - Native
+        - Synchronous code
+        - Runs as native executable
 
 Screenshot of storefront application:
 

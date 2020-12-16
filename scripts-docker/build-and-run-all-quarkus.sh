@@ -18,7 +18,7 @@ function setup() {
   sh scripts-docker/stop-services.sh
   
   cd ${root_folder}/proxy
-  docker build -f Dockerfile-all-quarkus -t proxy-nginx .
+  docker build -f Dockerfile-all-quarkus-reactive -t proxy-nginx .
 
   cd ${root_folder}/monolith-quarkus-synch  
   docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-backend-quarkus .
@@ -26,11 +26,11 @@ function setup() {
   cd ${root_folder}/frontend-dojo/
   docker build -f Dockerfile.multistage -t storefront-frontend .
 
-  cd ${root_folder}/service-catalog-quarkus-synch
-  docker build -f Dockerfile -t storefront-catalog .
+  cd ${root_folder}/service-catalog-quarkus-reactive
+  docker build -f Dockerfile -t storefront-catalog-reactive .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all-quarkus.yml up
+  docker-compose -f docker-compose-all-quarkus-reactive.yml up
 }
 
 setup

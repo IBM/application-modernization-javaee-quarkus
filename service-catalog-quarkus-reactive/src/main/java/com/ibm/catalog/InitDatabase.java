@@ -3,7 +3,6 @@ package com.ibm.catalog;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import io.vertx.axle.sqlclient.Tuple;
-
 import java.math.BigDecimal;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
@@ -81,13 +80,12 @@ public class InitDatabase {
         addProductCategoryAndWait(Long.valueOf(1), Long.valueOf(1), Long.valueOf(2)); 
         addProductCategoryAndWait(Long.valueOf(2), Long.valueOf(2), Long.valueOf(2)); 
         addProductCategoryAndWait(Long.valueOf(3), Long.valueOf(3), Long.valueOf(2)); 
-        addProductCategoryAndWait(Long.valueOf(4), Long.valueOf(10), Long.valueOf(14)); 
-        addProductCategoryAndWait(Long.valueOf(5), Long.valueOf(10), Long.valueOf(2)); 
-        addProductCategoryAndWait(Long.valueOf(6), Long.valueOf(20), Long.valueOf(13)); 
-        addProductCategoryAndWait(Long.valueOf(7), Long.valueOf(21), Long.valueOf(13)); 
-        addProductCategoryAndWait(Long.valueOf(8), Long.valueOf(30), Long.valueOf(12)); 
-        addProductCategoryAndWait(Long.valueOf(9), Long.valueOf(31), Long.valueOf(12)); 
-        addProductCategoryAndWait(Long.valueOf(10), Long.valueOf(40), Long.valueOf(3)); 
+        addProductCategoryAndWait(Long.valueOf(4), Long.valueOf(10), Long.valueOf(8));  
+        addProductCategoryAndWait(Long.valueOf(6), Long.valueOf(20), Long.valueOf(7)); 
+        addProductCategoryAndWait(Long.valueOf(7), Long.valueOf(21), Long.valueOf(7)); 
+        addProductCategoryAndWait(Long.valueOf(8), Long.valueOf(30), Long.valueOf(6)); 
+        addProductCategoryAndWait(Long.valueOf(9), Long.valueOf(31), Long.valueOf(6)); 
+        addProductCategoryAndWait(Long.valueOf(10), Long.valueOf(40), Long.valueOf(4)); 
         addProductCategoryAndWait(Long.valueOf(11), Long.valueOf(41), Long.valueOf(3)); 
         addProductCategoryAndWait(Long.valueOf(21), Long.valueOf(51), Long.valueOf(4)); 
         addProductCategoryAndWait(Long.valueOf(22), Long.valueOf(52), Long.valueOf(4)); 

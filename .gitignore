@@ -61,6 +61,11 @@ service-catalog-quarkus-synch/target
 
 service-catalog-quarkus-reactive/target
 
+core.*
+heapdump*
+javacore*
+Snap*
+
 transformation-advisor
 
 *.class
