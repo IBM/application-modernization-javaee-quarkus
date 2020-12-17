@@ -8,9 +8,7 @@ function _out() {
   echo "$(date +'%F %H:%M:%S') $@"
 }
 
-function setup() {  
-  echo "Open http://localhost/CustomerOrderServicesWeb"
-  
+function setup() {   
   cd ${root_folder}
   sh scripts-docker/stop-everything.sh
 
@@ -33,7 +31,28 @@ function setup() {
   docker build -f Dockerfile -t storefront-catalog-reactive .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all-quarkus-reactive.yml up
+  docker-compose -f docker-compose-all-quarkus-reactive.yml up -database
+  
+  echo "Notes:"
+  echo "--- Launching Db2 takes up to 3-5 minutes"
+  echo "Prerequisites:"
+  echo "--- Docker needs to be installed locally"
+  echo "--- git needs to be installed locally"
+  echo "Stop containers:"
+  echo "--- sh ${root_folder}/scripts-docker/stop-services.sh"
+  echo "--- sh ${root_folder}/scripts-docker/stop-everything.sh"
+  echo "Open web application:"
+  echo "--- http://localhost/CustomerOrderServicesWeb"
+  echo "--- http://localhost/explorer"
+  echo "Invoke the endpoints:"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Orders"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm"
+  CREATE_NEW="http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
+  echo "--- curl -X PUT ${CREATE_NEW}"
+  echo "Follow the logs:"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-all-quarkus-reactive.yml logs -f"
 }
 
 setup

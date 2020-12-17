@@ -96,8 +96,8 @@ Open http://localhost/CustomerOrderServicesWeb
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/build-and-run-splitted-frontend-open.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-splitted-frontend-open.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
@@ -108,29 +108,16 @@ Open http://localhost/CustomerOrderServicesWeb
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/run-database-postgres-catalog.sh
-$ sh scripts-docker/run-kafka.sh
-$ sh scripts-docker/build-and-run-catalog.sh
-```
-
-Note: For some reason sometimes the messages don't arrive. In that case run this command:
-
-```
-$ sh scripts-docker/build-ol-native-backend-and-run-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-catalog.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
 
-Open http://localhost/explorer
+Add the item "Return of the Jedi" to the shopping cart and update the price.
 
-Invoke these endpoints and check the logs:
-
-```
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
-$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
-```
 
 *Local Development - Catalog*
 
@@ -154,21 +141,15 @@ $ mvn liberty:dev
 ### Strangled Catalog Service with Quarkus
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/run-database-postgres-catalog.sh
-$ sh scripts-docker/run-kafka.sh
-$ sh scripts-docker/build-and-run-all-quarkus.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-all-quarkus.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
 
-Invoke these endpoints and check the logs:
-
-```
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
-$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
-```
+Add the item "Return of the Jedi" to the shopping cart and update the price.
 
 
 ### Monolith - WebSphere Traditional 9.0
