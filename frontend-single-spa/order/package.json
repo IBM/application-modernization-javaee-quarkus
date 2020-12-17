@@ -13,7 +13,8 @@
     "single-spa-vue": "1.9.0",
     "systemjs-webpack-interop": "1.2.1",
     "vue": "2.6.12",
-    "vue-router": "3.4.3"
+    "vue-router": "3.4.3",
+    "vuex": "3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.5.4",
