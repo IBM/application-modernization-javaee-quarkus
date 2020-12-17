@@ -43,8 +43,8 @@ function setup() {
   echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Orders"
   echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm"
   echo "Follow the logs:"
-  echo "--- ${root_folder}/scripts-docker/docker-compose -f ${root_folder}/scripts-docker/docker-compose-splitted-frontend.yml logs -f"
-  echo "--- ${root_folder}/scripts-docker/docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-splitted-frontend.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
 }
 
 setup

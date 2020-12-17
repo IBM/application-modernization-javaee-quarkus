@@ -12,6 +12,8 @@ function setup() {
   cd ${root_folder}
   sh scripts-docker/stop-services.sh
   
+  sh scripts/install-was-dependencies.sh
+  
   cd ${root_folder}/proxy
   docker build -f Dockerfile-splitted-frontend-open -t proxy-nginx .
 

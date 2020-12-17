@@ -32,7 +32,11 @@ function setup() {
     
     rm -f ${root_folder}/frontend-dojo/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
     rm -f ${root_folder}/frontend-dojo/resources/db2/db2jcc4.jar
-    rm -f ${root_folder}/frontend-dojo/resources/db2/db2jcc_license_cu.jar    
+    rm -f ${root_folder}/frontend-dojo/resources/db2/db2jcc_license_cu.jar  
+
+    rm -f ${root_folder}/monolith-open-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+    rm -f ${root_folder}/monolith-open-liberty/resources/db2/db2jcc4.jar
+    rm -f ${root_folder}/monolith-open-liberty/resources/db2/db2jcc_license_cu.jar    
     
     cd ${root_folder}
     rm -rf temp
@@ -74,6 +78,13 @@ function setup() {
     mkdir -p ${root_folder}/frontend-dojo/resources/db2
     \cp -rf resources/db2/db2jcc4.jar ${root_folder}/frontend-dojo/resources/db2/db2jcc4.jar
     \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/frontend-dojo/resources/db2/db2jcc_license_cu.jar
+
+    # monolith-open-liberty
+    \cp -rf resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-open-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+    
+    mkdir -p ${root_folder}/monolith-open-liberty/resources/db2
+    \cp -rf resources/db2/db2jcc4.jar ${root_folder}/monolith-open-liberty/resources/db2/db2jcc4.jar
+    \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-open-liberty/resources/db2/db2jcc_license_cu.jar
 
     cd ${root_folder}
     rm -r temp
