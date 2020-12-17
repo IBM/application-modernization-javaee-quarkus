@@ -27,7 +27,7 @@ function setup() {
   docker build -f Dockerfile -t storefront-catalog-reactive .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all-quarkus-reactive.yml up -d
+  docker-compose -f docker-compose-all-quarkus-reactive-services.yml up -d
 
   echo "Notes:"
   echo "--- Launching Db2 takes up to 3-5 minutes"
@@ -51,7 +51,7 @@ function setup() {
   CREATE_NEW="http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
   echo "--- curl -X PUT ${CREATE_NEW}"
   echo "Follow the logs:"
-  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-all-quarkus-reactive.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-all-quarkus-reactive-services.yml logs -f"
   echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
   echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-postgres-catalog.yml logs -f"
   echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-kafka.yml logs -f"
