@@ -1,7 +1,7 @@
 import "./set-public-path";
 import Vue from "vue";
 import singleSpaVue from "single-spa-vue";
-
+import store from "./store";
 import App from "./App.vue";
 import router from "./router";
 
@@ -10,6 +10,7 @@ Vue.config.productionTip = false;
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
+    store,
     render: (h) => h(App),
     router,
   },
