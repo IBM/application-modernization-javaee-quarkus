@@ -9,11 +9,6 @@ function _out() {
 }
 
 function setup() {
-  echo "Run sh scripts-docker/run-monolith-db2.sh first"
-  echo "Run sh scripts-docker/run-database-postgres-catalog.shh first"
-  echo "Run sh scripts-docker/run-kafka.sh first"
-  echo "Open http://localhost/CustomerOrderServicesWeb"
-  
   cd ${root_folder}
   sh scripts-docker/stop-services.sh
   
@@ -30,7 +25,31 @@ function setup() {
   docker build -f Dockerfile -t storefront-catalog .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-catalog-native.yml up
+  docker-compose -f docker-compose-catalog-native.yml up -d
+
+  echo "Notes:"
+  echo "--- Launching Db2 takes up to 3-5 minutes"
+  echo "Prerequisites:"
+  echo "--- Docker needs to be installed locally"
+  echo "--- git needs to be installed locally"
+  echo "--- sh ${root_folder}/scripts-docker/run-monolith-db2.sh"
+  echo "--- sh ${root_folder}/scripts-docker/run-database-postgres-catalog.sh"
+  echo "--- sh ${root_folder}/scripts-docker/run-kafka.sh"
+  echo "Stop containers:"
+  echo "--- sh ${root_folder}/scripts-docker/stop-services.sh"
+  echo "--- sh ${root_folder}/scripts-docker/stop-everything.sh"
+  echo "Open web application:"
+  echo "--- http://localhost/CustomerOrderServicesWeb"
+  echo "Invoke the endpoints:"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Orders"
+  echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm"
+  echo "Follow the logs:"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-catalog-native.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-postgres-catalog.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-kafka.yml logs -f"
 }
 
 setup

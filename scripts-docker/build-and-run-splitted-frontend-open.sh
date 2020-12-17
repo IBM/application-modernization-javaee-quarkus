@@ -27,10 +27,12 @@ function setup() {
   echo "Notes:"
   echo "--- Launching Db2 takes up to 3-5 minutes"
   echo "Prerequisites:"
+  echo "--- Docker needs to be installed locally"
+  echo "--- git needs to be installed locally"
   echo "--- sh ${root_folder}/scripts-docker/run-monolith-db2.sh"
   echo "Stop containers:"
-  echo "--- ${root_folder}/scripts-docker/stop-services.sh"
-  echo "--- ${root_folder}/scripts-docker/stop-everything.sh"
+  echo "--- sh ${root_folder}/scripts-docker/stop-services.sh"
+  echo "--- sh ${root_folder}/scripts-docker/stop-everything.sh"
   echo "Open web application:"
   echo "--- http://localhost/CustomerOrderServicesWeb"
   echo "Invoke the endpoints:"
@@ -39,8 +41,8 @@ function setup() {
   echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Orders"
   echo "--- curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm"
   echo "Follow the logs:"
-  echo "--- ${root_folder}/scripts-docker/docker-compose -f ${root_folder}/scripts-docker/docker-compose-splitted-frontend-open.yml logs -f"
-  echo "--- ${root_folder}/scripts-docker/docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-splitted-frontend-open.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
 }
 
 setup

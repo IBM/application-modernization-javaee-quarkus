@@ -24,10 +24,15 @@ function setup() {
     rm -f ${root_folder}/monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
     rm -f ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
     rm -f ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
+    rm -f ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
+
     rm -f ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
     rm -f ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
     rm -f ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
-    rm -f ${root_folder}/monolith-websphere-90/lib/db2jcc4.jar
+    
+    rm -f ${root_folder}/frontend-dojo/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+    rm -f ${root_folder}/frontend-dojo/resources/db2/db2jcc4.jar
+    rm -f ${root_folder}/frontend-dojo/resources/db2/db2jcc_license_cu.jar    
     
     cd ${root_folder}
     rm -rf temp
@@ -38,6 +43,7 @@ function setup() {
     git checkout -q was90 
     rm -rf .git
     
+    # monolith-websphere-90
     mkdir -p ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2
     \cp -rf supporting-assets/sessions/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc_license_cu.jar
     \cp -rf supporting-assets/sessions/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/supporting-assets/sessions/db2/db2jcc4.jar
@@ -55,11 +61,19 @@ function setup() {
     \cp -rf resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc4.jar
     \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
     
+    # monolith-websphere-liberty
     \cp -rf resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/monolith-websphere-liberty/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
     
     mkdir -p ${root_folder}/monolith-websphere-liberty/resources/db2
     \cp -rf resources/db2/db2jcc4.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc4.jar
     \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/monolith-websphere-liberty/resources/db2/db2jcc_license_cu.jar
+
+    # frontend-dojo
+    \cp -rf resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar ${root_folder}/frontend-dojo/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
+    
+    mkdir -p ${root_folder}/frontend-dojo/resources/db2
+    \cp -rf resources/db2/db2jcc4.jar ${root_folder}/frontend-dojo/resources/db2/db2jcc4.jar
+    \cp -rf resources/db2/db2jcc_license_cu.jar ${root_folder}/frontend-dojo/resources/db2/db2jcc_license_cu.jar
 
     cd ${root_folder}
     rm -r temp

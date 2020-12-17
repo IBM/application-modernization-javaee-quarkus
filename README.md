@@ -94,6 +94,8 @@ Open http://localhost/CustomerOrderServicesWeb
 ### Separated Frontend - Open Liberty (EJB)
 
 ```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/build-and-run-splitted-frontend-open.sh
 ```
@@ -104,6 +106,8 @@ Open http://localhost/CustomerOrderServicesWeb
 ### Strangled Catalog Service with Open Liberty (CDI)
 
 ```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
 $ sh scripts-docker/build-and-run-monolith-db2.sh
 $ sh scripts-docker/run-database-postgres-catalog.sh
 $ sh scripts-docker/run-kafka.sh
