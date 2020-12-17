@@ -31,7 +31,7 @@ function setup() {
   docker build -f Dockerfile -t storefront-catalog-reactive .
 
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all-quarkus-reactive.yml up -database
+  docker-compose -f docker-compose-all-quarkus-reactive.yml up -d
   
   echo "Notes:"
   echo "--- Launching Db2 takes up to 3-5 minutes"
