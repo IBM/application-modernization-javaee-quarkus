@@ -14,8 +14,8 @@ export default {
         "http://localhost/CustomerOrderServicesWeb/jaxrs/Category",
       products: [],
       categories: [],
-      loading: false,
-      error: "",
+      loadingProducts: false,
+      errorLoadingProducts: "",
     };
   },
   created() {
@@ -24,20 +24,38 @@ export default {
   },
   methods: {
     readProducts() {
-      fetch(apiUrlProducts)
-        .then((r) => r.json())
-        .then((json) => {
-          //this.products = json;
-          console.log(json);
-        });
+      if (this.loadingProducts == false) {
+        this.loadingProducts = true;
+        fetch(this.apiUrlProducts)
+          .then((r) => r.json())
+          .then((json) => {
+            this.loadingProducts = false;
+            this.products = json;
+            console.log(json);
+          })
+          .catch((error) => {
+            this.loadingProducts = false;
+            console.error(error);
+            this.errorLoadingProducts = error;
+          });
+      }
     },
     readCategories() {
-      fetch(this.apiUrlCategories, { mode: "no-cors" })
-        .then((r) => r.json())
-        .then((json) => {
-          //this.categories = json;
-          console.log(json.message);
-        });
+      if (this.loadingCategories == false) {
+        this.loadingCategories = true;
+        fetch(this.apiUrlCategories)
+          .then((r) => r.json())
+          .then((json) => {
+            this.loadingCategories = false;
+            this.categories = json;
+            console.log(json);
+          })
+          .catch((error) => {
+            this.loadingCategories = false;
+            console.error(error);
+            this.errorloadingCategories = error;
+          });
+      }
     },
   },
 };
