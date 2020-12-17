@@ -42,7 +42,8 @@ If you want to run the modernized application locally, you can invoke the follow
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
-$ sh scripts-docker/build-and-run.sh
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run.sh
 ```
 
 The 'build-and-run-sh' script will launch the following containers.
@@ -70,12 +71,12 @@ Open the "Order History" tab to see the updated price. The new price has been up
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
-$ sh scripts-docker/build-and-run-monolith-db2.sh
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
 ```
 
 ```
-$ sh scripts/install-was-dependencies.sh
-$ sh scripts-docker/build-and-run-monolith-app.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-app.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
@@ -84,8 +85,13 @@ Open http://localhost/CustomerOrderServicesWeb
 ### Separated Frontend - WebSphere Liberty
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/build-and-run-splitted-frontend.sh
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+```
+
+```
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-splitted-frontend.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
