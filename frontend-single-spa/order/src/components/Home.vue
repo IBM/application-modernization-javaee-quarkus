@@ -10,7 +10,7 @@
       <div class="">Total: {{ order.total }}</div>
       <div class="">Status: {{ order.status }}</div>
       <br />
-      <div v-for="lineitem in order.lineitems" :key="lineitem.orderId" class="">
+      <div v-for="lineitem in order.lineitems" :key="lineitem.name" class="">
         <div class="">Amount: {{ lineitem.amount }}</div>
         <div class="">Current Price: {{ lineitem.priceCurrent }}</div>
         <div class="">Price: {{ lineitem.product.price }}</div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { OrderAPI } from "@vue-app-mod/orderapi";
 export default {
   data() {
     return {
@@ -37,6 +38,10 @@ export default {
     };
   },
   created() {
+    console.log(OrderAPI.props);
+
+    
+
     this.readOrders();
   },
   methods: {
@@ -48,7 +53,6 @@ export default {
           .then((json) => {
             this.loadingOrders = false;
             this.$store.commit("addOrders", json);
-            console.log(json);
           })
           .catch((error) => {
             this.loadingOrders = false;

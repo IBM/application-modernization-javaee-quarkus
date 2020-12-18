@@ -24,7 +24,7 @@
     <h3>Categories</h3>
     <div
       v-for="category in this.$store.state.categories"
-      :key="category.id"
+      :key="category.name"
       class=""
     >
       <div class="">
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { OrderAPI } from "@vue-app-mod/orderapi";
 export default {
   data() {
     return {
@@ -59,6 +60,8 @@ export default {
     };
   },
   created() {
+    OrderAPI.sendOrder(1);
+    
     this.readProducts();
     this.readCategories();
   },
@@ -71,7 +74,6 @@ export default {
           .then((json) => {
             this.loadingProducts = false;
             this.$store.commit("addProducts", json);
-            console.log(json);
           })
           .catch((error) => {
             this.loadingProducts = false;
@@ -89,7 +91,6 @@ export default {
             this.loadingCategories = false;
             this.$store.commit("addCategories", json);
             this.categories = json;
-            console.log(json);
           })
           .catch((error) => {
             this.loadingCategories = false;

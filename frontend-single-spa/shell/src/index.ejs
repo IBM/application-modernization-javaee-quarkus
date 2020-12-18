@@ -15,7 +15,8 @@
 
         "@vue-app-mod/shell": "http://localhost:9000/vue-app-mod-shell.js",        
         "@vue-app-mod/navigator": "http://localhost:8501/js/app.js", 
-        "@vue-app-mod/order": "http://localhost:8504/js/app.js",        
+        "@vue-app-mod/order": "http://localhost:8504/js/app.js",  
+        "@vue-app-mod/orderapi": "http://localhost:9001/vue-app-mod-orderapi.js",      
         "@vue-app-mod/account": "http://localhost:8502/js/app.js",
         "@vue-app-mod/catalog": "http://localhost:8503/js/app.js"                
       }
@@ -36,6 +37,7 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/named-exports.js"></script>
 </head>
 <body>
+  <div id="niklas"></div>
   <script>
     System.import('@vue-app-mod/shell');
   </script>
