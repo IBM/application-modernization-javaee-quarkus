@@ -6,19 +6,55 @@ import Grid from '@material-ui/core/Grid';
 import Catalog from './views/Catalog/Catalog';
 import NavBar from './components/NavBar/NavBar';
 import LeftMenu from './components/LeftMenu/LeftMenu';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
+class Main extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartItems: []
+    }
+  }
+
+  addToCart = (product) => {
+    console.log("added to cart, ", product)
+  }
+
+  render() {
+    return (
+      <React.StrictMode>
+        <NavBar cartItems={this.state.cartItems} />
+        <Router>
+          <Grid container style={{ marginTop: 32 }}>
+            <Switch>
+              <Route exact path="/">
+                <Grid item xs={3}>
+                  <LeftMenu />
+                </Grid>
+                <Grid item xs={9}>
+                  <Catalog addToCart={this.addToCart} />
+                </Grid>
+              </Route>
+              <Route path="/about">
+                <h1>About</h1>
+              </Route>
+              <Route path="/account">
+                <h1>Account</h1>
+              </Route>
+            </Switch>
+          </Grid>
+        </Router>
+      </React.StrictMode>
+    )
+  }
+}
 ReactDOM.render(
-  <React.StrictMode>
-    <NavBar />
-    <Grid container style={{ marginTop: 32 }}>
-      <Grid item xs={3}>
-        <LeftMenu />
-      </Grid>
-      <Grid item xs={9}>
-        <Catalog />
-      </Grid>
-    </Grid>
-  </React.StrictMode>,
+  <Main />,
   document.getElementById('root')
 );
 

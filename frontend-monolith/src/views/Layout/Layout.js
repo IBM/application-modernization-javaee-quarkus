@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CenteredGrid({ items }) {
+export default function CenteredGrid({ items, addToCart }) {
   const classes = useStyles();
 
   return (
@@ -24,7 +24,7 @@ export default function CenteredGrid({ items }) {
           items.map(i => (
             <Grid item xs={4} key={Math.random()}>
               <Container>
-                <Product name={items[0].name} description={items[0].description} image={items[0].image} price={items[0].price} />
+                <Product name={items[0].name} description={items[0].description} image={items[0].image} price={items[0].price} addToCart={addToCart}/>
               </Container>
             </Grid>
           ))

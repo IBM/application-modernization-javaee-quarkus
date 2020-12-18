@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Product({ name, description, image, price}) {
+export default function Product({ name, description, image, price, addToCart}) {
   const classes = useStyles();
 
   return (
@@ -32,7 +32,7 @@ export default function Product({ name, description, image, price}) {
         </CardContent>
       </CardActionArea>
       <CardActions disableSpacing>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={addToCart}>
           <AddShoppingCartIcon /> Add to Cart
         </Button>
         <Box style={{ marginLeft: 'auto' }}>

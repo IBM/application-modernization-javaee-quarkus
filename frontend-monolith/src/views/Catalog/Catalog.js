@@ -28,31 +28,6 @@ class Catalog extends React.Component {
         name: "Return of the Jedi",
         description: "Episode IV: Return of the Jedi",
         image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
       }],
       loading: false,
       error: "",
@@ -70,7 +45,7 @@ class Catalog extends React.Component {
 
   render() {
     const { items } = this.state;
-    return <Layout items={items} />
+    return <Layout items={items} addToCart={this.props.addToCart} />
     ;
   }
   
