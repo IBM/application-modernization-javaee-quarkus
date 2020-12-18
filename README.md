@@ -42,7 +42,8 @@ If you want to run the modernized application locally, you can invoke the follow
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
-$ sh scripts-docker/build-and-run.sh
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run.sh
 ```
 
 The 'build-and-run-sh' script will launch the following containers.
@@ -69,8 +70,10 @@ Open the "Order History" tab to see the updated price. The new price has been up
 ### Monolith - WebSphere Liberty
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/build-and-run-monolith-app.sh
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-app.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
@@ -79,8 +82,10 @@ Open http://localhost/CustomerOrderServicesWeb
 ### Separated Frontend - WebSphere Liberty
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/build-and-run-splitted-frontend.sh
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-splitted-frontend.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
@@ -89,8 +94,10 @@ Open http://localhost/CustomerOrderServicesWeb
 ### Separated Frontend - Open Liberty (EJB)
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/build-and-run-splitted-frontend-open.sh
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-splitted-frontend-open.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
@@ -99,29 +106,18 @@ Open http://localhost/CustomerOrderServicesWeb
 ### Strangled Catalog Service with Open Liberty (CDI)
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/run-database-postgres-catalog.sh
-$ sh scripts-docker/run-kafka.sh
-$ sh scripts-docker/build-and-run-catalog.sh
-```
-
-Note: For some reason sometimes the messages don't arrive. In that case run this command:
-
-```
-$ sh scripts-docker/build-ol-native-backend-and-run-catalog.sh
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-catalog.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
 
-Open http://localhost/explorer
+Add the item "Return of the Jedi" to the shopping cart and update the price.
 
-Invoke these endpoints and check the logs:
-
-```
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
-$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
-```
 
 *Local Development - Catalog*
 
@@ -145,21 +141,15 @@ $ mvn liberty:dev
 ### Strangled Catalog Service with Quarkus
 
 ```
-$ sh scripts-docker/build-and-run-monolith-db2.sh
-$ sh scripts-docker/run-database-postgres-catalog.sh
-$ sh scripts-docker/run-kafka.sh
-$ sh scripts-docker/build-and-run-all-quarkus.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-all-quarkus.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
 
-Invoke these endpoints and check the logs:
-
-```
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Category
-$ curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer
-$ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"id\":1, \"price\":50}"
-```
+Add the item "Return of the Jedi" to the shopping cart and update the price.
 
 
 ### Monolith - WebSphere Traditional 9.0
@@ -168,7 +158,7 @@ The following scripts launch the application in a container. However the Java co
 
 ```
 $ sh scripts/install-dojo.sh
-$ sh scripts/install-dependencies.sh
+$ sh scripts/install-was-dependencies.sh
 $ sh scripts-docker/build-and-run-monolith-app-was90.sh
 ```
 

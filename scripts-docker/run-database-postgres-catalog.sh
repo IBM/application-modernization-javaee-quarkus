@@ -12,7 +12,7 @@ function setup() {
 
   cd ${root_folder}/scripts-docker
 
-  docker-compose -f docker-compose-postgres-catalog.yml up
+  docker-compose -f docker-compose-postgres-catalog.yml up -d
   
 }
 

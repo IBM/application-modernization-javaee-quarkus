@@ -17,7 +17,7 @@ function setup() {
   docker build . -t storefront-db2
   
   cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-monolith-db2.yml up
+  docker-compose -f docker-compose-monolith-db2.yml up -d
 }
 
 setup

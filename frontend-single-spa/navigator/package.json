@@ -1,0 +1,41 @@
+{
+  "name": "vue-app-mod-navigator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --port 8501",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit --passWithNoTests",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "3.6.5",
+    "single-spa-vue": "1.8.2",
+    "systemjs-webpack-interop": "2.1.1",
+    "vue": "2.6.10",
+    "vue-router": "3.3.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "4.4.6",
+    "@vue/cli-plugin-eslint": "4.4.6",
+    "@vue/cli-plugin-router": "4.4.6",
+    "@vue/cli-plugin-unit-jest": "4.4.6",
+    "@vue/cli-service": "4.4.6",
+    "@vue/eslint-config-prettier": "6.0.0",
+    "@vue/test-utils": "1.0.3",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.4.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-vue": "6.2.2",
+    "lint-staged": "10.2.11",
+    "prettier": "2.0.5",
+    "vue-cli-plugin-single-spa": "1.1.2",
+    "vue-template-compiler": "2.6.10"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
