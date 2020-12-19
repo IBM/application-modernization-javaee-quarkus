@@ -1,34 +1,20 @@
 import React from 'react';
-import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import Product from '../../components/Product/Product';
 import Layout from '../../views/Layout/Layout'
-
+import Axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
 class Catalog extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      items: [{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      },{
-        price: 29.99,
-        name: "Return of the Jedi",
-        description: "Episode IV: Return of the Jedi",
-        image: "https://whatsondisneyplus.com/wp-content/uploads/2020/04/Jedi.png",
-      }],
+      items: [],
       loading: false,
       error: "",
     }
@@ -36,7 +22,23 @@ class Catalog extends React.Component {
 
 
   componentDidMount() {
-    
+    const param = this.props.location.search || "?categoryId=2"
+    Axios({
+      method: 'GET',
+      url: '/Product' + param,
+    }).then(response => this.setState({ items: response.data }))
+      .catch(err => console.error(err));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!isEqual(prevState.items, this.props.items) && !isEqual(prevProps.items, this.props.items)) {
+      const param = this.props.location.search || "?categoryId=2"
+      Axios({
+        method: 'GET',
+        url: '/Product' + param,
+      }).then(response => this.setState({ items: response.data }))
+        .catch(err => console.error(err));
+    }
   }
 
   componentWillUnmount() {
@@ -46,9 +48,9 @@ class Catalog extends React.Component {
   render() {
     const { items } = this.state;
     return <Layout items={items} addToCart={this.props.addToCart} />
-    ;
+      ;
   }
-  
+
 }
 
-export default Catalog;
+export default withRouter(Catalog);

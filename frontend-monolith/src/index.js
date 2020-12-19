@@ -9,35 +9,85 @@ import LeftMenu from './components/LeftMenu/LeftMenu';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
+import Axios from 'axios';
+import { v4 as uuidv4 } from 'uuid'
+import { remove } from 'lodash';
 
 class Main extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: []
+      cartItems: [],
+      categoryItems: [],
+      products: [],
     }
   }
 
   addToCart = (product) => {
-    console.log("added to cart, ", product)
+    this.setState((state) => {
+      product.orderId = uuidv4()
+      state.cartItems.push(product);
+      return {
+        cartItems: state.cartItems
+      }
+    })
+  }
+
+  componentDidMount = () => {
+    // Get Category Menu Items
+    Axios({
+      method: 'GET',
+      baseURL: '',
+      url: '/Category',
+    }).then(response => this.updateCategoryItems(response.data)).catch(error => console.error(error));
+  }
+
+  updateCategoryItems = (data) => {
+    this.setState({ categoryItems: data })
+  }
+
+  getProducts = (id) => {
+    Axios({
+      method: 'GET',
+      url: '/Product',
+      params: {
+        categoryId: id
+      }
+    }).then(response => this.setState({ products: response.data }))
+      .catch(err => console.error(err));
+  }
+
+  deleteFromCart = (orderId) => {
+    console.log(orderId);
+    this.setState((state) => {
+      remove(state.cartItems, function (n) {
+        console.log(n)
+        console.log(n.orderId === orderId)
+        return n.orderId === orderId;
+      });
+      return {
+        cartItems: state.cartItems
+      }
+    })
   }
 
   render() {
+    console.log(this.state)
     return (
       <React.StrictMode>
-        <NavBar cartItems={this.state.cartItems} />
         <Router>
+          <NavBar cartItems={this.state.cartItems} deleteFromCart={this.deleteFromCart} />
           <Grid container style={{ marginTop: 32 }}>
             <Switch>
               <Route exact path="/">
                 <Grid item xs={3}>
-                  <LeftMenu />
+                  <LeftMenu categoryItems={this.state.categoryItems} getProducts={this.getProducts} />
                 </Grid>
                 <Grid item xs={9}>
-                  <Catalog addToCart={this.addToCart} />
+                  <Catalog addToCart={this.addToCart} items={this.state.products} />
                 </Grid>
               </Route>
               <Route path="/about">

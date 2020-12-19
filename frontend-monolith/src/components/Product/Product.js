@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, IconButton } from '@material-ui/core';
-import { Money as MoneyIcon, AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
+import { Box, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Product({ name, description, image, price, addToCart}) {
+export default function Product({ name, description, image, price, addToCart }) {
   const classes = useStyles();
 
   return (
