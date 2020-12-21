@@ -3,11 +3,11 @@ import { IconButton, List, ListItem, makeStyles, Popover } from '@material-ui/co
 import { AccountCircle } from '@material-ui/icons'
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  menuItem: {
-    textDecoration: 'none',
-    cursor: 'pointer'
-  }
+const useStyles = makeStyles(() => ({
+    menuItem: {
+        textDecoration: 'none',
+        cursor: 'pointer'
+    }
 }));
 
 export default function Account() {
