@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1 style="text-align: center;">Catalog</h1>
+    <div id="message" v-show="showLoadingMessage()" style="color:red">One of more products are being added to the shopping cart</div>
+    <br>
     <h3>Products</h3>
     <div
       v-for="product in this.$store.state.products"
@@ -19,6 +21,8 @@
       <div class="">
         {{ product.price }}
       </div>
+      <button v-on:click="addToShoppingCart(product.id)">Add to Shopping Cart</button>
+      <br />
       <br />
     </div>
     <h3>Categories</h3>
@@ -45,7 +49,7 @@
 </template>
 
 <script>
-import { OrderAPI } from "@vue-app-mod/orderapi";
+import { Messaging } from "@vue-app-mod/messaging";
 export default {
   data() {
     return {
@@ -59,13 +63,32 @@ export default {
       errorLoadingCategories: "",
     };
   },
-  created() {
-    OrderAPI.sendOrder(1);
-    
+  created() {      
     this.readProducts();
     this.readCategories();
   },
   methods: {
+    showLoadingMessage() {
+      let output = false;
+      if (this.$store.state.commands) {
+        this.$store.state.commands.forEach(command => {
+          if (command.status == "Invoked") output = true;
+        })
+      }
+      return output;
+    },
+    addToShoppingCart(productId) {
+      let commandId = Date.now()
+      let message = {
+        "topic": Messaging.TOPIC_COMMAND_ADD_ITEM,
+        "commandId": commandId,
+        "payload": {
+            "productId": productId,
+        }
+      }
+      this.$store.commit("sendCommand", message);
+      Messaging.send(message);
+    },
     readProducts() {
       if (this.loadingProducts == false) {
         this.loadingProducts = true;

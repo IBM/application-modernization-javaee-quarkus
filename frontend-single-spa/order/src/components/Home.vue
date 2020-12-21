@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="text-align: center;">Order</h1>
+    <h1 style="text-align: center;">Shopping Cart</h1>
 
     <div
       v-for="order in this.$store.state.orders"
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { OrderAPI } from "@vue-app-mod/orderapi";
+import { Messaging } from "@vue-app-mod/messaging";
 export default {
   data() {
     return {
@@ -38,7 +38,7 @@ export default {
     };
   },
   created() {
-    console.log(OrderAPI.props);
+    console.log(Messaging.props);
 
     
 

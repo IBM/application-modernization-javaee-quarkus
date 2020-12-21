@@ -18,7 +18,7 @@
               to="/order"
               class="nav-link"
               active-class="active-nav-link"
-              >Order</router-link
+              >Shopping Cart</router-link
             >
           </li>
         </ul>

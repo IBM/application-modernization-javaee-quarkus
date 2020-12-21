@@ -5,7 +5,7 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = webpackConfigEnv => {
   const defaultConfig = singleSpaDefaults({
     orgName: "vue-app-mod",
-    projectName: "orderapi",
+    projectName: "messaging",
     webpackConfigEnv
   });
 
@@ -22,7 +22,7 @@ module.exports = webpackConfigEnv => {
         }
       ]
     },
-    externals: ["vue", "vue-router", /^@vue-mf\/.+/],
+    externals: ["vue", "vue-router", /^@vue-app-mod\/.+/],
     plugins: [new VueLoaderPlugin()]
   });
 };
