@@ -1,5 +1,3 @@
-<script>
-
 const TOPIC_COMMAND_ADD_ITEM = "TOPIC_COMMAND_ADD_ITEM"
 
 export default {
@@ -18,4 +16,4 @@ export default {
     }
   }
 };
-</script>
+

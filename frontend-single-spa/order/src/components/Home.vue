@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { Messaging } from "@vue-app-mod/messaging";
+import BusinessFunctionality from './BusinessFunctionality.js'
 export default {
   data() {
     return {
@@ -38,9 +38,7 @@ export default {
     };
   },
   created() {
-    console.log(Messaging.props);
-
-    
+    BusinessFunctionality.initialize();
 
     this.readOrders();
   },
