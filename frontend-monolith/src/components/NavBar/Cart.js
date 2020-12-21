@@ -1,11 +1,11 @@
-import React from 'react'
 import { Badge, IconButton, List, ListItem, makeStyles, Popover } from '@material-ui/core'
 import { ShoppingCart as ShoppingCartIcon, Delete as DeleteIcon } from '@material-ui/icons'
+import React from 'react'
 
-const useStyles = makeStyles((theme) => ({
-  cartList: {
-    minWidth: 360
-  }
+const useStyles = makeStyles(() => ({
+    cartList: {
+        minWidth: 360
+    }
 }));
 
 export default function Cart({ cartItems, deleteFromCart }) {
