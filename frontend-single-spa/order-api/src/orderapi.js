@@ -1,25 +1,32 @@
-import { Observable } from 'rxjs';
-import { Messaging } from "@vue-app-mod/messaging";
+import { Observable, Subject } from 'rxjs';
 
 
 let OrderAPI = {
 
-  initialize() {
+  /**
+   * 
+   * @param {Subject} subject 
+   * @param {*} getObservable 
+   * @param {*} TOPIC_COMMAND_ADD_ITEM 
+   */
+  initialize(subject, getObservable, TOPIC_COMMAND_ADD_ITEM) {
     console.log("OrderAPI.initialize")
-    debugger
-    let jhg = Messaging;
-    
-      /*
-    if (Messaging.getObservable(Messaging.TOPIC_COMMAND_ADD_ITEM)) {
+
+    subject.subscribe({
+      next: (message) => { console.log("OrderAPI: "); console.log(message) }
+    })
+
+
+    if (getObservable(TOPIC_COMMAND_ADD_ITEM)) {
       console.log("nik huhu 7")
-    
-      Messaging.getObservable(Messaging.TOPIC_COMMAND_ADD_ITEM).subscribe(x => {
+
+      getObservable(TOPIC_COMMAND_ADD_ITEM).subscribe(x => {
         console.log("nik huhu")
         console.log(x);
       });
-     
+
     }
-     */
+
   },
 
   addProductToOrder(productId) {

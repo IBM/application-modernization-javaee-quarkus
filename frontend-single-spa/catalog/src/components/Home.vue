@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1 style="text-align: center;">Catalog</h1>
-    <div id="message" v-show="showLoadingMessage()" style="color:red">One of more products are being added to the shopping cart</div>
-    <br>
+    <h1 style="text-align: center">Catalog</h1>
+    <div id="message" v-show="showLoadingMessage()" style="color: red">
+      One of more products are being added to the shopping cart
+    </div>
+    <br />
     <h3>Products</h3>
     <div
       v-for="product in this.$store.state.products"
@@ -21,7 +23,9 @@
       <div class="">
         {{ product.price }}
       </div>
-      <button v-on:click="addToShoppingCart(product.id)">Add to Shopping Cart</button>
+      <button v-on:click="addToShoppingCart(product.id)">
+        Add to Shopping Cart
+      </button>
       <br />
       <br />
     </div>
@@ -35,7 +39,7 @@
         {{ category.name }}
       </div>
       <div
-        style="padding-left: 20px;"
+        style="padding-left: 20px"
         v-for="subCategory in category.subCategories"
         :key="subCategory.id"
         class=""
@@ -63,7 +67,7 @@ export default {
       errorLoadingCategories: "",
     };
   },
-  created() {      
+  created() {
     this.readProducts();
     this.readCategories();
   },
@@ -71,21 +75,21 @@ export default {
     showLoadingMessage() {
       let output = false;
       if (this.$store.state.commands) {
-        this.$store.state.commands.forEach(command => {
+        this.$store.state.commands.forEach((command) => {
           if (command.status == "Invoked") output = true;
-        })
+        });
       }
       return output;
     },
     addToShoppingCart(productId) {
-      let commandId = Date.now()
+      let commandId = Date.now();
       let message = {
-        "topic": Messaging.TOPIC_COMMAND_ADD_ITEM,
-        "commandId": commandId,
-        "payload": {
-            "productId": productId,
-        }
-      }
+        topic: Messaging.TOPIC_COMMAND_ADD_ITEM,
+        commandId: commandId,
+        payload: {
+          productId: productId,
+        },
+      };
       this.$store.commit("sendCommand", message);
       Messaging.send(message);
     },
