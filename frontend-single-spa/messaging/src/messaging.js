@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { OrderAPI } from "@vue-app-mod/order-api";
 
 const TOPIC_COMMAND_ADD_ITEM = "TOPIC_COMMAND_ADD_ITEM"
 let observable_TOPIC_COMMAND_ADD_ITEM;
@@ -7,6 +8,8 @@ export default {
   TOPIC_COMMAND_ADD_ITEM,
 
   send(message) {
+    OrderAPI.initialize()
+
     let topic = message.topic
     let commandId = message.commandId
     let payload = message.payload
@@ -15,7 +18,6 @@ export default {
     switch(topic) {
       case TOPIC_COMMAND_ADD_ITEM:
         console.log("productId: " + payload.productId)
-        console.log("nik1")
         if (!observable_TOPIC_COMMAND_ADD_ITEM) {
           console.log("nik2")
           observable_TOPIC_COMMAND_ADD_ITEM = new Observable(subscriber => {

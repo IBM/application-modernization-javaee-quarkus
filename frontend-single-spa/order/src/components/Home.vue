@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import BusinessFunctionality from './BusinessFunctionality.js'
 export default {
   data() {
     return {
@@ -38,8 +37,6 @@ export default {
     };
   },
   created() {
-    BusinessFunctionality.initialize();
-
     this.readOrders();
   },
   methods: {
