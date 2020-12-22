@@ -100,7 +100,22 @@ export default {
         },
       };
       this.$store.commit("sendCommand", message);
-      Messaging.send(message);
+      //fetch("http://localhost:8504/js/app.js")
+      //fetch("http://localhost:9000/order")
+        //  .then((json) => {
+            console.log("nik1")
+            //this.loadingProducts = false;
+            //this.$store.commit("addProducts", json);
+            Messaging.send(message);
+          //})
+         // .catch((error) => {
+            //this.loadingProducts = false;
+           // console.error(error);
+            //this.errorLoadingProducts = error;
+         // })
+          
+      
+      
     },
     readProducts() {
       if (this.loadingProducts == false) {
