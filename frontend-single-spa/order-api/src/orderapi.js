@@ -59,7 +59,8 @@ let OrderAPI = {
         let messageCommandResponseAddItem = {
           topic: Messaging.TOPIC_COMMAND_RESPONSE_ADD_ITEM,
           payload: {
-            succesful: true            
+            succesful: true,
+            commandId: commandId           
           }
         };
         Messaging.send(messageCommandResponseAddItem);

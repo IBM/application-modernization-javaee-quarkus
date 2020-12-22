@@ -5,13 +5,28 @@ const TOPIC_COMMAND_ADD_ITEM = "TOPIC_COMMAND_ADD_ITEM"
 const TOPIC_COMMAND_RESPONSE_ADD_ITEM = "TOPIC_COMMAND_RESPONSE_ADD_ITEM"
 const TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED = "TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED"
 
+const MICRO_FRONTEND_NAVIGATOR = "MICRO_FRONTEND_NAVIGATOR"
+
+let observableForOrderAPI
+let observableForNavigator
+
 export default {
   TOPIC_COMMAND_ADD_ITEM,
   TOPIC_COMMAND_RESPONSE_ADD_ITEM,
   TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED,
 
+  MICRO_FRONTEND_NAVIGATOR,
+
+  getObservable(microFrontendName) {
+    switch (microFrontendName) {      
+      case MICRO_FRONTEND_NAVIGATOR:
+        observableForNavigator = new Subject()
+        return observableForNavigator
+    }
+  },
+
   send(message) {
-    const observableForOrderAPI = new Subject()
+    observableForOrderAPI = new Subject(),
     OrderAPI.initialize(this, observableForOrderAPI)
 
     let topic = message.topic
@@ -28,7 +43,7 @@ export default {
         // to be done
         break
       case TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED:
-        // to be done
+        observableForNavigator.next(message)
         break
     }
   },
