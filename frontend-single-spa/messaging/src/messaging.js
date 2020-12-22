@@ -6,9 +6,11 @@ const TOPIC_COMMAND_RESPONSE_ADD_ITEM = "TOPIC_COMMAND_RESPONSE_ADD_ITEM"
 const TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED = "TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED"
 
 const MICRO_FRONTEND_NAVIGATOR = "MICRO_FRONTEND_NAVIGATOR"
+const MICRO_FRONTEND_CATALOG = "MICRO_FRONTEND_CATALOG"
 
 let observableForOrderAPI
 let observableForNavigator
+let observableForCatalog
 
 export default {
   TOPIC_COMMAND_ADD_ITEM,
@@ -16,12 +18,20 @@ export default {
   TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED,
 
   MICRO_FRONTEND_NAVIGATOR,
+  MICRO_FRONTEND_CATALOG,
 
   getObservable(microFrontendName) {
     switch (microFrontendName) {      
       case MICRO_FRONTEND_NAVIGATOR:
-        observableForNavigator = new Subject()
+        if (!observableForNavigator) {
+          observableForNavigator = new Subject()
+        }
         return observableForNavigator
+      case MICRO_FRONTEND_CATALOG:
+        if (!observableForCatalog) {
+          observableForCatalog = new Subject()
+        }
+        return observableForCatalog
     }
   },
 
@@ -40,10 +50,14 @@ export default {
         observableForOrderAPI.complete()
         break
       case TOPIC_COMMAND_RESPONSE_ADD_ITEM:
-        // to be done
+        if (observableForCatalog) {
+          observableForCatalog.next(message)
+        }
         break
       case TOPIC_EVENT_AMOUNT_LINE_ITEMS_CHANGED:
-        observableForNavigator.next(message)
+        if (observableForNavigator) {
+          observableForNavigator.next(message)
+        }
         break
     }
   },

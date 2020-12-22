@@ -68,6 +68,15 @@ export default {
     };
   },
   created() {
+    let observable = Messaging.getObservable(Messaging.MICRO_FRONTEND_CATALOG)
+    observable.subscribe({
+      next: (message) => { 
+        console.log("catalog - Home.vue - message: ")
+        console.log(message)
+        this.$store.commit("commandResponseReceived", message.payload);
+      }
+    })
+
     this.readProducts();
     this.readCategories();
   },
