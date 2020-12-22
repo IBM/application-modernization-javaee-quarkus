@@ -1,38 +1,19 @@
 import { Observable, Subject } from 'rxjs';
 
-
 let OrderAPI = {
 
-  /**
-   * 
-   * @param {Subject} subject 
-   * @param {*} getObservable 
-   * @param {*} TOPIC_COMMAND_ADD_ITEM 
-   */
-  initialize(subject, getObservable, TOPIC_COMMAND_ADD_ITEM) {
-    console.log("OrderAPI.initialize")
+  initialize(observableFromMessaging) {
+    console.log("order-api - orderapi.js - initialize invoked")
 
-    subject.subscribe({
-      next: (message) => { console.log("OrderAPI: "); console.log(message) }
+    observableFromMessaging.subscribe({
+      next: (message) => { 
+        console.log("order-api - orderapi.js - message:")
+        console.log("Topic: " + message.topic) 
+        console.log("CommandId: " + message.commandId) 
+        console.log("ProductId: " + message.payload.productId) 
+      }
     })
-
-
-    if (getObservable(TOPIC_COMMAND_ADD_ITEM)) {
-      console.log("nik huhu 7")
-
-      getObservable(TOPIC_COMMAND_ADD_ITEM).subscribe(x => {
-        console.log("nik huhu")
-        console.log(x);
-      });
-
-    }
-
-  },
-
-  addProductToOrder(productId) {
-    console.log("addProductToOrder")
   }
 }
 
 export default OrderAPI
-
