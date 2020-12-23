@@ -48,9 +48,9 @@ services:
       - 9001:80
     restart: always
 
-  mf-orderapi:
-    build: ./order-api
-    container_name: mf-orderapi
+  mf-proxy:
+    build: ./proxy
+    container_name: mf-proxy
     ports:
-      - 9002:80
+      - 8080:80
     restart: always
