@@ -21,8 +21,6 @@ function setup() {
   docker rm -f kafka
   docker rm -f postgres
   docker rm -f storefront-db2
-  docker rm -f scripts_ui_1
-  docker rm -f scripts_server_1
   docker rm -f ibm-transformationAdvisor-couchDB
   docker rm -f storefront-backend-open
   docker rm -f kafka-tool
