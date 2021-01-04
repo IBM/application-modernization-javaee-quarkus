@@ -30,8 +30,12 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Remaining Quarkus monolith
         - Synchronous code
         - Runs as native executable
+8. Micro frontend based web application
+    - Developed with single-spa and Vue.js
+    - Split in six containers
+    - Messaging done via RxJS
 
-Screenshot of storefront application:
+Screenshot of legacy storefront application:
 
 <kbd><img src="documentation/storefront-shop.png" /></kbd>
 
@@ -50,11 +54,14 @@ $ ROOT_FOLDER=$(pwd)
 $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run.sh
 ```
 
-The 'build-and-run-sh' script will launch the following containers.
+The 'build-and-run.sh' script will launch the following containers.
 
 <kbd><img src="documentation/Containers.png" /></kbd>
 
-Once everything has been started, you can open http://localhost/CustomerOrderServicesWeb.
+Once everything has been started, you can open the web applications:
+
+* Legacy Dojo frontend: http://localhost/CustomerOrderServicesWeb
+* Modern micro-frontend based application: http://localhost:8080
 
 Add the item "Return of the Jedi" to the shopping cart via drag and drop.
 
@@ -154,6 +161,17 @@ $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-all-quarkus.sh
 Open http://localhost/CustomerOrderServicesWeb
 
 Add the item "Return of the Jedi" to the shopping cart and update the price.
+
+
+### Micro-Frontend based Web Application
+
+In addition to the previous commands run this command:
+
+```
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-single-spa.sh
+```
+
+Open http://localhost:8080
 
 
 ### Monolith - WebSphere Traditional 9.0
