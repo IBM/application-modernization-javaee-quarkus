@@ -1,0 +1,49 @@
+version: "3.5"
+
+networks:
+  default:
+    external:
+      name: store-front-network
+
+services:
+  storefront-mf-shell:
+    image: storefront-mf-shell
+    container_name: storefront-mf-shell
+    ports:
+      - 8080:80
+    restart: always
+
+  storefront-mf-navigator:
+    image: storefront-mf-navigator
+    container_name: storefront-mf-navigator
+    ports:
+      - 8501:80
+    restart: always
+
+  storefront-mf-account:
+    image: storefront-mf-account
+    container_name: storefront-mf-account
+    ports:
+      - 8502:80
+    restart: always
+
+  storefront-mf-catalog:
+    image: storefront-mf-catalog
+    container_name: storefront-mf-catalog
+    ports:
+      - 8503:80
+    restart: always
+
+  storefront-mf-order:
+    image: storefront-mf-order
+    container_name: storefront-mf-order
+    ports:
+      - 8504:80
+    restart: always
+
+  storefront-mf-messaging:
+    image: storefront-mf-messaging
+    container_name: storefront-mf-messaging
+    ports:
+      - 9001:80
+    restart: always

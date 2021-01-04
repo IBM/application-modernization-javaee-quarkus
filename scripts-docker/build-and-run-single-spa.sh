@@ -8,31 +8,10 @@ function _out() {
   echo "$(date +'%F %H:%M:%S') $@"
 }
 
-function setup() {   
+function setup() { 
   cd ${root_folder}
-  sh scripts-docker/stop-everything.sh
-
-  sh scripts/install-was-dependencies.sh
-
-  docker network create store-front-network
-
-  sh scripts-docker/build-monolith-db2.sh
+  sh scripts-docker/stop-single-spa-frontend.sh
   
-  cd ${root_folder}/proxy
-  docker build -f Dockerfile-all-quarkus -t proxy-nginx .
-
-  cd ${root_folder}/monolith-quarkus-synch  
-  docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-backend-quarkus .
-
-  cd ${root_folder}/frontend-dojo/
-  docker build -f Dockerfile.multistage -t storefront-frontend .
-  
-  cd ${root_folder}/service-catalog-quarkus-reactive
-  docker build -f Dockerfile -t storefront-catalog-reactive .
-
-  cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all-quarkus-reactive.yml up -d
-
   cd ${root_folder}/frontend-single-spa/account
   docker build -t storefront-mf-account .
 
@@ -53,13 +32,18 @@ function setup() {
 
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-single-spa.yml up -d
-  
+
   echo "Notes:"
   echo "--- Docker Desktop requires 12 GB memory and 8 CPUs"
   echo "--- Launching everything takes roughly 10 minutes the first time"
+  echo "--- Launching Db2 takes up to 3-5 minutes"
   echo "Prerequisites:"
   echo "--- Docker needs to be installed locally"
   echo "--- git needs to be installed locally"
+  echo "--- sh ${root_folder}/scripts-docker/run-monolith-db2.sh"
+  echo "--- sh ${root_folder}/scripts-docker/run-database-postgres-catalog.sh"
+  echo "--- sh ${root_folder}/scripts-docker/run-kafka.sh"
+  echo "--- sh ${root_folder}/scripts-docker/build-and-run-all-quarkus.sh"
   echo "Stop containers:"
   echo "--- sh ${root_folder}/scripts-docker/stop-services.sh"
   echo "--- sh ${root_folder}/scripts-docker/stop-everything.sh"
@@ -76,7 +60,10 @@ function setup() {
   CREATE_NEW="http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
   echo "--- curl -X PUT ${CREATE_NEW}"
   echo "Follow the logs:"
-  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-all-quarkus-reactive.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-all-quarkus-reactive-services.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-monolith-db2.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-postgres-catalog.yml logs -f"
+  echo "--- docker-compose -f ${root_folder}/scripts-docker/docker-compose-kafka.yml logs -f"
 }
 
 setup
