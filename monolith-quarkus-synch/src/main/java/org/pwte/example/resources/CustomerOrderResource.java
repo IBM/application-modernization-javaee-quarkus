@@ -104,7 +104,8 @@ public class CustomerOrderResource {
 			}
 			*/
 			Order openOrder = customerOrderServices.addLineItem(lineItem);			
-			return Response.ok(openOrder).header("ETag", openOrder.getVersion()).location(new URI("Customer")).build();
+			//return Response.ok(openOrder).header("ETag", openOrder.getVersion()).location(new URI("Customer")).build();
+			return Response.ok(openOrder).build();
 		} catch (CustomerDoesNotExistException e) {
 			throw new WebApplicationException(Status.NOT_FOUND);
 		} catch (ProductDoesNotExistException e) {
