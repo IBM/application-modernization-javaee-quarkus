@@ -95,12 +95,14 @@ public class CustomerOrderResource {
 		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Quarkus - org.pwte.example.resources.CustomerOrderResource");
 				
 		try {
+			/*
 			List<String> matchHeaders = headers.getRequestHeader("If-Match");
 			if((matchHeaders != null) && (matchHeaders.size()>0))
 			{
 				
 				lineItem.setVersion(new Long(matchHeaders.get(0)));
 			}
+			*/
 			Order openOrder = customerOrderServices.addLineItem(lineItem);			
 			return Response.ok(openOrder).header("ETag", openOrder.getVersion()).location(new URI("Customer")).build();
 		} catch (CustomerDoesNotExistException e) {
