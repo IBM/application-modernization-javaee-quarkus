@@ -37,7 +37,7 @@ export default {
         headers: { 
           "Content-Type": "application/json", 
           "Accept": "*/*",
-          "If-Match": 4
+          "If-Match": 1
         },
         body: JSON.stringify(body)
       }

@@ -84,15 +84,15 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		}
 		else
 		{
-			if(existingOpenOrder.getVersion() != newLineItem.getVersion())
-			{
-				System.out.println("Version not equal: " + existingOpenOrder.getVersion() + "---"+ newLineItem.getVersion());
-				throw new OrderModifiedException();
-			}
-			else
-			{
+			//if(existingOpenOrder.getVersion() != newLineItem.getVersion())
+			//{
+			//	System.out.println("Version not equal: " + existingOpenOrder.getVersion() + "---"+ newLineItem.getVersion());
+			//	throw new OrderModifiedException();
+			//}
+			//else
+			//{
 				existingOpenOrder.setVersion(newLineItem.getVersion());
-			}
+			//}
 		}
 		BigDecimal amount = product.getPrice().multiply(new BigDecimal(quantity));
 		Set<LineItem> lineItems = existingOpenOrder.getLineitems();

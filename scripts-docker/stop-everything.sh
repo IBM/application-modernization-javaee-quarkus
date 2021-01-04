@@ -29,6 +29,16 @@ function setup() {
   docker rm -f storefront-backend-open-native
   docker rm -f storefront-backend-quarkus
   docker rm -f storefront-catalog-reactive
+
+  docker rm -f mf-account
+  docker rm -f mf-proxy
+  docker rm -f mf-shell
+  docker rm -f mf-order
+  docker rm -f mf-catalog
+  docker rm -f mf-messaging
+  docker rm -f mf-navigator
+  
+  
 }
 
 setup
