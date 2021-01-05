@@ -1,7 +1,7 @@
 <template>
   <div>
     <md-app>
-      <md-app-drawer md-permanent="full">
+      <md-app-drawer md-permanent="full" style="width: 240px;">
         <md-toolbar class="md-transparent" md-elevation="0">
           <h4 style="margin-left:10px">Storefront</h4>
         </md-toolbar>
@@ -21,12 +21,13 @@
             <span class="md-list-item-text">{{ category.name }}</span>
           </md-list-item>
             <div
-              style="padding-left: 70px"
+              style="padding-left: 50px"
               v-for="subCategory in category.subCategories"
               :key="subCategory.id"
               class=""
             >
-              <md-list-item to="/catalog" style="padding-left:0px" exact>
+              <md-list-item @click="loadProducts(subCategory.id, subCategory.name)" style="padding-left:0px" exact>
+                <md-icon style="margin-right: 10px;">explore</md-icon>
                 <span class="md-list-item-text">{{ subCategory.name }}</span>
               </md-list-item>
             </div>
@@ -92,6 +93,11 @@ export default {
       });
   },
   methods: {
+    loadProducts (categoryId, categoryName) {
+      // to be done: send event
+      console.log('id: '+ categoryId + ' name: ' + categoryName)
+      this.$router.push('/catalog').catch(err => {})
+    },
     readCategories() {
       if (this.loadingCategories == false) {
         this.loadingCategories = true;
@@ -100,7 +106,6 @@ export default {
           .then((json) => {
             this.loadingCategories = false;
             this.categories = json;
-            console.log(this.categories);
           })
           .catch((error) => {
             this.loadingCategories = false;

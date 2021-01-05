@@ -19,7 +19,8 @@
         "@vue-app-mod/messaging": "http://localhost:9001/vue-app-mod-messaging.js",
         "@vue-app-mod/navigator": "http://localhost:8501/js/app.js", 
         "@vue-app-mod/order": "http://localhost:8504/js/app.js",          
-        "@vue-app-mod/catalog": "http://localhost:8503/js/app.js"                   
+        "@vue-app-mod/catalog": "http://localhost:8503/js/app.js",
+        "@vue-app-mod/account": "http://localhost:8502/js/app.js"                   
       }
     }
   </script>
@@ -32,7 +33,8 @@
         "@vue-app-mod/order-api": "http://localhost:9002/vue-app-mod-order-api.js",
         "@vue-app-mod/navigator": "http://localhost:8501/js/app.js", 
         "@vue-app-mod/order": "http://localhost:8504/js/app.js",          
-        "@vue-app-mod/catalog": "http://localhost:8503/js/app.js"    
+        "@vue-app-mod/catalog": "http://localhost:8503/js/app.js",
+        "@vue-app-mod/account": "http://localhost:8502/js/app.js"                      
       }
     }
   </script>
@@ -49,9 +51,10 @@
 
 <body>
   <div style="display: flex;flex-direction: row;">
-    <div id="navigator" style="order: 1;flex-grow: 3;"></div>
-    <div id="catalog" style="order: 2; flex-grow: 9;"></div>
-    <div id="order" style="order: 2; flex-grow: 9;"></div>
+    <div id="navigator" style="order: 1;flex-grow: 2;"></div>
+    <div id="catalog" style="order: 2; flex-grow: 10;"></div>
+    <div id="order" style="order: 2; flex-grow: 10;"></div>
+    <div id="account" style="order: 2; flex-grow: 10;"></div>
   </div>
   <script>
     System.import('@vue-app-mod/shell');
