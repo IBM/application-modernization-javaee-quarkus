@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
     }
   </script>
   <% if (isLocal) { %>
-  <script type="systemjs-importmap">
+    <script type="systemjs-importmap">
     {
       "imports": {
         "@vue-app-mod/shell": "http://localhost:8080/vue-app-mod-shell.js",        
@@ -35,20 +36,27 @@
       }
     }
   </script>
-  <% } %>
-  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/amd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/named-exports.js"></script>
-  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <% } %>
+      <script src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/amd.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/named-exports.js"></script>
+      <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+        rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body>
-  <div id="niklas"></div>
+  <div style="display: flex;flex-direction: row;">
+    <div id="navigator" style="order: 1;flex-grow: 3;"></div>
+    <div id="catalog" style="order: 2; flex-grow: 9;"></div>
+    <div id="order" style="order: 2; flex-grow: 9;"></div>
+  </div>
   <script>
     System.import('@vue-app-mod/shell');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>
+
 </html>
