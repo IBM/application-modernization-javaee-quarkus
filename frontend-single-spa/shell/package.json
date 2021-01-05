@@ -1,7 +1,7 @@
 {
   "name": "vue-app-mod-shell",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --port 9000 --env.isLocal=true",
+    "start": "webpack-dev-server --mode=development --port 8080 --env.isLocal=true",
     "lint": "eslint src",
     "test": "jest --passWithNoTests",
     "format": "prettier --write './**'",

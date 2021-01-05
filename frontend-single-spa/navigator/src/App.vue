@@ -1,40 +1,45 @@
 <template>
   <div>
-    <nav class="navbar-links">
-      <div>
-        <ul>
-          <li>
-            <router-link
+    <aside class="mdc-drawer">
+  <div class="mdc-drawer__content">
+    <nav class="mdc-list">
+     
+          <router-link
               to="/catalog"
-              class="nav-link"
+              class="mdc-list-item mdc-list-item--activated" aria-current="page"
               active-class="active-nav-link"
               >Catalog</router-link
             >
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <router-link
+      <a class="mdc-list-item" >
+        <span class="mdc-list-item__ripple"></span>
+        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+        <span class="mdc-list-item__text">
+           <router-link
               to="/order"
               class="nav-link"
               active-class="active-nav-link"
               >Shopping Cart ({{ amountLineItems }})</router-link
             >
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <router-link
+        </span>
+      </a>
+      <a class="mdc-list-item" >
+        <span class="mdc-list-item__ripple"></span>
+        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+        <span class="mdc-list-item__text">
+          <router-link
               to="/account"
               class="nav-link"
               active-class="active-nav-link"
               >Account</router-link
             >
-          </li>
-        </ul>
-      </div>
+        </span>
+      </a>
     </nav>
-    <router-view />
+  </div>
+   <router-view />
+</aside>
+    
+   
   </div>
 </template>
 
