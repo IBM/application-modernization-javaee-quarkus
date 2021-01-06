@@ -39,6 +39,10 @@ Screenshot of legacy storefront application:
 
 <kbd><img src="documentation/storefront-shop.png" /></kbd>
 
+Screenshot of modernized storefront application:
+
+<kbd><img src="documentation/modernized-ui-1.png" /></kbd>
+
 
 ### TL;DR
 
