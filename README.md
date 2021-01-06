@@ -50,7 +50,7 @@ If you want to run the modernized application locally, you can invoke the follow
 
 Notes:
 * Docker requires 12 GB memory and 8 CPUs
-* It takes roughly 10 minutes to start everything
+* It takes roughly 15 - 20 minutes to start everything
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
