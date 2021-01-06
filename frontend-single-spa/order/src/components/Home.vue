@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 style="text-align: center;">Shopping Cart</h1>
-
+        <mwc-top-app-bar-fixed>
+      <div slot="title">Shopping Cart</div>
+    </mwc-top-app-bar-fixed>
+<br><br>
     <div
       v-for="order in this.$store.state.orders"
       :key="order.orderId"

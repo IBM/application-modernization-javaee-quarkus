@@ -1,11 +1,12 @@
 <template>
   <div>
+    <mwc-top-app-bar-fixed>
+      <div slot="title">Electronic and Movie Depot</div>
+    </mwc-top-app-bar-fixed>
+    
     <md-app>
       <md-app-drawer md-permanent="full" style="width: 240px;">
-        <md-toolbar class="md-transparent" md-elevation="0">
-          <h4 style="margin-left:10px">Storefront</h4>
-        </md-toolbar>
-
+        <br>
         <md-list>
           <md-list-item to="/catalog" exact>
             <md-icon style="margin-right: 10px;">explore</md-icon>
@@ -94,8 +95,16 @@ export default {
   },
   methods: {
     loadProducts (categoryId, categoryName) {
-      // to be done: send event
-      console.log('id: '+ categoryId + ' name: ' + categoryName)
+      let commandId = Date.now();
+      let message = {
+        topic: Messaging.TOPIC_NAVIGATOR_CATEGORY_CHANGED,
+        commandId: commandId,
+        payload: {
+          categoryId: categoryId,
+          categoryName: categoryName
+        },
+      };
+      Messaging.send(message);
       this.$router.push('/catalog').catch(err => {})
     },
     readCategories() {

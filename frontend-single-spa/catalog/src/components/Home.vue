@@ -1,86 +1,96 @@
 <template>
   <div>
-    <h1 style="text-align: center">Catalog</h1>
-    <div id="message" v-show="showLoadingMessage()" style="color: red">
-      One of more products are being added to the shopping cart
-    </div>
-    <br />
-    <h3>Products</h3>
-    <div
-      v-for="product in this.$store.state.products"
-      :key="product.id"
-      class=""
-    >
-      <div class="">
-        {{ product.name }}
-      </div>
-      <div class="">
-        {{ product.description }}
-      </div>
-      <div class="">
-        {{ product.image }}
-      </div>
-      <div class="">
-        {{ product.price }}
-      </div>
-      <button v-on:click="addToShoppingCart(product.id)">
-        Add to Shopping Cart
-      </button>
-      <br />
-      <br />
-    </div>
-    <h3>Categories</h3>
-    <div
-      v-for="category in this.$store.state.categories"
-      :key="category.name"
-      class=""
-    >
-      <div class="">
-        {{ category.name }}
-      </div>
+    <mwc-top-app-bar-fixed>
+      <div slot="title">Catalog - {{ categoryName }}</div>
+    </mwc-top-app-bar-fixed>
+
+    <div style="margin-left: 20px">
+      <br>
+      <mwc-list class="mdc-list" id="mdclist">
       <div
-        style="padding-left: 20px"
-        v-for="subCategory in category.subCategories"
-        :key="subCategory.id"
+        v-for="product in this.$store.state.products"
+        :key="product.id"
         class=""
-      >
-        <div class="">
-          {{ subCategory.name }}
-        </div>
+      >        
+          <mwc-list-item class="mwc-list-item" twoline graphic="large" hasMeta v-on:click="listItemSelected(product.id)">
+            <span>{{ product.name }}</span>
+            <span slot="secondary">{{ product.description }}</span>
+
+            <img slot="graphic" v-bind:src="product.image" />
+
+            <span slot="meta">{{ product.price }}</span>
+          </mwc-list-item>   
+          <br>     
       </div>
+      </mwc-list>
+
+      <br>
+      <mwc-button id='addbutton'
+        outlined
+        :disabled="this.selectedProductId == ''"
+        label="Add to Shopping Cart"
+        v-on:click="addButtonClicked()"
+      ></mwc-button>
+      <br />
+      <br />
+      <div id="message" v-show="showLoadingMessage()">
+        Products are being added to the shopping cart ...
+      </div>
+      <br />
     </div>
   </div>
 </template>
 
 <script>
 import { Messaging } from "@vue-app-mod/messaging";
+import "@material/mwc-button";
+import "@material/mwc-list/mwc-list.js";
+import "@material/mwc-list/mwc-list-item.js";
+import "@material/mwc-icon";
+import "@material/mwc-top-app-bar-fixed";
+
 export default {
   data() {
     return {
       apiUrlProducts:
-        "http://localhost:9083/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2",
-      apiUrlCategories:
-        "http://localhost/CustomerOrderServicesWeb/jaxrs/Category",
+        "http://localhost:9083/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=",
       loadingProducts: false,
-      loadingCategories: false,
       errorLoadingProducts: "",
-      errorLoadingCategories: "",
+      categoryName: "Movies",
+      selectedProductId: ""
     };
   },
-  created() {
-    let observable = Messaging.getObservable(Messaging.MICRO_FRONTEND_CATALOG)
+  computed: {    
+  },
+  created() {   
+    let observable = Messaging.getObservable(Messaging.MICRO_FRONTEND_CATALOG);
     observable.subscribe({
-      next: (message) => { 
-        console.log("catalog - Home.vue - message: ")
-        console.log(message)
-        this.$store.commit("commandResponseReceived", message.payload);
-      }
-    })
+      next: (message) => {
+        console.log("catalog - Home.vue - message: ");
+        switch (message.topic) {
+          case Messaging.TOPIC_COMMAND_RESPONSE_ADD_ITEM:
+            this.$store.commit("commandResponseReceived", message.payload);
+            break;
+          case Messaging.TOPIC_NAVIGATOR_CATEGORY_CHANGED:
+            this.readProducts(
+              message.payload.categoryId,
+              message.payload.categoryName
+            );
+            break;
+        }
+      },
+    });
 
-    this.readProducts();
-    this.readCategories();
+    this.readProducts(2, "Movies");
   },
   methods: {
+    addButtonClicked() {
+      this.addToShoppingCart(this.selectedProductId)        
+      this.selectedProductId = ''
+    },
+    listItemSelected(productId) {      
+      this.selectedProductId = productId;          
+    },
     showLoadingMessage() {
       let output = false;
       if (this.$store.state.commands) {
@@ -102,10 +112,11 @@ export default {
       this.$store.commit("sendCommand", message);
       Messaging.send(message);
     },
-    readProducts() {
+    readProducts(categoryId, categoryName) {
+      this.categoryName = categoryName;
       if (this.loadingProducts == false) {
         this.loadingProducts = true;
-        fetch(this.apiUrlProducts)
+        fetch(this.apiUrlProducts + categoryId)
           .then((r) => r.json())
           .then((json) => {
             this.loadingProducts = false;
@@ -118,23 +129,14 @@ export default {
           });
       }
     },
-    readCategories() {
-      if (this.loadingCategories == false) {
-        this.loadingCategories = true;
-        fetch(this.apiUrlCategories)
-          .then((r) => r.json())
-          .then((json) => {
-            this.loadingCategories = false;
-            this.$store.commit("addCategories", json);
-            this.categories = json;
-          })
-          .catch((error) => {
-            this.loadingCategories = false;
-            console.error(error);
-            this.errorloadingCategories = error;
-          });
-      }
-    },
   },
 };
 </script>
+<style scoped>
+.mwc-list-item {
+  --mdc-list-item-graphic-size: 80px;
+}
+.mdc-list {
+  max-width: 500px;
+}
+</style>

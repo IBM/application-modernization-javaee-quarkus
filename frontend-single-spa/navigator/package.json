@@ -13,6 +13,7 @@
     "single-spa-vue": "1.8.2",
     "systemjs-webpack-interop": "2.1.1",
     "vue": "2.6.10",
+    "vue-material": "^1.0.0-beta-15",
     "vue-router": "3.3.4"
   },
   "devDependencies": {

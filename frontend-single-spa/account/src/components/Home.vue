@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 style="text-align: center;">Account</h1>
+    <mwc-top-app-bar-fixed>
+      <div slot="title">Account</div>
+    </mwc-top-app-bar-fixed>
   </div>
 </template>
 <script>
