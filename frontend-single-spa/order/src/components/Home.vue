@@ -1,28 +1,37 @@
 <template>
   <div>
-        <mwc-top-app-bar-fixed>
-      <div slot="title">Shopping Cart</div>
-    </mwc-top-app-bar-fixed>
-<br><br>
-    <div
-      v-for="order in this.$store.state.orders"
-      :key="order.orderId"
-      class=""
-    >
-      <div class="">Total: {{ order.total }}</div>
-      <div class="">Status: {{ order.status }}</div>
-      <br />
-      <div v-for="lineitem in order.lineitems" :key="lineitem.name" class="">
-        <div class="">Amount: {{ lineitem.amount }}</div>
-        <div class="">Current Price: {{ lineitem.priceCurrent }}</div>
-        <div class="">Price: {{ lineitem.product.price }}</div>
-        <div class="">Product Name: {{ lineitem.product.name }}</div>
-        <div class="">
-          Product Description: {{ lineitem.product.description }}
-        </div>
-        <div class="">Image: {{ lineitem.product.image }}</div>
-        <div class="">Quantity: {{ lineitem.quantity }}</div>
-        <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div style="margin-left: 20px">
+      <h3>Shopping Cart</h3>
+      <div
+        v-for="order in this.$store.state.orders"
+        :key="order.orderId"
+        class=""
+      >
+        <mwc-list class="mdc-list" id="mdclist">
+          <div class="">Total: {{ order.total }}</div>
+          <br />
+          <div
+            v-for="lineitem in order.lineitems"
+            :key="lineitem.name"
+            class=""
+          >
+            <mwc-list-item class="mwc-list-item" twoline hasMeta graphic="large">
+              <span>{{ lineitem.product.name }}</span>
+              <span slot="secondary"
+                >Quantity: {{ lineitem.quantity }} - Price:
+                {{ lineitem.product.price }} - Current Price:
+                {{ lineitem.priceCurrent }}</span
+              >
+              <span slot="meta">{{ lineitem.amount }}</span>
+              <img slot="graphic" v-bind:src="lineitem.product.image" />
+            </mwc-list-item>
+            <br />
+          </div>
+        </mwc-list>
       </div>
     </div>
   </div>
@@ -61,3 +70,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+.mwc-list-item {
+  --mdc-list-item-graphic-size: 80px;
+}
+.mdc-list {
+  max-width: 500px;
+  width:500px;
+}
+</style>

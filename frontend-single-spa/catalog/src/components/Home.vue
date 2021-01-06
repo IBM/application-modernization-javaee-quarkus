@@ -1,11 +1,11 @@
 <template>
   <div>
-    <mwc-top-app-bar-fixed>
-      <div slot="title">Catalog - {{ categoryName }}</div>
-    </mwc-top-app-bar-fixed>
-
+    <br />
+    <br />
+    <br />
+    <br />
     <div style="margin-left: 20px">
-      <br>
+      <h3>Catalog - {{ categoryName }}</h3>
       <mwc-list class="mdc-list" id="mdclist">
       <div
         v-for="product in this.$store.state.products"
@@ -138,5 +138,6 @@ export default {
 }
 .mdc-list {
   max-width: 500px;
+  width:500px;
 }
 </style>
