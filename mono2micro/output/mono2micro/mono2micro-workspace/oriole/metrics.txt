@@ -1,0 +1,3 @@
+Business-Context-Purity,1.5890269151739727
+Inter-Partition-Call-Percentage,0.4240161461157551
+Structural Modularity,0.07125000000000001

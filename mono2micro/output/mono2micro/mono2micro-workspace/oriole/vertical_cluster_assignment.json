@@ -1,0 +1,37 @@
+{
+    "0": {
+        "classes": [
+            "Address",
+            "Category",
+            "LineItem",
+            "ProductResource",
+            "ProductSearchServiceImpl",
+            "Product",
+            "CategoryResource",
+            "BusinessCustomer"
+        ],
+        "business_context": [
+            "show-shop",
+            "show-order",
+            "add-to-cart",
+            "change-category",
+            "show-account",
+            "Unknown"
+        ]
+    },
+    "1": {
+        "classes": [
+            "CustomerOrderServicesImpl",
+            "AbstractCustomer",
+            "CustomerOrderResource",
+            "ResidentialCustomer",
+            "Order"
+        ],
+        "business_context": [
+            "show-account",
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ]
+    }
+}

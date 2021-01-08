@@ -1,0 +1,1 @@
+ReportedGraphView = micro_detail_partition_by_business_logic

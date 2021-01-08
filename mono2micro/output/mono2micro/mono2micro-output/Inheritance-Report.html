@@ -1,0 +1,206 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Language" content="en-us">
+<style type="text/css">a {text-decoration: none}</style>
+<style type="text/css">a:hover {text-decoration: underline}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="expires" content="0">
+<title> Mono2Micro INHERITANCE ANALYSIS - Application </title>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+<script>
+	function hideClass() {
+		var checkBox = document.getElementById("filterunobservedcheck");
+		if (checkBox.checked == true){
+				document.querySelectorAll('.cmd').forEach(function(el) {
+				el.style.display = 'none';
+				})
+				document.querySelectorAll('.cmd2').forEach(function(el) {
+				el.style.display = 'none';
+				})
+				document.querySelectorAll('.cmd3').forEach(function(el) {
+				el.style.display = 'none';
+				})
+			;}
+		else {
+				document.querySelectorAll('.cmd').forEach(function(el) {
+				el.style.display = 'inline';
+				});
+				document.querySelectorAll('.cmd2').forEach(function(el) {
+				el.style.display = 'inline';
+			})
+			document.querySelectorAll('.cmd3').forEach(function(el) {
+			el.style.display = 'inline';
+			})
+		var checkBox = document.getElementById("filterFQCN");
+		if (checkBox.checked == true){
+			document.querySelectorAll('.cmd1').forEach(function(el) {
+			el.style.display = 'none';
+			})
+			document.querySelectorAll('.cmd2').forEach(function(el) {
+			el.style.display = 'none';
+			})
+			;}
+		 else{
+			document.querySelectorAll('.cmd1').forEach(function(el) {
+			el.style.display = 'inline';
+			});
+			document.querySelectorAll('.cmd2').forEach(function(el) {
+			el.style.display = 'inline';
+			})
+		 }
+		}
+	}
+	function hideFQCN() {
+		debugger
+		var checkBox = document.getElementById("filterFQCN");
+		if (checkBox.checked == true){
+			document.querySelectorAll('.cmd1').forEach(function(el) {
+			el.style.display = 'none';
+			})
+			document.querySelectorAll('.cmd2').forEach(function(el) {
+			el.style.display = 'none';
+			})
+			;}
+		else {
+			document.querySelectorAll('.cmd1').forEach(function(el) {
+			el.style.display = 'inline';
+			});
+			document.querySelectorAll('.cmd2').forEach(function(el) {
+			el.style.display = 'inline';
+			})
+			var checkBox = document.getElementById("filterunobservedcheck");
+			if (checkBox.checked == true){
+				document.querySelectorAll('.cmd').forEach(function(el) {
+				el.style.display = 'none';
+				})
+				document.querySelectorAll('.cmd2').forEach(function(el) {
+				el.style.display = 'none';
+				})
+			}
+		}		
+	}
+</script>
+
+<style>  
+	.report_title { 
+	  padding-top: 2%;
+	  padding-bottom: 1%;
+	  display: block;
+	  overflow: hidden; 
+	  font-size: 30px;
+	  color: black;
+	  position: relative;
+  	  left: 10%;
+	  font-weight: bolder;	  
+	}
+    .cmd {
+		display: inline;
+	}
+	.collapsible {  
+	  cursor: pointer; 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  border: none;
+	  text-align: left;
+	  outline: none; 
+	  font-size: 20px;  
+	  position: relative;
+  	  left: 25%;	
+	}
+
+	.jclass {  
+	  display: list-item;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;   
+	  font-weight: bold;
+	}
+
+	.jfunction {  
+	  display: list-item;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;  
+	  padding-left: 2%;  
+	}	
+
+	.partition_header{   
+	  background-color: whitesmoke;
+	  color: black;
+	  cursor: pointer;
+	  padding-left: 2%;
+	  padding-top: 15px;
+	  padding-bottom: 15px;
+	  width: 80%;
+	  border: none;
+	  text-align: left;
+	  outline: none;
+	  font-size: 20px;
+	  font-weight: bold;  
+	  position: relative;
+  	  left: 10%;
+	}	
+
+	.extra {
+		background-color: #e6ecff;
+		color: black;
+	}
+
+	.arrow { 
+		color: black;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<div>
+		<h1 class="report_title"> Mono2Micro DEEP PARTITION ANALYSIS - Application </h1> 
+		<br>
+		
+	</div> 
+
+	
+ 
+
+	<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+		<!-- example cluster section 1 -->
+		<li data-accordion-item class="bx--accordion__item">
+			<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+				<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+				<div class="bx--accordion__title ">  Inheritance Information </div>
+			</button>
+			<div id="pane1" class="bx--accordion__content">
+				<br>  
+				<section class="bx--structured-list" class="tab"> 
+					<div class="bx--structured-list-tbody"> 
+						<label class="switch"> <input type="checkbox" id="filterunobservedcheck" onclick="hideClass()" > Filter Unobserved Inheritances</label>
+						<label class="switch"> <input type="checkbox" id="filterFQCN" onclick="hideFQCN()" > Filter FQCN </label>		 
+						<div class="bx--structured-list-row">
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap">
+								
+									<font color = black >AbstractCustomer </font>  (<font color= blue>partition1</font>) &nbsp [1:2</font>] <font  color = black class = cmd1 >  &nbsp org.pwte.example.domain.AbstractCustomer</font> <br/>
+								
+									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|----<font color = black >ResidentialCustomer </font> (<font color = blue>partition1</font>) &nbsp [2:0</font>] <font  color = black class = cmd1 >  &nbsp org.pwte.example.domain.ResidentialCustomer </font> <br/>
+								
+									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|----<font color = black >BusinessCustomer </font> (<font color = blue>partition0</font>) &nbsp [2:0</font>] <font  color = black class = cmd1 >  &nbsp org.pwte.example.domain.BusinessCustomer </font> <br/>
+								
+							</div> 
+						</div>  
+
+					</div>
+				</section>
+			</div>
+		</li>
+ 
+ 
+</body>
+
+
+</html>

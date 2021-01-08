@@ -1,0 +1,289 @@
+1610106835301,Unknown,$Root$ calls CustomerOrderResource,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:CustomerOrderResource
+1610106835429,Unknown,CustomerOrderResource returns to $Root$,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:CustomerOrderResource,<None>:$Root$:<None>
+1610106835465,Unknown,$Root$ calls CustomerOrderResource,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer
+1610106835514,Unknown,CustomerOrderResource calls CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836848,Unknown,CustomerOrderServicesImpl calls AbstractCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:AbstractCustomer
+1610106836848,Unknown,AbstractCustomer returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:AbstractCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836849,Unknown,CustomerOrderServicesImpl calls ResidentialCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java:ResidentialCustomer:ResidentialCustomer
+1610106836849,Unknown,ResidentialCustomer returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java:ResidentialCustomer:ResidentialCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836875,Unknown,CustomerOrderServicesImpl calls Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product
+1610106836875,Unknown,Product returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836882,Unknown,CustomerOrderServicesImpl calls Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product
+1610106836883,Unknown,Product returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836885,Unknown,CustomerOrderServicesImpl calls Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product
+1610106836885,Unknown,Product returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836887,Unknown,CustomerOrderServicesImpl calls Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product
+1610106836887,Unknown,Product returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836889,Unknown,CustomerOrderServicesImpl calls Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product
+1610106836889,Unknown,Product returns to CustomerOrderServicesImpl,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:Product,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer
+1610106836891,Unknown,CustomerOrderServicesImpl returns to CustomerOrderResource,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java:CustomerOrderServicesImpl:loadCustomer,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer
+1610106836894,Unknown,CustomerOrderResource calls AbstractCustomer,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getOpenOrder
+1610106836894,Unknown,AbstractCustomer returns to CustomerOrderResource,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getOpenOrder,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer
+1610106836898,Unknown,CustomerOrderResource calls Order,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getVersion
+1610106836898,Unknown,Order returns to CustomerOrderResource,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getVersion,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer
+1610106836900,Unknown,CustomerOrderResource returns to $Root$,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java:CustomerOrderResource:getCustomer,<None>:$Root$:<None>
+1610106837063,Unknown,$Root$ calls AbstractCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getAddress
+1610106837064,Unknown,AbstractCustomer returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getAddress,<None>:$Root$:<None>
+1610106837071,Unknown,$Root$ calls Address,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getAddressLine1
+1610106837080,Unknown,Address returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getAddressLine1,<None>:$Root$:<None>
+1610106837080,Unknown,$Root$ calls Address,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getAddressLine2
+1610106837081,Unknown,Address returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getAddressLine2,<None>:$Root$:<None>
+1610106837082,Unknown,$Root$ calls Address,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getCity
+1610106837082,Unknown,Address returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getCity,<None>:$Root$:<None>
+1610106837083,Unknown,$Root$ calls Address,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getCountry
+1610106837084,Unknown,Address returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getCountry,<None>:$Root$:<None>
+1610106837084,Unknown,$Root$ calls Address,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getState
+1610106837085,Unknown,Address returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getState,<None>:$Root$:<None>
+1610106837085,Unknown,$Root$ calls Address,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getZip
+1610106837086,Unknown,Address returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java:Address:getZip,<None>:$Root$:<None>
+1610106837086,Unknown,$Root$ calls AbstractCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getName
+1610106837086,Unknown,AbstractCustomer returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getName,<None>:$Root$:<None>
+1610106837087,Unknown,$Root$ calls AbstractCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getOpenOrder
+1610106837087,Unknown,AbstractCustomer returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getOpenOrder,<None>:$Root$:<None>
+1610106837098,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getLineitems
+1610106837099,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getLineitems,<None>:$Root$:<None>
+1610106837106,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106837107,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106837107,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106837108,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106837108,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106837109,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106837109,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106837109,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106837110,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106837110,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106837111,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106837111,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106837111,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106837112,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106837112,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106837112,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106837112,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106837113,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106837113,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106837113,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106837113,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106837113,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106837114,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106837114,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106837114,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106837114,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106837115,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106837115,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106837115,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106837115,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106837115,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106837116,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106837116,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106837116,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106837117,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106837117,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106837117,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106837117,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106837118,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106837118,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106837118,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106837119,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106837119,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106837119,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106837119,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106837119,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106837120,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106837120,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106837120,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106837120,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106837121,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106837121,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106837121,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106837121,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106837122,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106837122,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106837122,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106837122,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106837122,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106837122,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106837123,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106837123,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106837124,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106837124,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106837124,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106837124,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106837125,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106837125,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106837125,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106837125,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106837126,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106837126,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106837126,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106837126,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106837127,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106837127,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106837127,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106837128,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106837128,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106837128,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106837128,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106837129,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106837129,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106837129,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106837129,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106837130,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106837130,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106837131,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106837131,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106837131,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106837132,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106837132,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106837132,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106837133,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106837133,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106837134,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106837134,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106837135,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106837135,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106837135,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106837136,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106837136,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106837137,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106837137,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106837138,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106837138,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106837138,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106837138,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106837139,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106837139,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106837140,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getOrderId
+1610106837140,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getOrderId,<None>:$Root$:<None>
+1610106837140,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getStatus
+1610106837141,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getStatus,<None>:$Root$:<None>
+1610106837141,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getSubmittedTime
+1610106837141,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getSubmittedTime,<None>:$Root$:<None>
+1610106837141,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getTotal
+1610106837142,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getTotal,<None>:$Root$:<None>
+1610106837142,Unknown,$Root$ calls AbstractCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getOrders
+1610106837142,Unknown,AbstractCustomer returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getOrders,<None>:$Root$:<None>
+1610106838197,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getLineitems
+1610106838198,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getLineitems,<None>:$Root$:<None>
+1610106838198,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106838198,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106838198,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106838199,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106838199,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106838199,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106838199,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106838199,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106838200,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106838200,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106838200,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106838200,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106838201,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106838201,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106838201,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106838201,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106838202,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106838202,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106838202,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106838202,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106838202,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106838203,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106838203,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106838203,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106838203,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106838204,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106838204,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106838204,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106838204,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106838204,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106838205,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106838205,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106838205,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106838206,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106838206,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106838206,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106838206,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106838206,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106838207,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106838207,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106838207,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106838207,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106838208,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106838208,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106838208,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106838208,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106838208,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106838209,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106838209,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106838209,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106838209,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106838210,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106838210,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106838210,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106838210,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106838211,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106838211,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106838211,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106838211,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106838212,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106838212,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106838212,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106838212,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106838213,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106838213,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106838213,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106838213,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106838213,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106838214,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106838214,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106838214,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106838214,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106838214,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106838214,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106838215,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106838215,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106838215,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106838215,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106838216,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106838216,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106838216,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106838216,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106838217,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106838217,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106838217,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106838217,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106838217,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106838217,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106838218,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount
+1610106838218,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getAmount,<None>:$Root$:<None>
+1610106838218,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId
+1610106838218,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getOrderId,<None>:$Root$:<None>
+1610106838219,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent
+1610106838219,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getPriceCurrent,<None>:$Root$:<None>
+1610106838219,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct
+1610106838219,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProduct,<None>:$Root$:<None>
+1610106838220,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription
+1610106838220,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getDescription,<None>:$Root$:<None>
+1610106838220,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId
+1610106838220,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getProductId,<None>:$Root$:<None>
+1610106838221,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath
+1610106838221,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getImagePath,<None>:$Root$:<None>
+1610106838221,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName
+1610106838221,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getName,<None>:$Root$:<None>
+1610106838222,Unknown,$Root$ calls Product,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice
+1610106838222,Unknown,Product returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java:Product:getPrice,<None>:$Root$:<None>
+1610106838222,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId
+1610106838222,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getProductId,<None>:$Root$:<None>
+1610106838222,Unknown,$Root$ calls LineItem,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity
+1610106838222,Unknown,LineItem returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java:LineItem:getQuantity,<None>:$Root$:<None>
+1610106838223,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getOrderId
+1610106838223,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getOrderId,<None>:$Root$:<None>
+1610106838223,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getStatus
+1610106838223,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getStatus,<None>:$Root$:<None>
+1610106838224,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getSubmittedTime
+1610106838224,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getSubmittedTime,<None>:$Root$:<None>
+1610106838224,Unknown,$Root$ calls Order,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getTotal
+1610106838224,Unknown,Order returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java:Order:getTotal,<None>:$Root$:<None>
+1610106838225,Unknown,$Root$ calls AbstractCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getType
+1610106838225,Unknown,AbstractCustomer returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java:AbstractCustomer:getType,<None>:$Root$:<None>
+1610106838225,Unknown,$Root$ calls ResidentialCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java:ResidentialCustomer:isFrequentCustomer
+1610106838225,Unknown,ResidentialCustomer returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java:ResidentialCustomer:isFrequentCustomer,<None>:$Root$:<None>
+1610106838226,Unknown,$Root$ calls ResidentialCustomer,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java:ResidentialCustomer:getHouseholdSize

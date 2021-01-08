@@ -1,0 +1,53 @@
+1610106835301,Unknown,$Root$ calls CategoryResource,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java:CategoryResource:CategoryResource
+1610106835429,Unknown,CategoryResource returns to $Root$,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java:CategoryResource:CategoryResource,<None>:$Root$:<None>
+1610106835465,Unknown,$Root$ calls CategoryResource,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java:CategoryResource:loadTopLevelCategories
+1610106835514,Unknown,CategoryResource calls ProductSearchServiceImpl,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java:CategoryResource:loadTopLevelCategories,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java:ProductSearchServiceImpl:getTopLevelCategories
+1610106836863,Unknown,ProductSearchServiceImpl returns to CategoryResource,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java:ProductSearchServiceImpl:getTopLevelCategories,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java:CategoryResource:loadTopLevelCategories
+1610106836873,Unknown,CategoryResource returns to $Root$,monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java:CategoryResource:loadTopLevelCategories,<None>:$Root$:<None>
+1610106837058,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837059,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837059,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837060,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837061,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837062,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837064,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837066,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837067,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837067,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837068,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837069,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837070,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837071,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837071,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837072,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837072,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837073,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837073,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837074,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837074,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837075,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837075,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837075,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837076,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837076,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837076,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837076,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837077,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837077,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837077,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837077,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837078,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837078,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837079,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837079,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837079,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837080,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837080,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837081,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837082,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories
+1610106837083,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories,<None>:$Root$:<None>
+1610106837084,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId
+1610106837084,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getId,<None>:$Root$:<None>
+1610106837085,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName
+1610106837086,Unknown,Category returns to $Root$,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getName,<None>:$Root$:<None>
+1610106837086,Unknown,$Root$ calls Category,<None>:$Root$:<None>,monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java:Category:getSubCategories

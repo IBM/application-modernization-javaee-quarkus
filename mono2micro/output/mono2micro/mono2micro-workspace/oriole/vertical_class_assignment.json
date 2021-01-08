@@ -1,0 +1,103 @@
+{
+    "Address": {
+        "business_context": [
+            "show-shop"
+        ],
+        "final": "0"
+    },
+    "Category": {
+        "business_context": [
+            "show-shop"
+        ],
+        "final": "0"
+    },
+    "LineItem": {
+        "business_context": [
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "0"
+    },
+    "ProductResource": {
+        "business_context": [
+            "change-category",
+            "show-shop"
+        ],
+        "final": "0"
+    },
+    "ProductSearchServiceImpl": {
+        "business_context": [
+            "change-category",
+            "show-order",
+            "show-shop"
+        ],
+        "final": "0"
+    },
+    "Product": {
+        "business_context": [
+            "change-category",
+            "show-account",
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "0"
+    },
+    "CategoryResource": {
+        "business_context": [
+            "show-shop"
+        ],
+        "final": "0"
+    },
+    "CustomerOrderServicesImpl": {
+        "business_context": [
+            "show-account",
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "1"
+    },
+    "AbstractCustomer": {
+        "business_context": [
+            "show-account",
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "1"
+    },
+    "CustomerOrderResource": {
+        "business_context": [
+            "show-account",
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "1"
+    },
+    "ResidentialCustomer": {
+        "business_context": [
+            "show-account",
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "1"
+    },
+    "Order": {
+        "business_context": [
+            "show-order",
+            "show-shop",
+            "add-to-cart"
+        ],
+        "final": "1"
+    },
+    "BusinessCustomer": {
+        "business_context": [
+            "Unknown"
+        ],
+        "final": "0"
+    }
+}

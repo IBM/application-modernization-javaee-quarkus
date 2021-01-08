@@ -1,0 +1,934 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Language" content="en-us">
+<style type="text/css">a {text-decoration: none}</style>
+<style type="text/css">a:hover {text-decoration: underline}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="expires" content="0">
+<title> Mono2Micro Partition Business Use Case Analysis - Application   </title>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+ 
+
+<style>  
+	.report_title { 
+	  padding-top: 2%;
+	  padding-bottom: 1%;
+	  display: block;
+	  overflow: hidden; 
+	  font-size: 30px;
+	  color: black;
+	  position: relative;
+  	  left: 10%;
+	  font-weight: bolder;	  
+	}
+
+	.collapsible {  
+	  cursor: pointer; 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  border: none;
+	  text-align: left;
+	  outline: none; 
+	  font-size: 20px;  
+	  position: relative;
+  	  left: 25%;	
+	} 
+
+
+	.summary {  
+	  background-color: whitesmoke;
+	  color: black;
+	  cursor: pointer; 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  border: none;
+	  text-align: left;
+	  outline: none; 
+	  font-size: 20px;  
+	  position: relative;
+  	  left: 25%;	
+	}
+
+	.jclass {  
+	  display: list-item;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;   
+	  font-weight: bold;
+	}
+
+	.jfunction {  
+	  display: list-item;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;  
+	  padding-left: 2%;  
+	}	
+
+	.partition_header{   
+	  background-color: whitesmoke;
+	  color: black;
+	  cursor: pointer;
+	  padding-left: 2%;
+	  padding-top: 15px;
+	  padding-bottom: 15px;
+	  width: 80%;
+	  border: none;
+	  text-align: left;
+	  outline: none;
+	  font-size: 20px;
+	  font-weight: bold;  
+	  position: relative;
+  	  left: 10%;
+	}	
+
+	.summary_title{     
+	  cursor: pointer; 
+	  padding-top: 15px;
+	  padding-bottom: 15px;  
+	  text-align: left;  
+	  font-size: 20px;
+	  
+	}	
+
+	.extra {
+		background-color: #e6ecff;
+		color: black;
+
+	}
+
+	.arrow { 
+		color: black;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<div>
+		<h1 class="report_title"> Mono2Micro Business Use Case Partition Analysis - Application </h1> 
+		<br>
+	</div>  
+
+	<div class="bx--row">
+		<div class="bx--col bx--col-lg-8">
+		  <div class="bx--tile  partition_header"> <h4> Summary </h4> </div>
+		</div>
+	</div>
+	 
+ 
+	<ul data-accordion class="bx--accordion bx--col-lg-8">
+		<li data-accordion-item class="bx--accordion__item collapsible">
+			<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+				<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+				<div class="bx--accordion__title "> Business Use Cases per Partition </div>
+			</button>
+
+			<div id="pane1" class="bx--accordion__content">
+			<br>  
+				<section class="bx--structured-list" >
+					<div class="bx--structured-list-thead">
+						<div class="bx--structured-list-row bx--structured-list-row--header-row">
+							<div class="bx--structured-list-th">Partition Name</div>
+							<div class="bx--structured-list-th"># of Classes </div>
+							<div class="bx--structured-list-th"># of Business Use Cases</div>
+							<div class="bx--structured-list-th">Business Use Cases</div>
+						</div>
+					</div>
+				 
+					<div class="bx--structured-list-tbody">
+
+						 
+						<div class="bx--structured-list-row">
+						 
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> <a href="#partition1"> partition1 </a></div>
+							<div class="bx--structured-list-td"> 5 </div>
+							<div class="bx--structured-list-td"> 5 </div>
+							<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> add-to-cart </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> show-account </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> show-order </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> show-shop </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> Unknown </li>
+									
+								</ul>
+								
+							</div>
+ 
+						</div>
+						 
+						<div class="bx--structured-list-row">
+						 
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> <a href="#partition0"> partition0 </a></div>
+							<div class="bx--structured-list-td"> 8 </div>
+							<div class="bx--structured-list-td"> 6 </div>
+							<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> add-to-cart </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> change-category (unique to this partition) </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> show-account </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> show-order </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> show-shop </li>
+									
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> Unknown </li>
+									
+								</ul>
+								
+							</div>
+ 
+						</div>
+						 
+						<div class="bx--structured-list-row">
+						 
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> <a href="#Unobserved"> Unobserved </a></div>
+							<div class="bx--structured-list-td"> 12 </div>
+							<div class="bx--structured-list-td"> 1 </div>
+							<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> Unobserved </li>
+									
+								</ul>
+								
+							</div>
+ 
+						</div>
+						
+
+					</div>
+				</section>
+			</div>
+		</li>
+	</ul>
+ 
+   
+
+	 
+
+	 
+		<div class="bx--row">
+			<div class="bx--col bx--col-lg-8">
+			  <div class="bx--tile  partition_header" id="partition0"> <h4> partition0 </h4> </div>
+			</div>
+		</div>
+
+		<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+			<!-- example cluster section 1  
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title "> Classes membership ( 8 ) </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						 
+						<div class="bx--structured-list-tbody">
+							
+
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> Address </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> BusinessCustomer </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> Category </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> CategoryResource </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> LineItem </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> Product </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> ProductResource </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> ProductSearchServiceImpl </li>
+								</ul>
+								
+								</div> 
+							</div> 
+
+						</div>
+					</section>
+				</div> 
+			</li>-->
+
+		 
+
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title ">  Member Class Details ( 8 )  </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						<div class="bx--structured-list-thead">
+							<div class="bx--structured-list-row bx--structured-list-row--header-row">
+								<div class="bx--structured-list-th">Class Name</div>
+								<div class="bx--structured-list-th"># of Business Use Cases</div>
+								<div class="bx--structured-list-th">Business Use Cases</div>
+							</div>
+						</div>
+
+						<div class="bx--structured-list-tbody">
+							
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> BusinessCustomer  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> Address  </div>
+								<div class="bx--structured-list-td"> 2 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> CategoryResource  </div>
+								<div class="bx--structured-list-td"> 2 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> Category  </div>
+								<div class="bx--structured-list-td"> 2 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> ProductResource  </div>
+								<div class="bx--structured-list-td"> 3 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> change-category </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> LineItem  </div>
+								<div class="bx--structured-list-td"> 4 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> ProductSearchServiceImpl  </div>
+								<div class="bx--structured-list-td"> 4 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> change-category </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> Product  </div>
+								<div class="bx--structured-list-td"> 6 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> change-category </li>
+								
+									<li class="jfunction"> show-account </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							
+							  
+						</div>
+					</section>
+				</div>
+			</li> 
+		</ul> 
+	 
+		<div class="bx--row">
+			<div class="bx--col bx--col-lg-8">
+			  <div class="bx--tile  partition_header" id="partition1"> <h4> partition1 </h4> </div>
+			</div>
+		</div>
+
+		<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+			<!-- example cluster section 1  
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title "> Classes membership ( 5 ) </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						 
+						<div class="bx--structured-list-tbody">
+							
+
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> AbstractCustomer </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> CustomerOrderResource </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> CustomerOrderServicesImpl </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> Order </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> ResidentialCustomer </li>
+								</ul>
+								
+								</div> 
+							</div> 
+
+						</div>
+					</section>
+				</div> 
+			</li>-->
+
+		 
+
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title ">  Member Class Details ( 5 )  </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						<div class="bx--structured-list-thead">
+							<div class="bx--structured-list-row bx--structured-list-row--header-row">
+								<div class="bx--structured-list-th">Class Name</div>
+								<div class="bx--structured-list-th"># of Business Use Cases</div>
+								<div class="bx--structured-list-th">Business Use Cases</div>
+							</div>
+						</div>
+
+						<div class="bx--structured-list-tbody">
+							
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> Order  </div>
+								<div class="bx--structured-list-td"> 4 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> CustomerOrderResource  </div>
+								<div class="bx--structured-list-td"> 5 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> show-account </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> CustomerOrderServicesImpl  </div>
+								<div class="bx--structured-list-td"> 5 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> show-account </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> AbstractCustomer  </div>
+								<div class="bx--structured-list-td"> 5 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> show-account </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> ResidentialCustomer  </div>
+								<div class="bx--structured-list-td"> 5 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> add-to-cart </li>
+								
+									<li class="jfunction"> show-account </li>
+								
+									<li class="jfunction"> show-order </li>
+								
+									<li class="jfunction"> show-shop </li>
+								
+									<li class="jfunction"> Unknown </li>
+								
+								</div>
+								 
+							</div>
+							
+							  
+						</div>
+					</section>
+				</div>
+			</li> 
+		</ul> 
+	 
+		<div class="bx--row">
+			<div class="bx--col bx--col-lg-8">
+			  <div class="bx--tile  partition_header" id="Unobserved"> <h4> Unobserved </h4> </div>
+			</div>
+		</div>
+
+		<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+			<!-- example cluster section 1  
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title "> Classes membership ( 12 ) </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						 
+						<div class="bx--structured-list-tbody">
+							
+
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> CategoryDoesNotExist </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> CustomerDoesNotExistException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> CustomerServicesApp </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> GeneralPersistenceException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> InvalidQuantityException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> LineItemId </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> NoLineItemsException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> OrderAlreadyOpenException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> OrderModifiedException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> OrderNotOpenException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> ProductDoesNotExistException </li>
+								</ul>
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested"> 
+									<li class="bx--list__item jclass"> ProductPriceChanged </li>
+								</ul>
+								
+								</div> 
+							</div> 
+
+						</div>
+					</section>
+				</div> 
+			</li>-->
+
+		 
+
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title ">  Member Class Details ( 12 )  </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						<div class="bx--structured-list-thead">
+							<div class="bx--structured-list-row bx--structured-list-row--header-row">
+								<div class="bx--structured-list-th">Class Name</div>
+								<div class="bx--structured-list-th"># of Business Use Cases</div>
+								<div class="bx--structured-list-th">Business Use Cases</div>
+							</div>
+						</div>
+
+						<div class="bx--structured-list-tbody">
+							
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> LineItemId  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> CategoryDoesNotExist  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> CustomerDoesNotExistException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> GeneralPersistenceException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> InvalidQuantityException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> NoLineItemsException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> OrderAlreadyOpenException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> OrderModifiedException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> OrderNotOpenException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> ProductDoesNotExistException  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> CustomerServicesApp  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> ProductPriceChanged  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							
+							  
+						</div>
+					</section>
+				</div>
+			</li> 
+		</ul> 
+	
+ 
+</body>
+</html>
+
+
+ 

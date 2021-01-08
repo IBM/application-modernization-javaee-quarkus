@@ -1,0 +1,13 @@
+ProductResource
+ProductResource,ProductSearchServiceImpl,Product
+ProductResource,ProductSearchServiceImpl,Product
+Product
+Product
+Product
+Product
+Product
+Product
+Product
+Product
+Product
+Product
