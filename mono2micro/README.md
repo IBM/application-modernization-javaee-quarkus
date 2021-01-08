@@ -59,3 +59,11 @@ $ cp messages.log ${ROOT_FOLDER}/mono2micro/output/logs
 ```
 $ docker run --rm -it -v ${ROOT_FOLDER}/mono2micro/output:/var/application ibmcom/mono2micro-aipl
 ```
+
+```
+$ docker run -d -p 3000:3000 ibmcom/mono2micro-ui
+```
+
+Open http://localhost:3000 and add ${ROOT_FOLDER}/mono2micro/output/mono2micro-output/oriole/final_graph.json
+
+<kbd><img src="../documentation/mono2mircro-result-1.png" /></kbd>
