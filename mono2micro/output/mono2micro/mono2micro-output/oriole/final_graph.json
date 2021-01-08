@@ -1,0 +1,1612 @@
+{
+    "version": "v2.0.0r8",
+    "mono_run_time_call_graph": {
+        "nodes": [
+            {
+                "name": "CategoryResource",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "ProductSearchServiceImpl",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown",
+                    "show-order",
+                    "change-category"
+                ]
+            },
+            {
+                "name": "Category",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "LineItem",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order"
+                ]
+            },
+            {
+                "name": "CustomerOrderResource",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "CustomerOrderServicesImpl",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "Product",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "change-category",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "AbstractCustomer",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "ResidentialCustomer",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "Order",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order"
+                ]
+            },
+            {
+                "name": "BusinessCustomer",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/BusinessCustomer.java",
+                "semantics": [
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "Address",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java",
+                "semantics": [
+                    "Unknown",
+                    "show-shop"
+                ]
+            },
+            {
+                "name": "ProductResource",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/ProductResource.java",
+                "semantics": [
+                    "Unknown",
+                    "show-shop",
+                    "change-category"
+                ]
+            },
+            {
+                "name": "LineItemId",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItemId.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryDoesNotExist",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CategoryDoesNotExist.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerDoesNotExistException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CustomerDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "GeneralPersistenceException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/GeneralPersistenceException.java",
+                "semantics": []
+            },
+            {
+                "name": "InvalidQuantityException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/InvalidQuantityException.java",
+                "semantics": []
+            },
+            {
+                "name": "NoLineItemsException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/NoLineItemsException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderAlreadyOpenException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderAlreadyOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderModifiedException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderModifiedException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderNotOpenException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderNotOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductDoesNotExistException",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/ProductDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerServicesApp",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/CustomerServicesApp.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductPriceChanged",
+                "group": 1,
+                "category": "Undefined",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/ProductPriceChanged.java",
+                "semantics": []
+            }
+        ],
+        "links": [
+            {
+                "source": "CategoryResource",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "getTopLevelCategories": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "ProductSearchServiceImpl",
+                "target": "Product",
+                "method": {
+                    "Product": 10
+                },
+                "value": 3.302
+            },
+            {
+                "source": "LineItem",
+                "target": "Order",
+                "method": {
+                    "getLineitems": 6,
+                    "setTotal": 3
+                },
+                "value": 3.197
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "CustomerOrderServicesImpl",
+                "method": {
+                    "loadCustomer": 3,
+                    "getOrderHistoryLastUpdatedTime": 1,
+                    "loadCustomerHistory": 1
+                },
+                "value": 2.609
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "AbstractCustomer",
+                "method": {
+                    "getOpenOrder": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "Order",
+                "method": {
+                    "getVersion": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "LineItem",
+                "method": {
+                    "recalculateTotal": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "LineItem",
+                "method": {
+                    "getProductId": 10,
+                    "getQuantity": 2,
+                    "getVersion": 2,
+                    "setQuantity": 1,
+                    "setAmount": 1,
+                    "getAmount": 1,
+                    "setPriceCurrent": 6
+                },
+                "value": 4.135
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "Product",
+                "method": {
+                    "Product": 27,
+                    "getPrice": 7
+                },
+                "value": 4.526
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "AbstractCustomer",
+                "method": {
+                    "AbstractCustomer": 9,
+                    "getOpenOrder": 1,
+                    "getOrders": 1
+                },
+                "value": 3.397
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "ResidentialCustomer",
+                "method": {
+                    "ResidentialCustomer": 7
+                },
+                "value": 2.945
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "Order",
+                "method": {
+                    "getVersion": 1,
+                    "setVersion": 1,
+                    "getLineitems": 2,
+                    "setLineitems": 1
+                },
+                "value": 2.609
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "BusinessCustomer",
+                "method": {
+                    "BusinessCustomer": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "loadProduct": 5
+                },
+                "value": 2.609
+            },
+            {
+                "source": "ProductResource",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "loadProductsByCategory": 3
+                },
+                "value": 2.098
+            }
+        ],
+        "overview": {
+            "nodes": [
+                {
+                    "name": "Undefined",
+                    "group": "1",
+                    "category": "Undefined",
+                    "filepath": "",
+                    "semantics": []
+                }
+            ],
+            "links": []
+        }
+    },
+    "mono_data_dependency_graph": {
+        "nodes": [
+            {
+                "name": "AbstractCustomer",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java",
+                "semantics": []
+            },
+            {
+                "name": "Address",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java",
+                "semantics": []
+            },
+            {
+                "name": "BusinessCustomer",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/BusinessCustomer.java",
+                "semantics": []
+            },
+            {
+                "name": "Category",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java",
+                "semantics": []
+            },
+            {
+                "name": "LineItem",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java",
+                "semantics": []
+            },
+            {
+                "name": "LineItemId",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItemId.java",
+                "semantics": []
+            },
+            {
+                "name": "Order",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java",
+                "semantics": []
+            },
+            {
+                "name": "Product",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java",
+                "semantics": []
+            },
+            {
+                "name": "ResidentialCustomer",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryDoesNotExist",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CategoryDoesNotExist.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerDoesNotExistException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CustomerDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "GeneralPersistenceException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/GeneralPersistenceException.java",
+                "semantics": []
+            },
+            {
+                "name": "InvalidQuantityException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/InvalidQuantityException.java",
+                "semantics": []
+            },
+            {
+                "name": "NoLineItemsException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/NoLineItemsException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderAlreadyOpenException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderAlreadyOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderModifiedException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderModifiedException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderNotOpenException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderNotOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductDoesNotExistException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/ProductDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerOrderServicesImpl",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductSearchServiceImpl",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerServicesApp",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/CustomerServicesApp.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductPriceChanged",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/ProductPriceChanged.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryResource",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerOrderResource",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductResource",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/ProductResource.java",
+                "semantics": []
+            }
+        ],
+        "links": [
+            {
+                "source": "AbstractCustomer",
+                "target": "Address",
+                "value": "1"
+            },
+            {
+                "source": "AbstractCustomer",
+                "target": "Order",
+                "value": "2"
+            },
+            {
+                "source": "LineItem",
+                "target": "Product",
+                "value": "1"
+            },
+            {
+                "source": "LineItem",
+                "target": "Order",
+                "value": "1"
+            },
+            {
+                "source": "Order",
+                "target": "AbstractCustomer",
+                "value": "1"
+            },
+            {
+                "source": "Order",
+                "target": "LineItem",
+                "value": "1"
+            },
+            {
+                "source": "Product",
+                "target": "Category",
+                "value": "1"
+            }
+        ],
+        "overview": {
+            "nodes": [
+                {
+                    "name": "data_dep_island_0",
+                    "group": 0,
+                    "category": "data_dep_island_0",
+                    "filepath": "data_dep_island_0",
+                    "semantics": []
+                },
+                {
+                    "name": "default_group",
+                    "group": 1,
+                    "category": "default_group",
+                    "filepath": "default_group",
+                    "semantics": []
+                }
+            ],
+            "links": []
+        }
+    },
+    "micro_detail_partition_by_business_logic": {
+        "nodes": [
+            {
+                "name": "CategoryResource",
+                "group": 3,
+                "category": "partition2",
+                "construct": "Service Entry",
+                "FQCN": "org.pwte.example.resources.CategoryResource",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "ProductSearchServiceImpl",
+                "group": 3,
+                "category": "partition2",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.service.ProductSearchServiceImpl",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown",
+                    "show-order",
+                    "change-category"
+                ]
+            },
+            {
+                "name": "Category",
+                "group": 1,
+                "category": "partition1",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.Category",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "LineItem",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.LineItem",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order"
+                ]
+            },
+            {
+                "name": "CustomerOrderResource",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Service Entry",
+                "FQCN": "org.pwte.example.resources.CustomerOrderResource",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "CustomerOrderServicesImpl",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.service.CustomerOrderServicesImpl",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "Product",
+                "group": 3,
+                "category": "partition2",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.Product",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "change-category",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "AbstractCustomer",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.AbstractCustomer",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "ResidentialCustomer",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.ResidentialCustomer",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "Order",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.Order",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order"
+                ]
+            },
+            {
+                "name": "BusinessCustomer",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Entity",
+                "FQCN": "org.pwte.example.domain.BusinessCustomer",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/BusinessCustomer.java",
+                "semantics": [
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "Address",
+                "group": 1,
+                "category": "partition1",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.domain.Address",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java",
+                "semantics": [
+                    "Unknown",
+                    "show-shop"
+                ]
+            },
+            {
+                "name": "ProductResource",
+                "group": 3,
+                "category": "partition2",
+                "construct": "Service Entry",
+                "FQCN": "org.pwte.example.resources.ProductResource",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/ProductResource.java",
+                "semantics": [
+                    "Unknown",
+                    "show-shop",
+                    "change-category"
+                ]
+            },
+            {
+                "name": "LineItemId",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.domain.LineItemId",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItemId.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryDoesNotExist",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.CategoryDoesNotExist",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CategoryDoesNotExist.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerDoesNotExistException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.CustomerDoesNotExistException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CustomerDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "GeneralPersistenceException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.GeneralPersistenceException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/GeneralPersistenceException.java",
+                "semantics": []
+            },
+            {
+                "name": "InvalidQuantityException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.InvalidQuantityException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/InvalidQuantityException.java",
+                "semantics": []
+            },
+            {
+                "name": "NoLineItemsException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.NoLineItemsException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/NoLineItemsException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderAlreadyOpenException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.OrderAlreadyOpenException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderAlreadyOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderModifiedException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.OrderModifiedException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderModifiedException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderNotOpenException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.OrderNotOpenException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderNotOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductDoesNotExistException",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.exception.ProductDoesNotExistException",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/ProductDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerServicesApp",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.app.CustomerServicesApp",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/CustomerServicesApp.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductPriceChanged",
+                "group": 2,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "org.pwte.example.app.ProductPriceChanged",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/ProductPriceChanged.java",
+                "semantics": []
+            }
+        ],
+        "links": [
+            {
+                "source": "CategoryResource",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "getTopLevelCategories": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "ProductSearchServiceImpl",
+                "target": "Product",
+                "method": {
+                    "Product": 10
+                },
+                "value": 3.302
+            },
+            {
+                "source": "LineItem",
+                "target": "Order",
+                "method": {
+                    "getLineitems": 6,
+                    "setTotal": 3
+                },
+                "value": 3.197
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "CustomerOrderServicesImpl",
+                "method": {
+                    "loadCustomer": 3,
+                    "getOrderHistoryLastUpdatedTime": 1,
+                    "loadCustomerHistory": 1
+                },
+                "value": 2.609
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "AbstractCustomer",
+                "method": {
+                    "getOpenOrder": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "Order",
+                "method": {
+                    "getVersion": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "LineItem",
+                "method": {
+                    "recalculateTotal": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "LineItem",
+                "method": {
+                    "getProductId": 10,
+                    "getQuantity": 2,
+                    "getVersion": 2,
+                    "setQuantity": 1,
+                    "setAmount": 1,
+                    "getAmount": 1,
+                    "setPriceCurrent": 6
+                },
+                "value": 4.135
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "Product",
+                "method": {
+                    "Product": 27,
+                    "getPrice": 7
+                },
+                "value": 4.526
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "AbstractCustomer",
+                "method": {
+                    "AbstractCustomer": 9,
+                    "getOpenOrder": 1,
+                    "getOrders": 1
+                },
+                "value": 3.397
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "ResidentialCustomer",
+                "method": {
+                    "ResidentialCustomer": 7
+                },
+                "value": 2.945
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "Order",
+                "method": {
+                    "getVersion": 1,
+                    "setVersion": 1,
+                    "getLineitems": 2,
+                    "setLineitems": 1
+                },
+                "value": 2.609
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "BusinessCustomer",
+                "method": {
+                    "BusinessCustomer": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "loadProduct": 5
+                },
+                "value": 2.609
+            },
+            {
+                "source": "ProductResource",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "loadProductsByCategory": 3
+                },
+                "value": 2.098
+            }
+        ],
+        "overview": {
+            "nodes": [
+                {
+                    "name": "partition2",
+                    "group": 3,
+                    "category": "partition2",
+                    "filepath": "Cluster",
+                    "semantics": [
+                        "show-shop",
+                        "Unknown",
+                        "show-order",
+                        "change-category",
+                        "add-to-cart",
+                        "show-account"
+                    ]
+                },
+                {
+                    "name": "partition1",
+                    "group": 1,
+                    "category": "partition1",
+                    "filepath": "Cluster",
+                    "semantics": [
+                        "show-shop",
+                        "Unknown"
+                    ]
+                },
+                {
+                    "name": "partition0",
+                    "group": 0,
+                    "category": "partition0",
+                    "filepath": "Cluster",
+                    "semantics": [
+                        "add-to-cart",
+                        "Unknown",
+                        "show-shop",
+                        "show-order",
+                        "show-account"
+                    ]
+                },
+                {
+                    "name": "Unobserved",
+                    "group": 2,
+                    "category": "Unobserved",
+                    "filepath": "Cluster",
+                    "semantics": []
+                }
+            ],
+            "links": [
+                {
+                    "source": "partition0",
+                    "target": "partition2",
+                    "value": 1.634
+                }
+            ]
+        }
+    },
+    "micro_detail_partition_by_natural_seam": {
+        "nodes": [
+            {
+                "name": "CategoryResource",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "ProductSearchServiceImpl",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown",
+                    "show-order",
+                    "change-category"
+                ]
+            },
+            {
+                "name": "Category",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java",
+                "semantics": [
+                    "show-shop",
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "LineItem",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order"
+                ]
+            },
+            {
+                "name": "CustomerOrderResource",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "CustomerOrderServicesImpl",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "Product",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "change-category",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "AbstractCustomer",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "ResidentialCustomer",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order",
+                    "show-account"
+                ]
+            },
+            {
+                "name": "Order",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java",
+                "semantics": [
+                    "add-to-cart",
+                    "Unknown",
+                    "show-shop",
+                    "show-order"
+                ]
+            },
+            {
+                "name": "BusinessCustomer",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/BusinessCustomer.java",
+                "semantics": [
+                    "Unknown"
+                ]
+            },
+            {
+                "name": "Address",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java",
+                "semantics": [
+                    "Unknown",
+                    "show-shop"
+                ]
+            },
+            {
+                "name": "ProductResource",
+                "group": 0,
+                "category": "partition0",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/ProductResource.java",
+                "semantics": [
+                    "Unknown",
+                    "show-shop",
+                    "change-category"
+                ]
+            },
+            {
+                "name": "LineItemId",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItemId.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryDoesNotExist",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CategoryDoesNotExist.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerDoesNotExistException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CustomerDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "GeneralPersistenceException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/GeneralPersistenceException.java",
+                "semantics": []
+            },
+            {
+                "name": "InvalidQuantityException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/InvalidQuantityException.java",
+                "semantics": []
+            },
+            {
+                "name": "NoLineItemsException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/NoLineItemsException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderAlreadyOpenException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderAlreadyOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderModifiedException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderModifiedException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderNotOpenException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderNotOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductDoesNotExistException",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/ProductDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerServicesApp",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/CustomerServicesApp.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductPriceChanged",
+                "group": 1,
+                "category": "Unobserved",
+                "construct": "Class",
+                "FQCN": "",
+                "filepath": "Class, monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/ProductPriceChanged.java",
+                "semantics": []
+            }
+        ],
+        "links": [
+            {
+                "source": "CategoryResource",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "getTopLevelCategories": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "ProductSearchServiceImpl",
+                "target": "Product",
+                "method": {
+                    "Product": 10
+                },
+                "value": 3.302
+            },
+            {
+                "source": "LineItem",
+                "target": "Order",
+                "method": {
+                    "getLineitems": 6,
+                    "setTotal": 3
+                },
+                "value": 3.197
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "CustomerOrderServicesImpl",
+                "method": {
+                    "loadCustomer": 3,
+                    "getOrderHistoryLastUpdatedTime": 1,
+                    "loadCustomerHistory": 1
+                },
+                "value": 2.609
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "AbstractCustomer",
+                "method": {
+                    "getOpenOrder": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "Order",
+                "method": {
+                    "getVersion": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderResource",
+                "target": "LineItem",
+                "method": {
+                    "recalculateTotal": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "LineItem",
+                "method": {
+                    "getProductId": 10,
+                    "getQuantity": 2,
+                    "getVersion": 2,
+                    "setQuantity": 1,
+                    "setAmount": 1,
+                    "getAmount": 1,
+                    "setPriceCurrent": 6
+                },
+                "value": 4.135
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "Product",
+                "method": {
+                    "Product": 27,
+                    "getPrice": 7
+                },
+                "value": 4.526
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "AbstractCustomer",
+                "method": {
+                    "AbstractCustomer": 9,
+                    "getOpenOrder": 1,
+                    "getOrders": 1
+                },
+                "value": 3.397
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "ResidentialCustomer",
+                "method": {
+                    "ResidentialCustomer": 7
+                },
+                "value": 2.945
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "Order",
+                "method": {
+                    "getVersion": 1,
+                    "setVersion": 1,
+                    "getLineitems": 2,
+                    "setLineitems": 1
+                },
+                "value": 2.609
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "BusinessCustomer",
+                "method": {
+                    "BusinessCustomer": 2
+                },
+                "value": 1.693
+            },
+            {
+                "source": "CustomerOrderServicesImpl",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "loadProduct": 5
+                },
+                "value": 2.609
+            },
+            {
+                "source": "ProductResource",
+                "target": "ProductSearchServiceImpl",
+                "method": {
+                    "loadProductsByCategory": 3
+                },
+                "value": 2.098
+            }
+        ],
+        "overview": {
+            "nodes": [
+                {
+                    "name": "partition0",
+                    "group": 0,
+                    "category": "partition0",
+                    "filepath": "Cluster",
+                    "semantics": [
+                        "show-shop",
+                        "Unknown",
+                        "show-order",
+                        "change-category",
+                        "add-to-cart",
+                        "show-account"
+                    ]
+                },
+                {
+                    "name": "Unobserved",
+                    "group": 1,
+                    "category": "Unobserved",
+                    "filepath": "Cluster",
+                    "semantics": []
+                }
+            ],
+            "links": []
+        }
+    }
+}

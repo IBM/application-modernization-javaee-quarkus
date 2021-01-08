@@ -1,0 +1,103 @@
+{
+    "LineItem": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order"
+        ],
+        "final": "0"
+    },
+    "Order": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order"
+        ],
+        "final": "0"
+    },
+    "CustomerOrderServicesImpl": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order",
+            "show-account"
+        ],
+        "final": "0"
+    },
+    "AbstractCustomer": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order",
+            "show-account"
+        ],
+        "final": "0"
+    },
+    "CustomerOrderResource": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order",
+            "show-account"
+        ],
+        "final": "0"
+    },
+    "ResidentialCustomer": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order",
+            "show-account"
+        ],
+        "final": "0"
+    },
+    "Category": {
+        "business_context": [
+            "show-shop"
+        ],
+        "final": "1"
+    },
+    "Address": {
+        "business_context": [
+            "show-shop"
+        ],
+        "final": "1"
+    },
+    "ProductSearchServiceImpl": {
+        "business_context": [
+            "show-shop",
+            "show-order",
+            "change-category"
+        ],
+        "final": "2"
+    },
+    "ProductResource": {
+        "business_context": [
+            "show-shop",
+            "change-category"
+        ],
+        "final": "2"
+    },
+    "Product": {
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order",
+            "change-category",
+            "show-account"
+        ],
+        "final": "2"
+    },
+    "CategoryResource": {
+        "business_context": [
+            "show-shop"
+        ],
+        "final": "2"
+    },
+    "BusinessCustomer": {
+        "business_context": [
+            "Unknown"
+        ],
+        "final": "0"
+    }
+}

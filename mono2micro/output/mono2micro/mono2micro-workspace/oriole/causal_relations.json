@@ -1,0 +1,68 @@
+{
+    "add-to-cart": {
+        "CustomerOrderServicesImpl--AbstractCustomer": 1,
+        "AbstractCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--ResidentialCustomer": 1,
+        "ResidentialCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--Product": 1,
+        "Product--CustomerOrderServicesImpl": 1
+    },
+    "change-category": {
+        "ProductResource--ProductSearchServiceImpl": 1,
+        "ProductSearchServiceImpl--ProductResource": 1,
+        "ProductSearchServiceImpl--Product": 1,
+        "Product--ProductSearchServiceImpl": 1
+    },
+    "show-account": {
+        "CustomerOrderResource--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--CustomerOrderResource": 1,
+        "CustomerOrderServicesImpl--AbstractCustomer": 1,
+        "AbstractCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--ResidentialCustomer": 1,
+        "ResidentialCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--Product": 1,
+        "Product--CustomerOrderServicesImpl": 1
+    },
+    "show-order": {
+        "CustomerOrderResource--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--CustomerOrderResource": 1,
+        "CustomerOrderServicesImpl--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--AbstractCustomer": 1,
+        "AbstractCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--ResidentialCustomer": 1,
+        "ResidentialCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--Product": 1,
+        "Product--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--Order": 1,
+        "Order--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--LineItem": 1,
+        "LineItem--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--ProductSearchServiceImpl": 1,
+        "ProductSearchServiceImpl--CustomerOrderServicesImpl": 1,
+        "CustomerOrderResource--LineItem": 1,
+        "LineItem--CustomerOrderResource": 1,
+        "LineItem--LineItem": 1,
+        "LineItem--Order": 1,
+        "Order--LineItem": 1
+    },
+    "show-shop": {
+        "CategoryResource--ProductSearchServiceImpl": 1,
+        "ProductSearchServiceImpl--CategoryResource": 1,
+        "CustomerOrderResource--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--CustomerOrderResource": 1,
+        "CustomerOrderServicesImpl--AbstractCustomer": 1,
+        "AbstractCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--ResidentialCustomer": 1,
+        "ResidentialCustomer--CustomerOrderServicesImpl": 1,
+        "CustomerOrderServicesImpl--Product": 1,
+        "Product--CustomerOrderServicesImpl": 1,
+        "CustomerOrderResource--AbstractCustomer": 1,
+        "AbstractCustomer--CustomerOrderResource": 1,
+        "CustomerOrderResource--Order": 1,
+        "Order--CustomerOrderResource": 1,
+        "ProductResource--ProductSearchServiceImpl": 1,
+        "ProductSearchServiceImpl--ProductResource": 1,
+        "ProductSearchServiceImpl--Product": 1,
+        "Product--ProductSearchServiceImpl": 1
+    }
+}

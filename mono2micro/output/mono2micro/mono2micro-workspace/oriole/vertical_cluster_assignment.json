@@ -1,0 +1,44 @@
+{
+    "0": {
+        "classes": [
+            "LineItem",
+            "Order",
+            "CustomerOrderServicesImpl",
+            "AbstractCustomer",
+            "CustomerOrderResource",
+            "ResidentialCustomer",
+            "BusinessCustomer"
+        ],
+        "business_context": [
+            "add-to-cart",
+            "show-shop",
+            "show-order",
+            "show-account",
+            "Unknown"
+        ]
+    },
+    "1": {
+        "classes": [
+            "Category",
+            "Address"
+        ],
+        "business_context": [
+            "show-shop"
+        ]
+    },
+    "2": {
+        "classes": [
+            "ProductSearchServiceImpl",
+            "ProductResource",
+            "Product",
+            "CategoryResource"
+        ],
+        "business_context": [
+            "show-shop",
+            "show-order",
+            "change-category",
+            "add-to-cart",
+            "show-account"
+        ]
+    }
+}

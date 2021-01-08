@@ -1,0 +1,237 @@
+{
+    "mono_data_dependency_graph": {
+        "nodes": [
+            {
+                "name": "AbstractCustomer",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/AbstractCustomer.java",
+                "semantics": []
+            },
+            {
+                "name": "Address",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Address.java",
+                "semantics": []
+            },
+            {
+                "name": "BusinessCustomer",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/BusinessCustomer.java",
+                "semantics": []
+            },
+            {
+                "name": "Category",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Category.java",
+                "semantics": []
+            },
+            {
+                "name": "LineItem",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItem.java",
+                "semantics": []
+            },
+            {
+                "name": "LineItemId",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/LineItemId.java",
+                "semantics": []
+            },
+            {
+                "name": "Order",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Order.java",
+                "semantics": []
+            },
+            {
+                "name": "Product",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/Product.java",
+                "semantics": []
+            },
+            {
+                "name": "ResidentialCustomer",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/domain/ResidentialCustomer.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryDoesNotExist",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CategoryDoesNotExist.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerDoesNotExistException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/CustomerDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "GeneralPersistenceException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/GeneralPersistenceException.java",
+                "semantics": []
+            },
+            {
+                "name": "InvalidQuantityException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/InvalidQuantityException.java",
+                "semantics": []
+            },
+            {
+                "name": "NoLineItemsException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/NoLineItemsException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderAlreadyOpenException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderAlreadyOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderModifiedException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderModifiedException.java",
+                "semantics": []
+            },
+            {
+                "name": "OrderNotOpenException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/OrderNotOpenException.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductDoesNotExistException",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/exception/ProductDoesNotExistException.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerOrderServicesImpl",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/CustomerOrderServicesImpl.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductSearchServiceImpl",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServices/ejbModule/org/pwte/example/service/ProductSearchServiceImpl.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerServicesApp",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/CustomerServicesApp.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductPriceChanged",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/app/ProductPriceChanged.java",
+                "semantics": []
+            },
+            {
+                "name": "CategoryResource",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CategoryResource.java",
+                "semantics": []
+            },
+            {
+                "name": "CustomerOrderResource",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/CustomerOrderResource.java",
+                "semantics": []
+            },
+            {
+                "name": "ProductResource",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith-open-liberty/CustomerOrderServicesWeb/src/org/pwte/example/resources/ProductResource.java",
+                "semantics": []
+            }
+        ],
+        "links": [
+            {
+                "source": "AbstractCustomer",
+                "target": "Address",
+                "value": "1"
+            },
+            {
+                "source": "AbstractCustomer",
+                "target": "Order",
+                "value": "2"
+            },
+            {
+                "source": "LineItem",
+                "target": "Product",
+                "value": "1"
+            },
+            {
+                "source": "LineItem",
+                "target": "Order",
+                "value": "1"
+            },
+            {
+                "source": "Order",
+                "target": "AbstractCustomer",
+                "value": "1"
+            },
+            {
+                "source": "Order",
+                "target": "LineItem",
+                "value": "1"
+            },
+            {
+                "source": "Product",
+                "target": "Category",
+                "value": "1"
+            }
+        ],
+        "overview": {
+            "nodes": [
+                {
+                    "name": "data_dep_island_0",
+                    "group": 0,
+                    "category": "data_dep_island_0",
+                    "filepath": "data_dep_island_0",
+                    "semantics": []
+                },
+                {
+                    "name": "default_group",
+                    "group": 1,
+                    "category": "default_group",
+                    "filepath": "default_group",
+                    "semantics": []
+                }
+            ],
+            "links": []
+        }
+    }
+}

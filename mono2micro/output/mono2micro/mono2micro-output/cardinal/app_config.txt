@@ -1,0 +1,2 @@
+ApplicationName= Application
+CardinalUtilOutPath= application/src

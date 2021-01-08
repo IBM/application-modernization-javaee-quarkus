@@ -1,0 +1,68 @@
+{
+    "$Root$": [
+        "show-shop",
+        "add-to-cart",
+        "show-order",
+        "change-category",
+        "show-account"
+    ],
+    "CategoryResource": [
+        "show-shop"
+    ],
+    "ProductSearchServiceImpl": [
+        "show-shop",
+        "show-order",
+        "change-category"
+    ],
+    "Category": [
+        "show-shop"
+    ],
+    "LineItem": [
+        "add-to-cart",
+        "show-shop",
+        "show-order"
+    ],
+    "CustomerOrderResource": [
+        "add-to-cart",
+        "show-shop",
+        "show-order",
+        "show-account"
+    ],
+    "CustomerOrderServicesImpl": [
+        "add-to-cart",
+        "show-shop",
+        "show-order",
+        "show-account"
+    ],
+    "Product": [
+        "add-to-cart",
+        "show-shop",
+        "show-order",
+        "change-category",
+        "show-account"
+    ],
+    "AbstractCustomer": [
+        "add-to-cart",
+        "show-shop",
+        "show-order",
+        "show-account"
+    ],
+    "ResidentialCustomer": [
+        "add-to-cart",
+        "show-shop",
+        "show-order",
+        "show-account"
+    ],
+    "Order": [
+        "add-to-cart",
+        "show-shop",
+        "show-order"
+    ],
+    "Address": [
+        "show-shop"
+    ],
+    "ProductResource": [
+        "show-shop",
+        "change-category"
+    ]
+}

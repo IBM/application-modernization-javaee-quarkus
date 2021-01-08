@@ -66,19 +66,12 @@ $ docker run -d -p 3000:3000 ibmcom/mono2micro-ui
 
 Open http://localhost:3000 and add ${ROOT_FOLDER}/mono2micro/output/mono2micro-output/oriole/final_graph.json
 
-<kbd><img src="../documentation/mono2mircro-result-legacy-ui.png" /></kbd>
+<kbd><img src="../documentation/mono2mircro-3-partitions-1.png" /></kbd>
 
+### Results
 
-## To be done
+The purple rectangle is essentially the catalog service (except of the missing Category class).
 
-The result above isn't that useful. One reason is probably that the shopping cart is displayed on the shop page.
+The green classes make up the remaining monolith (except of Address).
 
-To not compare apples with oranges, let's try it again with the Open Liberty EJB backend, but the new frontend which doesn't display the shopping cart on the catalog page.
-
-```
-$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-single-spa.sh
-```
-
-Open http://localhost:8080/
-
-Current issue: Open Liberty hasn't CORS enabled.
+The red classes need to be assigned to either the catalog service of the remaining monolith dependent of class dependencies. Most of them are exceptions which weren't covered in the use cases.

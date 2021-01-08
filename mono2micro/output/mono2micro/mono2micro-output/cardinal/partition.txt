@@ -1,0 +1,13 @@
+CategoryResource,partition2
+ProductSearchServiceImpl,partition2
+Category,partition1
+LineItem,partition0
+CustomerOrderResource,partition0
+CustomerOrderServicesImpl,partition0
+Product,partition2
+AbstractCustomer,partition0
+ResidentialCustomer,partition0
+Order,partition0
+BusinessCustomer,partition0
+Address,partition1
+ProductResource,partition2
