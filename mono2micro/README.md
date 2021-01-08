@@ -75,3 +75,10 @@ The purple rectangle is essentially the catalog service (except of the missing C
 The green classes make up the remaining monolith (except of Address).
 
 The red classes need to be assigned to either the catalog service of the remaining monolith dependent of class dependencies. Most of them are exceptions which weren't covered in the use cases.
+
+### Code Generation
+
+```
+$ cp ${ROOT_FOLDER}/monolith-open-liberty ${ROOT_FOLDER}/mono2micro/output/mono2micro/mono2micro-output
+$ docker run --rm -it -v ${ROOT_FOLDER}/mono2micro/output/mono2micro/mono2micro-output:/var/cardinal ibmcom/mono2micro-cardinal /var/cardinal/monolith-open-liberty /var/cardinal/cardinal
+```

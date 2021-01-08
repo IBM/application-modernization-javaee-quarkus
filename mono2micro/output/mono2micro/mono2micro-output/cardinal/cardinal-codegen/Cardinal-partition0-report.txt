@@ -1,0 +1,54 @@
+Cardinal Partition Analysis Report (v2.0.0r29)
+
+# *************************************************** #
+# Partition partition0 contains the following classes #
+# *************************************************** #
+    ├─ AbstractCustomer
+    ├─ BusinessCustomer
+    ├─ CustomerOrderResource
+    ├─ CustomerOrderServicesImpl
+    ├─ LineItem
+    ├─ Order
+    └─ ResidentialCustomer
+
+
+# ************************************************************** #
+# Partition partition0 has the following external-facing classes #
+# (other partitions invoke these methods)                        #
+# ************************************************************** #
+
+# **************************************************************** #
+# Non-primitive object parameters accepted by Partition partition0 #
+# on its service interfaces                                        #
+# **************************************************************** #
+
+# ********************************************************************************** #
+# Partition partition0 calls to the following class.method outside of this partition #
+# ********************************************************************************** #
+    ├───> Product ----<<Partition partition2>>
+    │       ├─ .Product
+    │       └─ .getPrice
+    │
+    └───> ProductSearchServiceImpl ----<<Partition partition2>>
+            └─ .loadProduct
+
+
+# ******************************************************************* #
+# Partition partition0 holds reference to the following class objects #
+# residing outside this partition, but has no runtime invocations     #
+# ******************************************************************* #
+    ├───> Address
+    │       ├─ AbstractCustomer
+    │       ├─ AbstractCustomer.getAddress
+    │       ├─ AbstractCustomer.setAddress
+    │       ├─ CustomerOrderResource.updateAddress
+    │       └─ CustomerOrderServicesImpl.updateAddress
+    │
+    └───> Product
+            ├─ CustomerOrderServicesImpl.addLineItem
+            ├─ CustomerOrderServicesImpl.loadCustomerHistory
+            ├─ CustomerOrderServicesImpl.removeLineItem
+            ├─ LineItem
+            ├─ LineItem.getProduct
+            └─ LineItem.setProduct
+

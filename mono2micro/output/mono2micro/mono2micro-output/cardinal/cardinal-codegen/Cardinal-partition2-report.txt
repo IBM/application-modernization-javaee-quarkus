@@ -1,0 +1,53 @@
+Cardinal Partition Analysis Report (v2.0.0r29)
+
+# *************************************************** #
+# Partition partition2 contains the following classes #
+# *************************************************** #
+    ├─ CategoryResource
+    ├─ Product
+    ├─ ProductResource
+    └─ ProductSearchServiceImpl
+
+
+# ************************************************************** #
+# Partition partition2 has the following external-facing classes #
+# (other partitions invoke these methods)                        #
+# ************************************************************** #
+    ├─ Product **Persistence** <--
+    │   implements: Serializable
+    │    ├─ .Product
+    │    └─ .getPrice
+    │
+    └─ ProductSearchServiceImpl <--
+        implements: ProductSearchService
+         └─ .loadProduct
+
+
+# **************************************************************** #
+# Non-primitive object parameters accepted by Partition partition2 #
+# on its service interfaces                                        #
+# **************************************************************** #
+    ├─ <---{ BigDecimal }---
+    │    └─ Product.getPrice
+    │
+    └─ <---{ Product }---
+         └─ ProductSearchServiceImpl.loadProduct
+
+
+# ********************************************************************************** #
+# Partition partition2 calls to the following class.method outside of this partition #
+# ********************************************************************************** #
+
+# ******************************************************************* #
+# Partition partition2 holds reference to the following class objects #
+# residing outside this partition, but has no runtime invocations     #
+# ******************************************************************* #
+    └───> Category
+            ├─ CategoryResource.loadCategory
+            ├─ CategoryResource.loadTopLevelCategories
+            ├─ Product
+            ├─ Product.getCategories
+            ├─ Product.setCategories
+            ├─ ProductSearchServiceImpl.getTopLevelCategories
+            └─ ProductSearchServiceImpl.loadCategory
+

@@ -1,0 +1,33 @@
+Cardinal Partition Analysis Report (v2.0.0r29)
+
+# *************************************************** #
+# Partition partition1 contains the following classes #
+# *************************************************** #
+    ├─ Address
+    └─ Category
+
+
+# ************************************************************** #
+# Partition partition1 has the following external-facing classes #
+# (other partitions invoke these methods)                        #
+# ************************************************************** #
+    ├─ Address <--
+    │   implements: Serializable
+    │
+    └─ Category **Persistence** <--
+        implements: Serializable
+
+
+# **************************************************************** #
+# Non-primitive object parameters accepted by Partition partition1 #
+# on its service interfaces                                        #
+# **************************************************************** #
+
+# ********************************************************************************** #
+# Partition partition1 calls to the following class.method outside of this partition #
+# ********************************************************************************** #
+
+# ******************************************************************* #
+# Partition partition1 holds reference to the following class objects #
+# residing outside this partition, but has no runtime invocations     #
+# ******************************************************************* #
