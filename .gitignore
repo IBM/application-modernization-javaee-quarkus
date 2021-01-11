@@ -11,9 +11,6 @@ READNIK.md
 
 output-binary
 mono2micro/output/mono2micro/mono2micro-output/monolith-open-liberty
-transformationadvisor-Linux_workspace_collection.tgz
-uploadEndpoint.json
-transformationadvisor-2.3.0
 
 monolith-open-liberty-klu
 
@@ -72,7 +69,7 @@ heapdump*
 javacore*
 Snap*
 
-transformation-advisor
+transformation-advisor/tool
 
 *.class
 *.log

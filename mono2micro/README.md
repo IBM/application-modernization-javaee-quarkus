@@ -82,3 +82,18 @@ The red classes need to be assigned to either the catalog service of the remaini
 $ cp ${ROOT_FOLDER}/monolith-open-liberty ${ROOT_FOLDER}/mono2micro/output/mono2micro/mono2micro-output
 $ docker run --rm -it -v ${ROOT_FOLDER}/mono2micro/output/mono2micro/mono2micro-output:/var/cardinal ibmcom/mono2micro-cardinal /var/cardinal/monolith-open-liberty /var/cardinal/cardinal
 ```
+
+### Questions
+
+1. Why does the natural seams view not show 3 but only 2 partitions? Why is the catalog service not shown here as candidate for the strangler pattern?
+
+2. How can you move the Address and Category objects in the two other partitions? Same for unused objects. And why is there no relation to these two objects from the other two partitions/services?
+
+3. Where can you see where in CustomerOrderServiceImpl ProductSearchServiceImpl is invoked? Why are there two arrows? Why not one that shows the actual network traffic?
+
+4. Why isn't MicroProfile REST client used in the generated code?
+
+5. Why is unused code/classes still in the generated code?
+
+6. Where are the Dockerfiles?
+
