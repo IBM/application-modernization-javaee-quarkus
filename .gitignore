@@ -79,7 +79,7 @@ transformation-advisor/tool
 *.war
 *.nar
 
-*.zip
+monolith-websphere-90/migration-bundle/customerorderservicesapp_migrationBundle.zip
 *.tar.gz
 *.rar
 hs_err_pid*

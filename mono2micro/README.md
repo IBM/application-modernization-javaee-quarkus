@@ -93,7 +93,7 @@ $ docker run --rm -it -v ${ROOT_FOLDER}/mono2micro/output/mono2micro/mono2micro-
 
 4. Why isn't MicroProfile REST client used in the generated code?
 
-5. Why is unused code/classes still in the generated code?
+5. Why is unused code/classes    still in the generated code?
 
 6. Where are the Dockerfiles?
 
