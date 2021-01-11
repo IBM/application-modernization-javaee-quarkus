@@ -17,6 +17,7 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Still same project structure and EJBs
 6. Strangled Catalog Service and remaining Open Liberty Monolith
     - Strangled catalog service
+        - Inspired by Mono2Micro
         - Developed with Quarkus
         - Runs in JVM
         - Data is accessed in Postgres via Panache
@@ -34,6 +35,7 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Developed with single-spa and Vue.js
     - Split in six containers
     - Messaging done via RxJS
+    - Material design
 
 Screenshot of legacy storefront application:
 
