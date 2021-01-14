@@ -19,7 +19,7 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Still same project structure and EJBs
 6. Strangled Catalog Service and remaining Open Liberty Monolith
     - Strangled catalog service
-        - Inspired by [Mono2Micro](mono2micro/Readme.md)
+        - Inspired by [Mono2Micro](mono2micro/READMDE.md)
         - Developed with Quarkus
         - Runs in JVM
         - Data is accessed in Postgres via Panache
