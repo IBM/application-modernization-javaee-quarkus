@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: customerorderservicesapp
+  name: customerorderservicesapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customerorderservicesapp
+  template:
+    metadata:
+      labels:
+        app: customerorderservicesapp
+    spec:
+      containers:
+        - image: docker.io/application
+          imagePullPolicy: Always
+          name: customerorderservicesapp
+          ports:
+            - containerPort: 9080

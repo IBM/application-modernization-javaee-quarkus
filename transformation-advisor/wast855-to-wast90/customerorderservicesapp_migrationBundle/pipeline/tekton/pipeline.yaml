@@ -1,0 +1,106 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: build-and-deploy
+spec:
+  resources:
+    - name: application-repo
+      type: git
+    - name: application-image
+      type: image
+
+  tasks:
+    - name: build-application
+      taskRef:
+        name: buildah
+        kind: ClusterTask
+      resources:
+        inputs:
+          - name: source
+            resource: application-repo
+        outputs:
+          - name: image
+            resource: application-image
+      params:
+        - name: DOCKERFILE
+          value: "Dockerfile"
+        - name: TLSVERIFY
+          value: "false"
+
+    - name: apply-application-manifests
+      taskRef:
+        name: apply-manifests
+      resources:
+        inputs:
+          - name: source
+            resource: application-repo
+      runAfter:
+        - build-application
+      params:
+        - name: manifest_dir
+          value: "pipeline/k8s"
+
+    - name: update-application-image
+      taskRef:
+        name: update-deployment
+      resources:
+        inputs:
+          - name: image
+            resource: application-image
+      params:
+        - name: deployment
+          value: "customerorderservicesapp"
+      runAfter:
+        - apply-application-manifests
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: apply-manifests
+spec:
+  inputs:
+    resources:
+      - {type: git, name: source}
+    params:
+      - name: manifest_dir
+        description: The directory in source that contains yaml manifests
+        type: string
+        default: "pipeline/k8s"
+
+  steps:
+    - name: apply
+      image: quay.io/openshift/origin-cli:latest
+      workingDir: /workspace/source
+      command: ["/bin/bash", "-c"]
+      args:
+        - |-
+          echo Applying manifests in $(inputs.params.manifest_dir) directory
+          oc apply -f $(inputs.params.manifest_dir)
+          echo -----------------------------------
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: update-deployment
+spec:
+  inputs:
+    resources:
+      - {type: image, name: image}
+    params:
+      - name: deployment
+        description: The name of the deployment patch the image
+        type: string
+
+  steps:
+    - name: patch
+      image: quay.io/openshift/origin-cli:latest
+      command: ["/bin/bash", "-c"]
+      args:
+        - |-
+          oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
+            "containers":[{
+              "name": "$(inputs.params.deployment)",
+              "image":"$(inputs.resources.image.url)"
+            }]
+          }}}}'
