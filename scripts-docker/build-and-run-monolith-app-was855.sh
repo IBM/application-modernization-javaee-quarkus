@@ -14,7 +14,7 @@ function setup() {
   echo "You need to have Java 1.8 installed locally"
   echo "You need to have Maven installed locally"
   #echo "Run sh scripts-docker/run-monolith-db2.sh first"
-  echo "Note: This script starts only the app without database"
+  echo "Note: This script starts only the app without database" 
   
   echo "Open https://localhost:9443/CustomerOrderServicesWeb/#shopPage"
   echo "User: skywalker, password: force"
@@ -22,7 +22,7 @@ function setup() {
   echo "Open https://localhost:9043/ibm/console/login.do?action=secure"
   echo "User: wsadmin, password: passw0rd"
 
-  docker rm -f storefront-was90
+  docker rm -f storefront-was855
 
   cd ${root_folder}/monolith-websphere-90
   rm CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear
@@ -32,9 +32,10 @@ function setup() {
 
   cp ${root_folder}/monolith-websphere-90/CustomerOrderServicesApp/target/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear ${root_folder}/monolith-websphere-90/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear 
   
-  docker build --tag storefront-was90 .
+  cd ${root_folder}/monolith-websphere-90/
+  docker build -f Dockerfile855 --tag storefront-was855 .
 
-  docker run -p 9043:9043 -p 9443:9443 --name storefront-was90 storefront-was90
+  docker run -p 9043:9043 -p 9443:9443 --name storefront-was855 storefront-was855
 }
 
 setup

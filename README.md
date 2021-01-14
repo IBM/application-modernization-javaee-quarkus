@@ -184,7 +184,7 @@ Open http://localhost:8080
 
 ### Monolith - WebSphere Traditional 9.0
 
-The following scripts launch the application in a container. However the Java code is not built yet and the application doesn't connect to the database yet.
+The following scripts launch the application in a container. However the application doesn't connect to the database yet.
 
 ```
 $ sh scripts/install-dojo.sh
@@ -199,4 +199,16 @@ Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, p
 
 ### Monolith - WebSphere Traditional 8.5.5
 
-The original version runs on bare metal (or in a virtual machine). Check the [documentation](monolith-websphere-855/README.md) for setup instructions.
+The original version runs on bare metal (or in a virtual machine). Check the original [documentation](monolith-websphere-855/README.md) for setup instructions.
+
+To simplify the setup, a container is used instead. Since the code in 'monolith-websphere-855' and 'monolith-websphere-90' is identical, similar commands as above can be executed:
+
+```
+$ sh scripts/install-dojo.sh
+$ sh scripts/install-was-dependencies.sh
+$ sh scripts-docker/build-and-run-monolith-app-was855.sh
+```
+
+Open https://localhost:9443/CustomerOrderServicesWeb/ (user: skywalker, password: force)
+
+Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, password: passw0rd)

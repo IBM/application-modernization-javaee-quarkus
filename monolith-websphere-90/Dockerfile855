@@ -8,9 +8,9 @@ COPY --chown=1001:0 config/cosConfig.py /work/config/
 
 COPY --chown=1001:0 config/app-update.props  /work/config/
 
-COPY --chown=1001:0 app/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear /work/apps/CustomerOrderServicesApp.ear
+COPY --chown=1001:0 CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear /work/apps/CustomerOrderServicesApp.ear
 
-COPY --chown=1001:0 install2.sh /work/
+#COPY --chown=1001:0 install2.sh /work/
 
 RUN /work/configure.sh
 
