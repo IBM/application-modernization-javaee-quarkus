@@ -50,7 +50,7 @@ $ docker exec -it storefront-was855 /bin/bash
 
 ```
 $ cd /tmp/transformationadvisor-2.4.0
-$ ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01 wsadmin passw0rd
+$ ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01
 $ exit
 ```
 
@@ -94,7 +94,7 @@ $ docker exec -it storefront-was90 /bin/bash
 
 ```
 $ cd /tmp/transformationadvisor-2.4.0
-$ ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01 wsadmin passw0rd
+$ ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01
 $ exit
 ```
 

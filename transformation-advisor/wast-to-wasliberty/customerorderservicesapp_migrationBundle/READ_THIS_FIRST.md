@@ -18,11 +18,11 @@
      </tr>
      <tr>
         <td>Total issues</td>
-        <td>4</td>
+        <td>5</td>
      </tr>
      <tr>
         <td>Estimated effort (days)</td>
-        <td>6.0</td>
+        <td>6.5</td>
      </tr>
      <tr>
         <td>External dependencies</td>
