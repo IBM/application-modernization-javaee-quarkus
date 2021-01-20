@@ -74,6 +74,13 @@ AppModernization.pptx
 
 migration-toolkit
 
+
+monolith-websphere-855/CustomerOrderServicesTest/target
+monolith-websphere-855/CustomerOrderServicesWeb/target
+monolith-websphere-855/CustomerOrderServicesProject/target
+monolith-websphere-855/CustomerOrderServicesApp/target
+monolith-websphere-855/CustomerOrderServices/target
+
 monolith-websphere-90/CustomerOrderServicesTest/target
 monolith-websphere-90/CustomerOrderServicesWeb/target
 monolith-websphere-90/CustomerOrderServicesProject/target
