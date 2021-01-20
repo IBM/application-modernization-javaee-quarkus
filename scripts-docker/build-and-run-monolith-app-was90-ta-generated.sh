@@ -33,7 +33,7 @@ function setup() {
   cp ${root_folder}/monolith-websphere-90/CustomerOrderServicesApp/target/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear ${root_folder}/monolith-websphere-90/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear 
   
   cd ${root_folder}/monolith-websphere-90  
-  docker build -f Dockerfile-transformation-advisor --tag storefront-was90 .
+  docker build -f Dockerfile.transformation-advisor --tag storefront-was90 .
 
   docker run -p 9043:9043 -p 9443:9443 --name storefront-was90 storefront-was90
 }
