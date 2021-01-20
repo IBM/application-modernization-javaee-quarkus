@@ -82,7 +82,7 @@ parms = "-appname customerorderservicesapp"
 parms += " -node " + node + " -server " + server
 parms += " -nouseMetaDataFromBinary"
 parms += " -MapWebModToVH [[.* .* default_host]]"
-app = AdminApp.install("/work/config/{APPLICATION_BINARY}", [parms])
+app = AdminApp.install("/work/config/CustomerOrderServicesApp-0.1.0-SNAPSHOT.ear", [parms])
 
 AdminConfig.save()
 
