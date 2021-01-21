@@ -20,7 +20,7 @@ function setup() {
   echo "User: skywalker, password: force"
 
   echo "Open https://localhost:9043/ibm/console/login.do?action=secure"
-  echo "User: wsadmin, password: passw0rd"
+  # which credentials?  
 
   docker rm -f storefront-was90
 
