@@ -23,10 +23,10 @@ Application modernization is done in multiple steps. This sample demonstrates ho
         - Developed with Quarkus
         - Runs in JVM
         - Data is accessed in Postgres via Panache
-        - Kafka events are sent when prices change (CQRS)
+        - Kafka events are sent when prices change
     - Remaining Open Liberty monolith
         - Modern project structure and CDI
-        - Receives Kafka events when prices change (CQRS)
+        - Receives Kafka events when prices change and caches data
 7. Strangled Catalog Service and remaining Quarkus Monolith
     - Strangled Quarkus catalog service 
         - Reactive endpoints and Postgres access
