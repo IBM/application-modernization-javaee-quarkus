@@ -1,4 +1,4 @@
-## Application Modernization Sample - From Java EE (2008) to Quarkus (2021)
+## Application Modernization Sample - From Java EE (2010) to Quarkus (2021)
 
 Application modernization is done in multiple steps. This sample demonstrates how to modernize 12+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
 
