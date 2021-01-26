@@ -91,6 +91,7 @@ I've written a series of blogs about this project:
 * [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
 * [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
 * [Improving operational Efficiency through Application Modernization](http://heidloff.net/article/improving-operational-efficiency-through-application-modernization/)
+* [Modernizing Java EE Applications with WebSphere Liberty](http://heidloff.net/article/modernizing-java-ee-applications-with-websphere-liberty/)
 * [Step-by-Step Instructions how to use Transformation Advisor](http://heidloff.net/article/step-by-step-instructions-ibm-transformation-advisor/)
 * [Workshop: Modernizing IBM WebSphere Applications](http://heidloff.net/article/workshop-modernizing-ibm-websphere-applications/)
 * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
