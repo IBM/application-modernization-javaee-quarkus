@@ -6,12 +6,10 @@ Application modernization is done in multiple steps. This sample demonstrates ho
     - Starting point: Java EE 6 app from 2008 running in VM or bare metal
     - Db2 is used as data store
 2. Monolith - WebSphere Traditional 9 in container
-    - Application converted with Transformation Advisor without code changes
-    - [Documentation](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/was90/README)
+    - Application converted with Transformation Advisor without code changes    
 3. Monolith - WebSphere Liberty (latest)
-    - Application converted with Transformation Advisor
-    - Same project structure and EJBs
-    - [Documentation](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/liberty)
+    - Application converted with Eclipse Migration Tools (and Transformation Advisor)
+    - Same project structure and EJBs    
 4. Separated Frontend - WebSphere Liberty (latest)
     - Dojo frontend in separate container
     - Backend and frontend connected via proxy
@@ -84,6 +82,20 @@ $ curl -X PUT "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/1" -H "ac
 Open the "Order History" tab to see the updated price. The new price has been updated in the catalog service and the remaining monolith.
 
 <kbd><img src="documentation/storefront-new-price.png" /></kbd>
+
+
+### Documentation
+
+I've written a series of blogs about this project:
+
+* [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
+* [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
+* [Improving operational Efficiency through Application Modernization](http://heidloff.net/article/improving-operational-efficiency-through-application-modernization/)
+* [Step-by-Step Instructions how to use Transformation Advisor](http://heidloff.net/article/step-by-step-instructions-ibm-transformation-advisor/)
+* [Workshop: Modernizing IBM WebSphere Applications](http://heidloff.net/article/workshop-modernizing-ibm-websphere-applications/)
+* [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
+* [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
+* [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
 
 
 ### Monolith - WebSphere Liberty
