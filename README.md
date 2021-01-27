@@ -89,6 +89,7 @@ Open the "Order History" tab to see the updated price. The new price has been up
 I've written a series of blogs about this project:
 
 * [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
+* [Project Overview Slides](documentation/AppModernization.pdf)
 * [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
 * [Improving operational Efficiency through Application Modernization](http://heidloff.net/article/improving-operational-efficiency-through-application-modernization/)
 * [Modernizing Java EE Applications with WebSphere Liberty](http://heidloff.net/article/modernizing-java-ee-applications-with-websphere-liberty/)
