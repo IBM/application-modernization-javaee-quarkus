@@ -19,18 +19,19 @@
   <webApplication location="service.war" contextRoot="/CustomerOrderServicesWeb"/>
   
   <!-- works locally 
+  -->
   <library id="DB2JCCLib">
     <fileset dir="${project.build.directory}" includes="jcc*.jar"/>
   </library>
-  -->
-
+ 
   <!-- works in Docker  
-  -->
   <library id="DB2JCCLib">
     <fileset dir="${shared.resource.dir}" includes="jcc*.jar"/>
   </library> 
-    
+  -->
+  
   <!-- works locally 
+  -->
   <dataSource id="orderds"
     jndiName="jdbc/orderds">
     <jdbcDriver libraryRef="DB2JCCLib" />
@@ -40,10 +41,8 @@
         user="db2inst1"
         password="db2inst1" />
   </dataSource>
-  -->
-
+  
   <!-- works in Docker  
-  -->
   <dataSource id="orderds"
     jndiName="jdbc/orderds">
     <jdbcDriver libraryRef="DB2JCCLib" />
@@ -53,4 +52,5 @@
         user="db2inst1"
         password="db2inst1" />
   </dataSource>
+  -->
 </server>

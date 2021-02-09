@@ -36,6 +36,7 @@ public class ProductResource {
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response getProduct(@PathParam(value="id") int productId)
 		{
+			System.out.println("/Product - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.ProductResource");
 			try {
 				Product product = productSearch.loadProduct(productId);
 			    Calendar now = Calendar.getInstance();
