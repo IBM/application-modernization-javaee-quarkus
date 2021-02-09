@@ -16,9 +16,9 @@ function setup() {
   
   cd ${root_folder}/monolith-open-liberty-cloud-native
 
-  # change server.xml
+  cp src/main/liberty/config/server-local.xml src/main/liberty/config/server.xml
 
-  # change microprofile-config.properties
+  cp src/main/resources/META-INF/microprofile-config-local.properties src/main/resources/META-INF/microprofile-config.properties 
 
   mvn clean package
   mvn liberty:dev
