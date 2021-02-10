@@ -24,6 +24,12 @@ function setup() {
   cp src/main/resources/META-INF/microprofile-config-local.properties src/main/resources/META-INF/microprofile-config.properties 
 
   mvn clean package
+
+  # unfortunately this doesn't work
+  # https://openliberty.io/guides/getting-started.html#running-the-application-from-a-minimal-runnable-jar
+  #mvn liberty:package -Dinclude=runnable
+  #java -jar target/service.jar
+
   mvn liberty:dev
 }
 

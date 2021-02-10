@@ -21,7 +21,9 @@ function setup() {
   cd ${root_folder}/service-catalog-quarkus-reactive
   cp src/main/resources/application-local.properties src/main/resources/application.properties
 
-  mvn compile quarkus:dev
+  mvn clean package
+
+  java -jar target/com.ibm.catalog-1.0-SNAPSHOT-runner.jar
 }
 
 setup
