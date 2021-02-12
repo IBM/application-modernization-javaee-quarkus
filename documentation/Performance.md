@@ -110,3 +110,82 @@ docker exec storefront-catalog cat /sys/fs/cgroup/memory/memory.stat | grep rss
 Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
 * 1:38 mins
 * 160 MB RSS
+
+
+### Test Case 5: Quarkus - Native Mode - Reactive
+
+* Quarkus (directory: [service-catalog-quarkus-reactive](https://github.com/nheidloff/application-modernization-javaee-quarkus/tree/master/service-catalog-quarkus-reactive))
+* Image: registry.access.redhat.com/ubi8/ubi-minimal - [Dockerfile](../service-catalog-quarkus-reactive/src/main/docker/Dockerfile)
+* Reactive Postgres ([example](https://github.com/nheidloff/application-modernization-javaee-quarkus/blob/master/service-catalog-quarkus-reactive/src/main/java/com/ibm/catalog/ProductResource.java#L46))
+* Postgres running in a container
+
+```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-quarkus-services.sh
+```
+
+```
+curl "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+```
+
+```
+docker exec storefront-catalog-reactive cat /sys/fs/cgroup/memory/memory.stat | grep rss
+```
+
+Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
+* to be done mins
+* to be done MB RSS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+curl "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+
+quarkus sycnh db2
+curl "http://localhost:9082/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+
+curl http://localhost/CustomerOrderServicesWeb/jaxrs/Customer/Orders
+
+
+quarkus j9 reactive
+curl "http://localhost:9083/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+
+
+
+$ cd ${root_folder}/monolith-quarkus-synch
+$ docker build -f src/main/docker/Dockerfile.native.multistage -t niklas .
+$ docker run --name niklas -p 8080:8080 niklas
+
+
+
+
+
+
+cd ${root_folder}/monolith-quarkus-synch  
+  docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-backend-quarkus .
+
+cd ${root_folder}/scripts-docker
+  docker-compose -f docker-compose-quarkus-monolith-synch.yml up -d
+
+
+
+
+$ cd ${root_folder}/service-catalog-quarkus-reactive
+$ docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-catalog-native-test .
+$ docker run --name storefront-catalog-native-test -p 8082:8082 storefront-catalog-native-test
+
+
