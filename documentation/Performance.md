@@ -82,3 +82,31 @@ Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
 *  0:38 mins
 *  205 MB RSS
 
+
+### Test Case 4: Quarkus - JVM Mode - OpenJ9 - Synchronous
+
+* Quarkus (directory: [service-catalog-quarkus-synch](https://github.com/nheidloff/application-modernization-javaee-quarkus/tree/master/service-catalog-quarkus-synch))
+* Image: adoptopenjdk/openjdk11-openj9:ubi-minimal - [Dockerfile](../service-catalog-quarkus-synch/Dockerfile)
+* Panache - synchronous ([example](https://github.com/nheidloff/application-modernization-javaee-quarkus/blob/master/service-catalog-quarkus-synch/src/main/java/com/ibm/catalog/CategoryResource.java#L29))
+* Postgres running in a container
+
+```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-catalog.sh
+```
+
+```
+curl "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
+```
+
+```
+docker exec storefront-catalog cat /sys/fs/cgroup/memory/memory.stat | grep rss
+```
+
+Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
+* 1:38 mins
+* 160 MB RSS
