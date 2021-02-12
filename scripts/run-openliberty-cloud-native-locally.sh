@@ -30,6 +30,10 @@ function setup() {
   #mvn liberty:package -Dinclude=runnable
   #java -jar target/service.jar
 
+  # unfortunately this doesn't work
+  #mvn liberty:create liberty:install-feature liberty:package -Dinclude=runnable
+  #java -jar target/service.jar
+
   mvn liberty:dev
 }
 
