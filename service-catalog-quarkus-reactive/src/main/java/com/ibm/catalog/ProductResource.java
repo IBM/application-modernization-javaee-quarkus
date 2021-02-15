@@ -1,6 +1,6 @@
 package com.ibm.catalog;
 
-import io.vertx.axle.sqlclient.Tuple;
+import io.vertx.mutiny.sqlclient.Tuple;
 import io.vertx.core.Vertx;
 import io.vertx.kafka.client.producer.KafkaProducer;
 import io.vertx.kafka.client.producer.KafkaProducerRecord;
@@ -16,14 +16,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import io.vertx.axle.sqlclient.Row;
+import io.vertx.mutiny.sqlclient.Row;
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import io.vertx.mutiny.pgclient.PgPool;
 
 @Path("/CustomerOrderServicesWeb/jaxrs/Product")
 @ApplicationScoped
@@ -31,8 +32,9 @@ import java.util.stream.Collectors;
 public class ProductResource {
 
     @Inject
-    io.vertx.axle.pgclient.PgPool client;
-    private static int MAXIMAL_DURATION = 5000;
+    io.vertx.mutiny.pgclient.PgPool client;
+
+    //private static int MAXIMAL_DURATION = 5000;
 
     @Inject
     private InitDatabase initDatabase;
@@ -71,33 +73,36 @@ public class ProductResource {
 
     public CompletionStage<List<Product>> getProducts() {
         String statement = "SELECT id, price, name, description, image FROM product";
-        return client.preparedQuery(statement)
-                .toCompletableFuture()
-                .orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
-                .exceptionally(throwable -> {                    
-                    System.out.println(throwable);
-                    return null;
-                })
-                .thenApply(rows -> {
+        return client.preparedQuery(statement).execute()
+                //.toCompletableFuture()
+                //.orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
+                //.exceptionally(throwable -> {                    
+                //    System.out.println(throwable);
+                //    return null;
+                //})
+                .onItem().transform(rows -> {
                     List<Product> products = new ArrayList<>(rows.size());
                     rows.forEach(row -> products.add(fromRow(row)));
                     return products;
-                });
+                })
+                .subscribeAsCompletionStage();
     }
 
     public CompletionStage<List<ProductCategory>> getProductCategories() {        
         String statement = "SELECT id, productid, categoryid FROM productcategory";
-        return client.preparedQuery(statement)
-                .toCompletableFuture()
-                .orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
-                .exceptionally(throwable -> {                    
-                    System.out.println(throwable);
-                    return null;
-                }).thenApply(rows -> {
+        return client.preparedQuery(statement).execute()
+                //.toCompletableFuture()
+                //.orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
+                //.exceptionally(throwable -> {                    
+                //    System.out.println(throwable);
+                //    return null;
+                //})
+                .onItem().transform(rows -> {
                     List<ProductCategory> productCategories = new ArrayList<>(rows.size());
                     rows.forEach(row -> productCategories.add(fromRowProductCategory(row)));
                     return productCategories;
-                });
+                })
+                .subscribeAsCompletionStage();
     }
 
     private static ProductCategory fromRowProductCategory(Row row) {
@@ -126,16 +131,18 @@ public class ProductResource {
         System.out.println("/CustomerOrderServicesWeb/jaxrs/Product @PUT updateProduct invoked in Quarkus reactive catalog service");
 
         String statement = "UPDATE product SET price = $1 WHERE ID = $2";
-        return client.preparedQuery(statement, Tuple.of(updatedProduct.price, id))
-                .toCompletableFuture()
-                .orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
-                .exceptionally(throwable -> {                    
-                    System.out.println(throwable);
-                    return null;
-                }).thenApply(rows -> {
+        return client.preparedQuery(statement).execute(Tuple.of(updatedProduct.price, id))
+                //.toCompletableFuture()
+                //.orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
+                //.exceptionally(throwable -> {                    
+                //    System.out.println(throwable);
+                //    return null;
+                //})
+                .onItem().transform(rows -> {
                     sendMessageToKafka(id, updatedProduct.price);  
                     return updatedProduct;
-                });              
+                })
+                .subscribeAsCompletionStage();            
     }
     
     @ConfigProperty(name = "kafka.bootstrap.servers")

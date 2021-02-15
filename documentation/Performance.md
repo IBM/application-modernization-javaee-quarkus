@@ -137,6 +137,6 @@ docker exec storefront-catalog-reactive cat /sys/fs/cgroup/memory/memory.stat | 
 ```
 
 Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
-* to be done mins
-* to be done MB RSS
+* 0:14 mins
+* 300 MB RSS
 

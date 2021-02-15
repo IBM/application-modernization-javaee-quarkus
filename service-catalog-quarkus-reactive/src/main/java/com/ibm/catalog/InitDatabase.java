@@ -1,15 +1,25 @@
 package com.ibm.catalog;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import io.vertx.axle.sqlclient.Tuple;
+
+import io.smallrye.common.annotation.Blocking;
+import io.vertx.mutiny.sqlclient.Row;
+import io.vertx.mutiny.sqlclient.RowSet;
+import io.vertx.mutiny.sqlclient.Tuple;
 import java.math.BigDecimal;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.TimeUnit;
+//mport java.util.concurrent.TimeUnit;
 
 @ApplicationScoped
 public class InitDatabase {
   
+    @Inject    
+    io.vertx.mutiny.pgclient.PgPool client;
+
+    @PostConstruct
+    //@Blocking
     public void config() {
         initDb();
         addCategories();
@@ -17,38 +27,32 @@ public class InitDatabase {
         addProductCategories();
     }
 
+    //@Blocking
     private void initDb() {
         System.out.println("Quarkus reactive - initDB");
 
-        client.query("DROP TABLE IF EXISTS product").thenCompose(r -> client.query(
-                "CREATE TABLE product (id SERIAL PRIMARY KEY, price DECIMAL(14,2) NOT NULL, name TEXT NOT NULL, description TEXT NOT NULL, image TEXT NOT NULL)"))
-                .exceptionally(throwable -> {
-                    throwable.printStackTrace();
-                    return null;
+        client.query("DROP TABLE IF EXISTS product").execute()
+                .flatMap(r -> {
+                    System.out.println("Niklas 1");
+                    return client.query ("CREATE TABLE product (id SERIAL PRIMARY KEY, price DECIMAL(14,2) NOT NULL, name TEXT NOT NULL, description TEXT NOT NULL, image TEXT NOT NULL)").execute();
                 })
-                .toCompletableFuture().join();
-        
-        client.query("DROP TABLE IF EXISTS category").thenCompose(r -> client.query(
-                "CREATE TABLE category (id SERIAL PRIMARY KEY, name TEXT NOT NULL, parent SERIAL)"))
-                .exceptionally(throwable -> {
-                    throwable.printStackTrace();
-                    return null;
-                })
-                .toCompletableFuture().join();
-    
-        client.query("DROP TABLE IF EXISTS productcategory").thenCompose(r -> client.query(
-                "CREATE TABLE productcategory (id SERIAL PRIMARY KEY, productid SERIAL, categoryid SERIAL)"))
-                .exceptionally(throwable -> {
-                    throwable.printStackTrace();
-                    return null;
-                })
-                .toCompletableFuture().join();                
-    }
+                .await().indefinitely()
+                ;
 
-    @Inject
-    io.vertx.axle.pgclient.PgPool client;
-    private static int MAXIMAL_DURATION = 5000;
+        client.query("DROP TABLE IF EXISTS category").execute()
+                .flatMap(r -> client.query ("CREATE TABLE category (id SERIAL PRIMARY KEY, name TEXT NOT NULL, parent SERIAL)").execute())
+                .await().indefinitely()
+                ;
 
+        client.query("DROP TABLE IF EXISTS productcategory").execute()
+                .flatMap(r -> client.query ("CREATE TABLE productcategory (id SERIAL PRIMARY KEY, productid SERIAL, categoryid SERIAL)").execute())
+                .await().indefinitely()
+                ;        
+    }    
+
+    //private static int MAXIMAL_DURATION = 5000;
+
+    //@Blocking
     private void addCategories() {
         addCategoryAndWait(Long.valueOf(1), "Entertainment", Long.valueOf(0));  
         addCategoryAndWait(Long.valueOf(2), "Movies", Long.valueOf(1));  
@@ -60,6 +64,7 @@ public class InitDatabase {
         addCategoryAndWait(Long.valueOf(8), "DVD Players", Long.valueOf(5));     
     }
 
+    //@Blocking
     private void addProducts() {
         addProductAndWait(Long.valueOf(1), new BigDecimal("29.99"), "Return of the Jedi", "Episode 6, Luke has the final confrontation with his father!", "images/Return.jpg");  
         addProductAndWait(Long.valueOf(2), new BigDecimal("29.99"), "Empire Strikes Back", "Episode 5, Luke finds out a secret that will change his destiny", "images/Empire.jpg");
@@ -76,6 +81,7 @@ public class InitDatabase {
         addProductAndWait(Long.valueOf(53), new BigDecimal("299.99"), "XBOX 360", "Expand your horizons with the gaming and multimedia capabilities of this incredible system", "images/xbox360.jpg");            
     }    
 
+    //@Blocking
     private void addProductCategories() {
         addProductCategoryAndWait(Long.valueOf(1), Long.valueOf(1), Long.valueOf(2)); 
         addProductCategoryAndWait(Long.valueOf(2), Long.valueOf(2), Long.valueOf(2)); 
@@ -122,35 +128,41 @@ public class InitDatabase {
         product.price = price;
         product.description = description;
         product.image = image;
-
-        return client.preparedQuery("INSERT INTO product (id, price, name, description, image) VALUES ($1, $2, $3, $4, $5) RETURNING (id)", Tuple.of(id, price, name, description, image))
-            .toCompletableFuture()
-            .orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
-            .thenApply(pgRowSet -> {
-                product.id = pgRowSet.iterator().next().getLong("id");
+        
+        return client.preparedQuery("INSERT INTO product (id, price, name, description, image) VALUES ($1, $2, $3, $4, $5) RETURNING (id)").execute(Tuple.of(id, price, name, description, image))
+            // to be done: change to Mutiny
+            //.toCompletableFuture()
+            //.orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
+            .onItem().transform(pgRowSet -> {
+                product.id = ((RowSet<Row>) pgRowSet).iterator().next().getLong("id");
                 return product;
             })
-            .exceptionally(throwable -> {
-                System.out.println(throwable);
-                throw new RuntimeException();
-            });            
+            .subscribeAsCompletionStage()
+            // to be done: change to Mutiny
+            //.exceptionally(throwable -> {
+            //    System.out.println(throwable);
+            //    throw new RuntimeException();
+            //})
+            ;            
     }
 
     public CompletionStage<Category> addCategory(Long id, String name, Long parent) {
         Category category = new Category();
         category.name = name;
         category.parent = parent;
-        return client.preparedQuery("INSERT INTO category (id, name, parent) VALUES ($1, $2, $3) RETURNING (id)", Tuple.of(id, name, parent))
-            .toCompletableFuture()
-            .orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
-            .thenApply(pgRowSet -> {
+        return client.preparedQuery("INSERT INTO category (id, name, parent) VALUES ($1, $2, $3) RETURNING (id)").execute(Tuple.of(id, name, parent))
+            //.toCompletableFuture()
+            //.orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
+            .onItem().transform(pgRowSet -> {
                 category.id = pgRowSet.iterator().next().getLong("id");
                 return category;
             })
-            .exceptionally(throwable -> {
-                System.out.println(throwable);
-                throw new RuntimeException();
-            });            
+            .subscribeAsCompletionStage()
+            //.exceptionally(throwable -> {
+            //    System.out.println(throwable);
+            //    throw new RuntimeException();
+            //})
+            ;            
     }
 
     public CompletionStage<ProductCategory> addProductCategory(Long id, Long productId, Long categoryId) {
@@ -159,16 +171,18 @@ public class InitDatabase {
         productCategory.productid = productId;
         productCategory.categoryid = categoryId;
         
-        return client.preparedQuery("INSERT INTO productcategory (id, productid, categoryid) VALUES ($1, $2, $3) RETURNING (id)", Tuple.of(id, productId, categoryId))
-            .toCompletableFuture()
-            .orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
-            .thenApply(pgRowSet -> {
+        return client.preparedQuery("INSERT INTO productcategory (id, productid, categoryid) VALUES ($1, $2, $3) RETURNING (id)").execute(Tuple.of(id, productId, categoryId))
+            //.toCompletableFuture()
+            //.orTimeout(MAXIMAL_DURATION, TimeUnit.MILLISECONDS)
+            .onItem().transform(pgRowSet -> {
                 productCategory.id = pgRowSet.iterator().next().getLong("id");
                 return productCategory;
             })
-            .exceptionally(throwable -> {
-                System.out.println(throwable);
-                throw new RuntimeException();
-            });            
+            .subscribeAsCompletionStage()
+            //.exceptionally(throwable -> {
+            //    System.out.println(throwable);
+            //    throw new RuntimeException();
+            //})
+            ;            
     }
 }
