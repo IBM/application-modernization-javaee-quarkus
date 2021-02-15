@@ -1,5 +1,20 @@
 ## Performance and Memory Tests
 
+The same endpoint is invoked 30000 times. Each invocation reads some data from a database. See below for details.
+
+Notes: 
+* As with every performance test you milage will vary!
+* Because of the many variations of runtimes, versions, JDKs, JVMs, etc. the results may not be respresentative yet.
+
+
+| Test Case                     | Duration     | Memory - Start | Memory - End   |
+| ----------------------------- |:------------:| --------------:| --------------:|
+| 1) Quarkus/OpenJ9/Reactive    | 0:24         | 70             | 111            | 
+| 2) Quarkus/Hotspot/Reactive   | 0:24         | 192            | 380            | 
+| 3) OpenLiberty/OpenJ9/Synch   | 0:38         | 149            | 194            | 
+| 4) Quarkus/OpenJ9/Synch       | 0:58         | 85             | 145            |
+| 5) Quarkus/Native/Reactive    | 0:27         | 11             | 378            |
+
 
 ### Test Case 1: Quarkus - JVM Mode - OpenJ9 - Reactive
 
@@ -11,6 +26,7 @@
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
+$ sh scripts-docker/stop-services.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run.sh
 ```
 
@@ -22,9 +38,10 @@ curl "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
 docker exec storefront-catalog-reactive cat /sys/fs/cgroup/memory/memory.stat | grep rss
 ```
 
-Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
-* 0:18 mins
-* 102 MB RSS
+Results:
+* Duration of 30000 invocations: 0:24 mins
+* Memory before any invocations: 70 MB RSS
+* Memory after 30000 invocations: 111 MB RSS
 
 
 ### Test Case 2: Quarkus - JVM Mode - Hotspot - Reactive
@@ -37,6 +54,7 @@ Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
+$ sh scripts-docker/stop-services.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-hotspot.sh
 ```
 
@@ -49,9 +67,10 @@ docker exec storefront-catalog-reactive cat /sys/fs/cgroup/memory/memory.stat | 
 docker exec storefront-catalog-reactive ps -o rss,vsz 1 
 ```
 
-Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
-* 0:18 mins
-* 285 MB RSS
+Results:
+* Duration of 30000 invocations: 0:24 mins
+* Memory before any invocations: 192 MB RSS
+* Memory after 30000 invocations: 380 MB RSS
 
 
 ### Test Case 3: Open Liberty - OpenJ9 - Synchronous 
@@ -64,6 +83,7 @@ Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
+$ sh scripts-docker/stop-services.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
@@ -78,9 +98,10 @@ curl "http://localhost:9088/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2
 docker exec storefront-backend-open-native cat /sys/fs/cgroup/memory/memory.stat | grep rss
 ```
 
-Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
-*  0:38 mins
-*  205 MB RSS
+Results:
+* Duration of 30000 invocations:  0:38 mins
+* Memory before any invocations:   149 MB RSS
+* Memory after 30000 invocations:  194 MB RSS
 
 
 ### Test Case 4: Quarkus - JVM Mode - OpenJ9 - Synchronous
@@ -93,6 +114,7 @@ Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
+$ sh scripts-docker/stop-services.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
@@ -107,9 +129,10 @@ curl "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
 docker exec storefront-catalog cat /sys/fs/cgroup/memory/memory.stat | grep rss
 ```
 
-Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
-* 1:38 mins
-* 160 MB RSS
+Results:
+* Duration of 30000 invocations:  1:01 mins
+* Memory before any invocations:  85 MB RSS
+* Memory after 30000 invocations: 145 MB RSS
 
 
 ### Test Case 5: Quarkus - Native Mode - Reactive
@@ -122,6 +145,7 @@ Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
+$ sh scripts-docker/stop-services.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/run-database-postgres-catalog.sh
 $ sh ${ROOT_FOLDER}/scripts-docker/run-kafka.sh
@@ -136,7 +160,7 @@ curl "http://localhost/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
 docker exec storefront-catalog-reactive cat /sys/fs/cgroup/memory/memory.stat | grep rss
 ```
 
-Results (30000 invocations - see [jmeter.jmx](jmeter.jmx)):
-* 0:14 mins
-* 300 MB RSS
-
+Results:
+* Duration of 30000 invocations:   0:26 mins
+* Memory before any invocations:   11 MB RSS
+* Memory after 30000 invocations:  378 MB RSS

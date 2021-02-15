@@ -22,8 +22,8 @@ function setup() {
   docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-backend-quarkus .
 
   cd ${root_folder}/service-catalog-quarkus-reactive
-  docker build -f Dockerfile -t storefront-catalog-reactive .
-  #docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-catalog-reactive .
+  #docker build -f Dockerfile -t storefront-catalog-reactive .
+  docker build -f src/main/docker/Dockerfile.native.multistage -t storefront-catalog-reactive .
 
   cd ${root_folder}/scripts-docker
   docker-compose -f docker-compose-quarkus-services.yml up -d
