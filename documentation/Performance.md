@@ -1,10 +1,18 @@
 ## Performance and Memory Tests
 
+Performance comparisons are difficult. While the goal is to do fair comparisions, you don't want to compare horses with 1 PS cars either.
+
+My interpretations of the results are:
+
+* OpenJ9 consumes less memory
+* Reactive technologies in Quarkus require less resources
+
 The same endpoint is invoked 30000 times. Each invocation reads some data from a database. See below for details.
 
 Notes: 
-* As with every performance test you milage will vary!
-* Because of the many variations of runtimes, versions, JDKs, JVMs, etc. the results may not be respresentative yet.
+* As with every performance test your milage will vary!
+* Because of the many variations of runtimes, versions, JDKs, JVMs, etc. the results may not be respresentative yet. Reviews are going on.
+* Please ping me if you have feedback.
 
 
 | Test Case                     | Duration     | Memory - Start | Memory - End   |
