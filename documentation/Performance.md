@@ -10,8 +10,8 @@ My interpretations of the results are:
 The same endpoint is invoked 30000 times. Each invocation reads some data from a database. See below for details.
 
 Notes: 
-* As with every performance test your milage will vary!
-* Again, as with every performance test your milage will vary! 
+* As with every performance test your mileage will vary!
+* Again, as with every performance test your mileage will vary! 
 * This is not a generic comparison of the different options. Instead I've tested my simple use case of the e-commerce sample application.
 * I have not done any 'tuning' explicitly, but have used defaults. 
 * Because of the many variations of runtimes, versions, JDKs, JVMs, etc. the results may not be respresentative yet. Reviews are going on.
