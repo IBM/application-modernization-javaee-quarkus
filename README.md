@@ -103,6 +103,7 @@ I've written a series of blogs about this project:
 * [Event driven Architectures for loosely coupled Microservices](http://heidloff.net/article/event-driven-architectures-loosely-coupled-microservices/)
 * [Using Quarkus for building reactive Applications](http://heidloff.net/article/using-quarkus-reactive-applications)
 * [Using Micro Frontends in Microservices based Architectures](http://heidloff.net/article/using-micro-frontends-microservices/)
+* [Developing Micro Frontends with Single-Spa](http://heidloff.net/article/developing-micro-frontends-single-spa/)
 * [Workshop: Modernizing IBM WebSphere Applications](http://heidloff.net/article/workshop-modernizing-ibm-websphere-applications/)
 * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
 * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
