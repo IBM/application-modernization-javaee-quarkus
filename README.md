@@ -92,7 +92,7 @@ Open the "Order History" tab to see the updated price. The new price has been up
 
 I've written a series of blogs about this project:
 
-* [Project Overview Video](https://youtu.be/lw95LLqa37g) (12 mins)
+* [Project Overview Video](http://heidloff.net/article/video-application-modernization-in-baby-steps/) (12 mins)
 * [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
 * [Project Overview Slides](documentation/AppModernization.pdf)
 * [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
