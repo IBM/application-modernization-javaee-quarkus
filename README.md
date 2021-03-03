@@ -2,6 +2,10 @@
 
 Application modernization is done in multiple steps. This sample demonstrates how to modernize 12+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
 
+The following 12 minutes video describes the project on a high level:
+
+[![Video](documentation/video.png)](https://youtu.be/lw95LLqa37g)
+
 1. Monolith - WebSphere ND or Traditional 8.5.5
     - Starting point: Java EE 6 app from 2008 running in VM or bare metal
     - Db2 is used as data store
@@ -88,6 +92,7 @@ Open the "Order History" tab to see the updated price. The new price has been up
 
 I've written a series of blogs about this project:
 
+* [Project Overview Video](https://youtu.be/lw95LLqa37g) (12 mins)
 * [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
 * [Project Overview Slides](documentation/AppModernization.pdf)
 * [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
