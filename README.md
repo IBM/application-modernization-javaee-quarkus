@@ -1,10 +1,10 @@
 ## Application Modernization Sample - From Java EE (2010) to Cloud-Native (2021)
 
-Application modernization is done in multiple steps. This sample demonstrates how to modernize 12+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
+Application modernization is done in multiple steps. This sample demonstrates how to modernize 10+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
 
 The following 12 minutes video describes the project on a high level:
 
-[![Video](documentation/video.png)](https://youtu.be/lw95LLqa37g)
+<kbd>[![Video](documentation/video.png)](https://youtu.be/lw95LLqa37g)</kbd>
 
 1. Monolith - WebSphere ND or Traditional 8.5.5
     - Starting point: Java EE 6 app from 2008 running in VM or bare metal
