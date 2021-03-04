@@ -55,8 +55,9 @@ Screenshot of modernized storefront application:
 If you want to run the modernized application locally, you can invoke the following commands. All you need is a local Docker installation and the git CLI.
 
 Notes:
-* Docker requires 12 GB memory and 8 CPUs
+* Docker requires 14 GB memory, 10 CPUs and 80 GB disk space
 * It takes roughly 15 - 20 minutes to start everything
+* Make sure docker-compose is also installed (sounds like this needs to be installed separately on some systems)
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
