@@ -31,16 +31,16 @@ spec:
     spec:
       containers:
       - name: service-catalog-quarkus-reactive
-        image: image-registry.openshift-image-registry.svc:5000/app-mod-dev/service-catalog-quarkus-reactive:1
+        image: image-registry.openshift-image-registry.svc:5000/app-mod-dev/build-service-catalog-quarkus-reactive:latest
         ports:
         - containerPort: 8082
         livenessProbe:
           exec:
-            command: ["sh", "-c", "curl -s http://localhost:8080/"]
+            command: ["sh", "-c", "curl -s http://localhost:8082/q/health/live"]
           initialDelaySeconds: 20
         readinessProbe:
           exec:
-            command: ["sh", "-c", "curl -s http://localhost:8080/health | grep -q service-catalog-quarkus-reactive"]
+            command: ["sh", "-c", "curl -s http://localhost:8082/q/health/ready"]
           initialDelaySeconds: 40
       restartPolicy: Always
 ---

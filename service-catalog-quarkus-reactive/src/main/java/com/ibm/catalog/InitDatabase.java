@@ -3,14 +3,11 @@ package com.ibm.catalog;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-
-import io.smallrye.common.annotation.Blocking;
 import io.vertx.mutiny.sqlclient.Row;
 import io.vertx.mutiny.sqlclient.RowSet;
 import io.vertx.mutiny.sqlclient.Tuple;
 import java.math.BigDecimal;
 import java.util.concurrent.CompletionStage;
-//mport java.util.concurrent.TimeUnit;
 
 @ApplicationScoped
 public class InitDatabase {
@@ -49,8 +46,6 @@ public class InitDatabase {
                 .await().indefinitely()
                 ;        
     }    
-
-    //private static int MAXIMAL_DURATION = 5000;
 
     //@Blocking
     private void addCategories() {

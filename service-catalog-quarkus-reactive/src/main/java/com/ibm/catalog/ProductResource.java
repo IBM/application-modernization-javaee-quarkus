@@ -22,9 +22,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CompletionStage;
-//import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import io.vertx.mutiny.pgclient.PgPool;
 
 @Path("/CustomerOrderServicesWeb/jaxrs/Product")
 @ApplicationScoped
@@ -33,8 +31,6 @@ public class ProductResource {
 
     @Inject
     io.vertx.mutiny.pgclient.PgPool client;
-
-    //private static int MAXIMAL_DURATION = 5000;
 
     @Inject
     private InitDatabase initDatabase;
