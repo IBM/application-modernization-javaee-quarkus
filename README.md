@@ -116,6 +116,7 @@ I've written a series of blogs about this project:
 * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
 * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
 * [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
+* [IBM Garage Application Modernization Playbook](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/refactor/)
 
 
 ### Monolith - WebSphere Liberty
