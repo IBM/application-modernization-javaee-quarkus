@@ -11,7 +11,6 @@ function _out() {
 function setup() {
   _out Installing Kafka
   
-  # If project kafka doesn't exist, create it
   oc project kafka  > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project kafka
@@ -21,14 +20,14 @@ function setup() {
     | sed 's/namespace: .*/namespace: kafka/' \
     | oc apply -f - -n kafka 
 
-    oc apply -f ${root_folder}/os-scripts/kafka-cluster.yaml -n kafka 
+    oc apply -f ${root_folder}/scripts-openshift/kafka-cluster.yaml -n kafka 
 
     oc expose svc/my-cluster-kafka-external-bootstrap --port=9094
    
   _out Done installing Kafka
   _out Wait until the pods have been started
   _out Run this command \(potentially multiple times\): \"oc wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka\"
-  _out After this run \"sh os-scripts/show-urls.sh\" to get the Kafka broker URL
+  _out After this run \"sh scripts-openshift/show-urls.sh\" to get the Kafka broker URL
 }
 
 setup

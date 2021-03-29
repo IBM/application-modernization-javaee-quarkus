@@ -24,7 +24,7 @@ spec:
           value: postgres
         - name: PGDATA
           value: /temp/data
-        image: POSTGRES_IMAGE
+        image: image-registry.openshift-image-registry.svc:5000/postgres/build-postgres:latest
         imagePullPolicy: Always
         name: postgres
         ports:
@@ -53,6 +53,6 @@ spec:
     protocol: TCP
   selector:
     app: postgres
-  type: NodePort
+#  type: NodePort
 
 

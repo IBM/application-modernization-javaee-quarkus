@@ -12,16 +12,11 @@ function setup() {
   _out Deploying postgres
 
   oc new-project postgres
-  cd ${root_folder}/os-scripts
+  cd ${root_folder}/scripts-openshift
   oc new-build --name build-postgres --binary --strategy docker
   oc start-build build-postgres --from-dir=.
 
-  sed -e "s+POSTGRES_IMAGE+image-registry.openshift-image-registry.svc:5000/postgres/build-postgres:latest+g" \
-      -e "s+  type: NodePort+\#  type: NodePort+g" \
-      -e "s+        imagePullPolicy: Never+#        imagePullPolicy: Never+g" \
-      ./postgres-template.yaml > ./postgres-oc.yaml
-
-  oc apply -f ./postgres-oc.yaml
+  oc apply -f ./postgres.yaml
   oc expose svc/postgres
   
   route=$(oc get route postgres --template='{{ .spec.host }}')  

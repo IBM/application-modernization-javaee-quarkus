@@ -253,8 +253,9 @@ Work in progress ...
 
 ```
 $ oc login ...
-$ sh os-scripts/check-prerequisites.sh
-$ sh os-scripts/deploy-kafka.sh
-$ sh os-scripts/deploy-postgres.sh
-$ sh os-scripts/show-urls.sh
+$ sh scripts-openshift/check-prerequisites.sh
+$ sh scripts-openshift/deploy-kafka.sh
+$ sh scripts-openshift/deploy-postgres.sh
+$ sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
+$ sh scripts-openshift/show-urls.sh
 ```
