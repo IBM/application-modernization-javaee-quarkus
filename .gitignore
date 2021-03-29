@@ -119,3 +119,5 @@ monolith-websphere-90/resources/jmx_exporter/jmx_prometheus_javaagent-0.11.0.jar
 monolith-websphere-90/resources/db2/db2jcc4.jar
 monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
 monolith-websphere-90/lib/db2jcc4.jar
+
+os-scripts/postgres-oc.yaml

@@ -12,6 +12,7 @@ function setup() {
   _out Deploying postgres
 
   oc new-project postgres
+  cd ${root_folder}/os-scripts
   oc new-build --name build-postgres --binary --strategy docker
   oc start-build build-postgres --from-dir=.
 
@@ -21,11 +22,11 @@ function setup() {
       ./postgres-template.yaml > ./postgres-oc.yaml
 
   oc apply -f ./postgres-oc.yaml
-  oc expose svc/database-articles
+  oc expose svc/postgres
   
-  route=$(oc get route database-articles --template='{{ .spec.host }}')  
+  route=$(oc get route postgres --template='{{ .spec.host }}')  
   _out Done deploying postgress
-  _out Wait until the pod has been started: "kubectl get pod --watch | grep database-articles"
+  _out Wait until the pod has been started: "kubectl get pod --watch | grep postgres"
 }
 
 setup

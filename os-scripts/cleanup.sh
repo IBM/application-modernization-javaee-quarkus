@@ -14,7 +14,7 @@ while true; do
 done
 
 echo Cleanup
-source ${root_folder}/os4-scripts/login.sh
+#source ${root_folder}/os4-scripts/login.sh
 oc delete project app-mod
 oc delete project kafka
 oc delete project postgres

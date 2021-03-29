@@ -249,9 +249,12 @@ Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, p
 
 ### Deployment to OpenShift
 
+Work in progress ...
+
 ```
 $ oc login ...
 $ sh os-scripts/check-prerequisites.sh
 $ sh os-scripts/deploy-kafka.sh
+$ sh os-scripts/deploy-postgres.sh
 $ sh os-scripts/show-urls.sh
 ```
