@@ -244,3 +244,13 @@ $ sh scripts-docker/build-and-run-monolith-app-was855.sh
 Open https://localhost:9443/CustomerOrderServicesWeb/ (user: skywalker, password: force)
 
 Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, password: passw0rd)
+
+
+### Deployment to OpenShift
+
+```
+$ oc login ...
+$ sh os-scripts/check-prerequisites.sh
+$ sh os-scripts/deploy-kafka.sh
+$ sh os-scripts/show-urls.sh
+```
