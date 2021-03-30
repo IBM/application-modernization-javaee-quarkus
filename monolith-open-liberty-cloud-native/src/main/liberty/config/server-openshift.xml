@@ -19,15 +19,15 @@
   <webApplication location="service.war" contextRoot="/CustomerOrderServicesWeb"/>
   
   <library id="DB2JCCLib">
-    <fileset dir="${project.build.directory}" includes="jcc*.jar"/>
-  </library>
-
+    <fileset dir="${shared.resource.dir}" includes="jcc*.jar"/>
+  </library> 
+    
   <dataSource id="orderds"
     jndiName="jdbc/orderds">
     <jdbcDriver libraryRef="DB2JCCLib" />
     <properties.db2.jcc databaseName="ORDERDB"
         portNumber="50000"
-        serverName="localhost"        
+        serverName="db2.storefront-db2"        
         user="db2inst1"
         password="db2inst1" />
   </dataSource>

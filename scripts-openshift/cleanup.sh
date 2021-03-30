@@ -19,5 +19,6 @@ oc delete project app-mod-dev
 oc delete project app-mod-stage
 oc delete project kafka
 oc delete project postgres
+oc delete project db2
 
 
