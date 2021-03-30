@@ -1,4 +1,4 @@
-FROM docker.io/adoptopenjdk/maven-openjdk11:latest as BUILD
+FROM adoptopenjdk/maven-openjdk11 as BUILD
 COPY . /usr/src/app/src
 WORKDIR /usr/src/app/src
 RUN mvn clean package
@@ -15,8 +15,8 @@ LABEL \
   vendor="Open Liberty" \
   name="inventory" \
   version="$VERSION-$REVISION" 
-COPY --from=build --chown=1001:0 /usr/src/app/src/src/main/liberty/config /config/
-COPY --from=build --chown=1001:0 /usr/src/app/src/target/service.war /config/apps
-COPY --from=build --chown=1001:0 /usr/src/app/src/target/jcc-11.1.4.4.jar /opt/ol/wlp/usr/shared/resources/jcc-11.1.4.4.jar
+COPY --from=BUILD --chown=1001:0 /usr/src/app/src/src/main/liberty/config /config/
+COPY --from=BUILD --chown=1001:0 /usr/src/app/src/target/service.war /config/apps
+COPY --from=BUILD --chown=1001:0 /usr/src/app/src/target/jcc-11.1.4.4.jar /opt/ol/wlp/usr/shared/resources/jcc-11.1.4.4.jar
 # It is recommended to run the configure.sh when build image for production.
 RUN configure.sh

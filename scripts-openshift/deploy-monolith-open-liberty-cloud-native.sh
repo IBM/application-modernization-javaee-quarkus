@@ -10,12 +10,14 @@ function _out() {
 
 function setup() {
   _out Deploying monolith-open-liberty-cloud-native
+  rm -r ${root_folder}/monolith-open-liberty-cloud-native/target
   
   _out Cleanup
   cd ${root_folder}/monolith-open-liberty-cloud-native
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route monolith-open-liberty-cloud-native --ignore-not-found
   oc delete is build-monolith-open-liberty-cloud-native --ignore-not-found
+  oc delete bc/build-monolith-open-liberty-cloud-native --ignore-not-found
   
   cd ${root_folder}/monolith-open-liberty-cloud-native/src/main/resources/META-INF
   rm microprofile-config.properties
@@ -28,8 +30,10 @@ function setup() {
   rm Dockerfile
   cp Dockerfile.multistage Dockerfile
 
-  oc new-project app-mod-dev
-  oc project app-mod-dev
+  oc project app-mod-dev  > /dev/null 2>&1
+  if [ $? != 0 ]; then 
+      oc new-project app-mod-dev
+  fi
   cd ${root_folder}/monolith-open-liberty-cloud-native
   oc new-build --name build-monolith-open-liberty-cloud-native --binary --strategy=docker
   oc start-build build-monolith-open-liberty-cloud-native --from-dir=.

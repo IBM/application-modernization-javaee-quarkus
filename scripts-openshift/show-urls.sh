@@ -29,6 +29,15 @@ function setup() {
     _out Postgres - internal URL: postgres.postgres:5432
   fi
   _out ------------------------------------------------------------------------------------
+
+  _out Db2
+  nodeport=$(oc get svc storefront-db2 -n db2 --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  if [ -z "$nodeport" ]; then
+    _out Db2 is not available. Run the command: \"sh scripts-openshift/deploy-db2.sh\"
+  else 
+    _out Db2 - internal URL: storefront-db2.db2:50000
+  fi
+  _out ------------------------------------------------------------------------------------
   
   _out service-catalog-quarkus-reactive  
   nodeport=$(oc get svc service-catalog-quarkus-reactive -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
@@ -36,12 +45,20 @@ function setup() {
     _out service-catalog-quarkus-reactive is not available. Run the command: \"sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh\"
   else 
     ROUTE=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
-    _out "curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category"
-    _out "curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
-    _out "curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/Orders"
-    _out "curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm"
+    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category\"
+    _out \"curl \'http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2\'\"
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
-    _out "curl -X PUT ${CREATE_NEW}"
+    _out \"curl -X PUT ${CREATE_NEW}\"
+  fi
+
+  _out monolith-open-liberty-cloud-native  
+  nodeport=$(oc get svc monolith-open-liberty-cloud-native -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  if [ -z "$nodeport" ]; then
+    _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
+  else 
+    ROUTE=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Orders\"
+    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/TypeForm\"    
   fi
 }
 
