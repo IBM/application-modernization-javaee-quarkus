@@ -254,7 +254,9 @@ Work in progress ...
 ```
 $ oc login ...
 $ sh scripts-openshift/check-prerequisites.sh
+$ sh scripts-openshift/deploy-db2.sh
 $ sh scripts-openshift/deploy-kafka.sh
+$ sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
 $ sh scripts-openshift/deploy-postgres.sh
 $ sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
 $ sh scripts-openshift/show-urls.sh

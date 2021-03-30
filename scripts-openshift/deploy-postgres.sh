@@ -12,6 +12,7 @@ function setup() {
   _out Deploying postgres
 
   oc new-project postgres
+  oc project postgres
   cd ${root_folder}/scripts-openshift
   oc new-build --name build-postgres --binary --strategy docker
   oc start-build build-postgres --from-dir=.

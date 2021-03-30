@@ -15,7 +15,7 @@ function setup() {
   cd ${root_folder}/service-catalog-quarkus-reactive
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route service-catalog-quarkus-reactive --ignore-not-found
-  oc delete is service-catalog-quarkus-reactive --ignore-not-found
+  oc delete is build-service-catalog-quarkus-reactive --ignore-not-found
   
   cd ${root_folder}/service-catalog-quarkus-reactive/src/main/resources
   rm application.properties
@@ -41,8 +41,6 @@ function setup() {
   _out "Invoke the endpoints:"
   _out "--- curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category"
   _out "--- curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2"
-  _out "--- curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/Orders"
-  _out "--- curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm"
   CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
   _out "--- curl -X PUT ${CREATE_NEW}"
 }
