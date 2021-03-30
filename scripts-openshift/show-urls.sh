@@ -44,7 +44,7 @@ function setup() {
   if [ -z "$nodeport" ]; then
     _out service-catalog-quarkus-reactive is not available. Run the command: \"sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh\"
   else 
-    ROUTE=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
+    ROUTE=$(oc get route service-catalog-quarkus-reactive -n app-mod-dev --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category\"
     _out \"curl \'http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2\'\"
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
@@ -56,7 +56,7 @@ function setup() {
   if [ -z "$nodeport" ]; then
     _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
   else 
-    ROUTE=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+    ROUTE=$(oc get route monolith-open-liberty-cloud-native -n app-mod-dev --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Orders\"
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/TypeForm\"    
   fi

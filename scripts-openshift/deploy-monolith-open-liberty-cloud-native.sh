@@ -51,6 +51,7 @@ function setup() {
   rm Dockerfile
   cp Dockerfile.temp Dockerfile
   rm Dockerfile.temp
+  rm -r ${root_folder}/monolith-open-liberty-cloud-native/target
 
   _out Done deploying monolith-open-liberty-cloud-native
   ROUTE=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')

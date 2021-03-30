@@ -19,4 +19,4 @@ If you want to connect to the database from another container you have to run on
 
 `docker run --name storefront-db2 --network store-front-network --privileged=true -e LICENSE=accept  -e DB2INST1_PASSWORD=db2inst1 -e DBNAME=orderdb -p 50000:50000 storefront-db2`
 
-Then in the tWAS container we would include `--network store-front-network` reference the database using hostname `torefront-db2`.
+Then in the tWAS container we would include `--network store-front-network` reference the database using hostname `storefront-db2`.

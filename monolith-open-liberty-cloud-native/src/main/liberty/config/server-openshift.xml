@@ -27,7 +27,7 @@
     <jdbcDriver libraryRef="DB2JCCLib" />
     <properties.db2.jcc databaseName="ORDERDB"
         portNumber="50000"
-        serverName="db2.storefront-db2"        
+        serverName="storefront-db2.db2"        
         user="db2inst1"
         password="db2inst1" />
   </dataSource>
