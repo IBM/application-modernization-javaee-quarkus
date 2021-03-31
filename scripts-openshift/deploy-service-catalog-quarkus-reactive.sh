@@ -12,6 +12,7 @@ function setup() {
   _out Deploying service-catalog-quarkus-reactive
   
   _out Cleanup
+  rm -r ${root_folder}/service-catalog-quarkus-reactive/target
   cd ${root_folder}/service-catalog-quarkus-reactive
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route service-catalog-quarkus-reactive --ignore-not-found
@@ -33,6 +34,7 @@ function setup() {
   cd ${root_folder}/service-catalog-quarkus-reactive/src/main/resources
   rm application.properties
   cp application-docker.properties application.properties
+  rm -r ${root_folder}/service-catalog-quarkus-reactive/target
 
   _out Done deploying service-catalog-quarkus-reactive
   ROUTE=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')

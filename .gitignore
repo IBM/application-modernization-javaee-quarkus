@@ -121,3 +121,6 @@ monolith-websphere-90/resources/db2/db2jcc_license_cu.jar
 monolith-websphere-90/lib/db2jcc4.jar
 
 os-scripts/postgres-oc.yaml
+
+db2/database
+db2-data

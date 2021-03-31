@@ -2,21 +2,38 @@
 
 Author: David Vande Pol (IBM)
 
-To build the db2 container that is required for Customer Order Service application simply RUN
 
-`docker build . -t storefront-db2`
+```
+$ docker build . -t storefront-db2
+```
 
-This loads the script populateDB.sh which will populate the database after creation.
+```
+$ docker run --name storefront-db2 --privileged=true -e LICENSE=accept  -e DB2INST1_PASSWORD=db2inst1 -e DBNAME=orderdb -p 50000:50000 storefront-db2
+```
 
-To run the database run the command
+```
+$ docker create network store-front-network
+$ docker run --name storefront-db2 --network store-front-network --privileged=true -e LICENSE=accept  -e DB2INST1_PASSWORD=db2inst1 -e DBNAME=orderdb -p 50000:50000 storefront-db2
+```
 
 
-`docker run --name storefront-db2 --privileged=true -e LICENSE=accept  -e DB2INST1_PASSWORD=db2inst1 -e DBNAME=orderdb -p 50000:50000 storefront-db2`
+### Image with Data
 
-If you want to connect to the database from another container you have to run on the same network.
+Author: Niklas Heidloff
 
-`docker create network store-front-network`
+```
+$ docker run --name storefront-db2 --network store-front-network --privileged=true -e LICENSE=accept -e DB2INST1_PASSWORD=db2inst1 -e DBNAME=orderdb -p 50000:50000 storefront-db2
+```
 
-`docker run --name storefront-db2 --network store-front-network --privileged=true -e LICENSE=accept  -e DB2INST1_PASSWORD=db2inst1 -e DBNAME=orderdb -p 50000:50000 storefront-db2`
+```
+$ docker cp storefront-db2:/database /Users/niklasheidloff/git/application-modernization-javaee-quarkus/db2
+```
 
-Then in the tWAS container we would include `--network store-front-network` reference the database using hostname `storefront-db2`.
+```
+$ docker build . -t nheidloff/storefront-db2-with-data -f DockerfileWithData
+$ docker push nheidloff/storefront-db2-with-data
+```
+
+```
+$ docker run -it --name storefront-db2 -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=db2inst1 --privileged=true --network store-front-network nheidloff/storefront-db2-with-data
+```

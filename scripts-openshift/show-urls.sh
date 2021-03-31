@@ -50,6 +50,7 @@ function setup() {
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
     _out \"curl -X PUT ${CREATE_NEW}\"
   fi
+  _out ------------------------------------------------------------------------------------
 
   _out monolith-open-liberty-cloud-native  
   nodeport=$(oc get svc monolith-open-liberty-cloud-native -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')

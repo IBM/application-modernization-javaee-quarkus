@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: storefront-db2
-        image: nheidloff/storefront-db2-3:latest
+        image: nheidloff/storefront-db2-with-data:latest
         ports:
         - containerPort: 50000
         env:
