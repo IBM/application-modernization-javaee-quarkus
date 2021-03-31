@@ -61,6 +61,19 @@ function setup() {
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/Orders\"
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm\"    
   fi
+  _out ------------------------------------------------------------------------------------
+
+  _out frontend-dojo
+  nodeport=$(oc get svc frontend-dojo -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  if [ -z "$nodeport" ]; then
+    _out frontend-dojo is not available. Run the command: \"sh scripts-openshift/deploy-frontend-dojo.sh\"
+  else 
+    ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')
+    _out Wait until the pod has been started: "oc get pod -n app-mod-dev --watch | grep frontend-dojo"
+  
+    _out "Invoke the web app:"
+    _out "http://${ROUTE}/CustomerOrderServicesWeb/"
+  fi
 }
 
 setup

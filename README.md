@@ -247,9 +247,7 @@ Open https://localhost:9443/CustomerOrderServicesWeb/ (user: skywalker, password
 Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, password: passw0rd)
 
 
-### Deployment to OpenShift
-
-Work in progress ...
+### Deployment to OpenShift on IBM Cloud (ROKS)
 
 ```
 $ oc login ...
