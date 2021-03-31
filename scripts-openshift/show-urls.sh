@@ -71,7 +71,7 @@ function setup() {
     ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')
     _out Wait until the pod has been started: "oc get pod -n app-mod-dev --watch | grep frontend-dojo"
   
-    _out "Invoke the web app:"
+    _out "Open the web app:"
     _out "http://${ROUTE}/CustomerOrderServicesWeb/"
   fi
 }

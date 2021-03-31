@@ -13,7 +13,7 @@ function setup() {
   sh ${root_folder}/scripts/install-was-dependencies.sh
   
   _out Cleanup
-  rm -r ${root_folder}/frontend-dojo/target
+  rm -rf ${root_folder}/frontend-dojo/target
   cd ${root_folder}/frontend-dojo
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route frontend-dojo --ignore-not-found
@@ -33,10 +33,24 @@ function setup() {
       rm Dockerfile
       cp Dockerfile.multistage Dockerfile
 
+      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js ${root_folder}/frontend-dojo/ProductController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${root_folder}/frontend-dojo/ProductController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js ${root_folder}/frontend-dojo/AccountController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      sed "s/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" ${root_folder}/frontend-dojo/AccountController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js ${root_folder}/frontend-dojo/AddressController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+      sed "s/jaxrs\/Customer\/Address/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Address/g" ${root_folder}/frontend-dojo/AddressController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html ${root_folder}/frontend-dojo/product.html
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      sed "s/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" ${root_folder}/frontend-dojo/product.html > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+
       oc project app-mod-dev  > /dev/null 2>&1
       if [ $? != 0 ]; then 
           oc new-project app-mod-dev
       fi
+      
       cd ${root_folder}/frontend-dojo
       oc new-build --name build-frontend-dojo --binary --strategy=docker
       oc start-build build-frontend-dojo --from-dir=.
@@ -48,14 +62,28 @@ function setup() {
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp
-      rm -r ${root_folder}/frontend-dojo/target
+      rm -rf ${root_folder}/frontend-dojo/target
 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      cp ${root_folder}/frontend-dojo/ProductController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js  
+      rm ${root_folder}/frontend-dojo/ProductController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      cp ${root_folder}/frontend-dojo/AccountController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js 
+      rm ${root_folder}/frontend-dojo/AccountController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+      cp ${root_folder}/frontend-dojo/AddressController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js 
+      rm ${root_folder}/frontend-dojo/AddressController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      cp ${root_folder}/frontend-dojo/product.html ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      rm ${root_folder}/frontend-dojo/product.html 
+    
       _out Done deploying frontend-dojo
       ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')
       _out Wait until the pod has been started: "oc get pod --watch | grep frontend-dojo"
       
       _out "Invoke the web app:"
       echo "http://${ROUTE}/CustomerOrderServicesWeb/"
+    fi
   fi
 }
 
