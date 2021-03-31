@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: db2
+  name: storefront-db2
   namespace: db2
   labels:
-    app: db2
+    app: storefront-db2
 spec:
   ports:
     - name: 50000-tcp
@@ -12,8 +12,8 @@ spec:
       port: 50000
       targetPort: 50000
   selector:
-    app: db2
-    deploymentconfig: db2
+    app: storefront-db2
+    deploymentconfig: storefront-db2
   type: ClusterIP
   sessionAffinity: None
 status:

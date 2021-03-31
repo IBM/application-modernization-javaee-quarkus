@@ -1,10 +1,10 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
-  name: db2
+  name: storefront-db2
   namespace: db2
   labels:
-    app: db2
+    app: storefront-db2
 spec:
   strategy:
     type: Rolling
@@ -21,19 +21,19 @@ spec:
   replicas: 1
   test: false
   selector:
-    app: db2
-    deploymentconfig: db2
+    app: storefront-db2
+    deploymentconfig: storefront-db2
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: db2
-        deploymentconfig: db2
+        app: storefront-db2
+        deploymentconfig: storefront-db2
     spec:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: db2
+          name: storefront-db2
           env:
             - name: DB2INST1_PASSWORD
               value: db2inst1
@@ -51,7 +51,7 @@ spec:
               protocol: TCP
           imagePullPolicy: Always
           terminationMessagePolicy: File
-          image: vandepol/db2-cos
+          image: nheidloff/storefront-db2
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

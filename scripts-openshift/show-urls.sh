@@ -58,8 +58,8 @@ function setup() {
     _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
   else 
     ROUTE=$(oc get route monolith-open-liberty-cloud-native -n app-mod-dev --template='{{ .spec.host }}')
-    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Orders\"
-    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/TypeForm\"    
+    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/Orders\"
+    _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm\"    
   fi
 }
 

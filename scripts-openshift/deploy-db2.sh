@@ -19,7 +19,12 @@ function setup() {
   oc adm policy add-scc-to-user anyuid -z db2
   oc adm policy add-scc-to-user anyuid -z default
 
-  oc apply -f ${root_folder}/scripts-openshift/db2.yaml -n db2 
+  oc create sa mysvcacct
+  oc adm policy add-scc-to-user anyuid -z mysvcacct -n db2
+  oc adm policy add-scc-to-user privileged -z default -n db2
+  oc adm policy add-scc-to-user privileged -z mysvcacct -n db2
+  oc apply -f ${root_folder}/db2/deployment/db2-dc.yaml -n db2 
+  oc apply -f ${root_folder}/db2/deployment/db2-service.yaml -n db2 
 
   oc expose svc/storefront-db2 --port=50000
    
