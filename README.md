@@ -140,15 +140,17 @@ First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then cr
 Execute the following commands:
 
 ```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
 $ oc login ...
-$ sh scripts-openshift/check-prerequisites.sh
-$ sh scripts-openshift/deploy-db2.sh
-$ sh scripts-openshift/deploy-kafka.sh
-$ sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
-$ sh scripts-openshift/deploy-postgres.sh
-$ sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
-$ sh scripts-openshift/deploy-frontend-dojo.sh
-$ sh scripts-openshift/show-urls.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-frontend-dojo.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 
 
