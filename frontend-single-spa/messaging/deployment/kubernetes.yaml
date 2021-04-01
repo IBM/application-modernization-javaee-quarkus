@@ -1,0 +1,39 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: storefront-mf-messaging
+  labels:
+    app: storefront-mf-messaging
+spec:
+  selector:
+    app: storefront-mf-messaging
+  ports:
+    - port: 8080
+      name: http
+  type: NodePort
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: storefront-mf-messaging
+  labels:
+    app: storefront-mf-messaging
+spec:
+  selector:                
+    matchLabels:     
+      app: storefront-mf-messaging
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: storefront-mf-messaging
+        version: v1
+    spec:
+      containers:
+      - name: storefront-mf-messaging
+        image: image-registry.openshift-image-registry.svc:5000/app-mod-dev/build-storefront-mf-messaging:latest
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+---

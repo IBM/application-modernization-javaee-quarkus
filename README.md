@@ -153,6 +153,16 @@ $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-frontend-dojo.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 
+Work in progress (micro-frontends):
+
+```
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-messaging.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-account.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-navigator.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-order.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
+```
 
 ### Monolith - WebSphere Liberty
 

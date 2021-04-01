@@ -1,0 +1,39 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: storefront-mf-order
+  labels:
+    app: storefront-mf-order
+spec:
+  selector:
+    app: storefront-mf-order
+  ports:
+    - port: 8080
+      name: http
+  type: NodePort
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: storefront-mf-order
+  labels:
+    app: storefront-mf-order
+spec:
+  selector:                
+    matchLabels:     
+      app: storefront-mf-order
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: storefront-mf-order
+        version: v1
+    spec:
+      containers:
+      - name: storefront-mf-order
+        image: image-registry.openshift-image-registry.svc:5000/app-mod-dev/build-storefront-mf-order:latest
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+---
