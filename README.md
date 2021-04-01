@@ -41,9 +41,17 @@ The following 12 minutes video describes the project on a high level:
     - Messaging done via RxJS
     - Material design
 
+Architecture of the legacy application:
+
+<kbd><img src="documentation/start.png" /></kbd>
+
 Screenshot of legacy storefront application:
 
 <kbd><img src="documentation/storefront-shop.png" /></kbd>
+
+Architecture of the modernized application:
+
+<kbd><img src="documentation/end.png" /></kbd>
 
 Screenshot of modernized storefront application:
 
@@ -118,6 +126,28 @@ I've written a series of blogs about this project:
 * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
 * [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
 * [IBM Garage Application Modernization Playbook](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/refactor/)
+
+
+
+### Deployment to OpenShift on IBM Cloud (ROKS)
+
+The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
+
+First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then create an OpenShift cluster, for example via the [IBM Cloud Dashboard](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). I've tested classic infrastructure, single zone, OpenShift 4.6.17, b3c.8x32 and 3 worker nodes.
+
+Execute the following commands:
+
+```
+$ oc login ...
+$ sh scripts-openshift/check-prerequisites.sh
+$ sh scripts-openshift/deploy-db2.sh
+$ sh scripts-openshift/deploy-kafka.sh
+$ sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
+$ sh scripts-openshift/deploy-postgres.sh
+$ sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
+$ sh scripts-openshift/deploy-frontend-dojo.sh
+$ sh scripts-openshift/show-urls.sh
+```
 
 
 ### Monolith - WebSphere Liberty
@@ -246,18 +276,3 @@ $ sh scripts-docker/build-and-run-monolith-app-was855.sh
 Open https://localhost:9443/CustomerOrderServicesWeb/ (user: skywalker, password: force)
 
 Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, password: passw0rd)
-
-
-### Deployment to OpenShift on IBM Cloud (ROKS)
-
-```
-$ oc login ...
-$ sh scripts-openshift/check-prerequisites.sh
-$ sh scripts-openshift/deploy-db2.sh
-$ sh scripts-openshift/deploy-kafka.sh
-$ sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
-$ sh scripts-openshift/deploy-postgres.sh
-$ sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
-$ sh scripts-openshift/deploy-frontend-dojo.sh
-$ sh scripts-openshift/show-urls.sh
-```

@@ -35,17 +35,24 @@ function setup() {
 
       cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js ${root_folder}/frontend-dojo/ProductController.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
-      sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${root_folder}/frontend-dojo/ProductController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${root_folder}/frontend-dojo/ProductController.js > ${root_folder}/frontend-dojo/ProductController2.js
+      sed "s/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-dojo/ProductController2.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
       cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js ${root_folder}/frontend-dojo/AccountController.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
-      sed "s/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" ${root_folder}/frontend-dojo/AccountController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" ${root_folder}/frontend-dojo/AccountController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
       cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js ${root_folder}/frontend-dojo/AddressController.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
       sed "s/jaxrs\/Customer\/Address/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Address/g" ${root_folder}/frontend-dojo/AddressController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
       cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html ${root_folder}/frontend-dojo/product.html
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
       sed "s/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" ${root_folder}/frontend-dojo/product.html > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
-
+      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js ${root_folder}/frontend-dojo/OrderHistoryController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+      sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${root_folder}/frontend-dojo/OrderHistoryController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js ${root_folder}/frontend-dojo/AccountTypeFormController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+      sed "s/jaxrs\/Customer\/TypeForm/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/TypeForm/g" ${root_folder}/frontend-dojo/AccountTypeFormController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+      
       oc project app-mod-dev  > /dev/null 2>&1
       if [ $? != 0 ]; then 
           oc new-project app-mod-dev
@@ -67,9 +74,16 @@ function setup() {
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
       cp ${root_folder}/frontend-dojo/ProductController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js  
       rm ${root_folder}/frontend-dojo/ProductController.js 
+      rm ${root_folder}/frontend-dojo/ProductController2.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
       cp ${root_folder}/frontend-dojo/AccountController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js 
       rm ${root_folder}/frontend-dojo/AccountController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+      cp ${root_folder}/frontend-dojo/OrderHistoryController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js 
+      rm ${root_folder}/frontend-dojo/OrderHistoryController.js 
+      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+      cp ${root_folder}/frontend-dojo/AccountTypeFormController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js 
+      rm ${root_folder}/frontend-dojo/AccountTypeFormController.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
       cp ${root_folder}/frontend-dojo/AddressController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js 
       rm ${root_folder}/frontend-dojo/AddressController.js 
@@ -81,7 +95,7 @@ function setup() {
       ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')
       _out Wait until the pod has been started: "oc get pod --watch | grep frontend-dojo"
       
-      _out "Invoke the web app:"
+      _out "Open the web app:"
       echo "http://${ROUTE}/CustomerOrderServicesWeb/"
     fi
   fi
