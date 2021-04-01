@@ -36,7 +36,9 @@ function setup() {
       cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js ${root_folder}/frontend-dojo/ProductController.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
       sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${root_folder}/frontend-dojo/ProductController.js > ${root_folder}/frontend-dojo/ProductController2.js
-      sed "s/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-dojo/ProductController2.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      sed "s/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-dojo/ProductController2.js > ${root_folder}/frontend-dojo/ProductController3.js
+      sed "s/\/\/this.addToCorsIssue/this.addToCorsIssue/g" ${root_folder}/frontend-dojo/ProductController3.js > ${root_folder}/frontend-dojo/ProductController4.js
+      sed "s/this.addToCartNormal/\/\/this.addToCartNormal/g" ${root_folder}/frontend-dojo/ProductController4.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
       cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js ${root_folder}/frontend-dojo/AccountController.js 
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
       sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" ${root_folder}/frontend-dojo/AccountController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
@@ -75,6 +77,8 @@ function setup() {
       cp ${root_folder}/frontend-dojo/ProductController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js  
       rm ${root_folder}/frontend-dojo/ProductController.js 
       rm ${root_folder}/frontend-dojo/ProductController2.js 
+      rm ${root_folder}/frontend-dojo/ProductController3.js
+      rm ${root_folder}/frontend-dojo/ProductController4.js
       rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
       cp ${root_folder}/frontend-dojo/AccountController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js 
       rm ${root_folder}/frontend-dojo/AccountController.js 

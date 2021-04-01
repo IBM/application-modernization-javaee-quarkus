@@ -123,7 +123,25 @@ dojo.declare("depot.ProductController",null,
 		dojo.query(".productSection").style({display:"block"});
 		detailDialog.show();
 	},
-	addToCart:function(data)
+	addToCorsIssue:function(data)
+	{
+		var grid = dijit.byId("productGrid");
+		console.debug(grid);
+		var selected = grid.selection.getSelected();
+		console.debug("Adding to Cart",selected);
+		console.debug(selected[0].id);
+		dojo.query(".progressSection").style({display:"block"});
+		dojo.query(".cartSection").style({display:"none"});
+		dojo.query(".productSection").style({display:"none"});
+		var addLineItem = {
+		        url: "jaxrs/Customer/OpenOrder/LineItem?productid=" + selected[0].id,
+		        handleAs:"json",
+		        load: dojo.hitch(this,this.addToCartSuccess),
+		        error:dojo.hitch(this,this.addToCartError)
+			};
+			dojo.xhrGet(addLineItem);
+	},
+	addToCartNormal:function(data)
 	{
 		var grid = dijit.byId("productGrid");
 		console.debug(grid);
@@ -137,13 +155,19 @@ dojo.declare("depot.ProductController",null,
 		        url: "jaxrs/Customer/OpenOrder/LineItem",
 		        //headers:{"Content-Type":"application/json","If-Match":accountController.etag},
 				//headers:{"Content-Type":"application/json"},
-				headers:{"Content-Type":"application/json", "x-requested-with": null},				
+				//headers:{"Content-Type":"application/json", "X-Requested-With":null"},
+				//headers:{"X-Requested-With":null"},
 		        postData:dojo.toJson({quantity:1,productId:selected[0].id}),
 		        handleAs:"json",
 		        load: dojo.hitch(this,this.addToCartSuccess),
 		        error:dojo.hitch(this,this.addToCartError)
 			};
 			dojo.xhrPost(addLineItem);
+	},
+	addToCart:function(data)
+	{
+		//this.addToCorsIssue(data);
+		this.addToCartNormal(data);
 	},
 	addToCartSuccess:function(data,ioArgs)
 	{

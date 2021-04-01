@@ -16,6 +16,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
@@ -131,8 +132,35 @@ public class CustomerOrderResource {
 		} 
 		catch (Exception e) {
 			throw new WebApplicationException(e);
-		}
-		
+		}	
+	}
+
+	@GET
+	@Path("/OpenOrder/LineItem")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addLineItem(@QueryParam("productid") int  productid, @Context HttpHeaders headers)
+	{
+		System.out.println("/LineItem - Container: " + System.getenv("CONTAINER") + " - Open Liberty - org.pwte.example.resources.CustomerOrderResource");
+			
+		LineItem lineItem = new LineItem();
+		lineItem.setProductId(productid);
+		lineItem.setQuantity(1L);
+		try {
+			lineItem.setVersion(new Long(1));
+			Order openOrder = customerOrderServices.addLineItem(lineItem);			
+			return Response.ok(openOrder).header("ETag", openOrder.getVersion()).location(new URI("Customer")).build();
+		} catch (CustomerDoesNotExistException e) {
+			throw new WebApplicationException(Status.NOT_FOUND);
+		} catch (ProductDoesNotExistException e) {
+			throw new WebApplicationException(Status.NOT_FOUND);
+		} catch (InvalidQuantityException e) {
+			throw new WebApplicationException(Status.BAD_REQUEST);
+		} catch (OrderModifiedException e) {
+			throw new WebApplicationException(Status.PRECONDITION_FAILED);
+		} 
+		catch (Exception e) {
+			throw new WebApplicationException(e);
+		}	
 	}
 	
 	@DELETE
