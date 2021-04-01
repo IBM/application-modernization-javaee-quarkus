@@ -36,8 +36,8 @@ function setup() {
   fi
   cd ${root_folder}/monolith-open-liberty-cloud-native
   oc new-build --name build-monolith-open-liberty-cloud-native --binary --strategy=docker
-  oc start-build build-monolith-open-liberty-cloud-native --from-dir=.
-  
+  oc start-build build-monolith-open-liberty-cloud-native --from-dir=. --follow
+
   oc apply -f deployment/kubernetes.yaml
   oc expose svc/monolith-open-liberty-cloud-native
 

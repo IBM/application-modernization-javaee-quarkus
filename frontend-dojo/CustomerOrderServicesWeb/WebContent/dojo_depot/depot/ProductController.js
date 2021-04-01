@@ -135,7 +135,9 @@ dojo.declare("depot.ProductController",null,
 		dojo.query(".productSection").style({display:"none"});
 		var addLineItem = {
 		        url: "jaxrs/Customer/OpenOrder/LineItem",
-		        headers:{"Content-Type":"application/json","If-Match":accountController.etag},
+		        //headers:{"Content-Type":"application/json","If-Match":accountController.etag},
+				//headers:{"Content-Type":"application/json"},
+				headers:{"Content-Type":"application/json", "x-requested-with": null},				
 		        postData:dojo.toJson({quantity:1,productId:selected[0].id}),
 		        handleAs:"json",
 		        load: dojo.hitch(this,this.addToCartSuccess),

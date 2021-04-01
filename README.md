@@ -1,10 +1,12 @@
-## Application Modernization Sample - From Java EE (2010) to Cloud-Native (2021)
+## Application Modernization Sample - From Java EE in 2010 to Cloud-Native in 2021
 
-Application modernization is done in multiple steps. This sample demonstrates how to modernize 10+ years old Java EE applications with cloud-native technologies like Quarkus and Open Liberty.
+This sample demonstrates how to modernize 10+ year-old Java EE applications with cloud-native technologies and the modern Java runtimes Quarkus and Open Liberty. The modernized application is deployed to and operated with OpenShift, the enterprise distribution of Kubernetes.
 
 The following 12 minutes video describes the project on a high level:
 
 <kbd>[![Video](documentation/video.png)](https://youtu.be/lw95LLqa37g)</kbd>
+
+Application modernization is a journey. The legacy application has been modernized in eight steps.
 
 1. Monolith - WebSphere ND or Traditional 8.5.5
     - Starting point: Java EE 6 app from 2008 running in VM or bare metal
@@ -21,7 +23,7 @@ The following 12 minutes video describes the project on a high level:
     - Still same project structure and EJBs
 6. Strangled Catalog Service and remaining Open Liberty Monolith
     - Strangled catalog service
-        - Inspired by [Mono2Micro](mono2micro/READMDE.md)
+        - Inspired by Mono2Micro
         - Developed with Quarkus
         - Runs in JVM
         - Data is accessed in Postgres via Panache

@@ -60,7 +60,7 @@ function setup() {
       
       cd ${root_folder}/frontend-dojo
       oc new-build --name build-frontend-dojo --binary --strategy=docker
-      oc start-build build-frontend-dojo --from-dir=.
+      oc start-build build-frontend-dojo --from-dir=. --follow
       
       oc apply -f deployment/kubernetes.yaml
       oc expose svc/frontend-dojo

@@ -31,4 +31,12 @@
         user="db2inst1"
         password="db2inst1" />
   </dataSource>
+
+  <!--
+  <cors domain="/"
+    allowedOrigins="*"
+    allowedMethods="GET, DELETE, POST, PUT"
+    allowedHeaders="content-type,x-requested-with, origin, content-type, accept, authorization, cache-control"
+    maxAge="3600" />
+  -->
 </server>

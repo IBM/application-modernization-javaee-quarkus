@@ -26,7 +26,7 @@ function setup() {
   oc project app-mod-dev
   cd ${root_folder}/service-catalog-quarkus-reactive
   oc new-build --name build-service-catalog-quarkus-reactive --binary --strategy docker
-  oc start-build build-service-catalog-quarkus-reactive --from-dir=.
+  oc start-build build-service-catalog-quarkus-reactive --from-dir=. --follow
   
   oc apply -f deployment/kubernetes.yaml
   oc expose svc/service-catalog-quarkus-reactive
