@@ -150,18 +150,13 @@ $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-monolith-open-liberty-cloud-native.
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-frontend-dojo.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
-```
-
-Work in progress (micro-frontends):
-
-```
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-messaging.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-account.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-catalog.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-navigator.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-order.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 
 ### Monolith - WebSphere Liberty

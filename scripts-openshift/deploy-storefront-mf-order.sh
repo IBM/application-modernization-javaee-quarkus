@@ -42,6 +42,10 @@ function setup() {
       rm ${root_folder}/frontend-single-spa/order/src/App.vue
       sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-single-spa/order/App.vue > ${root_folder}/frontend-single-spa/order/src/App.vue
       
+      cp ${root_folder}/frontend-single-spa/order/src/components/Home.vue ${root_folder}/frontend-single-spa/order/Home.vue
+      rm ${root_folder}/frontend-single-spa/order/src/components/Home.vue
+      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${root_folder}/frontend-single-spa/order/Home.vue > ${root_folder}/frontend-single-spa/order/src/components/Home.vue
+      
       cd ${root_folder}/frontend-single-spa/order
       oc new-build --name build-storefront-mf-order --binary --strategy=docker
       oc start-build build-storefront-mf-order --from-dir=. --follow
@@ -57,6 +61,10 @@ function setup() {
       rm ${root_folder}/frontend-single-spa/order/src/App.vue
       cp ${root_folder}/frontend-single-spa/order/App.vue ${root_folder}/frontend-single-spa/order/src/App.vue
       rm ${root_folder}/frontend-single-spa/order/App.vue
+
+      rm ${root_folder}/frontend-single-spa/order/src/components/Home.vue
+      cp ${root_folder}/frontend-single-spa/order/Home.vue ${root_folder}/frontend-single-spa/order/src/components/Home.vue
+      rm ${root_folder}/frontend-single-spa/order/Home.vue
       
       _out Done deploying storefront-mf-order
       ROUTE=$(oc get route storefront-mf-order -n app-mod-dev --template='{{ .spec.host }}')
