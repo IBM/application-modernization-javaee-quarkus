@@ -37,6 +37,11 @@ function setup() {
       if [ $? != 0 ]; then 
           oc new-project app-mod-dev
       fi
+
+      cp ${root_folder}/frontend-single-spa/navigator/src/App.vue ${root_folder}/frontend-single-spa/navigator/App.vue
+      rm ${root_folder}/frontend-single-spa/navigator/src/App.vue
+      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${root_folder}/frontend-single-spa/navigator/App.vue > ${root_folder}/frontend-single-spa/navigator/App2.vue
+      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${root_folder}/frontend-single-spa/navigator/App2.vue > ${root_folder}/frontend-single-spa/navigator/src/App.vue
       
       cd ${root_folder}/frontend-single-spa/navigator
       oc new-build --name build-storefront-mf-navigator --binary --strategy=docker
@@ -49,6 +54,11 @@ function setup() {
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp
+
+      rm ${root_folder}/frontend-single-spa/navigator/src/App.vue
+      cp ${root_folder}/frontend-single-spa/navigator/App.vue ${root_folder}/frontend-single-spa/navigator/src/App.vue
+      rm ${root_folder}/frontend-single-spa/navigator/App.vue
+      rm ${root_folder}/frontend-single-spa/navigator/App2.vue
       
       _out Done deploying storefront-mf-navigator
       ROUTE=$(oc get route storefront-mf-navigator -n app-mod-dev --template='{{ .spec.host }}')

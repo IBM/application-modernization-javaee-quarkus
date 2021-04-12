@@ -38,6 +38,10 @@ function setup() {
           oc new-project app-mod-dev
       fi
       
+      cp ${root_folder}/frontend-single-spa/order/src/App.vue ${root_folder}/frontend-single-spa/order/App.vue
+      rm ${root_folder}/frontend-single-spa/order/src/App.vue
+      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-single-spa/order/App.vue > ${root_folder}/frontend-single-spa/order/src/App.vue
+      
       cd ${root_folder}/frontend-single-spa/order
       oc new-build --name build-storefront-mf-order --binary --strategy=docker
       oc start-build build-storefront-mf-order --from-dir=. --follow
@@ -49,6 +53,10 @@ function setup() {
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp
+
+      rm ${root_folder}/frontend-single-spa/order/src/App.vue
+      cp ${root_folder}/frontend-single-spa/order/App.vue ${root_folder}/frontend-single-spa/order/src/App.vue
+      rm ${root_folder}/frontend-single-spa/order/App.vue
       
       _out Done deploying storefront-mf-order
       ROUTE=$(oc get route storefront-mf-order -n app-mod-dev --template='{{ .spec.host }}')

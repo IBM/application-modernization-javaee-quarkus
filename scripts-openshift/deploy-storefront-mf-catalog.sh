@@ -37,6 +37,10 @@ function setup() {
       if [ $? != 0 ]; then 
           oc new-project app-mod-dev
       fi
+
+      cp ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue ${root_folder}/frontend-single-spa/catalog/Home.vue
+      cp ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue
+      sed "s/http:\/\/localhost:9083\/CustomerOrderServicesWeb\/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" ${root_folder}/frontend-single-spa/catalog/Home.vue > ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue
       
       cd ${root_folder}/frontend-single-spa/catalog
       oc new-build --name build-storefront-mf-catalog --binary --strategy=docker
@@ -49,7 +53,11 @@ function setup() {
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp
-      
+
+      rm ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue
+      cp ${root_folder}/frontend-single-spa/catalog/Home.vue ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue
+      rm ${root_folder}/frontend-single-spa/catalog/Home.vue
+
       _out Done deploying storefront-mf-catalog
       ROUTE=$(oc get route storefront-mf-catalog -n app-mod-dev --template='{{ .spec.host }}')
       _out Wait until the pod has been started: "oc get pod --watch | grep storefront-mf-catalog"
