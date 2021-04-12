@@ -73,6 +73,18 @@ function setup() {
     _out "Open the web app:"
     _out "http://${ROUTE}/CustomerOrderServicesWeb/"
   fi
+  _out ------------------------------------------------------------------------------------
+
+  _out frontend-single-spa
+  nodeport=$(oc get svc storefront-mf-shell -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  if [ -z "$nodeport" ]; then
+    _out frontend-single-spa is not available. Run the command: \"sh scripts-openshift/deploy-storefront-mf-shell.sh\"
+  else 
+    ROUTE=$(oc get route storefront-mf-shell -n app-mod-dev --template='{{ .spec.host }}')
+  
+    _out "Open the web app:"
+    _out "http://${ROUTE}"
+  fi
 }
 
 setup
