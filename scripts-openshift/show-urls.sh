@@ -69,7 +69,6 @@ function setup() {
     _out frontend-dojo is not available. Run the command: \"sh scripts-openshift/deploy-frontend-dojo.sh\"
   else 
     ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')
-    _out Wait until the pod has been started: "oc get pod -n app-mod-dev --watch | grep frontend-dojo"
   
     _out "Open the web app:"
     _out "http://${ROUTE}/CustomerOrderServicesWeb/"

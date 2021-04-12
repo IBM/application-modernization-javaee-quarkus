@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Electronic and Movie Depot</title>
+  <meta name="importmap-type" content="systemjs-importmap" />
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.1/lib/system/single-spa.min.js",
+        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
+        "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.6/dist/vue-router.min.js",
+        "rxjs": "http://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js",
+
+        "@vue-app-mod/shell": "/vue-app-mod-shell.js",        
+        "@vue-app-mod/messaging": "http://MICROFRONTEND_MESSAGING/vue-app-mod-messaging.js",
+        "@vue-app-mod/navigator": "http://MICROFRONTEND_ORDER/js/app.js", 
+        "@vue-app-mod/order": "http://MICROFRONTEND_CATALOG/js/app.js",          
+        "@vue-app-mod/catalog": "http://MICROFRONTEND_ACCOUNT/js/app.js",
+        "@vue-app-mod/account": "http://MICROFRONTEND_NAVIGATOR/js/app.js"                   
+      }
+    }
+  </script>
+  <% if (isLocal) { %>
+    <script type="systemjs-importmap">
+    {
+      "imports": {
+        "@vue-app-mod/shell": "http://localhost:8080/vue-app-mod-shell.js",        
+        "@vue-app-mod/messaging": "http://localhost:9001/vue-app-mod-messaging.js",
+        "@vue-app-mod/order-api": "http://localhost:9002/vue-app-mod-order-api.js",
+        "@vue-app-mod/navigator": "http://localhost:8501/js/app.js", 
+        "@vue-app-mod/order": "http://localhost:8504/js/app.js",          
+        "@vue-app-mod/catalog": "http://localhost:8503/js/app.js",
+        "@vue-app-mod/account": "http://localhost:8502/js/app.js"                      
+      }
+    }
+  </script>
+    <% } %>
+      <script src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/amd.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/named-exports.js"></script>
+      <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+        rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <div style="display: flex;flex-direction: row;">
+    <div id="navigator" style="order: 1;flex-grow: 2;max-width: 300px;width:300px"></div>
+    <div id="catalog" style="order: 2; flex-grow: 10;left: 320px;position: fixed;"></div>
+    <div id="order" style="order: 2; flex-grow: 10;left: 320px;position: fixed;"></div>
+    <div id="account" style="order: 2; flex-grow: 10;left: 320px;position: fixed;"></div>
+  </div>
+  <script>
+    System.import('@vue-app-mod/shell');
+  </script>
+  <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+</body>
+
+</html>
