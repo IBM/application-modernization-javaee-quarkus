@@ -50,7 +50,6 @@ public class Order implements Serializable {
 	@Version
 	protected long version;
 	  
-	@JsonbTransient
 	public long getVersion() {
 		return version;
 	}
