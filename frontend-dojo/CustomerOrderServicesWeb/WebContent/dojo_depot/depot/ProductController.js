@@ -153,7 +153,7 @@ dojo.declare("depot.ProductController",null,
 		dojo.query(".productSection").style({display:"none"});
 		var addLineItem = {
 		        url: "jaxrs/Customer/OpenOrder/LineItem",
-		        //headers:{"Content-Type":"application/json","If-Match":accountController.etag},
+		        headers:{"Content-Type":"application/json","If-Match":accountController.etag},
 				//headers:{"Content-Type":"application/json"},
 				//headers:{"Content-Type":"application/json", "X-Requested-With":null"},
 				//headers:{"X-Requested-With":null"},
