@@ -180,6 +180,7 @@ public class CustomerOrderServicesImpl implements CustomerOrderServices {
 		customer.setOpenOrder(null);
 	}
 
+	@Transactional
 	public Order removeLineItem(int productId,long version) throws CustomerDoesNotExistException, OrderNotOpenException, ProductDoesNotExistException, NoLineItemsException, GeneralPersistenceException, OrderModifiedException {
 		Product product = em.find(Product.class,productId);
 		if(product == null) throw new ProductDoesNotExistException();
