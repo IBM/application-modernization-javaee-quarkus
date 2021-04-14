@@ -1,0 +1,36 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-service-catalog-quarkus-reactive
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-service-catalog-quarkus-reactive"
+spec:
+  description: >-
+    deploy-service-catalog-quarkus-reactive
+  workspaces:
+    - name: source
+      description: shared workspace 
+  params:
+  - name: project-name
+    description: project-name 
+  steps:
+    - name: deploy-service-catalog-quarkus-reactive
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/service-catalog-quarkus-reactive
+        
+        oc apply -f deployment/kubernetes.yaml
+        oc expose svc/service-catalog-quarkus-reactive
+        echo "Done deploying service-catalog-quarkus-reactive"
+
+        ROUTE=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
+        echo "http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category"

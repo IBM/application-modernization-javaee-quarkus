@@ -1,0 +1,86 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: service-catalog-quarkus-reactive
+spec:
+  description: |
+    service-catalog-quarkus-reactive
+  params:
+  - name: repo-url
+    type: string
+    description: The git repository URL to clone from.
+  - name: project-name
+    type: string
+    description: The target project.
+  workspaces:
+  - name: shared-data
+    description: |
+      shared workspace
+  tasks:
+  - name: git-clone
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    params:
+    - name: url
+      value: $(params.repo-url)
+    - name: revision
+      value: master
+  - name: prep-service-catalog-quarkus-reactive
+    taskRef:
+      name: prep-service-catalog-quarkus-reactive
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["git-clone"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+  - name: buildah
+    taskRef:
+      name: buildah
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-service-catalog-quarkus-reactive
+    - name: CONTEXT
+      value: $(workspaces.source.path)/service-catalog-quarkus-reactive
+    - name: TLSVERIFY
+      value: "false"
+    runAfter: ["prep-service-catalog-quarkus-reactive"] 
+  - name: deploy-service-catalog-quarkus-reactive
+    taskRef:
+      name: deploy-service-catalog-quarkus-reactive
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["buildah"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: service-catalog-quarkus-reactive-pr
+spec:
+  pipelineRef:
+    name: service-catalog-quarkus-reactive
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  params:
+  - name: repo-url
+    value: https://github.com/IBM/application-modernization-javaee-quarkus
+  - name: project-name
+    value: niklas-tekton-6

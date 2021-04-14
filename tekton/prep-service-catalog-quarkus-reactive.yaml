@@ -1,0 +1,44 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prep-service-catalog-quarkus-reactive
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-service-catalog-quarkus-reactive"
+spec:
+  description: >-
+    prep-service-catalog-quarkus-reactive
+  workspaces:
+    - name: source
+      description: shared workspace  
+  params:
+  - name: project-name
+    description: project-name
+  steps:
+    - name: prep-service-catalog-quarkus-reactive
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/service-catalog-quarkus-reactive
+        
+        oc delete -f deployment/kubernetes.yaml --ignore-not-found
+        oc delete route service-catalog-quarkus-reactive --ignore-not-found
+        oc delete is build-service-catalog-quarkus-reactive --ignore-not-found
+        echo "Done deleting resources"
+
+        cd $(workspaces.source.path)/service-catalog-quarkus-reactive/deployment
+        cp kubernetes.yaml kubernetes.org.yaml
+        rm kubernetes.yaml
+        sed "s/app-mod-dev/$(params.project-name)/g" kubernetes.org.yaml > kubernetes.yaml    
+  
+        cd $(workspaces.source.path)/service-catalog-quarkus-reactive/src/main/resources
+        rm application.properties
+        cp application-openshift.properties application.properties
+        echo "Done changing links in application.properties"
