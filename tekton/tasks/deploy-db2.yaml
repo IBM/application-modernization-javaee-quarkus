@@ -1,0 +1,42 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-db2
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-db2"
+spec:
+  description: >-
+    deploy-db2
+  workspaces:
+    - name: source
+      description: shared workspace 
+  steps:
+    - name: deploy-frontend-dojo
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project db2 > /dev/null 2>&1
+        if [ $? != 0 ]; 
+        then 
+          oc new-project db2
+          oc adm policy add-scc-to-user anyuid -z db2
+          oc adm policy add-scc-to-user anyuid -z default
+
+          oc create sa mysvcacct
+          oc adm policy add-scc-to-user anyuid -z mysvcacct -n db2
+          oc adm policy add-scc-to-user privileged -z default -n db2
+          oc adm policy add-scc-to-user privileged -z mysvcacct -n db2
+          oc apply -f $(workspaces.source.path)/db2/deployment/db2-dc.yaml -n db2 
+          oc apply -f $(workspaces.source.path)/db2/deployment/db2-service.yaml -n db2 
+
+          oc expose svc/storefront-db2 --port=50000
+          
+          echo "Done installing Db2."
+          echo "It takes 3-6 minutes for Db2 to come up."
+        else
+          echo "Db2 already installed."
+          echo "To reinstall invoke 'oc delete project db2' and rerun this pipeline."
+        fi

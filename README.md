@@ -137,7 +137,7 @@ Open the "Order History" tab to see the updated price. The new price has been up
 
 
 
-### Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts
+### Deployment to OpenShift on IBM Cloud (ROKS) with Tekton
 
 The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
 
