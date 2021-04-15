@@ -38,13 +38,23 @@ spec:
     params:
     - name: project-name
       value: $(params.project-name)
+  - name: wait-for-frontends
+    taskRef:
+      name: wait-for-frontends
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["wait-for-backend"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
   - name: prep-storefront-mf-shell
     taskRef:
       name: prep-storefront-mf-shell
     workspaces:
     - name: source
       workspace: shared-data
-    runAfter: ["wait-for-backend"] 
+    runAfter: ["wait-for-frontends"] 
     params:
     - name: project-name
       value: $(params.project-name)

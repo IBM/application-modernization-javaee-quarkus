@@ -1,0 +1,81 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: wait-for-frontends
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "wait-for-frontends"
+spec:
+  description: >-
+    wait-for-frontends
+  workspaces:
+    - name: source
+      description: shared workspace 
+  params:
+  - name: project-name
+    description: project-name 
+  steps:
+    - name: wait-for-frontends
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        
+        PROJECT_NAME=$(params.project-name)
+        MAX_ITERATIONS=120
+        ITERATION=0
+        WAIT_SECONDS=10
+        
+        oc project $PROJECT_NAME > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $PROJECT_NAME
+        fi
+
+        while true
+        do
+          ((ITERATION++))
+          echo Waiting 10 seconds ...
+          sleep $WAIT_SECONDS
+          echo Checking frontends status ...
+          MICROFRONTEND_MESSAGING=$(oc get route storefront-mf-messaging --template='{{ .spec.host }}')
+          MICROFRONTEND_NAVIGATOR=$(oc get route storefront-mf-navigator --template='{{ .spec.host }}')
+          MICROFRONTEND_ORDER=$(oc get route storefront-mf-order --template='{{ .spec.host }}')
+          MICROFRONTEND_CATALOG=$(oc get route storefront-mf-catalog --template='{{ .spec.host }}')
+          MICROFRONTEND_ACCOUNT=$(oc get route storefront-mf-account --template='{{ .spec.host }}')
+
+          if [ -z "$MICROFRONTEND_MESSAGING" ]
+          then
+            echo storefront-mf-messaging is NOT available
+          else
+            if [ -z "$MICROFRONTEND_NAVIGATOR" ]
+            then
+              echo storefront-mf-navigator is NOT available
+            else
+              if [ -z "$MICROFRONTEND_ORDER" ]
+              then
+                echo storefront-mf-order is NOT available
+              else
+                if [ -z "$MICROFRONTEND_CATALOG" ]
+                then
+                  echo storefront-mf-catalog is NOT available
+                else
+                  if [ -z "$MICROFRONTEND_ACCOUNT" ]
+                  then
+                    echo storefront-mf-account is NOT available
+                  else
+                    echo All micro frontends are available
+                    break
+                  fi
+                fi
+              fi
+            fi
+          fi  
+
+          if [ "$ITERATION" -ge "$MAX_ITERATIONS" ]; 
+          then
+            echo Micro frontends are NOT available
+            echo Timeout occured
+            exit 1
+          fi      
+        done

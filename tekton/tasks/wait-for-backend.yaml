@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/version: "0.3"
   annotations:
     tekton.dev/pipelines.minVersion: "0.21.0"
-    tekton.dev/displayName: "prep-storefront-mf-account"
+    tekton.dev/displayName: "wait-for-backend"
 spec:
   description: >-
     wait-for-backend
@@ -56,7 +56,7 @@ spec:
 
           if [ "$ITERATION" -ge "$MAX_ITERATIONS" ]; 
           then
-            echo service-catalog-quarkus-reactive and monolith-open-liberty-cloud-native are NOT available
+            echo service-catalog-quarkus-reactive and/or monolith-open-liberty-cloud-native are NOT available
             echo Timeout occured
             exit 1
           fi      
