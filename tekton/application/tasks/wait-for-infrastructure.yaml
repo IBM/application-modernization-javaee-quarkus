@@ -1,0 +1,63 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: wait-for-infrastructure
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "wait-for-infrastructure"
+spec:
+  description: >-
+    wait-for-infrastructure
+  workspaces:
+    - name: source
+      description: shared workspace 
+  params:
+  - name: project-name
+    description: project-name 
+  steps:
+    - name: wait-for-infrastructure
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        
+        MAX_ITERATIONS=120
+        ITERATION=0
+        WAIT_SECONDS=10
+
+        while true
+        do
+          ((ITERATION++))
+          echo Waiting 10 seconds ...
+          sleep $WAIT_SECONDS
+          echo Checking frontends status ...
+          ROUTE_DB2=$(oc get route storefront-db2 -n db2 --template='{{ .spec.host }}')
+          ROUTE_KAFKA=$(oc get route my-cluster-kafka-external-bootstrap -n kafka --template='{{ .spec.host }}')
+          ROUTE_POSTGRES=$(oc get svc postgres -n postgres --template='{{ .spec.host }}')
+
+          if [ -z "$ROUTE_DB2" ]
+          then
+            echo storefront-db2 is NOT available
+          else
+            if [ -z "$ROUTE_KAFKA" ]
+            then
+              echo my-cluster-kafka-external-bootstrap is NOT available
+            else
+              if [ -z "$ROUTE_POSTGRES" ]
+              then
+                echo postgres is NOT available
+              else
+                echo All infrastructure components are available
+                break
+              fi
+            fi
+          fi  
+
+          if [ "$ITERATION" -ge "$MAX_ITERATIONS" ]; 
+          then
+            echo Infrastructure components are NOT available
+            echo Timeout occured
+            exit 1
+          fi      
+        done

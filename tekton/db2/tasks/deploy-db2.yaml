@@ -22,13 +22,11 @@ spec:
         if [ $? != 0 ]; 
         then 
           oc new-project db2
-          oc adm policy add-scc-to-user anyuid -z db2
-          oc adm policy add-scc-to-user anyuid -z default
+        fi
 
-          oc create sa mysvcacct
-          oc adm policy add-scc-to-user anyuid -z mysvcacct -n db2
-          oc adm policy add-scc-to-user privileged -z default -n db2
-          oc adm policy add-scc-to-user privileged -z mysvcacct -n db2
+        ROUTE_DB2=$(oc get route storefront-db2 --template='{{ .spec.host }}')
+        if [ -z "$ROUTE_DB2" ]
+        then
           oc apply -f $(workspaces.source.path)/db2/deployment/db2-dc.yaml -n db2 
           oc apply -f $(workspaces.source.path)/db2/deployment/db2-service.yaml -n db2 
 
@@ -38,5 +36,5 @@ spec:
           echo "It takes 3-6 minutes for Db2 to come up."
         else
           echo "Db2 already installed."
-          echo "To reinstall invoke 'oc delete project db2' and rerun this pipeline."
+          echo "To reinstall invoke 'oc delete project db2' and rerun 'sh tekton/deploy-db2.sh'."
         fi

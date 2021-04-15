@@ -1,15 +1,15 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: deploy-storefront-mf-account
+  name: deploy-storefront-mf-shell
   labels:
     app.kubernetes.io/version: "0.3"
   annotations:
     tekton.dev/pipelines.minVersion: "0.21.0"
-    tekton.dev/displayName: "prep-storefront-mf-account"
+    tekton.dev/displayName: "prep-storefront-mf-shell"
 spec:
   description: >-
-    deploy-storefront-mf-account
+    deploy-storefront-mf-shell
   workspaces:
     - name: source
       description: shared workspace 
@@ -17,19 +17,20 @@ spec:
   - name: project-name
     description: project-name 
   steps:
-    - name: deploy-storefront-mf-account
+    - name: deploy-storefront-mf-shell
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli
       script: |
         #!/bin/bash
-        oc project $(params.project-name)  > /dev/null 2>&1
+        oc project $(params.project-name) > /dev/null 2>&1
         if [ $? != 0 ]; then 
           oc new-project $(params.project-name)
         fi
 
-        cd $(workspaces.source.path)/frontend-single-spa/account
+        cd $(workspaces.source.path)/frontend-single-spa/shell
         oc apply -f deployment/kubernetes.yaml
-        oc expose svc/storefront-mf-account
-        echo "Done deploying storefront-mf-account"
+        oc expose svc/storefront-mf-shell
+        echo "Done deploying storefront-mf-shell"
 
-        ROUTE=$(oc get route storefront-mf-account --template='{{ .spec.host }}')
-        echo "http://${ROUTE}/js/app.js"
+        ROUTE=$(oc get route storefront-mf-shell --template='{{ .spec.host }}')        
+        echo "http://${ROUTE}/vue-app-mod-shell.js"
+        echo "http://${ROUTE}"

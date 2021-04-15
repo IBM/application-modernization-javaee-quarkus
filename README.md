@@ -152,7 +152,10 @@ Additionally you need to install Tekton. This can be done in various ways:
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
 $ oc login ...
-$ sh ${ROOT_FOLDER}/tekton/deploy-and-run-pipelines.sh
+$ sh ${ROOT_FOLDER}/tekton/deploy-db2.sh
+$ sh ${ROOT_FOLDER}/tekton/deploy-kafka.sh
+$ sh ${ROOT_FOLDER}/tekton/deploy-postgres.sh
+$ sh ${ROOT_FOLDER}/tekton/deploy-application.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 

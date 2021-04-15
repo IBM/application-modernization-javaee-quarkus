@@ -28,13 +28,23 @@ spec:
       value: $(params.repo-url)
     - name: revision
       value: master
+  - name: wait-for-infrastructure
+    taskRef:
+      name: wait-for-infrastructure
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["git-clone"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
   - name: prep-monolith-open-liberty-cloud-native
     taskRef:
       name: prep-monolith-open-liberty-cloud-native
     workspaces:
     - name: source
       workspace: shared-data
-    runAfter: ["git-clone"] 
+    runAfter: ["wait-for-infrastructure"] 
     params:
     - name: project-name
       value: $(params.project-name)

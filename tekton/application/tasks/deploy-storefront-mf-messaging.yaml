@@ -1,15 +1,15 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: deploy-storefront-mf-navigator
+  name: deploy-storefront-mf-messaging
   labels:
     app.kubernetes.io/version: "0.3"
   annotations:
     tekton.dev/pipelines.minVersion: "0.21.0"
-    tekton.dev/displayName: "prep-storefront-mf-navigator"
+    tekton.dev/displayName: "prep-storefront-mf-messaging"
 spec:
   description: >-
-    deploy-storefront-mf-navigator
+    deploy-storefront-mf-messaging
   workspaces:
     - name: source
       description: shared workspace 
@@ -17,19 +17,19 @@ spec:
   - name: project-name
     description: project-name 
   steps:
-    - name: deploy-storefront-mf-navigator
+    - name: deploy-storefront-mf-messaging
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli
       script: |
         #!/bin/bash
-        oc project $(params.project-name)  > /dev/null 2>&1
+        oc project $(params.project-name) > /dev/null 2>&1
         if [ $? != 0 ]; then 
           oc new-project $(params.project-name)
         fi
 
-        cd $(workspaces.source.path)/frontend-single-spa/navigator
+        cd $(workspaces.source.path)/frontend-single-spa/messaging
         oc apply -f deployment/kubernetes.yaml
-        oc expose svc/storefront-mf-navigator
-        echo "Done deploying storefront-mf-navigator"
+        oc expose svc/storefront-mf-messaging
+        echo "Done deploying storefront-mf-messaging"
 
-        ROUTE=$(oc get route storefront-mf-navigator --template='{{ .spec.host }}')
-        echo "http://${ROUTE}/js/app.js"
+        ROUTE=$(oc get route storefront-mf-messaging --template='{{ .spec.host }}')
+        echo "http://${ROUTE}/vue-app-mod-messaging.js"

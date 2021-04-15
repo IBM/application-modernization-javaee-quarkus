@@ -21,7 +21,7 @@ spec:
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli
       script: |
         #!/bin/bash
-        oc project $(params.project-name)  > /dev/null 2>&1
+        oc project $(params.project-name) > /dev/null 2>&1
         if [ $? != 0 ]; then 
           oc new-project $(params.project-name)
         fi

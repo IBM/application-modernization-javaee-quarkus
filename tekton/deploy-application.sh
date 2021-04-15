@@ -11,14 +11,14 @@ function _out() {
 function setup() {
   _out Deploying Tekton tasks and pipelines
   
-  oc project app-mod-dev-tekton  > /dev/null 2>&1
+  oc project app-mod-dev-tekton > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project app-mod-dev-tekton
   fi
   
-  oc apply -f tekton/tasks
-  oc apply -f tekton/pipelines
-  oc apply -f tekton/pipelineruns
+  oc apply -f tekton/application/tasks
+  oc apply -f tekton/application/pipelines
+  oc apply -f tekton/application/pipelineruns
 }
 
 setup

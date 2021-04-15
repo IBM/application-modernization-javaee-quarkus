@@ -1,15 +1,15 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: deploy-frontend-dojo
+  name: deploy-storefront-mf-order
   labels:
     app.kubernetes.io/version: "0.3"
   annotations:
     tekton.dev/pipelines.minVersion: "0.21.0"
-    tekton.dev/displayName: "prep-frontend-dojo"
+    tekton.dev/displayName: "prep-storefront-mf-order"
 spec:
   description: >-
-    deploy-frontend-dojo
+    deploy-storefront-mf-order
   workspaces:
     - name: source
       description: shared workspace 
@@ -17,19 +17,19 @@ spec:
   - name: project-name
     description: project-name 
   steps:
-    - name: deploy-frontend-dojo
+    - name: deploy-storefront-mf-order
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli
       script: |
         #!/bin/bash
-        oc project $(params.project-name)  > /dev/null 2>&1
+        oc project $(params.project-name) > /dev/null 2>&1
         if [ $? != 0 ]; then 
           oc new-project $(params.project-name)
         fi
 
-        cd $(workspaces.source.path)/frontend-dojo
+        cd $(workspaces.source.path)/frontend-single-spa/order
         oc apply -f deployment/kubernetes.yaml
-        oc expose svc/frontend-dojo
-        echo "Done deploying frontend-dojo"
+        oc expose svc/storefront-mf-order
+        echo "Done deploying storefront-mf-order"
 
-        ROUTE=$(oc get route frontend-dojo --template='{{ .spec.host }}')
-        echo "http://${ROUTE}/CustomerOrderServicesWeb/"
+        ROUTE=$(oc get route storefront-mf-order --template='{{ .spec.host }}')
+        echo "http://${ROUTE}/js/app.js"
