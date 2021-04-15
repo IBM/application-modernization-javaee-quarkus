@@ -1,0 +1,35 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-storefront-mf-catalog
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-storefront-mf-catalog"
+spec:
+  description: >-
+    deploy-storefront-mf-catalog
+  workspaces:
+    - name: source
+      description: shared workspace 
+  params:
+  - name: project-name
+    description: project-name 
+  steps:
+    - name: deploy-storefront-mf-catalog
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/storefront-mf-catalog
+        oc apply -f deployment/kubernetes.yaml
+        oc expose svc/storefront-mf-catalog
+        echo "Done deploying storefront-mf-catalog"
+
+        ROUTE=$(oc get route storefront-mf-catalog --template='{{ .spec.host }}')
+        echo "http://${ROUTE}/js/app.js"

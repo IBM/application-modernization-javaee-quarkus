@@ -48,7 +48,7 @@ spec:
     - name: IMAGE
       value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-account
     - name: CONTEXT
-      value: $(workspaces.source.path)/storefront-mf-account
+      value: $(workspaces.source.path)/frontend-single-spa/account
     - name: TLSVERIFY
       value: "false"
     runAfter: ["prep-storefront-mf-account"] 

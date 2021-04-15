@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: storefront-mf-messaging
+  name: storefront-mf-catalog
 spec:
   description: |
-    storefront-mf-messaging
+    storefront-mf-catalog
   params:
   - name: repo-url
     type: string
@@ -28,9 +28,9 @@ spec:
       value: $(params.repo-url)
     - name: revision
       value: master
-  - name: prep-storefront-mf-messaging
+  - name: prep-storefront-mf-catalog
     taskRef:
-      name: prep-storefront-mf-messaging
+      name: prep-storefront-mf-catalog
     workspaces:
     - name: source
       workspace: shared-data
@@ -46,15 +46,15 @@ spec:
       workspace: shared-data
     params:
     - name: IMAGE
-      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-messaging
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-catalog
     - name: CONTEXT
-      value: $(workspaces.source.path)/frontend-single-spa/messaging
+      value: $(workspaces.source.path)/frontend-single-spa/catalog
     - name: TLSVERIFY
       value: "false"
-    runAfter: ["prep-storefront-mf-messaging"] 
-  - name: deploy-storefront-mf-messaging
+    runAfter: ["prep-storefront-mf-catalog"] 
+  - name: deploy-storefront-mf-catalog
     taskRef:
-      name: deploy-storefront-mf-messaging
+      name: deploy-storefront-mf-catalog
     workspaces:
     - name: source
       workspace: shared-data
