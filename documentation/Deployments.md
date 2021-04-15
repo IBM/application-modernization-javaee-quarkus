@@ -3,6 +3,35 @@
 This page describes how to deploy specific intermediate versions of the sample and how to run services locally.
 
 
+### Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts
+
+The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
+
+First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then create an OpenShift cluster, for example via the [IBM Cloud Dashboard](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). I've tested classic infrastructure, single zone, OpenShift 4.6.17, b3c.8x32 and 3 worker nodes.
+
+Execute the following commands:
+
+```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ oc login ...
+$ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-frontend-dojo.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-messaging.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-account.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-catalog.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-navigator.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-order.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh app-mod-dev
+```
+
+
 ### Monolith - WebSphere Liberty
 
 ```

@@ -137,35 +137,24 @@ Open the "Order History" tab to see the updated price. The new price has been up
 
 
 
-### Deployment to OpenShift on IBM Cloud (ROKS)
+### Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts
 
 The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
 
 First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then create an OpenShift cluster, for example via the [IBM Cloud Dashboard](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). I've tested classic infrastructure, single zone, OpenShift 4.6.17, b3c.8x32 and 3 worker nodes.
 
-Execute the following commands:
+Additionally you need to install Tekton. This can be done in various ways:
+
+* Red Hat OpenShift Pipelines Operator: Can be installed from the OperatorHub view in the OpenShift Console ([code](https://github.com/tektoncd/operator))
+* [IBM Cloud Native Toolkit](https://cloudnativetoolkit.dev/getting-started-day-0/install-toolkit/quick-install/): Installs the Red Hat OpenShift Pipelines Operator and other tools
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
 $ oc login ...
-$ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-frontend-dojo.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-messaging.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-account.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-catalog.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-navigator.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-order.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
+$ sh ${ROOT_FOLDER}/tekton/deploy-and-run-pipelines.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
-
-Work in progress: Deployment via Tekton and ArgoCD
 
 
 

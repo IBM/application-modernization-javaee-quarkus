@@ -9,6 +9,8 @@ function _out() {
 }
 
 function setup() {
+  PROJECT_NAME=$1
+  echo Project: $PROJECT_NAME
 
   _out ------------------------------------------------------------------------------------
   
@@ -40,11 +42,11 @@ function setup() {
   _out ------------------------------------------------------------------------------------
   
   _out service-catalog-quarkus-reactive  
-  nodeport=$(oc get svc service-catalog-quarkus-reactive -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  nodeport=$(oc get svc service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$nodeport" ]; then
     _out service-catalog-quarkus-reactive is not available. Run the command: \"sh scripts-openshift/deploy-service-catalog-quarkus-reactive.sh\"
   else 
-    ROUTE=$(oc get route service-catalog-quarkus-reactive -n app-mod-dev --template='{{ .spec.host }}')
+    ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category\"
     _out \"curl \'http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2\'\"
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
@@ -53,22 +55,22 @@ function setup() {
   _out ------------------------------------------------------------------------------------
 
   _out monolith-open-liberty-cloud-native  
-  nodeport=$(oc get svc monolith-open-liberty-cloud-native -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  nodeport=$(oc get svc monolith-open-liberty-cloud-native -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$nodeport" ]; then
     _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
   else 
-    ROUTE=$(oc get route monolith-open-liberty-cloud-native -n app-mod-dev --template='{{ .spec.host }}')
+    ROUTE=$(oc get route monolith-open-liberty-cloud-native -n $PROJECT_NAME --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/Orders\"
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/TypeForm\"    
   fi
   _out ------------------------------------------------------------------------------------
 
   _out frontend-dojo
-  nodeport=$(oc get svc frontend-dojo -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  nodeport=$(oc get svc frontend-dojo -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$nodeport" ]; then
     _out frontend-dojo is not available. Run the command: \"sh scripts-openshift/deploy-frontend-dojo.sh\"
   else 
-    ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')
+    ROUTE=$(oc get route frontend-dojo -n $PROJECT_NAME --template='{{ .spec.host }}')
   
     _out "Open the web app:"
     _out "http://${ROUTE}/CustomerOrderServicesWeb/"
@@ -76,15 +78,20 @@ function setup() {
   _out ------------------------------------------------------------------------------------
 
   _out frontend-single-spa
-  nodeport=$(oc get svc storefront-mf-shell -n app-mod-dev --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
+  nodeport=$(oc get svc storefront-mf-shell -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$nodeport" ]; then
     _out frontend-single-spa is not available. Run the command: \"sh scripts-openshift/deploy-storefront-mf-shell.sh\"
   else 
-    ROUTE=$(oc get route storefront-mf-shell -n app-mod-dev --template='{{ .spec.host }}')
+    ROUTE=$(oc get route storefront-mf-shell -n $PROJECT_NAME --template='{{ .spec.host }}')
   
     _out "Open the web app:"
     _out "http://${ROUTE}"
   fi
 }
 
-setup
+if [ -z "$1" ]
+then
+  setup "app-mod-dev-tekton"
+else
+  setup $1 
+fi
