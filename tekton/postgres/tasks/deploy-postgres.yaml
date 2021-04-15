@@ -1,0 +1,39 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-postgres
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "deploy-postgres"
+spec:
+  description: >-
+    deploy-postgres
+  workspaces:
+    - name: source
+      description: shared workspace 
+  steps:
+    - name: deploy-postgres
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project postgres > /dev/null 2>&1
+        if [ $? != 0 ]; 
+        then 
+          oc new-project postgres
+        fi
+
+        ROUTRE_POSTGRES=$(oc get route postgres --template='{{ .spec.host }}') 
+        if [ -z "$ROUTRE_POSTGRES" ]
+        then
+          cd $(workspaces.source.path)/scripts-openshift
+          oc apply -f ./postgres.yaml
+          oc expose svc/postgres
+
+          echo "Done installing postgres."
+          echo "It takes 1-2 minutes for postgres to come up."
+        else
+          echo "Postgres already installed."
+          echo "To reinstall invoke 'oc delete project postgres' and rerun 'sh tekton/deploy-postgres.sh'."
+        fi

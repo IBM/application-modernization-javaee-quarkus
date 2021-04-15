@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/version: "0.3"
   annotations:
     tekton.dev/pipelines.minVersion: "0.21.0"
-    tekton.dev/displayName: "prep-db2"
+    tekton.dev/displayName: "deploy-db2"
 spec:
   description: >-
     deploy-db2
@@ -14,7 +14,7 @@ spec:
     - name: source
       description: shared workspace 
   steps:
-    - name: deploy-frontend-dojo
+    - name: deploy-db2
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli
       script: |
         #!/bin/bash

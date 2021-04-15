@@ -1,0 +1,48 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: postgres
+spec:
+  description: |
+    postgres
+  params:
+  - name: repo-url
+    type: string
+    description: The git repository URL to clone from.
+  workspaces:
+  - name: shared-data
+    description: |
+      shared workspace
+  tasks:
+  - name: git-clone
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    params:
+    - name: url
+      value: $(params.repo-url)
+    - name: revision
+      value: master
+  - name: buildah
+    taskRef:
+      name: buildah
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/postgres/build-postgres:latest
+    - name: CONTEXT
+      value: $(workspaces.source.path)/scripts-openshift
+    - name: TLSVERIFY
+      value: "false"
+    runAfter: ["git-clone"]
+  - name: deploy-postgres
+    taskRef:
+      name: deploy-postgres
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["buildah"] 
