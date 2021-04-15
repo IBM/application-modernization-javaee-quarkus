@@ -62,25 +62,3 @@ spec:
     params:
     - name: project-name
       value: $(params.project-name)
----
-apiVersion: tekton.dev/v1beta1
-kind: PipelineRun
-metadata:
-  name: service-catalog-quarkus-reactive-pr
-spec:
-  pipelineRef:
-    name: service-catalog-quarkus-reactive
-  workspaces:
-  - name: shared-data
-    volumeClaimTemplate:
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-  params:
-  - name: repo-url
-    value: https://github.com/IBM/application-modernization-javaee-quarkus
-  - name: project-name
-    value: niklas-tekton-6

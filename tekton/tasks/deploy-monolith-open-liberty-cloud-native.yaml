@@ -1,0 +1,35 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-monolith-open-liberty-cloud-native
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-monolith-open-liberty-cloud-native"
+spec:
+  description: >-
+    deploy-monolith-open-liberty-cloud-native
+  workspaces:
+    - name: source
+      description: shared workspace 
+  params:
+  - name: project-name
+    description: project-name 
+  steps:
+    - name: deploy-monolith-open-liberty-cloud-native
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/monolith-open-liberty-cloud-native
+        oc apply -f deployment/kubernetes.yaml
+        oc expose svc/monolith-open-liberty-cloud-native
+        echo "Done deploying monolith-open-liberty-cloud-native"
+
+        ROUTE=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+        echo "http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Customer/Orders"

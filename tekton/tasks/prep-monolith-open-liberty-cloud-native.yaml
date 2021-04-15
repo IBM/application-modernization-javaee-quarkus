@@ -1,0 +1,55 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prep-monolith-open-liberty-cloud-native
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-monolith-open-liberty-cloud-native"
+spec:
+  description: >-
+    prep-monolith-open-liberty-cloud-native
+  workspaces:
+    - name: source
+      description: shared workspace  
+  params:
+  - name: project-name
+    description: project-name
+  steps:
+    - name: prep-monolith-open-liberty-cloud-native
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/monolith-open-liberty-cloud-native
+        
+        oc delete -f deployment/kubernetes.yaml --ignore-not-found
+        oc delete route monolith-open-liberty-cloud-native --ignore-not-found
+        oc delete is build-monolith-open-liberty-cloud-native --ignore-not-found
+        oc delete bc/build-monolith-open-liberty-cloud-native --ignore-not-found
+        echo "Done deleting resources"
+
+        cd $(workspaces.source.path)/monolith-open-liberty-cloud-native/deployment
+        cp kubernetes.yaml kubernetes.org.yaml
+        rm kubernetes.yaml
+        sed "s/app-mod-dev/$(params.project-name)/g" kubernetes.org.yaml > kubernetes.yaml    
+  
+        cd $(workspaces.source.path)/monolith-open-liberty-cloud-native/src/main/resources/META-INF
+        rm microprofile-config.properties
+        cp microprofile-config-openshift.properties microprofile-config.properties
+
+        cd $(workspaces.source.path)/monolith-open-liberty-cloud-native/src/main/liberty/config
+        rm server.xml
+        cp server-openshift.xml server.xml
+
+        cd $(workspaces.source.path)/monolith-open-liberty-cloud-native
+        cp Dockerfile Dockerfile.temp
+        rm Dockerfile
+        cp Dockerfile.multistage Dockerfile
+
+        echo "Done changing links and configuration"

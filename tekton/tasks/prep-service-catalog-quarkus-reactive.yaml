@@ -31,6 +31,7 @@ spec:
         oc delete -f deployment/kubernetes.yaml --ignore-not-found
         oc delete route service-catalog-quarkus-reactive --ignore-not-found
         oc delete is build-service-catalog-quarkus-reactive --ignore-not-found
+        oc delete bc/build-service-catalog-quarkus-reactive --ignore-not-found
         echo "Done deleting resources"
 
         cd $(workspaces.source.path)/service-catalog-quarkus-reactive/deployment

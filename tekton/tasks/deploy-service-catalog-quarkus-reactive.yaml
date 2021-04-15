@@ -27,7 +27,6 @@ spec:
         fi
 
         cd $(workspaces.source.path)/service-catalog-quarkus-reactive
-        
         oc apply -f deployment/kubernetes.yaml
         oc expose svc/service-catalog-quarkus-reactive
         echo "Done deploying service-catalog-quarkus-reactive"
