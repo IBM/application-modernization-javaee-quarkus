@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: storefront-mf-catalog
+  name: storefront-mf-navigator
 spec:
   description: |
-    storefront-mf-catalog
+    storefront-mf-navigator
   params:
   - name: repo-url
     type: string
@@ -38,9 +38,9 @@ spec:
     params:
     - name: project-name
       value: $(params.project-name)
-  - name: prep-storefront-mf-catalog
+  - name: prep-storefront-mf-navigator
     taskRef:
-      name: prep-storefront-mf-catalog
+      name: prep-storefront-mf-navigator
     workspaces:
     - name: source
       workspace: shared-data
@@ -56,15 +56,15 @@ spec:
       workspace: shared-data
     params:
     - name: IMAGE
-      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-catalog
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-navigator
     - name: CONTEXT
-      value: $(workspaces.source.path)/frontend-single-spa/catalog
+      value: $(workspaces.source.path)/frontend-single-spa/navigator
     - name: TLSVERIFY
       value: "false"
-    runAfter: ["prep-storefront-mf-catalog"] 
-  - name: deploy-storefront-mf-catalog
+    runAfter: ["prep-storefront-mf-navigator"] 
+  - name: deploy-storefront-mf-navigator
     taskRef:
-      name: deploy-storefront-mf-catalog
+      name: deploy-storefront-mf-navigator
     workspaces:
     - name: source
       workspace: shared-data

@@ -47,7 +47,6 @@ spec:
         rm Dockerfile
         cp Dockerfile.os4 Dockerfile
 
-        cp $(workspaces.source.path)/frontend-single-spa/catalog/src/components/Home.vue $(workspaces.source.path)/frontend-single-spa/catalog/Home.vue
-        cp $(workspaces.source.path)/frontend-single-spa/catalog/src/components/Home.vue
+        cp $(workspaces.source.path)/frontend-single-spa/catalog/src/components/Home.vue $(workspaces.source.path)/frontend-single-spa/catalog/Home.vue        
         sed "s/http:\/\/localhost:9083\/CustomerOrderServicesWeb\/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" $(workspaces.source.path)/frontend-single-spa/catalog/Home.vue > $(workspaces.source.path)/frontend-single-spa/catalog/src/components/Home.vue
         echo "Done changing links and configuration"

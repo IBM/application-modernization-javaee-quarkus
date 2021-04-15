@@ -1,0 +1,54 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prep-storefront-mf-navigator
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-storefront-mf-navigator"
+spec:
+  description: >-
+    prep-storefront-mf-navigator
+  workspaces:
+    - name: source
+      description: shared workspace  
+  params:
+  - name: project-name
+    description: project-name
+  steps:
+    - name: prep-storefront-mf-navigator
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/frontend-single-spa/navigator
+        
+        oc delete -f deployment/kubernetes.yaml --ignore-not-found
+        oc delete route storefront-mf-navigator --ignore-not-found
+        oc delete is build-storefront-mf-navigator --ignore-not-found
+        oc delete bc/build-storefront-mf-navigator --ignore-not-found
+        echo "Done deleting resources"
+
+        ROUTE_MONOLITH=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+        ROUTE_CATALOG=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
+
+        cd $(workspaces.source.path)/frontend-single-spa/navigator/deployment
+        cp kubernetes.yaml kubernetes.org.yaml
+        rm kubernetes.yaml
+        sed "s/app-mod-dev/$(params.project-name)/g" kubernetes.org.yaml > kubernetes.yaml    
+
+        cd $(workspaces.source.path)/frontend-single-spa/navigator
+        cp Dockerfile Dockerfile.temp
+        rm Dockerfile
+        cp Dockerfile.os4 Dockerfile
+
+        cp $(workspaces.source.path)/frontend-single-spa/navigator/src/App.vue $(workspaces.source.path)/frontend-single-spa/navigator/App.vue
+        rm $(workspaces.source.path)/frontend-single-spa/navigator/src/App.vue
+        sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" $(workspaces.source.path)/frontend-single-spa/navigator/App.vue > $(workspaces.source.path)/frontend-single-spa/navigator/App2.vue
+        sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" $(workspaces.source.path)/frontend-single-spa/navigator/App2.vue > $(workspaces.source.path)/frontend-single-spa/navigator/src/App.vue
+        echo "Done changing links and configuration"

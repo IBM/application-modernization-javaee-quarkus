@@ -39,7 +39,6 @@ function setup() {
       fi
 
       cp ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue ${root_folder}/frontend-single-spa/catalog/Home.vue
-      cp ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue
       sed "s/http:\/\/localhost:9083\/CustomerOrderServicesWeb\/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" ${root_folder}/frontend-single-spa/catalog/Home.vue > ${root_folder}/frontend-single-spa/catalog/src/components/Home.vue
       
       cd ${root_folder}/frontend-single-spa/catalog

@@ -1,0 +1,62 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prep-storefront-mf-shell
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-storefront-mf-shell"
+spec:
+  description: >-
+    prep-storefront-mf-shell
+  workspaces:
+    - name: source
+      description: shared workspace  
+  params:
+  - name: project-name
+    description: project-name
+  steps:
+    - name: prep-storefront-mf-shell
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/frontend-single-spa/shell
+        
+        oc delete -f deployment/kubernetes.yaml --ignore-not-found
+        oc delete route storefront-mf-shell --ignore-not-found
+        oc delete is build-storefront-mf-shell --ignore-not-found
+        oc delete bc/build-storefront-mf-shell --ignore-not-found
+        echo "Done deleting resources"
+
+        ROUTE_MONOLITH=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+        ROUTE_CATALOG=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
+        MICROFRONTEND_MESSAGING=$(oc get route storefront-mf-messaging --template='{{ .spec.host }}')
+        MICROFRONTEND_NAVIGATOR=$(oc get route storefront-mf-navigator --template='{{ .spec.host }}')
+        MICROFRONTEND_ORDER=$(oc get route storefront-mf-order --template='{{ .spec.host }}')
+        MICROFRONTEND_CATALOG=$(oc get route storefront-mf-catalog --template='{{ .spec.host }}')
+        MICROFRONTEND_ACCOUNT=$(oc get route storefront-mf-account --template='{{ .spec.host }}')
+
+        cd $(workspaces.source.path)/frontend-single-spa/shell/deployment
+        cp kubernetes.yaml kubernetes.org.yaml
+        rm kubernetes.yaml
+        sed "s/app-mod-dev/$(params.project-name)/g" kubernetes.org.yaml > kubernetes.yaml    
+
+        cd $(workspaces.source.path)/frontend-single-spa/shell
+        cp Dockerfile Dockerfile.temp
+        rm Dockerfile
+        cp Dockerfile.os4 Dockerfile
+
+        cp $(workspaces.source.path)/frontend-single-spa/shell/src/index.ejs $(workspaces.source.path)/frontend-single-spa/shell/index-org.ejs
+        rm $(workspaces.source.path)/frontend-single-spa/shell/src/index.ejs
+        sed "s/MICROFRONTEND_MESSAGING/${MICROFRONTEND_MESSAGING}/g" $(workspaces.source.path)/frontend-single-spa/shell/index.ejs > $(workspaces.source.path)/frontend-single-spa/shell/index2.ejs
+        sed "s/MICROFRONTEND_ORDER/${MICROFRONTEND_ORDER}/g" $(workspaces.source.path)/frontend-single-spa/shell/index2.ejs > $(workspaces.source.path)/frontend-single-spa/shell/index3.ejs
+        sed "s/MICROFRONTEND_CATALOG/${MICROFRONTEND_CATALOG}/g" $(workspaces.source.path)/frontend-single-spa/shell/index3.ejs > $(workspaces.source.path)/frontend-single-spa/shell/index4.ejs
+        sed "s/MICROFRONTEND_ACCOUNT/${MICROFRONTEND_ACCOUNT}/g" $(workspaces.source.path)/frontend-single-spa/shell/index4.ejs > $(workspaces.source.path)/frontend-single-spa/shell/index5.ejs
+        sed "s/MICROFRONTEND_NAVIGATOR/${MICROFRONTEND_NAVIGATOR}/g" $(workspaces.source.path)/frontend-single-spa/shell/index5.ejs > $(workspaces.source.path)/frontend-single-spa/shell/src/index.ejs                
+        echo "Done changing links and configuration"

@@ -28,13 +28,23 @@ spec:
       value: $(params.repo-url)
     - name: revision
       value: master
+  - name: wait-for-backend
+    taskRef:
+      name: wait-for-backend
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["git-clone"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
   - name: prep-frontend-dojo
     taskRef:
       name: prep-frontend-dojo
     workspaces:
     - name: source
       workspace: shared-data
-    runAfter: ["git-clone"] 
+    runAfter: ["wait-for-backend"] 
     params:
     - name: project-name
       value: $(params.project-name)
