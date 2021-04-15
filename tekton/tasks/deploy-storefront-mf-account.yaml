@@ -1,0 +1,35 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-storefront-mf-account
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-storefront-mf-account"
+spec:
+  description: >-
+    deploy-storefront-mf-account
+  workspaces:
+    - name: source
+      description: shared workspace 
+  params:
+  - name: project-name
+    description: project-name 
+  steps:
+    - name: deploy-storefront-mf-account
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/storefront-mf-account
+        oc apply -f deployment/kubernetes.yaml
+        oc expose svc/storefront-mf-account
+        echo "Done deploying storefront-mf-account"
+
+        ROUTE=$(oc get route storefront-mf-account --template='{{ .spec.host }}')
+        echo "http://${ROUTE}/js/app.js"

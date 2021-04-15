@@ -1,0 +1,49 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prep-storefront-mf-account
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-storefront-mf-account"
+spec:
+  description: >-
+    prep-storefront-mf-account
+  workspaces:
+    - name: source
+      description: shared workspace  
+  params:
+  - name: project-name
+    description: project-name
+  steps:
+    - name: prep-storefront-mf-account
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/frontend-single-spa/account
+        
+        oc delete -f deployment/kubernetes.yaml --ignore-not-found
+        oc delete route storefront-mf-account --ignore-not-found
+        oc delete is build-storefront-mf-account --ignore-not-found
+        oc delete bc/build-storefront-mf-account --ignore-not-found
+        echo "Done deleting resources"
+
+        ROUTE_MONOLITH=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+        ROUTE_CATALOG=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
+
+        cd $(workspaces.source.path)/frontend-single-spa/account/deployment
+        cp kubernetes.yaml kubernetes.org.yaml
+        rm kubernetes.yaml
+        sed "s/app-mod-dev/$(params.project-name)/g" kubernetes.org.yaml > kubernetes.yaml    
+
+        cd $(workspaces.source.path)/frontend-single-spa/account
+        cp Dockerfile Dockerfile.temp
+        rm Dockerfile
+        cp Dockerfile.os4 Dockerfile
+        echo "Done changing links and configuration"

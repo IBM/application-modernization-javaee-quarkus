@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: frontend-dojo-pr
+spec:
+  pipelineRef:
+    name: frontend-dojo
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  params:
+  - name: repo-url
+    value: https://github.com/IBM/application-modernization-javaee-quarkus
+  - name: project-name
+    value: app-mod-dev-tekton

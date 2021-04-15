@@ -1,0 +1,71 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prep-frontend-dojo
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "prep-frontend-dojo"
+spec:
+  description: >-
+    prep-frontend-dojo
+  workspaces:
+    - name: source
+      description: shared workspace  
+  params:
+  - name: project-name
+    description: project-name
+  steps:
+    - name: prep-frontend-dojo
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli
+      script: |
+        #!/bin/bash
+        oc project $(params.project-name)  > /dev/null 2>&1
+        if [ $? != 0 ]; then 
+          oc new-project $(params.project-name)
+        fi
+
+        cd $(workspaces.source.path)/frontend-dojo
+        
+        oc delete -f deployment/kubernetes.yaml --ignore-not-found
+        oc delete route frontend-dojo --ignore-not-found
+        oc delete is build-frontend-dojo --ignore-not-found
+        oc delete bc/build-frontend-dojo --ignore-not-found
+        echo "Done deleting resources"
+
+        ROUTE_MONOLITH=$(oc get route monolith-open-liberty-cloud-native --template='{{ .spec.host }}')
+        ROUTE_CATALOG=$(oc get route service-catalog-quarkus-reactive --template='{{ .spec.host }}')
+
+        cd $(workspaces.source.path)/frontend-dojo/deployment
+        cp kubernetes.yaml kubernetes.org.yaml
+        rm kubernetes.yaml
+        sed "s/app-mod-dev/$(params.project-name)/g" kubernetes.org.yaml > kubernetes.yaml    
+
+        cd $(workspaces.source.path)/frontend-dojo
+        cp Dockerfile Dockerfile.temp
+        rm Dockerfile
+        cp Dockerfile.multistage Dockerfile
+
+        cp $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js $(workspaces.source.path)/frontend-dojo/ProductController.js 
+        rm $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+        sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" $(workspaces.source.path)/frontend-dojo/ProductController.js > $(workspaces.source.path)/frontend-dojo/ProductController2.js
+        sed "s/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" $(workspaces.source.path)/frontend-dojo/ProductController2.js > $(workspaces.source.path)/frontend-dojo/ProductController3.js
+        sed "s/\/\/this.addToCorsIssue/this.addToCorsIssue/g" $(workspaces.source.path)/frontend-dojo/ProductController3.js > $(workspaces.source.path)/frontend-dojo/ProductController4.js
+        sed "s/this.addToCartNormal/\/\/this.addToCartNormal/g" $(workspaces.source.path)/frontend-dojo/ProductController4.js > $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+        cp $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js $(workspaces.source.path)/frontend-dojo/AccountController.js 
+        rm $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+        sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" $(workspaces.source.path)/frontend-dojo/AccountController.js > $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+        cp $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js $(workspaces.source.path)/frontend-dojo/AddressController.js 
+        rm $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+        sed "s/jaxrs\/Customer\/Address/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Address/g" $(workspaces.source.path)/frontend-dojo/AddressController.js > $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+        cp $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html $(workspaces.source.path)/frontend-dojo/product.html
+        rm $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+        sed "s/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" $(workspaces.source.path)/frontend-dojo/product.html > $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+        cp $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js $(workspaces.source.path)/frontend-dojo/OrderHistoryController.js 
+        rm $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+        sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" $(workspaces.source.path)/frontend-dojo/OrderHistoryController.js > $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+        cp $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js $(workspaces.source.path)/frontend-dojo/AccountTypeFormController.js 
+        rm $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+        sed "s/jaxrs\/Customer\/TypeForm/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/TypeForm/g" $(workspaces.source.path)/frontend-dojo/AccountTypeFormController.js > $(workspaces.source.path)/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+        echo "Done changing links and configuration"

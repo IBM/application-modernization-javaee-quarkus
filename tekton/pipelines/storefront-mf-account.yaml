@@ -1,0 +1,64 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: storefront-mf-account
+spec:
+  description: |
+    storefront-mf-account
+  params:
+  - name: repo-url
+    type: string
+    description: The git repository URL to clone from.
+  - name: project-name
+    type: string
+    description: The target project.
+  workspaces:
+  - name: shared-data
+    description: |
+      shared workspace
+  tasks:
+  - name: git-clone
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    params:
+    - name: url
+      value: $(params.repo-url)
+    - name: revision
+      value: master
+  - name: prep-storefront-mf-account
+    taskRef:
+      name: prep-storefront-mf-account
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["git-clone"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+  - name: buildah
+    taskRef:
+      name: buildah
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-account
+    - name: CONTEXT
+      value: $(workspaces.source.path)/storefront-mf-account
+    - name: TLSVERIFY
+      value: "false"
+    runAfter: ["prep-storefront-mf-account"] 
+  - name: deploy-storefront-mf-account
+    taskRef:
+      name: deploy-storefront-mf-account
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["buildah"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)

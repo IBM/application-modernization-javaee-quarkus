@@ -1,0 +1,64 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: storefront-mf-messaging
+spec:
+  description: |
+    storefront-mf-messaging
+  params:
+  - name: repo-url
+    type: string
+    description: The git repository URL to clone from.
+  - name: project-name
+    type: string
+    description: The target project.
+  workspaces:
+  - name: shared-data
+    description: |
+      shared workspace
+  tasks:
+  - name: git-clone
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    params:
+    - name: url
+      value: $(params.repo-url)
+    - name: revision
+      value: master
+  - name: prep-storefront-mf-messaging
+    taskRef:
+      name: prep-storefront-mf-messaging
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["git-clone"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+  - name: buildah
+    taskRef:
+      name: buildah
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-storefront-mf-messaging
+    - name: CONTEXT
+      value: $(workspaces.source.path)/storefront-mf-messaging
+    - name: TLSVERIFY
+      value: "false"
+    runAfter: ["prep-storefront-mf-messaging"] 
+  - name: deploy-storefront-mf-messaging
+    taskRef:
+      name: deploy-storefront-mf-messaging
+    workspaces:
+    - name: source
+      workspace: shared-data
+    runAfter: ["buildah"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
