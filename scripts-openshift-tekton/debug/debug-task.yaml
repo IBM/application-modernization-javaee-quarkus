@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: debug-task
+  labels:
+    app.kubernetes.io/version: "0.3"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.21.0"
+    tekton.dev/displayName: "debug-task"
+spec:
+  description: >-
+    debug-task
+  params:
+    - name: project-name
+    - name: app-git-url
+  workspaces:
+    - name: app-source
+  steps:
+    - name: debug-task
+      image: sdaschner/maven-jdk14:quarkus-deps-1.5.1-b5
+      workingDir: "$(workspaces.app-source.path)"
+      command: ["sleep", "infinity"]

@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: debug-task-run
+spec:
+  taskRef:
+    name: debug-task
+  params:
+  - name: project-name
+    value: 'app-mod-tekton-dev'
+  - name: app-git-url
+    value: 'https://github.com/IBM/application-modernization-javaee-quarkus'
+  workspaces:
+  - name: app-source
+    emptyDir: {}
+---
