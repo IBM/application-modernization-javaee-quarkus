@@ -16,9 +16,9 @@ function setup() {
       oc new-project app-mod-dev-tekton
   fi
   
-  oc apply -f tekton/application/tasks
-  oc apply -f tekton/application/pipelines
-  oc apply -f tekton/application/pipelineruns
+  oc apply -f scripts-openshift-tekton/application/tasks
+  oc apply -f scripts-openshift-tekton/application/pipelines
+  oc apply -f scripts-openshift-tekton/application/pipelineruns
 }
 
 setup

@@ -28,7 +28,7 @@ $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-catalog.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-navigator.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-order.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh app-mod-dev
+$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 
 

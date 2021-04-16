@@ -16,9 +16,9 @@ function setup() {
       oc new-project postgres
   fi
 
-  oc apply -f tekton/postgres/tasks
-  oc apply -f tekton/postgres/pipelines
-  oc apply -f tekton/postgres/pipelineruns
+  oc apply -f scripts-openshift-tekton/postgres/tasks
+  oc apply -f scripts-openshift-tekton/postgres/pipelines
+  oc apply -f scripts-openshift-tekton/postgres/pipelineruns
 }
 
 setup

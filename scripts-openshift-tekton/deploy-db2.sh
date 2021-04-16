@@ -23,9 +23,9 @@ function setup() {
   oc adm policy add-scc-to-user privileged -z default -n db2
   oc adm policy add-scc-to-user privileged -z mysvcacct -n db2
 
-  oc apply -f tekton/db2/tasks
-  oc apply -f tekton/db2/pipelines
-  oc apply -f tekton/db2/pipelineruns
+  oc apply -f scripts-openshift-tekton/db2/tasks
+  oc apply -f scripts-openshift-tekton/db2/pipelines
+  oc apply -f scripts-openshift-tekton/db2/pipelineruns
 }
 
 setup

@@ -91,7 +91,7 @@ function setup() {
 
 if [ -z "$1" ]
 then
-  setup "app-mod-dev-tekton"
+  setup "app-mod-dev"
 else
   setup $1 
 fi
