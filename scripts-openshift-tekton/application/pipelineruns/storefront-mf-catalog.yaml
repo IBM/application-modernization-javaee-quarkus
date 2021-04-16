@@ -18,4 +18,4 @@ spec:
   - name: repo-url
     value: https://github.com/IBM/application-modernization-javaee-quarkus
   - name: project-name
-    value: app-mod-dev-tekton
+    value: app-mod-tekton-dev

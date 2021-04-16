@@ -33,8 +33,8 @@ spec:
           sleep $WAIT_SECONDS
           echo Checking frontends status ...
           ROUTE_DB2=$(oc get route storefront-db2 -n db2 --template='{{ .spec.host }}')
-          ROUTE_KAFKA=$(oc get route my-cluster-kafka-external-bootstrap -n kafka --template='{{ .spec.host }}')
-          ROUTE_POSTGRES=$(oc get svc postgres -n postgres --template='{{ .spec.host }}')
+          ROUTE_KAFKA=$(oc get svc my-cluster-kafka-external-bootstrap -n kafka --template='{{ .spec.host }}')
+          ROUTE_POSTGRES=$(oc get route postgres -n postgres --template='{{ .spec.host }}')
 
           if [ -z "$ROUTE_DB2" ]
           then

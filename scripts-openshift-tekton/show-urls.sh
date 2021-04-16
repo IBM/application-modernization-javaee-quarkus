@@ -6,7 +6,7 @@ exec 3>&1
 
 if [ -z "$1" ]
 then
-  sh $root_folder/scripts-openshift/show-urls.sh app-mod-dev-tekton
+  sh $root_folder/scripts-openshift/show-urls.sh app-mod-tekton-dev
 else
   sh $root_folder/scripts-openshift/show-urls.sh
 fi

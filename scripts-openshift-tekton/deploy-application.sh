@@ -11,14 +11,20 @@ function _out() {
 function setup() {
   _out Deploying Tekton tasks and pipelines
   
-  oc project app-mod-dev-tekton > /dev/null 2>&1
+  oc project app-mod-tekton-dev > /dev/null 2>&1
   if [ $? != 0 ]; then 
-      oc new-project app-mod-dev-tekton
+      oc new-project app-mod-tekton-dev
   fi
-  
+
+  oc apply -f scripts-openshift-tekton/ClusterRole.yaml
+  oc create clusterrolebinding routes-and-services-reader \
+  --clusterrole=routes-and-services-reader  \
+  --serviceaccount=app-mod-tekton-dev:pipeline
+
   oc apply -f scripts-openshift-tekton/application/tasks
   oc apply -f scripts-openshift-tekton/application/pipelines
   oc apply -f scripts-openshift-tekton/application/pipelineruns
 }
 
 setup
+
