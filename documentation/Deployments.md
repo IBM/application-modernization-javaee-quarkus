@@ -18,15 +18,34 @@ $ oc login ...
 $ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
+```
+
+Wait 5 - 10 minutes for the infrastructure components to be started.
+
+```
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-service-catalog-quarkus-reactive.sh
+```
+
+Wait 5 minutes for the backend services to be started.
+
+```
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-frontend-dojo.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
+```
+
+```
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-messaging.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-account.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-catalog.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-navigator.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-order.sh
+```
+
+Wait 5 minutes for the micro frontends to be started.
+
+```
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```

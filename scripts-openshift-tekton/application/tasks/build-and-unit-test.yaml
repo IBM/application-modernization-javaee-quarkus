@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-and-unit-test
+spec:
+  steps:
+    - name: build-and-unit-test
+      image: ubi8/ubi-minimal
+      script: |
+        #!/bin/bash
+        echo "Dummy only"
+        echo "The Maven build could be done here"
+        echo "After this the unit tests should be run"

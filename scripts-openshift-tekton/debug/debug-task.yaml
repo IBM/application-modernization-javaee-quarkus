@@ -17,6 +17,6 @@ spec:
     - name: app-source
   steps:
     - name: debug-task
-      image: sdaschner/maven-jdk14:quarkus-deps-1.5.1-b5
+      image: alpine/git:v2.26.2
       workingDir: "$(workspaces.app-source.path)"
       command: ["sleep", "infinity"]

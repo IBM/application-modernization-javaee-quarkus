@@ -28,7 +28,7 @@ spec:
       value: $(params.repo-url)
     - name: revision
       value: master
-  - name: wait-for-infrastructure
+  - name: wait-for-infra
     taskRef:
       name: wait-for-infrastructure
     workspaces:
@@ -38,17 +38,25 @@ spec:
     params:
     - name: project-name
       value: $(params.project-name)
-  - name: prep-service-catalog-quarkus-reactive
+  - name: configure
     taskRef:
       name: prep-service-catalog-quarkus-reactive
     workspaces:
     - name: source
       workspace: shared-data
-    runAfter: ["wait-for-infrastructure"] 
+    runAfter: ["wait-for-infra"] 
     params:
     - name: project-name
       value: $(params.project-name)
-  - name: buildah
+  - name: static-test
+    taskRef:
+      name: static-test
+    runAfter: ["configure"]
+  - name: build-and-unit-test
+    taskRef:
+      name: build-and-unit-test
+    runAfter: ["static-test"]
+  - name: build-and-push-image
     taskRef:
       name: buildah
     workspaces:
@@ -61,14 +69,38 @@ spec:
       value: $(workspaces.source.path)/service-catalog-quarkus-reactive
     - name: TLSVERIFY
       value: "false"
-    runAfter: ["prep-service-catalog-quarkus-reactive"] 
-  - name: deploy-service-catalog-quarkus-reactive
+    runAfter: ["build-and-unit-test"] 
+  - name: deploy-in-dev
     taskRef:
       name: deploy-service-catalog-quarkus-reactive
     workspaces:
     - name: source
       workspace: shared-data
-    runAfter: ["buildah"] 
+    runAfter: ["build-and-push-image"] 
     params:
     - name: project-name
       value: $(params.project-name)
+  - name: smoke-test
+    taskRef:
+      name: smoke-test
+    runAfter: ["deploy-in-dev"]
+  - name: deploy-in-test
+    taskRef:
+      name: deploy-in-test
+    runAfter: ["smoke-test"]
+  - name: deploy-system-test
+    taskRef:
+      name: deploy-system-test
+    runAfter: ["deploy-in-test"]
+  - name: run-system-test
+    taskRef:
+      name: run-system-test
+    runAfter: ["deploy-system-test"]
+  - name: deploy-in-prod
+    taskRef:
+      name: deploy-in-prod
+    runAfter: ["run-system-test"]
+  - name: smoke-test-prod
+    taskRef:
+      name: smoke-test-prod
+    runAfter: ["deploy-in-prod"]

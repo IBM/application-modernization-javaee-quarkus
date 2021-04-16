@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: static-test
+spec:
+  steps:
+    - name: static-test
+      image: ubi8/ubi-minimal
+      script: |
+        #!/bin/bash
+        echo "Dummy only"
+        echo "Static code analysis could be done here"

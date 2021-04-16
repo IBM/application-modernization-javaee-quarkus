@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-system-test
+spec:
+  steps:
+    - name: deploy-system-test
+      image: ubi8/ubi-minimal
+      script: |
+        #!/bin/bash
+        echo "Dummy only"
+        echo "Develoy system test to test namespace"
