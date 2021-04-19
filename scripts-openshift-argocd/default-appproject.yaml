@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: tools
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceBlacklist:
+  - group: tekton.dev
+    kind: TaskRun
+  - group: tekton.dev
+    kind: PipelineRun
+  sourceRepos:
+  - '*'

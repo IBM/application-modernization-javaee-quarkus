@@ -1,0 +1,41 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-checkout
+spec:
+  params:
+  - name: build-revision
+  - name: app-git-url
+  workspaces:
+  - name: app-source
+  results:
+    - name: build-revision
+      description: build-revision
+
+  steps:
+  - name: git-checkout
+    image: alpine/git:v2.26.2
+    workingDir: "$(workspaces.app-source.path)"
+    script: |
+      #!/usr/bin/env sh
+      set -e
+
+      eval $(ssh-agent)
+      ssh-add ~/.ssh/id_*
+      git config --global core.sshCommand 'ssh -o StrictHostKeyChecking=accept-new'
+
+      git init
+      git remote add origin $(params.app-git-url)
+
+      REVISION=$(params.build-revision)
+      if [ -z "$(params.build-revision)" ]
+      then
+        REVISION=$(git ls-remote $(params.app-git-url) refs/heads/master | awk '{print $1}')
+      fi
+      echo Revision: $REVISION
+      $REVISION | tee $(results.build-revisione.path)
+      $REVISION | tee $(workspaces.app-source.path/build-revision)
+
+      git fetch --depth 1 origin $REVISION
+      git checkout FETCH_HEAD
+---

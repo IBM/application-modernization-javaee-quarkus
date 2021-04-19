@@ -9,6 +9,8 @@ READNIK.md
 .tern-project
 .vscode
 
+scripts-openshift-argocd/tekton-git-ssh-secret.yaml
+
 documentation/Video.pptx
 documentation/AppModernizationTeaser.pptx
 documentation/WeAreDevelopersTalk.pptx

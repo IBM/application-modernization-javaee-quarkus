@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-pipeline
+  namespace: tools
+spec:
+  destination:
+    namespace: app-mod-argocd-pipelines
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: pipeline
+    repoURL: https://github.com/nheidloff/application-modernization-javaee-quarkus-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+---
