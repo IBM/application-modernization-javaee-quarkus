@@ -1,0 +1,34 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: tag-image
+spec:
+  params:
+  - name: revision
+  - name: project-name
+  - name: IMAGE
+  workspaces:
+  - name: app-source
+
+  steps:
+  - name: build-image
+    image: quay.io/buildah/stable
+    workingDir: "$(workspaces.app-source.path)/"
+    script: |
+      #!/usr/bin/env sh
+      echo revision: $(params.revision)
+      echo project-name: $(params.project-name)
+      echo IMAGE: $(params.IMAGE)
+      cd $(params.revision.path)
+      ls
+      cat $(params.revision.path)
+      echo niklas2
+      cd $(workspaces.app-source.path)
+      ls
+      echo niklas3
+      cd $(workspaces.app-source.path/revision)
+      ls
+      echo niklas4
+      cat $(workspaces.app-source.path/revision)
+      oc tag $(inputs.params.IMAGE) $(inputs.params.IMAGE):$(params.revision.path)
+---

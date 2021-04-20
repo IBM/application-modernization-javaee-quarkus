@@ -30,7 +30,7 @@ spec:
     - name: app-git-url
       value: $(params.app-git-url)
     - name: build-revision
-      value: $(params.build-revision)
+      value: $(params.build-revision) 
   - name: wait-for-infra
     taskRef:
       name: wait-for-infrastructure
@@ -73,9 +73,9 @@ spec:
     - name: TLSVERIFY
       value: "false"
     runAfter: ["build-and-unit-test"] 
-  - name: deploy-in-dev
+  - name: tag-image
     taskRef:
-      name: deploy-service-catalog-quarkus-reactive
+      name: tag-image
     workspaces:
     - name: source
       workspace: app-source
@@ -83,10 +83,36 @@ spec:
     params:
     - name: project-name
       value: $(params.project-name)
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-service-catalog-quarkus-reactive
+    - name: revision
+      value: "$(tasks.git-checkout.results.revision)"
+  - name: deploy-service-quarkus-reactive-argocd
+    taskRef:
+      name: deploy-service-quarkus-reactive-argocd
+    workspaces:
+    - name: app
+      workspace: app-source
+    - name: config
+      workspace: config-source
+    runAfter: ["tag-image"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+    - name: environment
+      value: dev
+    - name: argo-app-name
+      value: service-catalog-quarkus-reactive
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-service-catalog-quarkus-reactive
+    - name: revision
+      value: "$(tasks.git-checkout.results.revision)"
+    - name: config-git-url
+      value: $(params.config-git-url)
   - name: smoke-test
     taskRef:
       name: smoke-test
-    runAfter: ["deploy-in-dev"]
+    runAfter: ["deploy-service-quarkus-reactive-argocd"]
   - name: deploy-in-test
     taskRef:
       name: deploy-in-test

@@ -9,8 +9,13 @@ function _out() {
 }
 
 function setup() {
+  echo Prerequisites:
+  echo 1. GitHub credentials
+  echo 2. ArgoCD crendentals
+
   _out Configuring Tekton and ArgoCD
-  cd $(root_folder)
+  cd ${root_folder}/
+  oc new-project app-mod-argocd-dev
   oc project app-mod-argocd-pipelines > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project app-mod-argocd-pipelines
@@ -26,10 +31,11 @@ function setup() {
   oc apply -f scripts-openshift-argocd/argocd-config-map.yaml
   oc apply -f scripts-openshift-argocd/argocd-rbac-config-map.yaml 
 
-  kubectl create secret -n app-mod-argocd-pipelines generic argocd-env-secret '--from-literal=ARGOCD_AUTH_TOKEN=<token>'
+  #kubectl create secret -n app-mod-argocd-pipelines generic argocd-env-secret '--from-literal=ARGOCD_AUTH_TOKEN=<token>'
 
   _out Deploying Tekton tasks
   oc apply -f scripts-openshift-tekton/application/tasks
+  oc apply -f scripts-openshift-argocd/tasks
 
   _out Start service-catalog-quarkus-reactive pipeline
   oc apply -f scripts-openshift-argocd/pipelines/service-catalog-quarkus-reactive.yaml
