@@ -145,7 +145,7 @@ First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then cr
 
 Additionally you need to install Tekton. This can be done in various ways:
 
-* Red Hat OpenShift Pipelines Operator: Can be installed from the OperatorHub view in the OpenShift Console ([code](https://github.com/tektoncd/operator))
+* Red Hat OpenShift Pipelines Operator: Can be installed from the OperatorHub view in the OpenShift Console: https:://yourcluster/operatorhub/ns/app-mod-tekton-dev?keyword=pipelines&details-item=openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace
 * [IBM Cloud Native Toolkit](https://cloudnativetoolkit.dev/getting-started-day-0/install-toolkit/quick-install/): Installs the Red Hat OpenShift Pipelines Operator and other tools
 
 ```
