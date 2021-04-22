@@ -1,0 +1,34 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: service-catalog-quarkus-reactive-argocd-test
+spec:
+  description: |
+    service-catalog-quarkus-reactive-argocd
+  params:
+  - name: appgiturl
+    type: string
+    description: The application repository
+  - name: configgiturl
+    description: The application config (GitOps) repository
+  - name: projectname
+    type: string
+    description: The target project.
+  - name: buildrevision
+    description: The revision of the build
+  workspaces:
+  - name: appsource
+  - name: configsource
+  tasks:
+  - name: tagimagetest
+    taskRef:
+      name: tagimagetest
+    workspaces:
+    - name: appsource
+      workspace: appsource
+    params:
+    - name: projectname
+      value: $(params.projectname)
+    - name: image
+      value: image-registry.openshift-image-registry.svc:5000/$(params.projectname)/build-service-catalog-quarkus-reactive
+  

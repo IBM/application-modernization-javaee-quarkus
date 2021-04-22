@@ -16,6 +16,8 @@ function setup() {
   _out Configuring Tekton and ArgoCD
   cd ${root_folder}/
   oc new-project app-mod-argocd-dev
+  oc new-project app-mod-argocd-test
+  oc new-project app-mod-argocd-prod
   oc project app-mod-argocd-pipelines > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project app-mod-argocd-pipelines
@@ -27,6 +29,10 @@ function setup() {
 
   oc apply -f scripts-openshift-argocd/tekton-git-ssh-secret.yaml
   oc apply -f scripts-openshift-argocd/serviceaccount.yaml
+
+  oc policy add-role-to-user edit system:serviceaccount:app-mod-argocd-pipelines:pipeline -n app-mod-argocd-dev
+  oc policy add-role-to-user edit system:serviceaccount:app-mod-argocd-pipelines:pipeline -n app-mod-argocd-test
+  oc policy add-role-to-user edit system:serviceaccount:app-mod-argocd-pipelines:pipeline -n app-mod-argocd-prod
 
   oc apply -f scripts-openshift-argocd/argocd-config-map.yaml
   oc apply -f scripts-openshift-argocd/argocd-rbac-config-map.yaml 
