@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-dev
+  name: app-test
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: app-mod-argocd-dev
+    namespace: app-mod-argocd-test
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: service-catalog-quarkus-reactive/dev
-    repoURL: https://github.com/nheidloff/application-modernization-javaee-quarkus-config.git
+    path: service-catalog-quarkus-reactive/test
+    repoURL: https://github.com/your-github-name/application-modernization-javaee-quarkus-config.git
     targetRevision: main
   syncPolicy:
     automated: {}
