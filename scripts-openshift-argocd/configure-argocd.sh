@@ -46,16 +46,15 @@ function runScript() {
   --clusterrole=routes-and-services-argocd  \
   --serviceaccount=openshift-gitops:argocd-cluster-argocd-application-controller
 
-  GITHUB_NAME=nheidloff
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/default-appproject.yaml
   rm -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml
-  sed "s/your-github-name/${GITHUB_NAME}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml
+  sed "s/your-github-config-repo-https-url/${GITHUB_CONFIG_URL}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml
   rm -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-test.yaml
-  sed "s/your-github-name/${GITHUB_NAME}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-test.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-test.yaml
+  sed "s/your-github-config-repo-https-url/${GITHUB_CONFIG_URL}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-test.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-test.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-test.yaml
   rm -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
-  sed "s/your-github-name/${GITHUB_NAME}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
+  sed "s/your-github-config-repo-https-url/${GITHUB_CONFIG_URL}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
 
   # to be done

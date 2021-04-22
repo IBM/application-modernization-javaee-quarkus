@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: service-catalog-quarkus-reactive/prod
-    repoURL: https://github.com/your-github-name/application-modernization-javaee-quarkus-config.git
+    repoURL: your-github-config-repo-https-url
     targetRevision: main
   syncPolicy:
     automated: {}

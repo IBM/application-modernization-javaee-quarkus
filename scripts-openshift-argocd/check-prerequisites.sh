@@ -10,6 +10,8 @@ function runScript() {
   echo 4. OpenShift GitOps operator
   echo 5. ArgoCD Tekton token in environment variable TOKEN_ARGOCD
   echo 6. GitHub ssh private key in environment variable GITHUB_SSH_KEY_PRIVATE
+  echo 7. Your GibHub HTTPS URL of the forked repo https://github.com/nheidloff/application-modernization-javaee-quarkus-config in environment variable GITHUB_CONFIG_URL
+  
   MISSING_TOOLS=""
   which sed &> /dev/null || MISSING_TOOLS="${MISSING_TOOLS} sed"
   which ssh-keygen &> /dev/null || MISSING_TOOLS="${MISSING_TOOLS} ssh-keygen"
@@ -54,7 +56,14 @@ function runScript() {
             echo 7. Open your GitHub settings: https://github.com/settings/keys
             echo 8. Create a new SSH key and paste it. Call the entry 'tekton'
           else
-            echo SUCCESS: You have all necessary prerequisites installed
+            if [ -z "$GITHUB_CONFIG_URL" ]; then
+              echo ERROR: The enviornment variable GITHUB_CONFIG_URL has not been set
+              echo 1. Open https://github.com/nheidloff/application-modernization-javaee-quarkus-config, login and fork it
+              echo 2. Copy the HTTPS URL, for example https://github.com/nheidloff/application-modernization-javaee-quarkus-config.git
+              echo 3. In this shell invoke the command \'export GITHUB_CONFIG_URL=your_github_config_url\'
+            else
+              echo SUCCESS: You have all necessary prerequisites installed
+            fi
           fi
         fi
       fi
