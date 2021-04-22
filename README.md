@@ -143,10 +143,7 @@ The following scripts deploy the modernized application on Red Hat [OpenShift on
 
 First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then create an OpenShift cluster, for example via the [IBM Cloud Dashboard](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). I've tested classic infrastructure, single zone, OpenShift 4.6.17, b3c.8x32 and 3 worker nodes.
 
-Additionally you need to install Tekton. This can be done in various ways:
-
-* Red Hat OpenShift Pipelines Operator: Can be installed from the OperatorHub view in the OpenShift Console ([link](https://yourcluster/operatorhub/ns/app-mod-tekton-dev?keyword=pipelines&details-item=openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace))
-* [IBM Cloud Native Toolkit](https://cloudnativetoolkit.dev/getting-started-day-0/install-toolkit/quick-install/): Installs the Red Hat OpenShift Pipelines Operator and other tools
+Additionally you need to install Tekton. The easiest option is to use the '[OpenShift Pipelines](https://docs.openshift.com/container-platform/4.6/pipelines/installing-pipelines.html)' operator from the OperatorHub view in the OpenShift Console ([screenshots](documentation/deploy-tekton-1.png)). Simply accept all defaults. No local installations are necessary.
 
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
