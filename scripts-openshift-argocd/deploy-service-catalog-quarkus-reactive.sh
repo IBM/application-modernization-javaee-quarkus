@@ -10,6 +10,7 @@ function _out() {
 
 function setup() {
   echo Prerequisites:
+  echo 0. gitops op (incl tekton)
   echo 1. GitHub credentials
   echo 2. ArgoCD crendentals
 
@@ -36,6 +37,14 @@ function setup() {
 
   oc apply -f scripts-openshift-argocd/argocd-config-map.yaml
   oc apply -f scripts-openshift-argocd/argocd-rbac-config-map.yaml 
+
+  oc apply -f scripts-openshift-argocd/argocd-app-dev.yaml
+
+  oc apply -f scripts-openshift-argocd/ClusterRole.yaml
+  oc create clusterrolebinding routes-and-services-reader-argocd \
+  --clusterrole=routes-and-services-reader-argocd  \
+  --serviceaccount=openshift-gitops:argocd-cluster-argocd-application-controller
+
 
   kubectl create secret -n app-mod-argocd-pipelines generic argocd-env-secret '--from-literal=ARGOCD_AUTH_TOKEN=${ARGOCDTOKEN}'
 

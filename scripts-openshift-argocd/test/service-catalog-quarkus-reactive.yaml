@@ -20,29 +20,10 @@ spec:
   - name: appsource
   - name: configsource
   tasks:
-  - name: gitcheckouttest
+  - name: trigger-argocd
     taskRef:
-      name: gitcheckouttest
-    workspaces:
-    - name: configsource
-      workspace: configsource
+      name: trigger-argocd
     params:
-    - name: appgiturl
-      value: $(params.appgiturl)
-    - name: configgiturl
-      value: $(params.configgiturl)
-    - name: buildrevision
-      value: $(params.buildrevision)
-  - name: tagimagetest
-    taskRef:
-      name: tagimagetest
-    workspaces:
-    - name: appsource
-      workspace: appsource
-    runAfter: ["gitcheckouttest"] 
-    params:
-    - name: projectname
-      value: $(params.projectname)
-    - name: image
-      value: image-registry.openshift-image-registry.svc:5000/$(params.projectname)/build-service-catalog-quarkus-reactive
-  
+    - name: argo-app-name
+      value: app-dev
+   

@@ -10,6 +10,7 @@ function _out() {
 
 function setup() {
   _out Deploying Tekton tasks and pipelines
+  # check tekton
   
   oc project app-mod-tekton-dev > /dev/null 2>&1
   if [ $? != 0 ]; then 

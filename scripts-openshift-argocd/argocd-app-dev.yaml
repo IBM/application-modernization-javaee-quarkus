@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-pipeline
-  namespace: tools
+  name: app-dev
+  namespace: openshift-gitops
 spec:
   destination:
-    namespace: app-mod-argocd-pipelines
+    namespace: app-mod-argocd-dev
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: pipeline
+    path: service-catalog-quarkus-reactive/dev
     repoURL: https://github.com/nheidloff/application-modernization-javaee-quarkus-config.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     automated: {}
 ---

@@ -11,7 +11,7 @@ spec:
         name: argocd-env-secret
     env:
     - name: ARGOCD_SERVER
-      value: openshift-gitops/argocd-cluster-server
+      value: argocd-cluster-server.openshift-gitops
 
   steps:
   - name: wait-for-argocd-rollout
