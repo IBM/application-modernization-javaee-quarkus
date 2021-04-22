@@ -1,6 +1,22 @@
 ## Deployments
 
-This page describes how to deploy specific intermediate versions of the sample and how to run services locally.
+This page describes more deployment options.
+
+* [Deployment to OpenShift on IBM Cloud (ROKS) with Tekton and ArgoCD](#deployment-to-openshift-on-ibm-cloud-(roks)-with-tekton-and-argocd)
+* [Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts](#deployment-to-openshift-on-ibm-cloud-(roks)-with-local-scripts)
+* [Monolith - WebSphere Liberty](#monolith---websphere-liberty)
+* [Separated Frontend - WebSphere Liberty](#separated-frontend---websphere-liberty)
+* [Separated Frontend - Open Liberty (EJB)](#separated-frontend---open-liberty-(ejb))
+* [Strangled Catalog Service with Open Liberty (CDI)](#strangled-catalog-service-with-open-liberty-(cdi))
+* [Monolith - WebSphere Traditional 9.0](#monolith---websphere-traditional-9.0)
+* [Monolith - WebSphere Traditional 8.5.5](#monolith---websphere-traditional-8.5.5)
+
+
+
+### Deployment to OpenShift on IBM Cloud (ROKS) with Tekton and ArgoCD
+
+to be done
+
 
 
 ### Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts
@@ -51,6 +67,7 @@ $ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 
 
+
 ### Monolith - WebSphere Liberty
 
 ```
@@ -61,6 +78,7 @@ $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-monolith-app.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
+
 
 
 ### Separated Frontend - WebSphere Liberty
@@ -75,6 +93,7 @@ $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-splitted-frontend.sh
 Open http://localhost/CustomerOrderServicesWeb
 
 
+
 ### Separated Frontend - Open Liberty (EJB)
 
 ```
@@ -85,6 +104,7 @@ $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-splitted-frontend-open.sh
 ```
 
 Open http://localhost/CustomerOrderServicesWeb
+
 
 
 ### Strangled Catalog Service with Open Liberty (CDI)
@@ -122,6 +142,7 @@ $ mvn liberty:dev
 ```
 
 
+
 ### Strangled Catalog Service with Quarkus
 
 ```
@@ -136,6 +157,7 @@ Open http://localhost/CustomerOrderServicesWeb
 Add the item "Return of the Jedi" to the shopping cart and update the price.
 
 
+
 ### Micro-Frontend based Web Application
 
 In addition to the previous commands run this command:
@@ -145,6 +167,7 @@ $ sh ${ROOT_FOLDER}/scripts-docker/build-and-run-single-spa.sh
 ```
 
 Open http://localhost:8080
+
 
 
 ### Monolith - WebSphere Traditional 9.0
@@ -160,6 +183,7 @@ $ sh scripts-docker/build-and-run-monolith-app-was90.sh
 Open https://localhost:9443/CustomerOrderServicesWeb/ (user: skywalker, password: force)
 
 Open https://localhost:9043/ibm/console/login.do?action=secure (user: wsadmin, password: passw0rd)
+
 
 
 ### Monolith - WebSphere Traditional 8.5.5

@@ -2,50 +2,61 @@
 
 This sample demonstrates how to modernize 10+ year-old Java EE applications with cloud-native technologies and the modern Java runtimes Quarkus and Open Liberty. The modernized application is deployed to and operated with OpenShift, the enterprise distribution of Kubernetes.
 
+
+
+### Project Structure
+
+* [Demonstrated Capabilities, Technologies and Tools](#demonstrated-capabilities,-technologies-and-tools)
+* [Introduction Video (12 mins)](#introduction-video)
+* [Sesison Recording: Application Modernization and Rabbits (30 mins)](https://vimeo.com/wearedevelopers/download/528262363/171975e79d)
+* [Architecture](#architecture)
+* [Documentation](#documentation)
+* [Deployment via Docker Desktop](#deployment-via-docker-desktop)
+* [Deployment to OpenShift on IBM Cloud (ROKS) with Tekton](#deployment-to-openshift-on-ibm-cloud-(roks)-with-tekton)
+* [Deployment to OpenShift on IBM Cloud (ROKS) with Tekton and ArgoCD](documentation/Deployments.md#deployment-to-openshift-on-ibm-cloud-(roks)-with-tekton-and-argocd)
+* [Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts](documentation/Deployments.md#deployment-to-openshift-on-ibm-cloud-(roks)-with-local-scripts)
+* [More Deployment Options](documentation/Deployments.md)
+
+
+
+### Demonstrated Capabilities, Technologies and Tools
+
+Application modernization is a journey. The legacy application has been modernized in ten steps.
+
+1. Monolith - WebSphere Traditional 8.5.5
+    - Java EE 6 app from 2008 with Db2 database running in VMs or bare metal.
+2. Monolith - WebSphere Traditional 9 in container
+    - Application converted with Transformation Advisor.
+3. Monolith - WebSphere Liberty
+    - Application converted with Eclipse Migration Tools.
+4. Separated frontend
+    - Dojo frontend in separate container.
+5. Monolith - Open Liberty
+    - Modern project structure.
+6. Strangled Catalog Service and remaining Open Liberty Monolith
+    - Strangled catalog service (inspired by Mono2Micro) developed with Quarkus and Postgres.
+    - Event driven architecture via Kafka.
+7. Strangled Catalog Service and remaining Quarkus Monolith
+    - Strangled Quarkus catalog service uses reactive programming model.
+    - Remaining Quarkus monolith runs as native executable.
+8. Micro frontend based web application
+    - Developed with single-spa and Vue.js. Messaging is done via RxJS.
+9. CI/CD via Tekton
+    - Target OpenShift. Via OpenShift Pipelines operator.
+10. CI/CD via Tekton and ArgoCD
+    - Target OpenShift. Via OpenShift GitOps operator.
+
+
+
+### Introduction Video
+
 The following 12 minutes video describes the project on a high level:
 
 <kbd>[![Video](documentation/video.png)](https://youtu.be/lw95LLqa37g)</kbd>
 
 
 
-### Demonstrated Capabilities, Technologies and Tools
-
-Application modernization is a journey. The legacy application has been modernized in eight steps.
-
-1. Monolith - WebSphere ND or Traditional 8.5.5
-    - Starting point: Java EE 6 app from 2008 running in VM or bare metal
-    - Db2 is used as data store
-2. Monolith - WebSphere Traditional 9 in container
-    - Application converted with Transformation Advisor without code changes    
-3. Monolith - WebSphere Liberty (latest)
-    - Application converted with Eclipse Migration Tools (and Transformation Advisor)
-    - Same project structure and EJBs    
-4. Separated Frontend - WebSphere Liberty (latest)
-    - Dojo frontend in separate container
-    - Backend and frontend connected via proxy
-5. Separated Frontend - Open Liberty (latest)
-    - Still same project structure and EJBs
-6. Strangled Catalog Service and remaining Open Liberty Monolith
-    - Strangled catalog service
-        - Inspired by Mono2Micro
-        - Developed with Quarkus
-        - Runs in JVM
-        - Data is accessed in Postgres via Panache
-        - Kafka events are sent when prices change
-    - Remaining Open Liberty monolith
-        - Modern project structure and CDI
-        - Receives Kafka events when prices change and caches data
-7. Strangled Catalog Service and remaining Quarkus Monolith
-    - Strangled Quarkus catalog service 
-        - Reactive endpoints and Postgres access
-    - Remaining Quarkus monolith
-        - Synchronous code
-        - Runs as native executable
-8. Micro frontend based web application
-    - Developed with single-spa and Vue.js
-    - Split in six containers
-    - Messaging done via RxJS
-    - Material design
+### Architecture
 
 Architecture of the legacy application:
 
@@ -156,9 +167,3 @@ $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-postgres.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-application.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/show-urls.sh
 ```
-
-
-
-### Deployments of intermediate Versions
-
-The separate [document](documentation/Deployments.md) describes how to deploy specific intermediate versions of the sample and how to run services locally.
