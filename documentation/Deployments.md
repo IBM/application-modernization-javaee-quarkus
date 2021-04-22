@@ -14,8 +14,8 @@ Execute the following commands:
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
-$ oc login ...
 $ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
+$ oc login ...
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
