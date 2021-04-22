@@ -37,7 +37,7 @@ function setup() {
   oc apply -f scripts-openshift-argocd/argocd-config-map.yaml
   oc apply -f scripts-openshift-argocd/argocd-rbac-config-map.yaml 
 
-  #kubectl create secret -n app-mod-argocd-pipelines generic argocd-env-secret '--from-literal=ARGOCD_AUTH_TOKEN=<token>'
+  kubectl create secret -n app-mod-argocd-pipelines generic argocd-env-secret '--from-literal=ARGOCD_AUTH_TOKEN=${ARGOCDTOKEN}'
 
   _out Deploying Tekton tasks
   oc apply -f scripts-openshift-tekton/application/tasks

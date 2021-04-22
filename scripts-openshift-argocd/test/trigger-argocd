@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: trigger-argocd
+spec:
+  params:
+  - name: argo-app-name
+  stepTemplate:
+    envFrom:
+    - secretRef:
+        name: argocd-env-secret
+    env:
+    - name: ARGOCD_SERVER
+      value: openshift-gitops/argocd-cluster-server
+
+  steps:
+  - name: wait-for-argocd-rollout
+    image: argoproj/argocd:v1.7.7
+    script: |
+      #!/usr/bin/env sh
+      set -e
+
+      argocd app sync $(inputs.params.argo-app-name) --insecure
+      argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
+---
