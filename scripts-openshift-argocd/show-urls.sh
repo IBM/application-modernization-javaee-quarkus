@@ -56,7 +56,6 @@ function setup() {
   _out ------------------------------------------------------------------------------------
 
   PROJECT_NAME=${PROJECT_NAME_PRE}test
-  echo Project: $PROJECT_NAME
   _out service-catalog-quarkus-reactive test
   nodeport=$(oc get svc service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$nodeport" ]; then
@@ -71,7 +70,6 @@ function setup() {
   _out ------------------------------------------------------------------------------------
 
   PROJECT_NAME=${PROJECT_NAME_PRE}prod
-  echo Project: $PROJECT_NAME
   _out service-catalog-quarkus-reactive prod
   nodeport=$(oc get svc service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$nodeport" ]; then
