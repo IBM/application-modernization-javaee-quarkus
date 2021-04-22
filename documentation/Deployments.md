@@ -2,24 +2,45 @@
 
 This page describes more deployment options.
 
-* [Deployment to OpenShift on IBM Cloud (ROKS) with Tekton and ArgoCD](#deployment-to-openshift-on-ibm-cloud-(roks)-with-tekton-and-argocd)
-* [Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts](#deployment-to-openshift-on-ibm-cloud-(roks)-with-local-scripts)
+* [Deployment to OpenShift on IBM Cloud with Tekton and ArgoCD](#deployment-to-openshift-on-ibm-cloud-with-tekton-and-argocd)
+* [Deployment to OpenShift on IBM Cloud with local Scripts](#deployment-to-openshift-on-ibm-cloud-with-local-scripts)
 * [Monolith - WebSphere Liberty](#monolith---websphere-liberty)
 * [Separated Frontend - WebSphere Liberty](#separated-frontend---websphere-liberty)
-* [Separated Frontend - Open Liberty (EJB)](#separated-frontend---open-liberty-(ejb))
-* [Strangled Catalog Service with Open Liberty (CDI)](#strangled-catalog-service-with-open-liberty-(cdi))
-* [Monolith - WebSphere Traditional 9.0](#monolith---websphere-traditional-9.0)
-* [Monolith - WebSphere Traditional 8.5.5](#monolith---websphere-traditional-8.5.5)
+* [Separated Frontend - Open Liberty (EJB)](#separated-frontend---open-liberty-ejb)
+* [Strangled Catalog Service with Open Liberty (CDI)](#strangled-catalog-service-with-open-liberty-cdi)
+* [Strangled Catalog Service with Quarkus](#strangled-catalog-service-with-quarkus)
+* [Micro-Frontend based Web Application](#micro-frontend-based-web-application)
+* [Monolith - WebSphere Traditional 9.0](#monolith---websphere-traditional-90)
+* [Monolith - WebSphere Traditional 8.5.5](#monolith---websphere-traditional-855)
 
 
 
-### Deployment to OpenShift on IBM Cloud (ROKS) with Tekton and ArgoCD
+### Deployment to OpenShift on IBM Cloud with Tekton and ArgoCD
 
-to be done
+The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
+
+First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then create an OpenShift cluster, for example via the [IBM Cloud Dashboard](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). I've tested classic infrastructure, single zone, OpenShift 4.6.17, b3c.8x32 and 3 worker nodes.
+
+Additionally you need to install ArgoCD and Tekton. The easiest option is to use the '[OpenShift GitOps](https://docs.openshift.com/container-platform/4.7/cicd/gitops/installing-openshift-gitops.html)' operator from the OperatorHub view in the OpenShift Console ([screenshots](documentation/deploy-argocd-1.png)). Simply accept all defaults. No local installations are necessary.
+
+The following scripts install the infrastructure components and the catalog service.
+
+```
+$ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
+$ ROOT_FOLDER=$(pwd)
+$ sh ${ROOT_FOLDER}/scripts-openshift-argocd/check-prerequisites.sh
+$ oc login ...
+$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-postgres.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/configure-argocd.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-service-catalog-quarkus-reactive.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-argocd/show-urls.sh
+```
 
 
 
-### Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts
+### Deployment to OpenShift on IBM Cloud with local Scripts
 
 The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
 

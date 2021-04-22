@@ -1,4 +1,4 @@
-## Application Modernization Sample - From Java EE in 2010 to Cloud-Native in 2021
+## Application Modernization - From Java EE in 2010 to Cloud-Native in 2021
 
 This sample demonstrates how to modernize 10+ year-old Java EE applications with cloud-native technologies and the modern Java runtimes Quarkus and Open Liberty. The modernized application is deployed to and operated with OpenShift, the enterprise distribution of Kubernetes.
 
@@ -6,15 +6,15 @@ This sample demonstrates how to modernize 10+ year-old Java EE applications with
 
 ### Project Structure
 
-* [Demonstrated Capabilities, Technologies and Tools](#demonstrated-capabilities,-technologies-and-tools)
+* [Demonstrated Capabilities, Technologies and Tools](#demonstrated-capabilities-technologies-and-tools)
 * [Introduction Video (12 mins)](#introduction-video)
 * [Sesison Recording: Application Modernization and Rabbits (30 mins)](https://vimeo.com/wearedevelopers/download/528262363/171975e79d)
 * [Architecture](#architecture)
 * [Documentation](#documentation)
 * [Deployment via Docker Desktop](#deployment-via-docker-desktop)
-* [Deployment to OpenShift on IBM Cloud (ROKS) with Tekton](#deployment-to-openshift-on-ibm-cloud-(roks)-with-tekton)
-* [Deployment to OpenShift on IBM Cloud (ROKS) with Tekton and ArgoCD](documentation/Deployments.md#deployment-to-openshift-on-ibm-cloud-(roks)-with-tekton-and-argocd)
-* [Deployment to OpenShift on IBM Cloud (ROKS) with local Scripts](documentation/Deployments.md#deployment-to-openshift-on-ibm-cloud-(roks)-with-local-scripts)
+* [Deployment to OpenShift on IBM Cloud with Tekton](#deployment-to-openshift-on-ibm-cloud-with-tekton)
+* [Deployment to OpenShift on IBM Cloud with Tekton and ArgoCD](documentation/Deployments.md#deployment-to-openshift-on-ibm-cloud-with-tekton-and-argocd)
+* [Deployment to OpenShift on IBM Cloud with local Scripts](documentation/Deployments.md#deployment-to-openshift-on-ibm-cloud-with-local-scripts)
 * [More Deployment Options](documentation/Deployments.md)
 
 
@@ -148,7 +148,7 @@ Open the "Order History" tab to see the updated price. The new price has been up
 
 
 
-### Deployment to OpenShift on IBM Cloud (ROKS) with Tekton
+### Deployment to OpenShift on IBM Cloud with Tekton
 
 The following scripts deploy the modernized application on Red Hat [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/overview?platformType=openshift). However the same instructions should work for other OpenShift and OCP deployments, for example [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
 
