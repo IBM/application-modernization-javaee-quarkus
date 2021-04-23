@@ -18,6 +18,22 @@ spec:
     script: |
       #!/usr/bin/env sh
       set -e
+      pwd
+      echo $(params.environment)
+      #ENV_DIR=${params.environment}
+      echo nik1
+      ls -la
+      echo nik2
+      ls -la service-catalog-quarkus-reactive
+      echo nik3
+      cd service-catalog-quarkus-reactive
+      ls -la $(params.environment)
+      echo nik4
+      #chmod a+rwx $(params.environment)
+      #echo nik5
+      #cd $(workspaces.config-source.path)
+      #rm -rf service-catalog-quarkus-reactive
+      #echo nik6
 
       eval $(ssh-agent)
       ssh-add ~/.ssh/id_*
@@ -28,7 +44,7 @@ spec:
 
       git init
       git remote add origin $(params.config-git-url)
-      git fetch --depth 1 origin main
+      git fetch origin main
       git checkout main
   - name: configure-yaml
     image: alpine/git:v2.26.2
@@ -39,12 +55,15 @@ spec:
       source $(workspaces.app-source.path)/revision.txt
       echo REVISION: $REVISION
 
+      cd $(workspaces.config-source.path)      
       mkdir -p service-catalog-quarkus-reactive
+      #chmod a+rwx service-catalog-quarkus-reactive
       cd service-catalog-quarkus-reactive
       mkdir -p ${params.environment}
+      #chmod a+rwx ${params.environment}
       cd ${params.environment}
       rm -f kubernetes.yaml
-      sed "s/<project-name>/$(params.project-name-prefix)${params.environment}/g" $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/kubernetes.yaml.template > kubernetes-temp.yaml
+      sed "s/<project-name>/app-dev-argo-${params.environment}/g" $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/kubernetes.yaml.template > kubernetes-temp.yaml
       sed "s/<version>/$REVISION/g" kubernetes-temp.yaml > kubernetes.yaml
       rm -f kubernetes-temp.yaml
       cp $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/openshift.yaml openshift.yaml

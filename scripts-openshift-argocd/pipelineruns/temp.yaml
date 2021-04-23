@@ -1,0 +1,35 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: temp-pr
+spec:
+  pipelineRef:
+    name: temp
+  workspaces:
+  - name: app-source
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        storageClassName: ibmc-block-bronze
+        resources:
+          requests:
+            storage: 1Gi
+  - name: config-source
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        storageClassName: ibmc-block-bronze
+        resources:
+          requests:
+            storage: 1Gi
+  params:
+  - name: app-git-url
+    value: git@github.com:ibm/application-modernization-javaee-quarkus.git
+  - name: config-git-url
+    value: 'git@github.com:nheidloff/application-modernization-javaee-quarkus-config.git'
+  - name: project-name-prefix
+    value: app-mod-argocd-
+  - name: build-revision
+    value: ''

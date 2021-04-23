@@ -25,12 +25,14 @@ spec:
       buildah push --tls-verify=false docker://$(params.image):$REVISION
 
       echo Tagging test image
-      buildah tag docker://$(params.image):$REVISION docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}test/build-service-catalog-quarkus-reactive:$REVISION
-      buildah push --tls-verify=false docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}test/build-service-catalog-quarkus-reactive:$REVISION
+      TEST_IMAGE=image-registry.openshift-image-registry.svc:5000/app-mod-argocd-test/build-service-catalog-quarkus-reactive
+      buildah tag docker://$(params.image):$REVISION docker://$TEST_IMAGE:$REVISION
+      buildah push --tls-verify=false docker://$TEST_IMAGE:$REVISION
 
       echo Tagging prod image
-      buildah tag docker://$(params.image):$REVISION docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}prod/build-service-catalog-quarkus-reactive:$REVISION
-      buildah push --tls-verify=false docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}prod/build-service-catalog-quarkus-reactive:$REVISION   
+      PROD_IMAGE=image-registry.openshift-image-registry.svc:5000/app-mod-argocd-prod/build-service-catalog-quarkus-reactive
+      buildah tag docker://$(params.image):$REVISION docker://$PROD_IMAGE:$REVISION
+      buildah push --tls-verify=false docker://$PROD_IMAGE:$REVISION
     volumeMounts:
     - name: varlibcontainers
       mountPath: /var/lib/containers
