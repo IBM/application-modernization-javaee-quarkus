@@ -7,6 +7,7 @@ spec:
   - name: project-name-prefix
   - name: environment
   - name: argo-app-name
+  - name: app-git-url
   - name: config-git-url
   workspaces:
   - name: app-source
@@ -14,76 +15,23 @@ spec:
   steps:
   - name: git-checkout-config
     image: alpine/git:v2.26.2
-    workingDir: "$(workspaces.config-source.path)"
+    workingDir: "$(workspaces.app-source.path)"
     script: |
       #!/usr/bin/env sh
       set -e
-      pwd
-      echo $(params.environment)
-      #ENV_DIR=${params.environment}
-      echo nik1
-      ls -la
-      echo nik2
-      ls -la service-catalog-quarkus-reactive
-      echo nik3
-      #cd service-catalog-quarkus-reactive
-      #ls -la $(params.environment)
-      echo nik4
-      #chmod a+rwx $(params.environment)
-      #echo nik5
-      #cd $(workspaces.config-source.path)
-      #rm -rf service-catalog-quarkus-reactive
 
       eval $(ssh-agent)
       ssh-add ~/.ssh/id_*
       git config --global core.sshCommand 'ssh -o StrictHostKeyChecking=accept-new'
-      echo nik6
 
       git init
-      ls -la
-      echo nik8
-      git remote add origin $(params.config-git-url)
-      ls -la
-      echo nik9
-      git fetch origin main
-      ls -la
-      echo nik10
-      git checkout main
-      ls -la
-      echo nik11
-  - name: configure-yaml
-    image: alpine/git:v2.26.2
-    workingDir: "$(workspaces.config-source.path)"
-    script: |
-      #!/usr/bin/env sh
-      set -e
-      source $(workspaces.app-source.path)/revision.txt
-      echo REVISION: $REVISION
+      git remote add origin $(params.app-git-url)
 
-      cd $(workspaces.config-source.path)      
-      mkdir -p service-catalog-quarkus-reactive
-      #chmod a+rwx service-catalog-quarkus-reactive
-      cd service-catalog-quarkus-reactive
-      mkdir -p ${params.environment}
-      #chmod a+rwx ${params.environment}
-      cd ${params.environment}
-      rm -f kubernetes.yaml
-      sed "s/<project-name>/app-dev-argo-${params.environment}/g" $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/kubernetes.yaml.template > kubernetes-temp.yaml
-      sed "s/<version>/$REVISION/g" kubernetes-temp.yaml > kubernetes.yaml
-      rm -f kubernetes-temp.yaml
-      cp $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/openshift.yaml openshift.yaml
-  - name: commit-push-changes-gitops
-    image: alpine/git:v2.26.2
-    workingDir: "$(workspaces.config-source.path)/service-catalog-quarkus-reactive/$(params.environment)"
-    script: |
-      #!/usr/bin/env sh
-      set -e
-      eval $(ssh-agent)
-      ssh-add ~/.ssh/id_*
+      REVISION=$(git ls-remote $(params.app-git-url) refs/heads/master | awk '{print $1}')
+    
+      echo Revision: $REVISION
+      echo REVISION=$REVISION > revision.txt
 
-      git config --global user.email "tekton@tekton.dev"
-      git config --global user.name "Tekton Pipeline"
-      git add .
-      git commit --allow-empty -m "[Tekton] updating $(params.environment)"
-      git push origin main
+      git fetch --depth 1 origin $REVISION
+      git checkout FETCH_HEAD
 ---

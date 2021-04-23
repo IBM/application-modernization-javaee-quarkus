@@ -35,5 +35,7 @@ spec:
       value: dev
     - name: argo-app-name
       value: app-dev
+    - name: app-git-url
+      value: $(params.app-git-url)
     - name: config-git-url
       value: $(params.config-git-url)

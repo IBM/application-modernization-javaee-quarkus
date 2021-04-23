@@ -103,6 +103,8 @@ spec:
       value: app-dev
     - name: config-git-url
       value: $(params.config-git-url)
+    - name: app-git-url
+      value: $(params.app-git-url)
   - name: trigger-argocd-dev
     taskRef:
       name: trigger-argocd
