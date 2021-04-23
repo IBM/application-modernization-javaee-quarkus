@@ -1,0 +1,65 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: update-gitops-repo
+spec:
+  params:
+  - name: project-name-prefix
+  - name: environment
+  - name: argo-app-name
+  - name: config-git-url
+  workspaces:
+  - name: app-source
+  - name: config-source
+  steps:
+  - name: git-checkout
+    image: alpine/git:v2.26.2
+    workingDir: "$(workspaces.config-source.path)"
+    script: |
+      #!/usr/bin/env sh
+      set -e
+
+      eval $(ssh-agent)
+      ssh-add ~/.ssh/id_*
+
+      git config --global user.email "tekton@tekton.dev"
+      git config --global user.name "Tekton Pipeline"
+      git config --global core.sshCommand 'ssh -o StrictHostKeyChecking=accept-new'
+
+      git init
+      git remote add origin $(params.config-git-url)
+      git fetch --depth 1 origin main
+      git checkout main
+  - name: configure-yaml
+    image: alpine/git:v2.26.2
+    workingDir: "$(workspaces.config-source.path)"
+    script: |
+      #!/usr/bin/env sh
+      set -e
+      source $(workspaces.app-source.path)/revision.txt
+      echo REVISION: $REVISION
+
+      mkdir -p service-catalog-quarkus-reactive
+      cd service-catalog-quarkus-reactive
+      mkdir -p ${params.environment}
+      cd ${params.environment}
+      rm -f kubernetes.yaml
+      sed "s/<project-name>/$(params.project-name-prefix)${params.environment}/g" $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/kubernetes.yaml.template > kubernetes-temp.yaml
+      sed "s/<version>/$REVISION/g" kubernetes-temp.yaml > kubernetes.yaml
+      rm -f kubernetes-temp.yaml
+      cp $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/openshift.yaml openshift.yaml
+  - name: commit-push-changes-gitops
+    image: alpine/git:v2.26.2
+    workingDir: "$(workspaces.config-source.path)/service-catalog-quarkus-reactive/$(params.environment)"
+    script: |
+      #!/usr/bin/env sh
+      set -e
+      eval $(ssh-agent)
+      ssh-add ~/.ssh/id_*
+
+      git config --global user.email "tekton@tekton.dev"
+      git config --global user.name "Tekton Pipeline"
+      git add .
+      git commit --allow-empty -m "[Tekton] updating $(params.environment)"
+      git push origin main
+---

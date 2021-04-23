@@ -28,8 +28,8 @@ The following scripts install the infrastructure components and the catalog serv
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
-$ sh ${ROOT_FOLDER}/scripts-openshift-argocd/check-prerequisites.sh
 $ oc login ...
+$ sh ${ROOT_FOLDER}/scripts-openshift-argocd/check-prerequisites.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-kafka.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-postgres.sh
@@ -51,8 +51,8 @@ Execute the following commands:
 ```
 $ git clone https://github.com/nheidloff/application-modernization-javaee-quarkus.git && cd application-modernization-javaee-quarkus
 $ ROOT_FOLDER=$(pwd)
-$ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
 $ oc login ...
+$ sh ${ROOT_FOLDER}/scripts-openshift/check-prerequisites.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh

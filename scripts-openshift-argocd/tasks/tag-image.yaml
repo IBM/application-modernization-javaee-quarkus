@@ -4,31 +4,39 @@ metadata:
   name: tag-image
 spec:
   params:
-  - name: revision
-  - name: project-name
-  - name: IMAGE
+  - name: project-name-prefix
+  - name: image
   workspaces:
   - name: app-source
-
   steps:
-  - name: build-image
-    image: quay.io/buildah/stable
+  - name: tag-image
+    image: quay.io/buildah/stable:v1.17.0
     workingDir: "$(workspaces.app-source.path)/"
     script: |
       #!/usr/bin/env sh
-      echo revision: $(params.revision)
-      echo project-name: $(params.project-name)
-      echo IMAGE: $(params.IMAGE)
-      cd $(params.revision.path)
-      ls
-      cat $(params.revision.path)
-      echo niklas2
-      cd $(workspaces.app-source.path)
-      ls
-      echo niklas3
-      cd $(workspaces.app-source.path/revision)
-      ls
-      echo niklas4
-      cat $(workspaces.app-source.path/revision)
-      oc tag $(inputs.params.IMAGE) $(inputs.params.IMAGE):$(params.revision.path)
+      set -e
+      source $(workspaces.app-source.path)/revision.txt
+      echo REVISION: $REVISION
+      echo image: $(params.image)
+
+      echo Tagging dev image
+      buildah pull --tls-verify=false docker://$(params.image)
+      buildah tag docker://$(params.image) docker://$(params.image):$REVISION
+      buildah push --tls-verify=false docker://$(params.image):$REVISION
+
+      echo Tagging test image
+      buildah tag docker://$(params.image):$REVISION docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}test/build-service-catalog-quarkus-reactive:$REVISION
+      buildah push --tls-verify=false docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}test/build-service-catalog-quarkus-reactive:$REVISION
+
+      echo Tagging prod image
+      buildah tag docker://$(params.image):$REVISION docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}prod/build-service-catalog-quarkus-reactive:$REVISION
+      buildah push --tls-verify=false docker://image-registry.openshift-image-registry.svc:5000/${params.project-name-prefix}prod/build-service-catalog-quarkus-reactive:$REVISION   
+    volumeMounts:
+    - name: varlibcontainers
+      mountPath: /var/lib/containers
+    securityContext:
+      privileged: true
+  volumes:
+  - name: varlibcontainers
+    emptyDir: {}
 ---

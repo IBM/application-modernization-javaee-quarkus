@@ -16,10 +16,6 @@ function runScript() {
   if [ $? != 0 ]; then 
       oc new-project app-mod-argocd-prod
   fi
-  oc project app-mod-argocd-images > /dev/null 2>&1
-  if [ $? != 0 ]; then 
-      oc new-project app-mod-argocd-images
-  fi
   oc project app-mod-argocd-pipelines > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project app-mod-argocd-pipelines
@@ -69,6 +65,10 @@ function runScript() {
   echo Deploying Tekton tasks and pipelines
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-tekton/application/tasks
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/git-checkout.yaml
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/tag-image.yaml
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/prep-service-catalog-quarkus-reactive-argocd.yaml
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/update-gitops-repo.yaml
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/trigger-argocd.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/pipelines/service-catalog-quarkus-reactive.yaml
 }
 
