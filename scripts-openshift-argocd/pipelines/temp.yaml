@@ -37,15 +37,3 @@ spec:
       value: app-dev
     - name: config-git-url
       value: $(params.config-git-url)
-  - name: trigger-argocd-dev
-    taskRef:
-      name: trigger-argocd
-    workspaces:
-    - name: app-source
-      workspace: app-source
-    - name: config-source
-      workspace: config-source
-    runAfter: ["update-gitops-repo-dev"] 
-    params:
-    - name: argo-app-name
-      value: app-dev
