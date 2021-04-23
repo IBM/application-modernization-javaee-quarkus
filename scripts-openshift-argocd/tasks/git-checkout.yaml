@@ -31,8 +31,6 @@ spec:
         REVISION=$(git ls-remote $(params.app-git-url) refs/heads/master | awk '{print $1}')
       fi
       echo Revision: $REVISION
-      $REVISION | tee $(results.revision.path)
-      $REVISION | tee $(workspaces.app-source.path/revision)
 
       git fetch --depth 1 origin $REVISION
       git checkout FETCH_HEAD

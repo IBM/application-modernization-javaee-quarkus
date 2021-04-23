@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: service-catalog-quarkus-reactive--argocd-pr
+  name: service-catalog-quarkus-reactive-argocd-pr
 spec:
   pipelineRef:
     name: service-catalog-quarkus-reactive-argocd
@@ -26,8 +26,8 @@ spec:
   - name: app-git-url
     value: git@github.com:ibm/application-modernization-javaee-quarkus.git
   - name: config-git-url
-    value: 'git@github.com:nheidloff/application-modernization-javaee-quarkus-config.git'
-  - name: project-name
-    value: app-mod-argocd-dev
+    value: 'git@github.com:<your-github-name>/application-modernization-javaee-quarkus-config.git'
+  - name: project-name-prefix
+    value: app-mod-argocd-
   - name: build-revision
     value: ''

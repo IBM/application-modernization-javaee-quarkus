@@ -13,6 +13,7 @@ scripts-openshift-argocd/argocd-config/tekton-git-ssh-secret.yaml
 scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml
 scripts-openshift-argocd/argocd-config/argocd-app-test.yaml
 scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
+scripts-openshift-argocd/pipelineruns/service-catalog-quarkus-reactive-argocd-pr.yaml
 
 documentation/Video.pptx
 documentation/AppModernizationTeaser.pptx

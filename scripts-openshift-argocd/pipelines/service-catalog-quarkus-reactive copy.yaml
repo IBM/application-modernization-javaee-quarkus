@@ -1,0 +1,135 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: service-catalog-quarkus-reactive-argocd
+spec:
+  description: |
+    service-catalog-quarkus-reactive-argocd
+  params:
+  - name: app-git-url
+    type: string
+    description: The application repository
+  - name: config-git-url
+    description: The application config (GitOps) repository
+  - name: project-name-prefix
+    type: string
+    description: The prefix of the target projects
+  - name: build-revision
+    description: The revision of the build
+  workspaces:
+  - name: app-source
+  - name: config-source
+  tasks:
+  - name: git-checkout
+    taskRef:
+      name: git-checkout
+    workspaces:
+    - name: app-source
+      workspace: app-source
+    params:
+    - name: app-git-url
+      value: $(params.app-git-url)
+    - name: build-revision
+      value: $(params.build-revision) 
+  - name: wait-for-infra
+    taskRef:
+      name: wait-for-infrastructure
+    workspaces:
+    - name: source
+      workspace: app-source
+    runAfter: ["git-checkout"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+  - name: configure
+    taskRef:
+      name: prep-service-catalog-quarkus-reactive-argocd
+    workspaces:
+    - name: source
+      workspace: app-source
+    runAfter: ["wait-for-infra"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+  - name: static-test
+    taskRef:
+      name: static-test
+    runAfter: ["configure"]
+  - name: build-and-unit-test
+    taskRef:
+      name: build-and-unit-test
+    runAfter: ["static-test"]
+  - name: build-and-push-image
+    taskRef:
+      name: buildah
+    workspaces:
+    - name: source
+      workspace: app-source
+    params:
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-service-catalog-quarkus-reactive
+    - name: CONTEXT
+      value: $(workspaces.source.path)/service-catalog-quarkus-reactive
+    - name: TLSVERIFY
+      value: "false"
+    runAfter: ["build-and-unit-test"] 
+  - name: tag-image
+    taskRef:
+      name: tag-image
+    workspaces:
+    - name: source
+      workspace: app-source
+    runAfter: ["build-and-push-image"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-service-catalog-quarkus-reactive
+    - name: revision
+      value: "$(tasks.git-checkout.results.revision)"
+  - name: deploy-service-quarkus-reactive-argocd
+    taskRef:
+      name: deploy-service-quarkus-reactive-argocd
+    workspaces:
+    - name: app
+      workspace: app-source
+    - name: config
+      workspace: config-source
+    runAfter: ["tag-image"] 
+    params:
+    - name: project-name
+      value: $(params.project-name)
+    - name: environment
+      value: dev
+    - name: argo-app-name
+      value: service-catalog-quarkus-reactive
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/$(params.project-name)/build-service-catalog-quarkus-reactive
+    - name: revision
+      value: "$(tasks.git-checkout.results.revision)"
+    - name: config-git-url
+      value: $(params.config-git-url)
+  - name: smoke-test
+    taskRef:
+      name: smoke-test
+    runAfter: ["deploy-service-quarkus-reactive-argocd"]
+  - name: deploy-in-test
+    taskRef:
+      name: deploy-in-test
+    runAfter: ["smoke-test"]
+  - name: deploy-system-test
+    taskRef:
+      name: deploy-system-test
+    runAfter: ["deploy-in-test"]
+  - name: run-system-test
+    taskRef:
+      name: run-system-test
+    runAfter: ["deploy-system-test"]
+  - name: deploy-in-prod
+    taskRef:
+      name: deploy-in-prod
+    runAfter: ["run-system-test"]
+  - name: smoke-test-prod
+    taskRef:
+      name: smoke-test-prod
+    runAfter: ["deploy-in-prod"]

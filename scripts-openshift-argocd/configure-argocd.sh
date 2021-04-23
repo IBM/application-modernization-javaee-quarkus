@@ -3,6 +3,7 @@ ROOT_FOLDER=$(cd $(dirname $0); cd ..; pwd)
 exec 3>&1
 
 function runScript() {
+  echo Configuring Tekton and ArgoCD
   oc project app-mod-argocd-dev > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project app-mod-argocd-dev
@@ -14,6 +15,10 @@ function runScript() {
   oc project app-mod-argocd-prod > /dev/null 2>&1
   if [ $? != 0 ]; then 
       oc new-project app-mod-argocd-prod
+  fi
+  oc project app-mod-argocd-images > /dev/null 2>&1
+  if [ $? != 0 ]; then 
+      oc new-project app-mod-argocd-images
   fi
   oc project app-mod-argocd-pipelines > /dev/null 2>&1
   if [ $? != 0 ]; then 
@@ -57,13 +62,17 @@ function runScript() {
   sed "s/your-github-config-repo-https-url/${GITHUB_CONFIG_URL}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/argocd-config/argocd-app-prod.yaml
 
-  # to be done
-  #_out Deploying Tekton tasks
-  #oc apply -f scripts-openshift-tekton/application/tasks
-  #oc apply -f scripts-openshift-argocd/tasks
-  #_out Start service-catalog-quarkus-reactive pipeline
-  #oc apply -f scripts-openshift-argocd/pipelines/service-catalog-quarkus-reactive.yaml
-  #oc apply -f scripts-openshift-argocd/pipelineruns/service-catalog-quarkus-reactive.yaml
+  rm -f ${ROOT_FOLDER}/scripts-openshift-argocd/pipelineruns/service-catalog-quarkus-reactive-argocd-pr.yaml
+  GITHUB_NAME=$(echo "GITHUB_CONFIG_URL" | cut -d'/' -f 4)
+  sed "s/<your-github-name>/${GITHUB_NAME}/g" ${ROOT_FOLDER}/scripts-openshift-argocd/pipelineruns/service-catalog-quarkus-reactive-argocd-pr.yaml.template > ${ROOT_FOLDER}/scripts-openshift-argocd/pipelineruns/service-catalog-quarkus-reactive-argocd-pr.yaml
+
+  echo Deploying Tekton tasks and pipelines
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-tekton/application/tasks
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/git-checkout.yaml
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/pipelines/service-catalog-quarkus-reactive.yaml
+
+  echo Trigger pipelines
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/pipelineruns/service-catalog-quarkus-reactive-argocd-pr.yaml
 }
 
 runScript
