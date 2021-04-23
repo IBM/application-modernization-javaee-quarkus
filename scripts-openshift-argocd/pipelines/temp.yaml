@@ -22,20 +22,12 @@ spec:
   tasks:
   - name: update-gitops-repo-dev
     taskRef:
-      name: update-gitops-repo
+      name: update-gitops-repo-temp
     workspaces:
     - name: app-source
       workspace: app-source
-    - name: config-source
-      workspace: config-source
     params:
-    - name: project-name-prefix
-      value: $(params.project-name-prefix)
-    - name: environment
-      value: dev
-    - name: argo-app-name
-      value: app-dev
     - name: app-git-url
       value: $(params.app-git-url)
-    - name: config-git-url
-      value: $(params.config-git-url)
+    - name: build-revision
+      value: $(params.build-revision)

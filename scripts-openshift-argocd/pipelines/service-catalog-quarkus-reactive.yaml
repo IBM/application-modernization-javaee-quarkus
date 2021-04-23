@@ -139,6 +139,8 @@ spec:
       value: app-test
     - name: config-git-url
       value: $(params.config-git-url)
+    - name: app-git-url
+      value: $(params.app-git-url)
   - name: trigger-argocd-test
     taskRef:
       name: trigger-argocd
@@ -176,7 +178,9 @@ spec:
     - name: argo-app-name
       value: app-prod
     - name: config-git-url
-      value: $(params.config-git-url)
+      value: $(params.config-git-url
+    - name: app-git-url
+      value: $(params.app-git-url)
   - name: trigger-argocd-prod
     taskRef:
       name: trigger-argocd
