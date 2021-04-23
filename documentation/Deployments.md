@@ -33,8 +33,8 @@ $ oc login ...
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-db2.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-kafka.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-postgres.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/configure-argocd.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-service-catalog-quarkus-reactive.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-argocd/configure-argocd.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift-argocd/deploy-service-catalog-quarkus-reactive.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-argocd/show-urls.sh
 ```
 

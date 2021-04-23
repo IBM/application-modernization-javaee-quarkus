@@ -40,4 +40,4 @@ spec:
     runAfter: ["git-checkout"] 
     params:
     - name: project-name
-      value: $(params.project-name)
+      value: $(params.project-name-prefix)
