@@ -3,6 +3,7 @@ kind: PipelineRun
 metadata:
   name: service-catalog-quarkus-reactive-argocd-pr
 spec:
+  serviceAccountName: pipeline
   pipelineRef:
     name: service-catalog-quarkus-reactive-argocd
   workspaces:

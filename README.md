@@ -8,7 +8,7 @@ This sample demonstrates how to modernize 10+ year-old Java EE applications with
 
 * [Demonstrated Capabilities, Technologies and Tools](#demonstrated-capabilities-technologies-and-tools)
 * [Introduction Video (12 mins)](#introduction-video)
-* [Sesison Recording: Application Modernization and Rabbits (30 mins)](https://vimeo.com/wearedevelopers/download/528262363/171975e79d)
+* [Session Recording: Application Modernization and Rabbits (30 mins)](https://vimeo.com/wearedevelopers/download/528262363/171975e79d)
 * [Architecture](#architecture)
 * [Documentation](#documentation)
 * [Deployment via Docker Desktop](#deployment-via-docker-desktop)

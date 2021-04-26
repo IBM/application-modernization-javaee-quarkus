@@ -12,6 +12,5 @@ spec:
     path: service-catalog-quarkus-reactive/prod
     repoURL: https://github.com/<your-github-name>/application-modernization-javaee-quarkus-config.git
     targetRevision: main
-  syncPolicy:
-    automated: {}
+  syncPolicy: {}
 ---

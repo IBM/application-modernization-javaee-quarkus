@@ -21,7 +21,7 @@ The following scripts deploy the modernized application on Red Hat [OpenShift on
 
 First create an [IBM Cloud Account](https://cloud.ibm.com/registration). Then create an OpenShift cluster, for example via the [IBM Cloud Dashboard](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). I've tested classic infrastructure, single zone, OpenShift 4.6.17, b3c.8x32 and 3 worker nodes.
 
-Additionally you need to install ArgoCD and Tekton. The easiest option is to use the '[OpenShift GitOps](https://docs.openshift.com/container-platform/4.7/cicd/gitops/installing-openshift-gitops.html)' operator from the OperatorHub view in the OpenShift Console ([screenshots](documentation/deploy-argocd-1.png)). Simply accept all defaults. No local installations are necessary.
+Additionally you need to install ArgoCD and Tekton. The easiest option is to use the '[OpenShift GitOps](https://docs.openshift.com/container-platform/4.7/cicd/gitops/installing-openshift-gitops.html)' operator from the OperatorHub view in the OpenShift Console ([screenshots](deploy-argocd-1.png)). Simply accept all defaults. No local installations are necessary.
 
 The following scripts install the infrastructure components and the catalog service.
 
