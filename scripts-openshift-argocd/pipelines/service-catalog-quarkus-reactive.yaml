@@ -157,7 +157,7 @@ spec:
     runAfter: ["deploy-system-test"]
   - name: update-gitops-repo-prod
     taskRef:
-      name: update-gitops-repo
+      name: update-gitops-repo-prod
     workspaces:
     - name: app-source
       workspace: app-source

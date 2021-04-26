@@ -68,6 +68,7 @@ function runScript() {
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/tag-image.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/prep-service-catalog-quarkus-reactive-argocd.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/update-gitops-repo.yaml
+  oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/update-gitops-repo-prod.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/tasks/trigger-argocd.yaml
   oc apply -f ${ROOT_FOLDER}/scripts-openshift-argocd/pipelines/service-catalog-quarkus-reactive.yaml
 }
