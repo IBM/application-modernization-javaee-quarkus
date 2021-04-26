@@ -43,11 +43,10 @@ function setup() {
   _out ------------------------------------------------------------------------------------
   
   _out service-catalog-quarkus-reactive dev
-  nodeport=$(oc get svc service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
-  if [ -z "$nodeport" ]; then
+  ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --template='{{ .spec.host }}')
+  if [ -z "$ROUTE" ]; then
     _out ${PROJECT_NAME}.service-catalog-quarkus-reactive is not available. 
   else 
-    ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category\"
     _out \"curl \'http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2\'\"
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
@@ -57,11 +56,10 @@ function setup() {
 
   PROJECT_NAME=${PROJECT_NAME_PRE}test
   _out service-catalog-quarkus-reactive test
-  nodeport=$(oc get svc service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
-  if [ -z "$nodeport" ]; then
+  ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --template='{{ .spec.host }}')
+  if [ -z "$ROUTE" ]; then
     _out ${PROJECT_NAME}.service-catalog-quarkus-reactive is not available. 
   else 
-    ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category\"
     _out \"curl \'http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2\'\"
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"
@@ -71,11 +69,10 @@ function setup() {
 
   PROJECT_NAME=${PROJECT_NAME_PRE}prod
   _out service-catalog-quarkus-reactive prod
-  nodeport=$(oc get svc service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
-  if [ -z "$nodeport" ]; then
+  ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --ignore-not-found --template='{{ .spec.host }}')
+  if [ -z "$ROUTE" ]; then
     _out ${PROJECT_NAME}.service-catalog-quarkus-reactive is not available. 
   else 
-    ROUTE=$(oc get route service-catalog-quarkus-reactive -n $PROJECT_NAME --template='{{ .spec.host }}')
     _out \"curl http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Category\"
     _out \"curl \'http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/?categoryId=2\'\"
     CREATE_NEW="http://${ROUTE}/CustomerOrderServicesWeb/jaxrs/Product/1 -H 'accept: application/json' -H 'Content-Type: application/json' -d '{\"id\":1, \"price\":50}'"

@@ -26,9 +26,13 @@ spec:
     workspaces:
     - name: app-source
       workspace: app-source
+    - name: config-source
+      workspace: config-source
     params:
     - name: app-git-url
       value: $(params.app-git-url)
+    - name: config-git-url
+      value: $(params.config-git-url)
     - name: build-revision
       value: $(params.build-revision) 
   - name: wait-for-infra
@@ -159,7 +163,7 @@ spec:
       workspace: app-source
     - name: config-source
       workspace: config-source
-    runAfter: ["deploy-system-test"] 
+    runAfter: ["run-system-test"] 
     params:
     - name: project-name-prefix
       value: $(params.project-name-prefix)
