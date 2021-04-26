@@ -108,11 +108,6 @@ spec:
   - name: trigger-argocd-dev
     taskRef:
       name: trigger-argocd
-    workspaces:
-    - name: app-source
-      workspace: app-source
-    - name: config-source
-      workspace: config-source
     runAfter: ["update-gitops-repo-dev"] 
     params:
     - name: argo-app-name
@@ -144,11 +139,6 @@ spec:
   - name: trigger-argocd-test
     taskRef:
       name: trigger-argocd
-    workspaces:
-    - name: app-source
-      workspace: app-source
-    - name: config-source
-      workspace: config-source
     runAfter: ["update-gitops-repo-test"] 
     params:
     - name: argo-app-name
@@ -184,11 +174,6 @@ spec:
   - name: trigger-argocd-prod
     taskRef:
       name: trigger-argocd
-    workspaces:
-    - name: app-source
-      workspace: app-source
-    - name: config-source
-      workspace: config-source
     runAfter: ["update-gitops-repo-prod"] 
     params:
     - name: argo-app-name
