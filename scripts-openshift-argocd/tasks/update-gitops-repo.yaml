@@ -55,12 +55,11 @@ spec:
       rm -f lastcommit.md
       rm -f kubernetes.yaml
       rm -f openshift.yaml
-      echo $REVISION > lastcommit.md
 
-      sed "s/<project-name>/app-dev-argo-$(params.environment)/g" $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/kubernetes.yaml.template > kubernetes-temp.yaml
+      sed "s/<project-name>/app-mod-argocd-$(params.environment)/g" $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/kubernetes.yaml.template > kubernetes-temp.yaml
       sed "s/<version>/$REVISION/g" kubernetes-temp.yaml > kubernetes.yaml
       rm -f kubernetes-temp.yaml
-      cp $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/openshift.yaml openshift.yaml
+      #cp $(workspaces.app-source.path)/service-catalog-quarkus-reactive/deployment/openshift.yaml openshift.yaml
   - name: commit-push-changes-gitops
     image: alpine/git:v2.30.2
     workingDir: "$(workspaces.config-source.path)"

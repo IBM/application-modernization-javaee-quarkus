@@ -4,5 +4,5 @@ metadata:
   name: routes-and-services-argocd
 rules:
 - apiGroups: ["", "route.openshift.io", "apps"]
-  resources: ["routes", "services", "deployments"]
+  resources: ["routes", "services", "deployments", "imagestreams"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
