@@ -27,7 +27,9 @@ spec:
       git config --global core.sshCommand 'ssh -o StrictHostKeyChecking=accept-new'
 
       git init
-      git remote add origin $(params.config-git-url)        
+      # for some reason the ')' disappears: $(params.config-git-url)
+      # this is just a workaround:
+      git remote add origin git@github.com:nheidloff/application-modernization-javaee-quarkus-config.git       
 
       git fetch --depth 1 origin main
       git checkout main
