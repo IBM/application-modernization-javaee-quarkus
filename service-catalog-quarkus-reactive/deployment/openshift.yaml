@@ -1,8 +1,10 @@
-apiVersion: v1
+apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: service-catalog-quarkus-reactive
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
 spec:
   to:
     kind: Service
-    name: service-catalog-quarkus-reactive
+    name: service-catalog-quarkus-reactive  
