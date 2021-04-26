@@ -12,7 +12,7 @@ function setup() {
   TEKTON_SERVICE_PORT=$(oc get service tekton-pipelines-controller -n openshift-pipelines --ignore-not-found --output 'jsonpath={.spec.ports[*].port}')
   if [ -z "$TEKTON_SERVICE_PORT" ]; then
     _out Tekton is not available. 
-    _out Install the OpenShift Pipelines operator (with defaults).
+    _out Install the OpenShift Pipelines operator with defaults.
   else 
     _out Deploying Db2 
     oc project db2 > /dev/null 2>&1
