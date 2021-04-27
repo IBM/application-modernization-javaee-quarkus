@@ -106,6 +106,22 @@ I've written a series of blogs about this project:
 * [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
 * [IBM Garage Application Modernization Playbook](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/refactor/)
 
+Over the next weeks I've planned to write these blogs:
+
+* Deploying Db2 on OpenShift
+* Deploying Postgres on OpenShift
+* Deploying Kafka on OpenShift
+* Deployments of Apps to OpenShift via Source
+* Exernalizing Configurations for OpenShift Deployments
+* Deploying Nginx on OpenShift
+* Using CORS for OpenShift Applications
+* Deployments to OpenShift via local Scripts
+* Deploying Tekton on OpenShift
+* Sample Tekton Pipelines for Microservices
+* Debugging Tekton on OpenShift
+* Using Git in Tekton Tasks on OpenShift
+* Deploying ArgoCD on OpenShift
+* Using GitOps on OpenShift
 
 
 ### Deployment via Docker Desktop
