@@ -1,7 +1,7 @@
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: routes-and-services-reader
+  name: routes-and-services-reader-tekton
 rules:
 - apiGroups: ["", "route.openshift.io"]
   resources: ["routes", "services"]

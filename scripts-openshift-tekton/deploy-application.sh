@@ -21,8 +21,8 @@ function setup() {
     fi
 
     oc apply -f scripts-openshift-tekton/ClusterRole.yaml
-    oc create clusterrolebinding routes-and-services-reader \
-    --clusterrole=routes-and-services-reader  \
+    oc create clusterrolebinding routes-and-services-reader-tekton \
+    --clusterrole=routes-and-services-reader-tekton  \
     --serviceaccount=app-mod-tekton-dev:pipeline
 
     oc apply -f scripts-openshift-tekton/application/tasks
