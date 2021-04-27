@@ -8,7 +8,7 @@ This sample demonstrates how to modernize 10+ year-old Java EE applications with
 
 * [Demonstrated Capabilities, Technologies and Tools](#demonstrated-capabilities-technologies-and-tools)
 * [Introduction Video (12 mins)](#introduction-video)
-* [Session Recording: Application Modernization and Rabbits (30 mins)](https://vimeo.com/wearedevelopers/download/528262363/171975e79d)
+* [Session Recording: Application Modernization and Rabbits (30 mins)](http://heidloff.net/article/webinar-recording-application-modernization-and-rabbits/)
 * [Architecture](#architecture)
 * [Documentation](#documentation)
 * [Deployment via Docker Desktop](#deployment-via-docker-desktop)
@@ -83,7 +83,7 @@ I've written a series of blogs about this project:
 * [Project Overview Video](http://heidloff.net/article/video-application-modernization-in-baby-steps/) (12 mins)
 * [Project Teaser Video](https://youtu.be/evhQ7BslMeU) (2 mins)
 * Rabbit video: [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
-* Recording from WeAreDevelopers: [Application Modernization and Rabbits](https://vimeo.com/wearedevelopers/download/528262363/171975e79d) (30 mins)
+* Recording from WeAreDevelopers: [Application Modernization and Rabbits](http://heidloff.net/article/webinar-recording-application-modernization-and-rabbits/) (30 mins)
 * [Project Overview Slides](documentation/AppModernization.pdf)
 * [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
 * [Improving operational Efficiency through Application Modernization](http://heidloff.net/article/improving-operational-efficiency-through-application-modernization/)
