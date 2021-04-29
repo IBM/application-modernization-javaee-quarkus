@@ -177,9 +177,9 @@ $ git clone https://github.com/nheidloff/application-modernization-javaee-quarku
 $ ROOT_FOLDER=$(pwd)
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/check-prerequisites.sh
 $ oc login ...
-$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-db2.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-kafka.sh
-$ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-postgres.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-db2.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-kafka.sh
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-postgres.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/deploy-application.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift-tekton/show-urls.sh
 ```
