@@ -102,6 +102,7 @@ I've written a series of blogs about this project:
 * [Developing loosely coupled Micro Frontends via RxJS](http://heidloff.net/article/developing-loosely-coupled-micro-frontends-rxjs/)
 * [Deploying Db2 on OpenShift](http://heidloff.net/article/deploying-ibms-db2-on-openshift/)
 * [Deploying Postgres on OpenShift](http://heidloff.net/article/deploying-postgres-on-openshift/)
+* [Deploying Kafka on OpenShift](http://heidloff.net/article/deploying-kafka-on-openshift/)
 * [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
 * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
 * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
@@ -110,7 +111,6 @@ I've written a series of blogs about this project:
 
 Over the next weeks I've planned to write these blogs:
 
-* Deploying Kafka on OpenShift
 * Deployments of Apps to OpenShift via Source
 * Exernalizing Configurations for OpenShift Deployments
 * Deploying Nginx on OpenShift
