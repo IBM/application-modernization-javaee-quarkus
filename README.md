@@ -104,6 +104,7 @@ I've written a series of blogs about this project:
 * [Deploying Postgres on OpenShift](http://heidloff.net/article/deploying-postgres-on-openshift/)
 * [Deploying Kafka on OpenShift](http://heidloff.net/article/deploying-kafka-on-openshift/)
 * [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
+* [Deployments of Applications to OpenShift via Source](http://heidloff.net/article/deployments-of-applications-to-openshift-via-source/)
 * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
 * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
 * [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
@@ -111,7 +112,6 @@ I've written a series of blogs about this project:
 
 Over the next weeks I've planned to write these blogs:
 
-* Deployments of Apps to OpenShift via Source
 * Exernalizing Configurations for OpenShift Deployments
 * Deploying Nginx on OpenShift
 * Using CORS for OpenShift Applications
