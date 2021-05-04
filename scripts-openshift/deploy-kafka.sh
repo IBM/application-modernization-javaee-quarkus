@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_folder=$(cd $(dirname $0); cd ..; pwd)
+root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 exec 3>&1
 
