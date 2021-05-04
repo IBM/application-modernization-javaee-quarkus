@@ -3,15 +3,15 @@ quarkus.http.port=8082
 quarkus.swagger-ui.always-include=true
 quarkus.swagger-ui.path=/explorer
 
-quarkus.datasource.jdbc.url=jdbc:postgresql://POSTGRES_URL
+quarkus.datasource.jdbc.url=jdbc:postgresql://postgres:5432/postgres
 
 quarkus.datasource.db-kind=postgresql
-quarkus.datasource.username=POSTGRES_USER
-quarkus.datasource.password=POSTGRES_PASSWORD
+quarkus.datasource.username=postgres
+quarkus.datasource.password=postgres
 quarkus.hibernate-orm.database.generation=drop-and-create
 quarkus.hibernate-orm.sql-load-script=import2.sql
 
-kafka.bootstrap.servers=KAFKA_BOOTSTRAP_SERVERS
+kafka.bootstrap.servers=kafka:9092
 
 mp.messaging.incoming.product-price-updated.connector=smallrye-kafka
 mp.messaging.incoming.product-price-updated.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer

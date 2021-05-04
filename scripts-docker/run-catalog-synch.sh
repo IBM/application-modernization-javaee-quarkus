@@ -18,12 +18,41 @@ function setup() {
   cd ${root_folder}
   sh scripts-docker/stop-services.sh
   
-  cd ${root_folder}/service-catalog-quarkus-synch
-  mvn package
-  docker build -f Dockerfile.single -t storefront-catalog .
+  if [ -z "$POSTGRES_URL" ]; then
+    echo ERROR: The enviornment variable POSTGRES_URL has not been set
+    echo In this shell invoke the command \'export POSTGRES_URL=ibm-postgres-url\'
+  else
+    if [ -z "$POSTGRES_USER" ]; then
+      echo ERROR: The enviornment variable POSTGRES_USER has not been set
+      echo In this shell invoke the command \'export POSTGRES_USER=your-user\'
+    else
+    if [ -z "$POSTGRES_PASSWORD" ]; then
+        echo ERROR: The enviornment variable POSTGRES_PASSWORD has not been set
+        echo In this shell invoke the command \'export POSTGRES_PASSWORD=your-password\'
+      else
+        cd ${root_folder}/service-catalog-quarkus-synch/src/main/resources    
 
-  cd ${root_folder}/scripts-docker
-  docker-compose -f docker-compose-all-quarkus.yml up
+        rm application.properties.container-managed
+        rm application.properties
+        sed "s/KAFKA_BOOTSTRAP_SERVERS/kafka:9092/g" application.properties.template > application.properties
+        mv application.properties application.properties.temp
+        sed "s/POSTGRES_URL/$POSTGRES_URL/g" application.properties.temp > application.properties
+        mv application.properties application.properties.temp
+        sed "s/POSTGRES_USER/$POSTGRES_USER/g" application.properties.temp > application.properties
+        mv application.properties application.properties.temp
+        sed "s/POSTGRES_PASSWORD/$POSTGRES_PASSWORD/g" application.properties.temp > application.properties
+        cp application.properties application.properties.container-managed
+        rm application.properties.template
+
+        cd ${root_folder}/service-catalog-quarkus-synch
+        mvn package
+        docker build -f Dockerfile.single -t storefront-catalog .
+
+        cd ${root_folder}/scripts-docker
+        docker-compose -f docker-compose-all-quarkus.yml up
+      fi
+    fi
+  fi
 }
 
 setup
