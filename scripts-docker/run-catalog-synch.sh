@@ -31,22 +31,25 @@ function setup() {
         echo In this shell invoke the command \'export POSTGRES_PASSWORD=your-password\'
       else
         cd ${root_folder}/service-catalog-quarkus-synch/src/main/resources    
-
         rm application.properties.container-managed
         rm application.properties
-        sed "s/KAFKA_BOOTSTRAP_SERVERS/kafka:9092/g" application.properties.template > application.properties
+        sed "s|KAFKA_BOOTSTRAP_SERVERS|kafka:9092|g" application.properties.template > application.properties
         mv application.properties application.properties.temp
-        sed "s/POSTGRES_URL/$POSTGRES_URL/g" application.properties.temp > application.properties
+        sed "s|POSTGRES_URL|$POSTGRES_URL|g" application.properties.temp > application.properties
         mv application.properties application.properties.temp
         sed "s/POSTGRES_USER/$POSTGRES_USER/g" application.properties.temp > application.properties
         mv application.properties application.properties.temp
         sed "s/POSTGRES_PASSWORD/$POSTGRES_PASSWORD/g" application.properties.temp > application.properties
         cp application.properties application.properties.container-managed
-        rm application.properties.template
+        rm application.properties.temp
 
         cd ${root_folder}/service-catalog-quarkus-synch
         mvn package
         docker build -f Dockerfile.single -t storefront-catalog .
+
+        cd ${root_folder}/service-catalog-quarkus-synch/src/main/resources    
+        rm application.properties
+        cp application.properties.container-unmanaged application.properties
 
         cd ${root_folder}/scripts-docker
         docker-compose -f docker-compose-all-quarkus.yml up
