@@ -1,0 +1,71 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-catalog-quarkus-synch
+  labels:
+    app: service-catalog-quarkus-synch
+spec:
+  selector:
+    app: service-catalog-quarkus-synch
+  ports:
+    - port: 8082
+      name: http
+  type: NodePort
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: service-catalog-quarkus-synch
+  labels:
+    app: service-catalog-quarkus-synch
+spec:
+  selector:
+    matchLabels:
+      app: service-catalog-quarkus-synch
+  replicas: 1
+  template:
+    metadata: 
+      labels:
+        app: service-catalog-quarkus-synch
+        version: v1
+    spec:
+      volumes:
+      - name: ibm-cloud-postgres-cert
+        secret:
+          secretName: ibm-cloud-postgres-cert
+      containers:
+      - name: service-catalog-quarkus-synch
+        image: image-registry.openshift-image-registry.svc:5000/app-mod-dev/build-service-catalog-quarkus-synch:latest
+        env:
+        - name: QUARKUS_DATASOURCE_JDBC_URL
+          value: "jdbc:postgresql://a68f8532-d089-4859-96b8-3f09cf4b4d1f.bn2a2vgd01r3l0hfmvc0.databases.appdomain.cloud:30239/ibmclouddb?sslmode=verify-full&sslrootcert=/certs/ibm-cloud-postgres-cert"
+        - name: QUARKUS_DATASOURCE_USERNAME
+          value: "admin"
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          value: "demopassword"
+        volumeMounts:
+        - mountPath: "/certs"
+          name: ibm-cloud-postgres-cert
+          readOnly: true
+        ports:
+        - containerPort: 8082
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:8082/q/health/live"]
+          initialDelaySeconds: 20
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:8082/q/health/ready"]
+          initialDelaySeconds: 40
+      restartPolicy: Always
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: service-catalog-quarkus-reactive
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
+spec:
+  to:
+    kind: Service
+    name: service-catalog-quarkus-synch  

@@ -4,6 +4,7 @@ This page describes more deployment options.
 
 * [Deployment to OpenShift on IBM Cloud with Tekton and ArgoCD](#deployment-to-openshift-on-ibm-cloud-with-tekton-and-argocd)
 * [Deployment to OpenShift on IBM Cloud with local Scripts](#deployment-to-openshift-on-ibm-cloud-with-local-scripts)
+* [Managed Postgres](#managed-postgres)
 * [Monolith - WebSphere Liberty](#monolith---websphere-liberty)
 * [Separated Frontend - WebSphere Liberty](#separated-frontend---websphere-liberty)
 * [Separated Frontend - Open Liberty (EJB)](#separated-frontend---open-liberty-ejb)
@@ -87,6 +88,26 @@ $ sh ${ROOT_FOLDER}/scripts-openshift/deploy-storefront-mf-shell.sh
 $ sh ${ROOT_FOLDER}/scripts-openshift/show-urls.sh
 ```
 
+
+
+### Managed Postgres
+
+As alternative to Postgres running in an OpenShift cluster the managed Postgres service [IBM Cloud Databases for PostgreSQL](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started) can be used.
+
+Create a new instance on the IBM Cloud and get the configuration/connection data:
+
+* Username
+* Password
+* Hostname
+* TLS certificate
+
+Define username, password and hostname in [kubernetes.yaml](../service-catalog-quarkus-synch/deployment/kubernetes.yaml). Download the certificate and copy it to service-catalog-quarkus-synch/ibm-cloud-postgres-cert.
+
+Run the scripts above [Deployment to OpenShift on IBM Cloud with local Scripts](#deployment-to-openshift-on-ibm-cloud-with-local-scripts). After this run this command:
+
+```
+$ sh ${ROOT_FOLDER}/scripts-openshift/deploy-service-catalog-quarkus-synch.sh
+```
 
 
 ### Monolith - WebSphere Liberty
