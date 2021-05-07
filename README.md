@@ -100,6 +100,7 @@ I've written a series of blogs about this project:
 * [Using Micro Frontends in Microservices based Architectures](http://heidloff.net/article/using-micro-frontends-microservices/)
 * [Developing Micro Frontends with Single-Spa](http://heidloff.net/article/developing-micro-frontends-single-spa/)
 * [Developing loosely coupled Micro Frontends via RxJS](http://heidloff.net/article/developing-loosely-coupled-micro-frontends-rxjs/)
+* [Exernalizing Configurations for OpenShift Deployments](http://heidloff.net/article/externalizing-configurations-for-openshift-deployments/)
 * [Deploying Db2 on OpenShift](http://heidloff.net/article/deploying-ibms-db2-on-openshift/)
 * [Deploying Postgres on OpenShift](http://heidloff.net/article/deploying-postgres-on-openshift/)
 * [Deploying Kafka on OpenShift](http://heidloff.net/article/deploying-kafka-on-openshift/)
@@ -113,7 +114,6 @@ I've written a series of blogs about this project:
 
 Over the next weeks I've planned to write these blogs:
 
-* Exernalizing Configurations for OpenShift Deployments
 * Deploying Nginx on OpenShift
 * Using CORS for OpenShift Applications
 * Deployments to OpenShift via local Scripts

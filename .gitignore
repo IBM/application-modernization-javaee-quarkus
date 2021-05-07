@@ -9,6 +9,8 @@ READNIK.md
 .tern-project
 .vscode
 
+service-catalog-quarkus-synch/ibm-cloud-postgres-cert
+
 scripts-openshift-argocd/argocd-config/tekton-git-ssh-secret.yaml
 scripts-openshift-argocd/argocd-config/argocd-app-dev.yaml
 scripts-openshift-argocd/argocd-config/argocd-app-test.yaml

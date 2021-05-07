@@ -3,7 +3,7 @@ quarkus.http.port=8082
 quarkus.swagger-ui.always-include=true
 quarkus.swagger-ui.path=/explorer
 
-quarkus.datasource.jdbc.url=jdbc:postgresql://a68f8532-d089-4859-96b8-3f09cf4b4d1f.bn2a2vgd01r3l0hfmvc0.databases.appdomain.cloud:30239/postgres?sslmode=verify-full
+quarkus.datasource.jdbc.url=jdbc:postgresql://a68f8532-d089-4859-96b8-3f09cf4b4d1f.bn2a2vgd01r3l0hfmvc0.databases.appdomain.cloud:30239/ibmclouddb?sslmode=verify-full&sslrootcert=/deployments/ibm-cloud-postgres-cert
 
 quarkus.datasource.db-kind=postgresql
 quarkus.datasource.username=admin

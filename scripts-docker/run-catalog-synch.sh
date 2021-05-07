@@ -35,7 +35,8 @@ function setup() {
         rm application.properties
         sed "s|KAFKA_BOOTSTRAP_SERVERS|kafka:9092|g" application.properties.template > application.properties
         mv application.properties application.properties.temp
-        sed "s|POSTGRES_URL|$POSTGRES_URL|g" application.properties.temp > application.properties
+        POSTGRES_URL=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<< "$POSTGRES_URL")
+        sed "s%POSTGRES_URL%$POSTGRES_URL%g" application.properties.temp > application.properties
         mv application.properties application.properties.temp
         sed "s/POSTGRES_USER/$POSTGRES_USER/g" application.properties.temp > application.properties
         mv application.properties application.properties.temp
@@ -45,7 +46,7 @@ function setup() {
 
         cd ${root_folder}/service-catalog-quarkus-synch
         mvn package
-        docker build -f Dockerfile.single -t storefront-catalog .
+        docker build -f DockerfileWithCert.single -t storefront-catalog .
 
         cd ${root_folder}/service-catalog-quarkus-synch/src/main/resources    
         rm application.properties
