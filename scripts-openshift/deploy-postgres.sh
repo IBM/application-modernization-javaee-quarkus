@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -13,7 +14,7 @@ function setup() {
 
   oc new-project postgres
   oc project postgres
-  cd ${root_folder}/scripts-openshift
+  cd ${PROJECT_FOLDER}/scripts-openshift
   oc new-build --name build-postgres --binary --strategy docker
   oc start-build build-postgres --from-dir=.
 

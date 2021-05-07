@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -20,7 +21,7 @@ function setup() {
     | sed 's/namespace: .*/namespace: kafka/' \
     | oc apply -f - -n kafka 
 
-    oc apply -f ${root_folder}/scripts-openshift/kafka-cluster.yaml -n kafka 
+    oc apply -f ${PROJECT_FOLDER}/scripts-openshift/kafka-cluster.yaml -n kafka 
 
     oc expose svc/my-cluster-kafka-external-bootstrap --port=9094
    

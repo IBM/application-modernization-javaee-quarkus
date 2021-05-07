@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -12,9 +13,9 @@ function setup() {
   _out Deploying storefront-mf-account
   
   _out Cleanup
-  rm -rf ${root_folder}/frontend-single-spa/account/dist
-  rm -rf ${root_folder}/frontend-single-spa/account/node_modules
-  cd ${root_folder}/frontend-single-spa/account
+  rm -rf ${PROJECT_FOLDER}/frontend-single-spa/account/dist
+  rm -rf ${PROJECT_FOLDER}/frontend-single-spa/account/node_modules
+  cd ${PROJECT_FOLDER}/frontend-single-spa/account
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route storefront-mf-account --ignore-not-found
   oc delete is build-storefront-mf-account --ignore-not-found
@@ -28,7 +29,7 @@ function setup() {
     if [ -z "$ROUTE_MONOLITH" ]; then
       _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
     else 
-      cd ${root_folder}/frontend-single-spa/account
+      cd ${PROJECT_FOLDER}/frontend-single-spa/account
       cp Dockerfile Dockerfile.temp
       rm Dockerfile
       cp Dockerfile.os4 Dockerfile
@@ -38,14 +39,14 @@ function setup() {
           oc new-project app-mod-dev
       fi
       
-      cd ${root_folder}/frontend-single-spa/account
+      cd ${PROJECT_FOLDER}/frontend-single-spa/account
       oc new-build --name build-storefront-mf-account --binary --strategy=docker
       oc start-build build-storefront-mf-account --from-dir=. --follow
       
       oc apply -f deployment/kubernetes.yaml
       oc expose svc/storefront-mf-account
 
-      cd ${root_folder}/frontend-single-spa/account
+      cd ${PROJECT_FOLDER}/frontend-single-spa/account
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp

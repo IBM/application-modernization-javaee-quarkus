@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -23,8 +24,8 @@ function setup() {
   oc adm policy add-scc-to-user anyuid -z mysvcacct -n db2
   oc adm policy add-scc-to-user privileged -z default -n db2
   oc adm policy add-scc-to-user privileged -z mysvcacct -n db2
-  oc apply -f ${root_folder}/db2/deployment/db2-dc.yaml -n db2 
-  oc apply -f ${root_folder}/db2/deployment/db2-service.yaml -n db2 
+  oc apply -f ${PROJECT_FOLDER}/db2/deployment/db2-dc.yaml -n db2 
+  oc apply -f ${PROJECT_FOLDER}/db2/deployment/db2-service.yaml -n db2 
 
   oc expose svc/storefront-db2 --port=50000
    

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -10,11 +11,11 @@ function _out() {
 
 function setup() {
   _out Deploying frontend-dojo
-  sh ${root_folder}/scripts/install-was-dependencies.sh
+  sh ${PROJECT_FOLDER}/scripts/install-was-dependencies.sh
   
   _out Cleanup
-  rm -rf ${root_folder}/frontend-dojo/target
-  cd ${root_folder}/frontend-dojo
+  rm -rf ${PROJECT_FOLDER}/frontend-dojo/target
+  cd ${PROJECT_FOLDER}/frontend-dojo
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route frontend-dojo --ignore-not-found
   oc delete is build-frontend-dojo --ignore-not-found
@@ -28,72 +29,72 @@ function setup() {
     if [ -z "$ROUTE_MONOLITH" ]; then
       _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
     else 
-      cd ${root_folder}/frontend-dojo
+      cd ${PROJECT_FOLDER}/frontend-dojo
       cp Dockerfile Dockerfile.temp
       rm Dockerfile
       cp Dockerfile.multistage Dockerfile
 
-      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js ${root_folder}/frontend-dojo/ProductController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
-      sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${root_folder}/frontend-dojo/ProductController.js > ${root_folder}/frontend-dojo/ProductController2.js
-      sed "s/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-dojo/ProductController2.js > ${root_folder}/frontend-dojo/ProductController3.js
-      sed "s/\/\/this.addToCorsIssue/this.addToCorsIssue/g" ${root_folder}/frontend-dojo/ProductController3.js > ${root_folder}/frontend-dojo/ProductController4.js
-      sed "s/this.addToCartNormal/\/\/this.addToCartNormal/g" ${root_folder}/frontend-dojo/ProductController4.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
-      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js ${root_folder}/frontend-dojo/AccountController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
-      sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" ${root_folder}/frontend-dojo/AccountController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
-      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js ${root_folder}/frontend-dojo/AddressController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
-      sed "s/jaxrs\/Customer\/Address/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Address/g" ${root_folder}/frontend-dojo/AddressController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
-      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html ${root_folder}/frontend-dojo/product.html
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
-      sed "s/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" ${root_folder}/frontend-dojo/product.html > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
-      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js ${root_folder}/frontend-dojo/OrderHistoryController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
-      sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${root_folder}/frontend-dojo/OrderHistoryController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
-      cp ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js ${root_folder}/frontend-dojo/AccountTypeFormController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
-      sed "s/jaxrs\/Customer\/TypeForm/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/TypeForm/g" ${root_folder}/frontend-dojo/AccountTypeFormController.js > ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js ${PROJECT_FOLDER}/frontend-dojo/ProductController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      sed "s/jaxrs\/Category/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Category/g" ${PROJECT_FOLDER}/frontend-dojo/ProductController.js > ${PROJECT_FOLDER}/frontend-dojo/ProductController2.js
+      sed "s/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${PROJECT_FOLDER}/frontend-dojo/ProductController2.js > ${PROJECT_FOLDER}/frontend-dojo/ProductController3.js
+      sed "s/\/\/this.addToCorsIssue/this.addToCorsIssue/g" ${PROJECT_FOLDER}/frontend-dojo/ProductController3.js > ${PROJECT_FOLDER}/frontend-dojo/ProductController4.js
+      sed "s/this.addToCartNormal/\/\/this.addToCartNormal/g" ${PROJECT_FOLDER}/frontend-dojo/ProductController4.js > ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js ${PROJECT_FOLDER}/frontend-dojo/AccountController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer/g" ${PROJECT_FOLDER}/frontend-dojo/AccountController.js > ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js ${PROJECT_FOLDER}/frontend-dojo/AddressController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+      sed "s/jaxrs\/Customer\/Address/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Address/g" ${PROJECT_FOLDER}/frontend-dojo/AddressController.js > ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html ${PROJECT_FOLDER}/frontend-dojo/product.html
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      sed "s/jaxrs\/Product/http:\/\/${ROUTE_CATALOG}\/CustomerOrderServicesWeb\/jaxrs\/Product/g" ${PROJECT_FOLDER}/frontend-dojo/product.html > ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      cp ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js ${PROJECT_FOLDER}/frontend-dojo/OrderHistoryController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+      sed "s/\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${PROJECT_FOLDER}/frontend-dojo/OrderHistoryController.js > ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js ${PROJECT_FOLDER}/frontend-dojo/AccountTypeFormController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+      sed "s/jaxrs\/Customer\/TypeForm/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/TypeForm/g" ${PROJECT_FOLDER}/frontend-dojo/AccountTypeFormController.js > ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
       
       oc project app-mod-dev  > /dev/null 2>&1
       if [ $? != 0 ]; then 
           oc new-project app-mod-dev
       fi
       
-      cd ${root_folder}/frontend-dojo
+      cd ${PROJECT_FOLDER}/frontend-dojo
       oc new-build --name build-frontend-dojo --binary --strategy=docker
       oc start-build build-frontend-dojo --from-dir=. --follow
       
       oc apply -f deployment/kubernetes.yaml
       oc expose svc/frontend-dojo
 
-      cd ${root_folder}/frontend-dojo
+      cd ${PROJECT_FOLDER}/frontend-dojo
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp
-      rm -rf ${root_folder}/frontend-dojo/target
+      rm -rf ${PROJECT_FOLDER}/frontend-dojo/target
 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
-      cp ${root_folder}/frontend-dojo/ProductController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js  
-      rm ${root_folder}/frontend-dojo/ProductController.js 
-      rm ${root_folder}/frontend-dojo/ProductController2.js 
-      rm ${root_folder}/frontend-dojo/ProductController3.js
-      rm ${root_folder}/frontend-dojo/ProductController4.js
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
-      cp ${root_folder}/frontend-dojo/AccountController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js 
-      rm ${root_folder}/frontend-dojo/AccountController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
-      cp ${root_folder}/frontend-dojo/OrderHistoryController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js 
-      rm ${root_folder}/frontend-dojo/OrderHistoryController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
-      cp ${root_folder}/frontend-dojo/AccountTypeFormController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js 
-      rm ${root_folder}/frontend-dojo/AccountTypeFormController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
-      cp ${root_folder}/frontend-dojo/AddressController.js ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js 
-      rm ${root_folder}/frontend-dojo/AddressController.js 
-      rm ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
-      cp ${root_folder}/frontend-dojo/product.html ${root_folder}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
-      rm ${root_folder}/frontend-dojo/product.html 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/ProductController.js ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/ProductController.js  
+      rm ${PROJECT_FOLDER}/frontend-dojo/ProductController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/ProductController2.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/ProductController3.js
+      rm ${PROJECT_FOLDER}/frontend-dojo/ProductController4.js
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/AccountController.js ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/AccountController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/OrderHistoryController.js ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/OrderHistoryController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/OrderHistoryController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/AccountTypeFormController.js ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AccountTypeFormController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/AccountTypeFormController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js
+      cp ${PROJECT_FOLDER}/frontend-dojo/AddressController.js ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/dojo_depot/depot/AddressController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/AddressController.js 
+      rm ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      cp ${PROJECT_FOLDER}/frontend-dojo/product.html ${PROJECT_FOLDER}/frontend-dojo/CustomerOrderServicesWeb/WebContent/product/product.html
+      rm ${PROJECT_FOLDER}/frontend-dojo/product.html 
     
       _out Done deploying frontend-dojo
       ROUTE=$(oc get route frontend-dojo -n app-mod-dev --template='{{ .spec.host }}')

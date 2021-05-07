@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -12,9 +13,9 @@ function setup() {
   _out Deploying storefront-mf-order
   
   _out Cleanup
-  rm -rf ${root_folder}/frontend-single-spa/order/dist
-  rm -rf ${root_folder}/frontend-single-spa/order/node_modules
-  cd ${root_folder}/frontend-single-spa/order
+  rm -rf ${PROJECT_FOLDER}/frontend-single-spa/order/dist
+  rm -rf ${PROJECT_FOLDER}/frontend-single-spa/order/node_modules
+  cd ${PROJECT_FOLDER}/frontend-single-spa/order
   oc delete -f deployment/kubernetes.yaml --ignore-not-found
   oc delete route storefront-mf-order --ignore-not-found
   oc delete is build-storefront-mf-order --ignore-not-found
@@ -28,7 +29,7 @@ function setup() {
     if [ -z "$ROUTE_MONOLITH" ]; then
       _out monolith-open-liberty-cloud-native is not available. Run the command: \"sh scripts-openshift/deploy-monolith-open-liberty-cloud-native.sh\"
     else 
-      cd ${root_folder}/frontend-single-spa/order
+      cd ${PROJECT_FOLDER}/frontend-single-spa/order
       cp Dockerfile Dockerfile.temp
       rm Dockerfile
       cp Dockerfile.os4 Dockerfile
@@ -38,33 +39,33 @@ function setup() {
           oc new-project app-mod-dev
       fi
       
-      cp ${root_folder}/frontend-single-spa/order/src/App.vue ${root_folder}/frontend-single-spa/order/App.vue
-      rm ${root_folder}/frontend-single-spa/order/src/App.vue
-      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${root_folder}/frontend-single-spa/order/App.vue > ${root_folder}/frontend-single-spa/order/src/App.vue
+      cp ${PROJECT_FOLDER}/frontend-single-spa/order/src/App.vue ${PROJECT_FOLDER}/frontend-single-spa/order/App.vue
+      rm ${PROJECT_FOLDER}/frontend-single-spa/order/src/App.vue
+      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/OpenOrder\/LineItem/g" ${PROJECT_FOLDER}/frontend-single-spa/order/App.vue > ${PROJECT_FOLDER}/frontend-single-spa/order/src/App.vue
       
-      cp ${root_folder}/frontend-single-spa/order/src/components/Home.vue ${root_folder}/frontend-single-spa/order/Home.vue
-      rm ${root_folder}/frontend-single-spa/order/src/components/Home.vue
-      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${root_folder}/frontend-single-spa/order/Home.vue > ${root_folder}/frontend-single-spa/order/src/components/Home.vue
+      cp ${PROJECT_FOLDER}/frontend-single-spa/order/src/components/Home.vue ${PROJECT_FOLDER}/frontend-single-spa/order/Home.vue
+      rm ${PROJECT_FOLDER}/frontend-single-spa/order/src/components/Home.vue
+      sed "s/http:\/\/localhost\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/http:\/\/${ROUTE_MONOLITH}\/CustomerOrderServicesWeb\/jaxrs\/Customer\/Orders/g" ${PROJECT_FOLDER}/frontend-single-spa/order/Home.vue > ${PROJECT_FOLDER}/frontend-single-spa/order/src/components/Home.vue
       
-      cd ${root_folder}/frontend-single-spa/order
+      cd ${PROJECT_FOLDER}/frontend-single-spa/order
       oc new-build --name build-storefront-mf-order --binary --strategy=docker
       oc start-build build-storefront-mf-order --from-dir=. --follow
       
       oc apply -f deployment/kubernetes.yaml
       oc expose svc/storefront-mf-order
 
-      cd ${root_folder}/frontend-single-spa/order
+      cd ${PROJECT_FOLDER}/frontend-single-spa/order
       rm Dockerfile
       cp Dockerfile.temp Dockerfile
       rm Dockerfile.temp
 
-      rm ${root_folder}/frontend-single-spa/order/src/App.vue
-      cp ${root_folder}/frontend-single-spa/order/App.vue ${root_folder}/frontend-single-spa/order/src/App.vue
-      rm ${root_folder}/frontend-single-spa/order/App.vue
+      rm ${PROJECT_FOLDER}/frontend-single-spa/order/src/App.vue
+      cp ${PROJECT_FOLDER}/frontend-single-spa/order/App.vue ${PROJECT_FOLDER}/frontend-single-spa/order/src/App.vue
+      rm ${PROJECT_FOLDER}/frontend-single-spa/order/App.vue
 
-      rm ${root_folder}/frontend-single-spa/order/src/components/Home.vue
-      cp ${root_folder}/frontend-single-spa/order/Home.vue ${root_folder}/frontend-single-spa/order/src/components/Home.vue
-      rm ${root_folder}/frontend-single-spa/order/Home.vue
+      rm ${PROJECT_FOLDER}/frontend-single-spa/order/src/components/Home.vue
+      cp ${PROJECT_FOLDER}/frontend-single-spa/order/Home.vue ${PROJECT_FOLDER}/frontend-single-spa/order/src/components/Home.vue
+      rm ${PROJECT_FOLDER}/frontend-single-spa/order/Home.vue
       
       _out Done deploying storefront-mf-order
       ROUTE=$(oc get route storefront-mf-order -n app-mod-dev --template='{{ .spec.host }}')

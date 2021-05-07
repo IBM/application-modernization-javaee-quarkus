@@ -1,6 +1,7 @@
 #!/bin/bash
 
-root_folder=$(cd $(dirname $0); cd ..; pwd)
+SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_FOLDER="$(cd $SCRIPT_FOLDER; cd ..; pwd )"
 
 exec 3>&1
 
@@ -9,7 +10,7 @@ function _out() {
 }
 
 
-CFG_FILE=${root_folder}/../local.env
+CFG_FILE=${PROJECT_FOLDER}/../local.env
 # Check if config file exists, in this case it will have been modified
 if [ ! -f $CFG_FILE ]; then
     _out Config file local.env is missing! Check our instructions!
