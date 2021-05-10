@@ -118,7 +118,7 @@ Screenshot of modernized storefront application:
     * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
 
 * CI/CD and DevOps
-    * TBD: Deploying Tekton on OpenShift
+    * [Deploying Tekton on OpenShift](http://heidloff.net/article/deploying-tekton-on-openshift/)
     * TBD: Sample Tekton Pipelines for Microservices
     * TBD: Debugging Tekton on OpenShift
     * TBD: Using Git in Tekton Tasks on OpenShift
