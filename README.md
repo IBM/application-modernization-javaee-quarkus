@@ -104,6 +104,7 @@ I've written a series of blogs about this project:
 * [Deploying Db2 on OpenShift](http://heidloff.net/article/deploying-ibms-db2-on-openshift/)
 * [Deploying Postgres on OpenShift](http://heidloff.net/article/deploying-postgres-on-openshift/)
 * [Deploying Kafka on OpenShift](http://heidloff.net/article/deploying-kafka-on-openshift/)
+* [Connecting to managed Database Services via TLS](http://heidloff.net/article/connecting-to-managed-database-services-via-tls/)
 * [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
 * [Logging for OpenShift via LogDNA](http://heidloff.net/article/logging-for-openshift-via-logdna/)
 * [Deployments of Applications to OpenShift via Source](http://heidloff.net/article/deployments-of-applications-to-openshift-via-source/)
