@@ -113,7 +113,7 @@ Screenshot of modernized storefront application:
     * [Connecting to managed Database Services via TLS](http://heidloff.net/article/connecting-to-managed-database-services-via-tls/)
     * [Deployments of Applications to OpenShift via Source](http://heidloff.net/article/deployments-of-applications-to-openshift-via-source/)
     * [Deploying Nginx on OpenShift](http://heidloff.net/article/deploying-nginx-on-openshift/)
-    * TBD: Using CORS for OpenShift Applications
+    * [Using CORS for OpenShift Applications](http://heidloff.net/article/using-cors-for-openshift-applications/)
     * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
     * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
 
