@@ -78,52 +78,62 @@ Screenshot of modernized storefront application:
 
 ### Documentation
 
-I've written a series of blogs about this project:
+* Project Overview
+    * [Project Overview Video](http://heidloff.net/article/video-application-modernization-in-baby-steps/) (12 mins)
+    * Talk: [Application Modernization and Rabbits](http://heidloff.net/article/webinar-recording-application-modernization-and-rabbits/) (30 mins)
+    * [Project Teaser Video](https://youtu.be/evhQ7BslMeU) (2 mins)
+    * Rabbit video: [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
+    * [Project Overview Slides](documentation/AppModernization.pdf)
 
-* [Project Overview Video](http://heidloff.net/article/video-application-modernization-in-baby-steps/) (12 mins)
-* [Project Teaser Video](https://youtu.be/evhQ7BslMeU) (2 mins)
-* Rabbit video: [Application Modernization and Rabbits](http://heidloff.net/articles/application-modernization-and-rabbits/)
-* Recording from WeAreDevelopers: [Application Modernization and Rabbits](http://heidloff.net/article/webinar-recording-application-modernization-and-rabbits/) (30 mins)
-* [Project Overview Slides](documentation/AppModernization.pdf)
-* [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
-* [Improving operational Efficiency through Application Modernization](http://heidloff.net/article/improving-operational-efficiency-through-application-modernization/)
-* [Modernizing Java EE Applications with WebSphere Liberty](http://heidloff.net/article/modernizing-java-ee-applications-with-websphere-liberty/)
-* [Step-by-Step Instructions how to use Transformation Advisor](http://heidloff.net/article/step-by-step-instructions-ibm-transformation-advisor/)
-* [Modernizing Applications with new User Experiences](http://heidloff.net/article/modernizing-applications-with-new-user-experiences/)
-* [Moving from WebSphere Liberty to Open Source with Open Liberty](http://heidloff.net/article/modernizing-websphere-liberty-applications-with-open-liberty/)
-* [Increasing Productivity for legacy Liberty Applications](http://heidloff.net/article/increasing-developer-productivity-for-legacy-liberty-applications/)
-* [Don’t build distributed Monoliths!](http://heidloff.net/article/do-not-build-distributed-monoliths/)
-* [Strangler Pattern Example](http://heidloff.net/article/strangler-pattern-example/)
-* [Step-by-Step Instructions for Mono2Micro](http://heidloff.net/article/step-by-step-instructions-mono2micro/)
-* [Event driven Architectures for loosely coupled Microservices](http://heidloff.net/article/event-driven-architectures-loosely-coupled-microservices/)
-* [Using Quarkus for building reactive Applications](http://heidloff.net/article/using-quarkus-reactive-applications)
-* [Using Micro Frontends in Microservices based Architectures](http://heidloff.net/article/using-micro-frontends-microservices/)
-* [Developing Micro Frontends with Single-Spa](http://heidloff.net/article/developing-micro-frontends-single-spa/)
-* [Developing loosely coupled Micro Frontends via RxJS](http://heidloff.net/article/developing-loosely-coupled-micro-frontends-rxjs/)
-* [Exernalizing Configurations for OpenShift Deployments](http://heidloff.net/article/externalizing-configurations-for-openshift-deployments/)
-* [Deploying Db2 on OpenShift](http://heidloff.net/article/deploying-ibms-db2-on-openshift/)
-* [Deploying Postgres on OpenShift](http://heidloff.net/article/deploying-postgres-on-openshift/)
-* [Deploying Kafka on OpenShift](http://heidloff.net/article/deploying-kafka-on-openshift/)
-* [Connecting to managed Database Services via TLS](http://heidloff.net/article/connecting-to-managed-database-services-via-tls/)
-* [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
-* [Logging for OpenShift via LogDNA](http://heidloff.net/article/logging-for-openshift-via-logdna/)
-* [Deployments of Applications to OpenShift via Source](http://heidloff.net/article/deployments-of-applications-to-openshift-via-source/)
-* [Deploying Nginx on OpenShift](http://heidloff.net/article/deploying-nginx-on-openshift/)
-* [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
-* [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
-* [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
-* [IBM Garage Application Modernization Playbook](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/refactor/)
+* IBM Modernization Tools and IBM WebSphere
+    * [Improving operational Efficiency through Application Modernization](http://heidloff.net/article/improving-operational-efficiency-through-application-modernization/)
+    * [Modernizing Java EE Applications with WebSphere Liberty](http://heidloff.net/article/modernizing-java-ee-applications-with-websphere-liberty/)
+    * [Step-by-Step Instructions how to use Transformation Advisor](http://heidloff.net/article/step-by-step-instructions-ibm-transformation-advisor/)
+    * [Increasing Productivity for legacy Liberty Applications](http://heidloff.net/article/increasing-developer-productivity-for-legacy-liberty-applications/)
+    * [Moving from WebSphere Liberty to Open Source with Open Liberty](http://heidloff.net/article/modernizing-websphere-liberty-applications-with-open-liberty/)
 
-Over the next weeks I've planned to write these blogs:
+* Strangler Pattern and Event Driven Architecture
+    * [Don’t build distributed Monoliths!](http://heidloff.net/article/do-not-build-distributed-monoliths/)
+    * [Strangler Pattern Example](http://heidloff.net/article/strangler-pattern-example/)
+    * [Step-by-Step Instructions for Mono2Micro](http://heidloff.net/article/step-by-step-instructions-mono2micro/)
+    * [Event driven Architectures for loosely coupled Microservices](http://heidloff.net/article/event-driven-architectures-loosely-coupled-microservices/)
+    * [Using Quarkus for building reactive Applications](http://heidloff.net/article/using-quarkus-reactive-applications)
 
-* Using CORS for OpenShift Applications
-* Deployments to OpenShift via local Scripts
-* Deploying Tekton on OpenShift
-* Sample Tekton Pipelines for Microservices
-* Debugging Tekton on OpenShift
-* Using Git in Tekton Tasks on OpenShift
-* Deploying ArgoCD on OpenShift
-* Using GitOps on OpenShift
+* User Experience Modernization
+    * [Modernizing Applications with new User Experiences](http://heidloff.net/article/modernizing-applications-with-new-user-experiences/)
+    * [Using Micro Frontends in Microservices based Architectures](http://heidloff.net/article/using-micro-frontends-microservices/)
+    * [Developing Micro Frontends with Single-Spa](http://heidloff.net/article/developing-micro-frontends-single-spa/)
+    * [Developing loosely coupled Micro Frontends via RxJS](http://heidloff.net/article/developing-loosely-coupled-micro-frontends-rxjs/)
+
+* OpenShift Development and Deployment Patterns
+    * [Exernalizing Configurations for OpenShift Deployments](http://heidloff.net/article/externalizing-configurations-for-openshift-deployments/)
+    * [Deploying Db2 on OpenShift](http://heidloff.net/article/deploying-ibms-db2-on-openshift/)
+    * [Deploying Postgres on OpenShift](http://heidloff.net/article/deploying-postgres-on-openshift/)
+    * [Deploying Kafka on OpenShift](http://heidloff.net/article/deploying-kafka-on-openshift/)
+    * [Connecting to managed Database Services via TLS](http://heidloff.net/article/connecting-to-managed-database-services-via-tls/)
+    * [Deployments of Applications to OpenShift via Source](http://heidloff.net/article/deployments-of-applications-to-openshift-via-source/)
+    * [Deploying Nginx on OpenShift](http://heidloff.net/article/deploying-nginx-on-openshift/)
+    * TBD: Using CORS for OpenShift Applications
+    * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
+    * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
+
+* CI/CD and DevOps
+    * TBD: Deploying Tekton on OpenShift
+    * TBD: Sample Tekton Pipelines for Microservices
+    * TBD: Debugging Tekton on OpenShift
+    * TBD: Using Git in Tekton Tasks on OpenShift
+    * TBD: Deploying ArgoCD on OpenShift
+    * TBD: Using GitOps on OpenShift
+
+* Observability
+    * [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
+    * [Logging for OpenShift via LogDNA](http://heidloff.net/article/logging-for-openshift-via-logdna/)
+
+* More Resources
+    * [10 Reasons why Enterprises should modernize Applications](http://heidloff.net/article/ten-reasons-why-enterprises-should-modernize-applications/)
+    * [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
+    * [IBM Garage Application Modernization Playbook](https://ibm-cloud-architecture.github.io/modernization-playbook/applications/refactor/)
+
 
 
 ### Deployment via Docker Desktop
