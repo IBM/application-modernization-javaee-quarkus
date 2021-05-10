@@ -108,6 +108,7 @@ I've written a series of blogs about this project:
 * [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
 * [Logging for OpenShift via LogDNA](http://heidloff.net/article/logging-for-openshift-via-logdna/)
 * [Deployments of Applications to OpenShift via Source](http://heidloff.net/article/deployments-of-applications-to-openshift-via-source/)
+* [Deploying Nginx on OpenShift](http://heidloff.net/article/deploying-nginx-on-openshift/)
 * [Running Liberty Applications with Db2 locally](http://heidloff.net/article/running-liberty-applications-with-db2-locally/)
 * [Running legacy Java Applications locally](http://heidloff.net/article/running-legacy-java-applications-locally/)
 * [Application Modernization Resources on IBM Developer](http://heidloff.net/article/application-modernization-resources-on-ibm-developer/)
@@ -115,7 +116,6 @@ I've written a series of blogs about this project:
 
 Over the next weeks I've planned to write these blogs:
 
-* Deploying Nginx on OpenShift
 * Using CORS for OpenShift Applications
 * Deployments to OpenShift via local Scripts
 * Deploying Tekton on OpenShift
