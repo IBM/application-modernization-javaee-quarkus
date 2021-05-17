@@ -120,7 +120,7 @@ Screenshot of modernized storefront application:
 * CI/CD and DevOps
     * [Deploying Tekton on OpenShift](http://heidloff.net/article/deploying-tekton-on-openshift/)
     * [Sample Tekton Pipelines for Microservices](http://heidloff.net/article/sample-tekton-pipelines-for-microservices/)
-    * TBD: Debugging Tekton on OpenShift
+    * [Debugging Tekton on OpenShift](http://heidloff.net/article/debugging-tekton-on-openshift/)
     * TBD: Using Git in Tekton Tasks on OpenShift
     * TBD: Deploying ArgoCD on OpenShift
     * TBD: Using GitOps on OpenShift
