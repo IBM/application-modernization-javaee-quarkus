@@ -123,7 +123,7 @@ Screenshot of modernized storefront application:
     * [Debugging Tekton on OpenShift](http://heidloff.net/article/debugging-tekton-on-openshift/)
     * [Accessing GitHub in Tekton Tasks on OpenShift](http://heidloff.net/article/accessing-github-in-tekton-tasks-on-openshift/)
     * [Deploying ArgoCD on OpenShift](http://heidloff.net/article/deploying-argocd-on-openshift/)
-    * TBD: Using GitOps on OpenShift
+    * [Using GitOps on OpenShift](Using GitOps on OpenShift)
 
 * Observability
     * [OpenShift Logging Quick Start](http://heidloff.net/article/openshift-logging-quick-start/)
