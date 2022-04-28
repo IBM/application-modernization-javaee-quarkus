@@ -140,7 +140,8 @@ public class ProductResource {
                 })
                 .subscribeAsCompletionStage();            
     }
-    
+
+    @Inject
     @ConfigProperty(name = "kafka.bootstrap.servers")
     String kafkaBootstrapServer;
 
